@@ -1,0 +1,19 @@
+.searchPage .inputBlock{
+  margin:10px 0 20px;
+}
+
+.searchPage label{
+  font-size:150%;
+  margin-bottom:10px;
+  display:block;
+}
+
+.searchPage input{
+  font-size:150%;
+  width: 60%;
+}
+
+.searchPage button{
+  font-size:150%;
+  padding:10px 20px;
+}

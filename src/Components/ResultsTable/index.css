@@ -1,0 +1,12 @@
+table.results{
+  width:100%;
+}
+table.results thead{
+  font-weight:bold;
+  background-color:#DDD;
+}
+table.results td{
+  padding:3px;
+  margin:0;
+  cellspacing:0;
+}
