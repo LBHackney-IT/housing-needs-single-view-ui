@@ -25,7 +25,7 @@ export default class App extends Component {
       case 'SelectPage':
         return <SelectPage searchResults={this.state.searchResults}/>
       default:
-        return <SearchPage onSearch={this.search}/>
+        return <SearchPage onSearch={this.search} pageState={this.props.pageState}/>
     }
   }
 

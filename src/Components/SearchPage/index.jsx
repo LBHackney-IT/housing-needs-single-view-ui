@@ -17,6 +17,14 @@ export default class SearchPage extends Component {
     this.props.onSearch(this.state);
   }
 
+  button = () => {
+    if(this.props.pageState === 'searching'){
+      return  <button onClick={this.search} disabled="true">Searching</button>
+    }else{
+      return <button onClick={this.search}>Search</button>
+    }
+  }
+
   render(){
     return(
       <div className="searchPage">
@@ -37,7 +45,7 @@ export default class SearchPage extends Component {
           <label htmlFor="nino">National Insurance number</label>
           <input type="text" name="nino"  onChange={this.handleChange} value={this.state.nino} />
         </div>
-        <button onClick={this.search}>Search</button>
+        {this.button()}
       </div>
     );
   }
