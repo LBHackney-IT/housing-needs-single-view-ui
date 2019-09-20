@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './index.css';
-import dummyData from "./dummy.json";
 import ResultsTable from "../ResultsTable";
 
 
@@ -27,7 +26,7 @@ export default class SelectPage extends Component {
   }
 
   componentDidMount(){
-    this.processResults(dummyData.results)
+    this.processResults(this.props.searchResults)
   }
 
   render(){
