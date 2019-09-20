@@ -43,6 +43,7 @@ export default class SelectPage extends Component {
               <ResultsTable results={Object.values(this.state.results[source])} selectable={true} />
             </div>
           }
+          return null;
         })}
 
         <button>Select</button>
