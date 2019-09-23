@@ -15,7 +15,6 @@ export default class App extends Component {
   search = (query) => {
     this.setState({pageState: 'searching'})
     SearchGateway(query, response => {
-      console.log(response.results)
       this.setState({searchResults: response.results, page: 'SelectPage', pageState: ''})
     })
   }
@@ -25,7 +24,7 @@ export default class App extends Component {
       case 'SelectPage':
         return <SelectPage searchResults={this.state.searchResults}/>
       default:
-        return <SearchPage onSearch={this.search} pageState={this.props.pageState}/>
+        return <SearchPage onSearch={this.search} pageState={this.state.pageState}/>
     }
   }
 

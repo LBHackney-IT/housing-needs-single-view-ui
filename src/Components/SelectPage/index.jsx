@@ -29,22 +29,41 @@ export default class SelectPage extends Component {
     this.processResults(this.props.searchResults)
   }
 
+  prevSelected(){
+    if(Object.values(this.state.results.SingleView).length > 0){
+      return [
+        <h2>Previously selected</h2>,
+        <ResultsTable results={Object.values(this.state.results.SingleView)} selectable={false} />
+      ]
+    }
+  }
+
+  newSelection(){
+    return this.sources.map(source => {
+      if(source !== 'SingleView'){
+        if(Object.keys(this.state.results[source]).length > 0){
+          return <div key={source}>
+            <h3>Results from {source}</h3>
+            <ResultsTable results={Object.values(this.state.results[source])} selectable={true} />
+          </div>
+        }else{
+          return <div key={source}>
+            <h3>Results from {source}</h3>
+            <p>No results found</p>
+          </div>
+        }
+      }
+      return null;
+    })
+  }
+
   render(){
     return(
       <div className="selectPage">
         <h1>Select a customer</h1>
-        <h2>Previously selected</h2>
-        <ResultsTable results={Object.values(this.state.results.SingleView)} selectable={false} />
+        { this.prevSelected() }
         <h2>New Selection</h2>
-        { this.sources.map(source => {
-          if(source !== 'SingleView' && Object.keys(this.state.results[source]).length > 0){
-            return <div key={source}>
-              <h3>Results from {source}</h3>
-              <ResultsTable results={Object.values(this.state.results[source])} selectable={true} />
-            </div>
-          }
-          return null;
-        })}
+        { this.newSelection() }
 
         <button>Select</button>
       </div>
