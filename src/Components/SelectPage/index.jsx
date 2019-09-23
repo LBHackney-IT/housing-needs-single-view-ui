@@ -4,7 +4,8 @@ import ResultsTable from "../ResultsTable";
 
 
 export default class SelectPage extends Component {
-  sources = ['SingleView', 'UHT', 'UHW', 'Academy', 'Comino', 'Jigsaw'];
+  //sources = ['SingleView', 'UHT', 'UHW', 'Academy', 'Comino', 'Jigsaw'];
+  sources = ['SingleView', 'UHT', 'UHW', 'Jigsaw'];
 
   constructor(props) {
     super(props);
