@@ -16,6 +16,7 @@ export default class ResultsTable extends Component {
               <td>Last Name</td>
               <td>Date of Birth</td>
               <td>National Insurance No</td>  
+              <td>Address</td>
             </tr>
           </thead>
           <tbody>

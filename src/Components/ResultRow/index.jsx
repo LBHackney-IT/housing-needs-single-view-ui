@@ -10,6 +10,10 @@ export default class ResultRow extends Component {
     }
   }
 
+  formatAddress = (address) => {
+    return address ? address.split("\n").map(el => el.trim()).join(', ') : ''
+  }
+
   render(){
     return(
       <tr>
@@ -18,6 +22,7 @@ export default class ResultRow extends Component {
         <td>{this.props.result.lastName}</td>
         <td>{this.props.result.dob}</td>
         <td>{this.props.result.nino}</td>
+        <td>{this.formatAddress(this.props.result.address)}</td>
       </tr>
     );
   }
