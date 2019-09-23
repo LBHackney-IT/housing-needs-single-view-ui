@@ -19,7 +19,7 @@ export default class SearchPage extends Component {
 
   button = () => {
     if(this.props.pageState === 'searching'){
-      return  <button onClick={this.search} disabled="true">Searching</button>
+      return  <button onClick={this.search} disabled={true}>Searching</button>
     }else{
       return <button onClick={this.search}>Search</button>
     }
