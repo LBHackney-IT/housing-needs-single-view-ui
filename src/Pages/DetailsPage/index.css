@@ -1,0 +1,67 @@
+.detailsPage{
+    display:grid;
+    grid-template-areas: "side main";
+}
+
+.detailsPage .sideDetails{
+    grid-area: side;
+    width: 280px;
+    border-right:2px solid #DDD;
+}
+
+.detailsPage .sideDetails > div {
+    padding:20px;
+}
+
+.detailsPage .tenancyDetails{
+    border-top:2px solid #DDD;
+    background:#EEE;
+}
+
+.detailsPage .mainDetails{
+    grid-area: main;
+    width: 620px;
+    padding:20px;
+}
+
+.detailsPage table.details td{
+    vertical-align: top;
+    font-size:90%;
+}
+
+.detailsPage table.details td:first-child{
+    font-weight:bold;
+}
+
+.detailsPage .housingNeedsStatus{
+    border-bottom:2px solid #DDD;
+}
+
+.detailsPage .otherInfo{
+    display:grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.detailsPage .otherInfo .infoBox{
+    vertical-align:top;
+    border: 1px solid #DDD;
+    margin:10px;
+    padding:5px;
+}
+
+.infoBox h3{
+    margin:0 0 10px;
+}
+
+.infoBox p{
+    margin:3px 0;
+}
+
+.infoBox a{
+    display:block;
+    margin:10px 0 0 0;
+}
+
+.infoBox p{
+    font-size:90%;
+}

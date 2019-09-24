@@ -1,4 +1,4 @@
-function SearchGateway(query, cb){
+function SearchCustomers(query, cb){
     let systems = ['SingleView', 'UHT', 'UHW', 'Jigsaw'].join(',')
     let queryParams = {systems}
     for (let [k, v] of Object.entries(query)) {
@@ -19,4 +19,4 @@ function SearchGateway(query, cb){
         });
 }
 
-export default SearchGateway
+export default SearchCustomers

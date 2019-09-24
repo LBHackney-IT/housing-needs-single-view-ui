@@ -1,0 +1,37 @@
+{
+  "customer": {
+    "title": "Mr",
+    "firstName": "James",
+    "lastName": "Duggan",
+    "dob": "1983-07-25",
+    "nino": "GH183077D",
+    "phone": "07728663445",
+    "email": "james.duggan@gmail.com",
+    "uhtId": "DIR0232433",
+    "uhwId": "21432534",
+    "jigsawId": "12642",
+    "address":"FLAT 8,\n185,\nSTOKE NEWINGTON HIGH STREET,\nHACKNEY,\nLONDON,\nN16 0LH",
+    "tenancyStart":"2018-07-11",
+    "tenancyEnd":"2019-11-27",
+    "housingNeedsStatus": "Main Duty Accepted",
+    "rentAccountRef": "919473/14",
+    "rentAccountBalance": 183.10,
+    "benefitStatus": "Universal Credit",
+    "housingRegister":{
+      "biddingNo": "12582183",
+      "band": "Homeless"
+    },
+    "household":[
+      {
+        "name": "Sarah Duggan",
+        "dob": "2012-05-15",
+        "relationship": "Daughter"
+      },
+      {
+        "name": "Jack Duggan",
+        "dob": "2016-01-23",
+        "relationship": "Son"
+      }
+    ]
+  }
+}

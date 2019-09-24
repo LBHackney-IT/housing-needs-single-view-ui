@@ -4,9 +4,14 @@ import './index.css';
 
 export default class ResultRow extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {selected: false};
+  }
+
   checkbox = () => {
     if( this.props.selectable){
-      return <td><input type="checkbox"></input></td>
+      return <td><input type="checkbox" checked={this.state.selected} onChange={this.click}></input></td>
     }
   }
 
@@ -14,9 +19,21 @@ export default class ResultRow extends Component {
     return address ? address.split("\n").map(el => el.trim()).join(', ') : ''
   }
 
+  click = () => {
+    this.setState((state) => {
+      let selected = !state.selected
+      if(selected){
+        this.props.onSelected(this.props.result);
+      }else{
+        this.props.onDeselected(this.props.result);
+      }
+      return {selected: selected};
+    });
+  }
+
   render(){
     return(
-      <tr>
+      <tr onClick={this.click} className={this.state.selected ? 'selected' : null}>
         {this.checkbox()}
         <td>{this.props.result.firstName}</td>
         <td>{this.props.result.lastName}</td>
