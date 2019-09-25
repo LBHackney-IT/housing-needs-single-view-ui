@@ -23,27 +23,25 @@ export default class App extends Component {
     })
   }
 
-  selectCustomer = (data) => {
-    if(Object.keys(data).length === 1 && data[0].source === 'SINGLEVIEW'){
-      // Link to existing record
-      FetchCustomer(data[0].id, (err, result) => {
-        if(err) console.log(err)
-        this.setState({customerDetails: result.customer, page: 'DetailsPage'})
-      })
-    }else{
-      // Create a new record
-      CreateCustomer(data, (err, result) => {
-        if(err) console.log(err)
-        this.setState({customerDetails: result.customer, page: 'DetailsPage'})
-      })
-    }
-    console.log(data)
+  selectExistingCustomer = (data) => {
+    FetchCustomer(data.id, (err, result) => {
+      if(err) console.log(err)
+      this.setState({customerDetails: result.customer, page: 'DetailsPage'})
+    })
+  }
+
+  selectNewCustomer = (data) => {
+    // Create a new record
+    CreateCustomer(data, (err, result) => {
+      if(err) console.log(err)
+      this.setState({customerDetails: result.customer, page: 'DetailsPage'})
+    })
   }
 
   pageSwitch(){
     switch(this.state.page){
       case 'SelectPage':
-        return <SelectPage searchResults={this.state.searchResults} onSelect={this.selectCustomer}/>
+        return <SelectPage searchResults={this.state.searchResults} onSelectExisting={this.selectExistingCustomer} onSelectNew={this.selectNewCustomer}/>
       case 'DetailsPage':
         return <DetailsPage customer={this.state.customerDetails}/>
       default:

@@ -42,14 +42,13 @@ export default class SelectPage extends Component {
 
   submit = () => {
     let selected = Object.values(this.state.selected).map(Object.values).flat();
-    this.props.onSelect(selected);
+    this.props.onSelectNew(selected);
   }
 
   selectExisting = (data) => {
     if(data.SINGLEVIEW && Object.keys(data.SINGLEVIEW).length === 1){
-      let selected = Object.values(data.SINGLEVIEW);
-      console.log(selected);
-      this.props.onSelect(selected);
+      let selected = Object.values(data.SINGLEVIEW)[0];
+      this.props.onSelectExisting(selected);
     }
   }
 

@@ -10,7 +10,7 @@ function CreateCustomer(data, cb){
             return response.json();
         })
         .then(function(myJson) {
-            cb(myJson);
+            cb(null, myJson);
         });
 }
 
