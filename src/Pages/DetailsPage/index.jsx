@@ -1,15 +1,36 @@
 import React, {Component} from 'react';
 import './index.css';
+import FetchCustomerNotes from '../../Gateways/FetchCustomerNotes';
+import Notes from '../../Components/Notes';
 
 
 export default class DetailsPage extends Component {
 
-  formatAddress(address){
-    return <span dangerouslySetInnerHTML={{__html: address.split("\n").join("<br />")}}></span>
+  constructor(props) {
+    super(props);
+    
+    this.state = {notes: []};
+  }
+  componentDidMount(){
+    FetchCustomerNotes(this.props.customer.id, (err, response) => {
+      this.setState({notes: response.notes})
+    })
+  }
+
+  address(){
+    if(this.props.customer.address){
+      return <span dangerouslySetInnerHTML={{__html: this.props.customer.address.split("\n").join("<br />")}}></span>
+    }else{
+      return null;
+    }
   }
 
   formatCurrency(amount){
-    return `£${amount.toFixed(2)}`
+    if(amount){
+      return `£${amount.toFixed(2)}`
+    }else{
+      return '£---';
+    }
   }
 
   household(){
@@ -22,6 +43,22 @@ export default class DetailsPage extends Component {
           </li>
         })}
       </ul>
+    }else{
+      return null;
+    }
+  }
+
+  housingNeedsStatus(){
+    if(this.props.customer.jigsawId){
+      return (<div className="housingNeedsStatus">
+        <div className="externalLinks">
+          <ul>
+            <li><a href={`https://training.housingjigsaw.co.uk/customers/customer/${this.props.customer.jigsawId}`} target="blank">View Details</a></li>
+            <li><a href="https://training.housingjigsaw.co.uk/">View PHP</a></li>
+          </ul>
+        </div>
+        <h2>Status: {this.props.customer.housingNeedsStatus}</h2>
+      </div>)
     }else{
       return null;
     }
@@ -50,8 +87,16 @@ export default class DetailsPage extends Component {
                   <td>{this.props.customer.uhwId}</td>
                 </tr>
                 <tr>
+                  <td>Claim ID:</td>
+                  <td>{this.props.customer.benefitClaimId}</td>
+                </tr>
+                <tr>
                   <td>Jigsaw ID:</td>
                   <td>{this.props.customer.jigsawId}</td>
+                </tr>
+                <tr>
+                  <td>Address:</td>
+                  <td>{this.address()}</td>
                 </tr>
               </tbody>
             </table>
@@ -60,10 +105,6 @@ export default class DetailsPage extends Component {
             <h2>Tenancy Details</h2>
             <table className="details">
               <tbody>
-                <tr>
-                  <td>Address:</td>
-                  <td>{this.formatAddress(this.props.customer.address)}</td>
-                </tr>
                 <tr>
                   <td>Tenancy Start:</td>
                   <td>{this.props.customer.tenancyStart}</td>
@@ -79,15 +120,7 @@ export default class DetailsPage extends Component {
           </div>
         </div>
         <div className="mainDetails">
-          <div className="housingNeedsStatus">
-            <h2>Status: {this.props.customer.housingNeedsStatus}</h2>
-            <div className="externalLinks">
-              <ul>
-                <li><a href="http://www.housingjigsaw.com">View Details</a></li>
-                <li><a href="http://www.housingjigsaw.com">View PHP</a></li>
-              </ul>
-            </div>
-          </div>
+          {this.housingNeedsStatus()}
           <div className="otherInfo">
             <div className="infoBox">
               <h3>Rent Information</h3>
@@ -109,6 +142,7 @@ export default class DetailsPage extends Component {
           </div>
           <div className="activity">
             <h2>Activity</h2>
+            <Notes notes={this.state.notes}/>
           </div>
         </div>
       </div>

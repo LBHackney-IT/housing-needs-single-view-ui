@@ -36,11 +36,11 @@ export default class ResultsTable extends Component {
           <thead>
             <tr>
               { this.props.selectable ? <td></td> : null }
-              <td>First Name</td>
-              <td>Last Name</td>
-              <td>Date of Birth</td>
-              <td>National Insurance No</td>  
-              <td>Address</td>
+              <td key="first">First Name</td>
+              <td key="last">Last Name</td>
+              <td key="dob">Date of Birth</td>
+              <td key="nino">National Insurance No</td>  
+              <td key="address">Address</td>
             </tr>
           </thead>
           <tbody>

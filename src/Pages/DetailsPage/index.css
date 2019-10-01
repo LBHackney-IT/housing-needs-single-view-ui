@@ -49,6 +49,28 @@
     padding:5px;
 }
 
+.detailsPage .otherInfo{
+    clear:both;
+}
+
+.detailsPage .externalLinks {
+    float: right;
+}
+
+.detailsPage .externalLinks ul{
+    padding:0;
+    margin:0;
+}
+.detailsPage .externalLinks li{
+    display:inline-block;
+    border: 1px solid #666;
+    padding:10px;
+    margin:0 0 0 10px;
+}
+.detailsPage .externalLinks li a{
+    text-decoration:none;
+}
+
 .infoBox h3{
     margin:0 0 10px;
 }

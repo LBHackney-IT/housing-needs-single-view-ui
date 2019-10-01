@@ -5,7 +5,7 @@ import ResultsTable from "../../Components/ResultsTable";
 
 export default class SelectPage extends Component {
   //sources = ['SINGLEVIEW', 'UHT', 'UHW', 'Academy', 'Comino', 'Jigsaw'];
-  sources = ['SINGLEVIEW', 'UHT', 'UHW', 'JIGSAW'];
+  sources = ['SINGLEVIEW', 'UHT', 'UHW', 'JIGSAW', 'ACADEMY'];
 
   constructor(props) {
     super(props);
@@ -55,8 +55,8 @@ export default class SelectPage extends Component {
   prevSelected(){
     if(Object.values(this.state.results.SINGLEVIEW).length > 0){
       return [
-        <h2>Previously selected</h2>,
-        <ResultsTable results={Object.values(this.state.results.SINGLEVIEW)} selectable={false} onChange={this.selectExisting} />
+        <h2 key="prev">Previously selected</h2>,
+        <ResultsTable key="prevResults" results={Object.values(this.state.results.SINGLEVIEW)} selectable={false} onChange={this.selectExisting} />
       ]
     }
   }
@@ -67,7 +67,7 @@ export default class SelectPage extends Component {
         if(Object.keys(this.state.results[source]).length > 0){
           return <div key={source}>
             <h3>Results from {source}</h3>
-            <ResultsTable results={Object.values(this.state.results[source])} selectable={true} onChange={this.updateSelection}/>
+            <ResultsTable key={source} results={Object.values(this.state.results[source])} selectable={true} onChange={this.updateSelection}/>
           </div>
         }else{
           return <div key={source}>
@@ -85,7 +85,7 @@ export default class SelectPage extends Component {
       <div className="selectPage">
         <h1>Select a customer</h1>
         { this.prevSelected() }
-        <h2>New Selection</h2>
+        <h2 key="new">New Selection</h2>
         { this.newSelection() }
 
         <button onClick={this.submit}>Select</button>

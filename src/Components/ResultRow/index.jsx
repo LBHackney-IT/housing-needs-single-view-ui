@@ -11,7 +11,7 @@ export default class ResultRow extends Component {
 
   checkbox = () => {
     if( this.props.selectable){
-      return <td><input type="checkbox" checked={this.state.selected} onChange={this.click}></input></td>
+      return <td><input type="checkbox" checked={this.state.selected} onChange={this.click} onClick={this.click}></input></td>
     }
   }
 
