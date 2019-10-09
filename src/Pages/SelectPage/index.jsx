@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './index.css';
 import ResultsTable from "../../Components/ResultsTable";
+import SearchCustomers from '../../Gateways/SearchCustomers';
+import CreateCustomer from '../../Gateways/CreateCustomer';
+import { Redirect } from "react-router-dom";
 
 
 export default class SelectPage extends Component {
-  //sources = ['SINGLEVIEW', 'UHT', 'UHW', 'Academy', 'Comino', 'Jigsaw'];
   sources = ['SINGLEVIEW', 'UHT', 'UHW', 'JIGSAW', 'ACADEMY'];
 
   constructor(props) {
@@ -15,7 +17,16 @@ export default class SelectPage extends Component {
       resultsState[source] = {}
     })
 
-    this.state = {results: resultsState, selected: {}};
+    this.state = {results: resultsState, selected: {}, searching: true};
+  }
+
+  selectNewCustomer = (data) => {
+    const selected = Object.values(this.state.selected).map(Object.values).flat();
+    // Create a new record
+    CreateCustomer(selected, (err, result) => {
+      if(err) console.log(err)
+      this.redirectToCustomer(result.customer.id)
+    })
   }
 
   processResults(results){
@@ -23,7 +34,7 @@ export default class SelectPage extends Component {
     results.forEach(result => {
       resultsState[result.source][result.id] = result;
     })
-    this.setState({results: resultsState})
+    this.setState({results: resultsState, searching: false})
   }
 
   updateSelection = (data) => {
@@ -37,22 +48,27 @@ export default class SelectPage extends Component {
   }
 
   componentDidMount(){
-    this.processResults(this.props.searchResults)
+    const search = {}
+    const params = new URLSearchParams(this.props.location.search);
+    params.forEach((v,k) => {
+      search[k] = v;
+    })
+    SearchCustomers(search, response => {
+      this.processResults(response.customers);
+    })
   }
 
-  submit = () => {
-    let selected = Object.values(this.state.selected).map(Object.values).flat();
-    this.props.onSelectNew(selected);
+  redirectToCustomer(id){
+    this.setState({redirect: `/customer/${id}`})
   }
 
   selectExisting = (data) => {
     if(data.SINGLEVIEW && Object.keys(data.SINGLEVIEW).length === 1){
-      let selected = Object.values(data.SINGLEVIEW)[0];
-      this.props.onSelectExisting(selected);
+      this.redirectToCustomer(Object.values(data.SINGLEVIEW)[0].id)
     }
   }
 
-  prevSelected(){
+  prevResults(){
     if(Object.values(this.state.results.SINGLEVIEW).length > 0){
       return [
         <h2 key="prev">Previously selected</h2>,
@@ -61,7 +77,7 @@ export default class SelectPage extends Component {
     }
   }
 
-  newSelection(){
+  newResults(){
     return this.sources.map(source => {
       if(source !== 'SINGLEVIEW'){
         if(Object.keys(this.state.results[source]).length > 0){
@@ -81,14 +97,24 @@ export default class SelectPage extends Component {
   }
 
   render(){
+    if (this.state.redirect) {
+      return (<Redirect push to={this.state.redirect} />)
+    }
+
+    if(this.state.searching){
+      return (<div className="selectPage">
+        <h1>Searching for customers...</h1>
+      </div>)
+    }
+
     return(
       <div className="selectPage">
         <h1>Select a customer</h1>
-        { this.prevSelected() }
+        { this.prevResults() }
         <h2 key="new">New Selection</h2>
-        { this.newSelection() }
+        { this.newResults() }
 
-        <button onClick={this.submit}>Select</button>
+        <button onClick={this.selectNewCustomer}>Select</button>
       </div>
     );
   }

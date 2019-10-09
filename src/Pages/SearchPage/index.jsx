@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './index.css';
+import { Link } from "react-router-dom";
 
 
 export default class SearchPage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {firstName: '', lastName: '', dob: '', nino: ''};
+    this.state = {firstName: '', lastName: '', dob: '', nino: '', searching: false};
   }
 
   handleChange = (event) => {
@@ -15,14 +16,24 @@ export default class SearchPage extends Component {
 
   search = () => {
     this.props.onSearch(this.state);
+    this.setState({searching: true});
+  }
+
+  searchLink () {
+    let attrs = ['firstName', 'lastName', 'dob', 'nino'];
+    let params = attrs.map(attr => {
+      return this.state[attr] === '' ? null : [attr, this.state[attr]]
+    }).filter(el => el !== null)
+    .map(items => {
+      return items.join('=')
+    })
+    .join('&');
+
+    return `/search?${params}`;
   }
 
   button = () => {
-    if(this.props.pageState === 'searching'){
-      return  <button onClick={this.search} disabled={true}>Searching</button>
-    }else{
-      return <button onClick={this.search}>Search</button>
-    }
+    return <Link to={this.searchLink()}><button>Search</button></Link>
   }
 
   render(){
