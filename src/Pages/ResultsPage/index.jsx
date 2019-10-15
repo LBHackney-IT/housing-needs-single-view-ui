@@ -6,8 +6,8 @@ import CreateCustomer from '../../Gateways/CreateCustomer';
 import { Redirect } from "react-router-dom";
 
 
-export default class SelectPage extends Component {
-  sources = ['SINGLEVIEW', 'UHT', 'UHW', 'JIGSAW', 'ACADEMY'];
+export default class ResultsPage extends Component {
+  sources = ['SINGLEVIEW', 'UHT-Contacts', 'UHT-HousingRegister', 'UHW', 'JIGSAW', 'ACADEMY'];
 
   constructor(props) {
     super(props);

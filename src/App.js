@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Components/Header';
 import PrivateRoute from './Components/PrivateRoute';
 import SearchPage from './Pages/SearchPage';
-import SelectPage from './Pages/SelectPage';
+import ResultsPage from './Pages/ResultsPage';
 import DetailsPage from './Pages/DetailsPage';
 import CallbackPage from './Pages/CallbackPage';
 import LoginPage from './Pages/LoginPage';
@@ -20,7 +20,7 @@ export default class App extends Component {
               <Route path="/login" component={LoginPage} />
               <Route path="/callback" component={CallbackPage} />
               <PrivateRoute path="/" exact component={SearchPage} />
-              <PrivateRoute path="/search" component={SelectPage} />
+              <PrivateRoute path="/search" component={ResultsPage} />
               <PrivateRoute path="/customer/:id" component={DetailsPage} />
             </Router>
           </div>
