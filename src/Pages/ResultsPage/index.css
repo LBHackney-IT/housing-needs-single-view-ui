@@ -3,3 +3,8 @@
   padding:10px 20px;
   margin:20px 0;
 }
+
+p.suggestion{
+  color:#666;
+  font-size:80%;
+}

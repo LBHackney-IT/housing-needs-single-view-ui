@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './index.css';
 import ResultsTable from "../../Components/ResultsTable";
+import GroupedTable from "../../Components/GroupedTable";
 import SearchCustomers from '../../Gateways/SearchCustomers';
 import CreateCustomer from '../../Gateways/CreateCustomer';
 import { Redirect } from "react-router-dom";
@@ -11,40 +12,7 @@ export default class ResultsPage extends Component {
 
   constructor(props) {
     super(props);
-    
-    let resultsState = {};
-    this.sources.forEach(source => {
-      resultsState[source] = {}
-    })
-
-    this.state = {results: resultsState, selected: {}, searching: true};
-  }
-
-  selectNewCustomer = (data) => {
-    const selected = Object.values(this.state.selected).map(Object.values).flat();
-    // Create a new record
-    CreateCustomer(selected, (err, result) => {
-      if(err) console.log(err)
-      this.redirectToCustomer(result.customer.id)
-    })
-  }
-
-  processResults(results){
-    let resultsState = this.state.results;
-    results.forEach(result => {
-      resultsState[result.source][result.id] = result;
-    })
-    this.setState({results: resultsState, searching: false})
-  }
-
-  updateSelection = (data) => {
-    this.setState(state => {
-      let selected = this.state.selected;
-      for(const key of Object.keys(data)){
-        selected[key] = data[key];
-      }
-      return {selected: selected}
-    })
+    this.state = {results: {}, selected: [], searching: true};
   }
 
   componentDidMount(){
@@ -54,7 +22,32 @@ export default class ResultsPage extends Component {
       search[k] = v;
     })
     SearchCustomers(search, response => {
-      this.processResults(response.customers);
+      this.setState({results: response, searching: false});
+    })
+  }
+
+  connectNewCustomer = (data) => {
+    // Create a new record
+    CreateCustomer(this.state.selected, (err, result) => {
+      if(err) console.log(err)
+      this.redirectToCustomer(result.customer.id)
+    })
+  }
+
+  addSelection = (record) => {
+    this.setState(state => {
+      let selected = this.state.selected;
+      selected.push(record);
+      return {selected: selected}
+    })
+  }
+
+  removeSelection = (record) => {
+    this.setState(state => {
+      let selected = this.state.selected;
+      delete selected[selected.indexOf(record)];
+      selected = selected.filter(x => x);
+      return {selected: selected}
     })
   }
 
@@ -69,31 +62,12 @@ export default class ResultsPage extends Component {
   }
 
   prevResults(){
-    if(Object.values(this.state.results.SINGLEVIEW).length > 0){
+    if(this.state.results.connected.length > 0){
       return [
-        <h2 key="prev">Previously selected</h2>,
-        <ResultsTable key="prevResults" results={Object.values(this.state.results.SINGLEVIEW)} selectable={false} onChange={this.selectExisting} />
+        <h2 key="prev">Previously connected records</h2>,
+        <ResultsTable key="prevResults" results={this.state.results.connected} selectable={false} onChange={this.selectExisting} />
       ]
     }
-  }
-
-  newResults(){
-    return this.sources.map(source => {
-      if(source !== 'SINGLEVIEW'){
-        if(Object.keys(this.state.results[source]).length > 0){
-          return <div key={source}>
-            <h3>Results from {source}</h3>
-            <ResultsTable key={source} results={Object.values(this.state.results[source])} selectable={true} onChange={this.updateSelection}/>
-          </div>
-        }else{
-          return <div key={source}>
-            <h3>Results from {source}</h3>
-            <p>No results found</p>
-          </div>
-        }
-      }
-      return null;
-    })
   }
 
   render(){
@@ -109,12 +83,18 @@ export default class ResultsPage extends Component {
 
     return(
       <div className="selectPage">
-        <h1>Select a customer</h1>
+        <h1>Connect customer records from different systems</h1>
         { this.prevResults() }
-        <h2 key="new">New Selection</h2>
-        { this.newResults() }
+        <h2 key="matching">Customers with matching details</h2>
+        <p className="suggestion">The following records have been matched on their name, date of birth and other system information.</p>
+        { this.state.results.grouped.map((group, index) => {
+          return <GroupedTable key={index} records={group} selectable={true} onSelect={this.addSelection} onDeselect={this.removeSelection}/>
+        }) }
+        <h2 key="new">Other potential matches</h2>
+        <p className="suggestion">The following records are partial matches. Please check them in their original system before connecting.</p>
+        <GroupedTable records={this.state.results.ungrouped} selectable={true} onSelect={this.addSelection} onDeselect={this.removeSelection} />
 
-        <button onClick={this.selectNewCustomer}>Select</button>
+        <button onClick={this.connectNewCustomer}>Select</button>
       </div>
     );
   }
