@@ -33,12 +33,12 @@ export default class SearchPage extends Component {
   }
 
   button = () => {
-    return <Link to={this.searchLink()}><button>Search</button></Link>
-  }
+    return <button type="submit">Search</button>;
+  };
 
-  render(){
-    return(
-      <div className="searchPage">
+  render() {
+    return (
+      <form className="searchPage" action={this.searchLink()}>
         <h1>Search for a customer</h1>
         <div className="inputBlock">
           <label htmlFor="firstName">First Name</label>
@@ -57,7 +57,7 @@ export default class SearchPage extends Component {
           <input type="text" name="nino"  onChange={this.handleChange} value={this.state.nino} />
         </div>
         {this.button()}
-      </div>
+      </form>
     );
   }
 }
