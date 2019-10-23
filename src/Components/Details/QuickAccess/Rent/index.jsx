@@ -30,8 +30,8 @@ export default class Rent extends Component {
             </tr>
           </tbody>
         </table>
-        <div>
-          <p><a href="#">More details</a></p>
+        <div className="quick-access__item__links">
+          <ul><li><a href="#">More details</a></li></ul>
         </div>
       </div>
     );

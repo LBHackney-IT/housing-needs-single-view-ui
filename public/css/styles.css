@@ -6,6 +6,14 @@
   margin-top: 0 !important;
 }
 
+a, a:visited{
+  color: #00664f;
+}
+
+strong {
+  color: black;
+}
+
 h1{
   font-size: 1.6em;
  
@@ -43,6 +51,14 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
+.results__prev-results td {
+  cursor: default;
+}
+
+.details {
+  color: #666;
+}
+
 .details__left-column {
   display: flex;
   flex-direction: column;
@@ -72,6 +88,7 @@ h1, h2, h3, h4 {
 .details tr > td:first-of-type {
   font-weight: bold;
   padding-right: 15px;
+  color: black;
 }
 
 .quick-access {

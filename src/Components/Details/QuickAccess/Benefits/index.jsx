@@ -19,7 +19,7 @@ export default class Benefits extends Component {
             </tr>
           </tbody>
         </table>
-        <div>
+        <div className="quick-access__item__links">
           <ul><li><a href="#">More details</a></li></ul>
         </div>
       </div>

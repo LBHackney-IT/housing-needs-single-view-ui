@@ -8,20 +8,20 @@ export default class SystemIds extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Applicant ref:</td>
-              <td>{this.props.customer.uhtId}</td>
+              <td>Application ref:</td>
+              <td>{this.props.customer.housingRegister.applicationRef}</td>
             </tr>
             <tr>
               <td>Academy claim ID:</td>
-              <td>{this.props.customer.benefitClaimId}</td>
+              <td>{this.props.customer.systemIds.academy}</td>
             </tr>
             <tr>
               <td>Jigsaw customer no:</td>
-              <td>{this.props.customer.jigsawId}</td>
+              <td>{this.props.customer.systemIds.jigsaw}</td>
             </tr>
             <tr>
               <td>Jigsaw case ref:</td>
-              <td>{this.props.customer.jigsawCaseId}</td>
+              <td>{this.props.customer.housingNeeds.jigsawCaseId}</td>
             </tr>
             <tr>
               <td>Council tax ref:</td>

@@ -27,11 +27,11 @@ export default class DetailsPage extends Component {
     FetchCustomer(this.props.match.params.id)
       .then(result => {
         this.setState({ customer: result.customer });
-        return FetchCustomerNotes(this.state.customer.id);
+        return FetchCustomerNotes(this.props.match.params.id);
       })
       .then(result => {
         notesAndDocs = notesAndDocs.concat(result.notes);
-        return FetchCustomerDocuments(this.state.customer.id);
+        return FetchCustomerDocuments(this.props.match.params.id);
       })
       .then(result => {
         notesAndDocs = notesAndDocs.concat(result.documents);

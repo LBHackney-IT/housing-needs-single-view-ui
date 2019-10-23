@@ -69,8 +69,8 @@ export default class ResultsPage extends Component {
   prevResults() {
     if (this.state.results.connected.length > 0) {
       return [
-        <h2  key="prev">Previously connected records</h2>,
-        <div className="govuk-form-group" key="prevGroup">
+        <h2 key="prev">Previously connected records</h2>,
+        <div className="govuk-form-group results__prev-results" key="prevGroup">
           <ResultsTable
             key="prevResults"
             results={this.state.results.connected}
@@ -118,7 +118,7 @@ export default class ResultsPage extends Component {
     }
 
     return (
-      <div className="lbh-container">
+      <div className="lbh-container results">
         <h1>
           Connect customer records from different systems
         </h1>

@@ -6,8 +6,8 @@ export default class PersonalDetails extends Component {
     return (
       <div className="details__left-column__item">
         <h1>
-          {this.props.customer.title} {this.props.customer.firstName}{" "}
-          {this.props.customer.lastName}
+          {this.props.customer.name[0].title} {this.props.customer.name[0].first}{" "}
+          {this.props.customer.name[0].last}
         </h1>
         <table>
           <tbody>
