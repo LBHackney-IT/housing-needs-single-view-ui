@@ -36,6 +36,10 @@ h1, h2, h3, h4 {
   margin-bottom: 15px;
 }
 
+p {
+  margin-bottom: 15px;
+}
+
 #root {
   margin-top: 0;
 }
@@ -49,6 +53,11 @@ h1, h2, h3, h4 {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+}
+
+.results section {
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .results__prev-results td {

@@ -31,7 +31,7 @@ export default class ResultsPage extends Component {
     });
   }
 
-  connectNewCustomer = data => {
+  connectNewCustomer = () => {
     // Create a new record
     CreateCustomer(this.state.selected, (err, result) => {
       if (err) console.log(err);
@@ -69,15 +69,16 @@ export default class ResultsPage extends Component {
   prevResults() {
     if (this.state.results.connected.length > 0) {
       return [
-        <h2 key="prev">Previously connected records</h2>,
-        <div className="govuk-form-group results__prev-results" key="prevGroup">
+        <section className="govuk-form-group results__prev-results" key="prevGroup">
+        <h2 key="prev">Previously linked records</h2>,
+      
           <ResultsTable
             key="prevResults"
             results={this.state.results.connected}
             selectable={false}
             onChange={this.selectExisting}
           />
-        </div>
+        </section>
       ];
     }
   }
@@ -85,21 +86,24 @@ export default class ResultsPage extends Component {
   otherResults() {
     if (this.state.results.ungrouped.length > 0) {
       return [
-        <h2  key="new">
+        <section className="govuk-form-group" key="new">
+      <h2>
         Other potential matches
-      </h2>,
-      <div className="govuk-inset-text lbh-inset-text">
+      </h2>
+      <p>
         The following records are partial matches. Please check them in their
         original system before connecting.
-      </div>,
-      <div className="govuk-form-group">
+      </p>
+  
+        <div>
         <GroupedTable
           records={this.state.results.ungrouped}
           selectable={true}
           onSelect={this.addSelection}
           onDeselect={this.removeSelection}
         />
-      </div>
+        </div>
+      </section>
       ];
     }
   }
@@ -120,21 +124,20 @@ export default class ResultsPage extends Component {
     return (
       <div className="lbh-container results">
         <h1>
-          Connect customer records from different systems
+          Link customer records
         </h1>
 
         {this.prevResults()}
 
+        <section className="govuk-form-group">
         <h2  key="matching">
           Customers with matching details
         </h2>
 
-        <div className="govuk-inset-text  lbh-inset-text">
-          The following records have been matched on their name, date of birth
-          and other system information.
-        </div>
-
-        <div className="govuk-form-group">
+          <p>The following records have been matched on their name, date of birth
+          and other system information.</p>
+      
+        <div>
         {this.state.results.grouped.map((group, index) => {
           return (
             <GroupedTable
@@ -147,6 +150,7 @@ export default class ResultsPage extends Component {
           );
         })}
         </div>
+        </section>
 
         {this.otherResults()}
 
@@ -155,7 +159,7 @@ export default class ResultsPage extends Component {
             className="govuk-button lbh-button"
             onClick={this.connectNewCustomer}
           >
-            Select
+            Link records
           </button>
         </div>
       </div>
