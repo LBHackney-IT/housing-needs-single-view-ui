@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class HousingRegister extends Component {
   render() {
-    if(this.props.customer.housingRegister.length < 1) {
+    if(!this.props.customer.housingRegister.biddingNo) {
       return <></>
     }
 
