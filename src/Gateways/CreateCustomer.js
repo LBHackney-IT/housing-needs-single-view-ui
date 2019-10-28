@@ -1,6 +1,6 @@
 function CreateCustomer(data, cb){
     console.log(data)
-    fetch('http://localhost:3010/customers', {
+    fetch(`${process.env.REACT_APP_HN_API_URL}/customers`, {
         method: 'POST',
         mode: 'cors',
         headers: {'Content-Type': 'application/json'},

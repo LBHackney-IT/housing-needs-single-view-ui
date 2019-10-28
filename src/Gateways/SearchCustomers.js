@@ -11,7 +11,7 @@ function SearchCustomers(query, cb){
         return `${k}=${v}`
     }).join('&')
 
-    fetch(`http://localhost:3010/customers?${queryString}`)
+    fetch(`${process.env.REACT_APP_HN_API_URL}/customers?${queryString}`)
         .then(function(response) {
             return response.json();
         })

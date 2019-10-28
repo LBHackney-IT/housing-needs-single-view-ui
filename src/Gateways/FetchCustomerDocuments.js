@@ -1,5 +1,5 @@
 function FetchCustomerDocuments(id){
-  return fetch(`http://localhost:3010/customers/${id}/documents`)
+  return fetch(`${process.env.REACT_APP_HN_API_URL}/customers/${id}/documents`)
       .then(function(response) {
           return response.json();
       });

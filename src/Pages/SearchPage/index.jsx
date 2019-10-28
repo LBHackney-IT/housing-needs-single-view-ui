@@ -39,6 +39,8 @@ export default class SearchPage extends Component {
   render() {
     return (
       <div className="lbh-container">
+        {process.env.REACT_APP_HN_API_URL}
+
         <form action={this.searchLink()}>
           <h1>Search for a customer</h1>
           <div className="govuk-form-group">
