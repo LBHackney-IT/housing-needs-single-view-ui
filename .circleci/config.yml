@@ -4,28 +4,6 @@ orbs:
 jobs:
   build:
     docker:
-      - image: 'circleci/python:2.7'
-    steps:
-      - checkout
-      - run: mkdir bucket && echo "lorum ipsum" > bucket/build_asset.txt
-      - aws-s3/sync:
-          from: bucket
-          to: 's3://my-s3-bucket-name/prefix'
-          arguments: |
-            --acl public-read \
-            --cache-control "max-age=86400"
-          overwrite: true
-      - aws-s3/copy:
-          from: bucket/build_asset.txt
-          to: 's3://my-s3-bucket-name'
-          arguments: '--dryrun'
-
-version: 2.1
-orbs:
-  aws-s3: circleci/aws-s3@1.0.11
-jobs:
-  build:
-    docker:
       - image: circleci/node:12.9.1-browsers
 
     working_directory: ~/repo
@@ -39,20 +17,20 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      
-      - run: yarn lint
 
-      - run: yarn build
-      
+      - run: npm run lint
+
+      - run: npm run build
+
       - aws-s3/sync:
           from: build
-          to: 's3://hn-sv-ui/'
+          to: 's3://hackney-s3-hn-sv-ui-production/'
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
