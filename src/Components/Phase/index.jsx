@@ -9,7 +9,7 @@ export default class Phase extends Component {
             Alpha
           </strong>
           <span className="govuk-phase-banner__text">
-            This is a new service - your <a href="#">feedback</a> will help us
+            This is a new service - your <a href="#/">feedback</a> will help us
             to improve it.
           </span>
         </p>

@@ -33,7 +33,7 @@ export default class Rent extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <a href="#">More details</a>
+              <a href="#/">More details</a>
             </li>
           </ul>
         </div>

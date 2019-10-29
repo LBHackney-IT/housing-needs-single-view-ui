@@ -9,8 +9,10 @@ function SearchCustomers(query, cb) {
   ].join(',');
 
   let queryParams = { systems };
-  Object.entries(query).map(([k, v]) => {
-    if (v !== '') {
+  Object.entries(query).forEach(param => {
+    const k = param[0];
+    const v = param[1];
+    if (v) {
       queryParams[k] = v;
     }
   });
