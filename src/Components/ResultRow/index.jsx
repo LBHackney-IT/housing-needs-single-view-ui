@@ -11,12 +11,17 @@ export default class ResultRow extends Component {
     if (this.props.selectable) {
       return (
         <td>
-          <input
-            type="checkbox"
-            checked={this.state.selected}
-            onChange={this.click}
-            onClick={this.click}
-          ></input>
+          <div className="govuk-checkboxes">
+            <div className="govuk-checkboxes__item">
+              <input
+                className="govuk-checkboxes__input"
+                type="checkbox"
+                checked={this.state.selected}
+                onChange={this.click}
+                onClick={this.click}
+              ></input>
+            </div>
+          </div>
         </td>
       );
     }
