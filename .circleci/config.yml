@@ -28,7 +28,7 @@ jobs:
 
       - aws-s3/sync:
           from: build
-          to: 's3://hackney-s3-hn-sv-ui-production/'
+          to: 's3://beta.singleview.hackney.gov.uk/'
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
