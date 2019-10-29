@@ -1,23 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class Rent extends Component {
   formatCurrency(amount) {
     if (amount) {
       return `£${amount.toFixed(2)}`;
     } else {
-      return "£---";
+      return '£---';
     }
   }
 
   render() {
-    if(!this.props.customer.rentAccountRef) {
-      return <></>
+    if (!this.props.customer.rentAccountRef) {
+      return <></>;
     }
     return (
       <div className="quick-access__item">
-        <h3>
-         Rent
-        </h3>
+        <h3>Rent</h3>
         <table>
           <tbody>
             <tr>
@@ -26,12 +24,18 @@ export default class Rent extends Component {
             </tr>
             <tr>
               <td>Balance:</td>
-              <td>{this.formatCurrency(this.props.customer.rentAccountBalance)}</td>
+              <td>
+                {this.formatCurrency(this.props.customer.rentAccountBalance)}
+              </td>
             </tr>
           </tbody>
         </table>
         <div className="quick-access__item__links">
-          <ul><li><a href="#">More details</a></li></ul>
+          <ul>
+            <li>
+              <a href="#">More details</a>
+            </li>
+          </ul>
         </div>
       </div>
     );

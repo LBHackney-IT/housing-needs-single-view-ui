@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class ContactDetails extends Component {
   render() {
     return (
       <div className="details__left-column__item">
-        <h2>
-          Contact Details
-        </h2>
+        <h2>Contact Details</h2>
         <table>
           <tbody>
             <tr>

@@ -1,39 +1,54 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './index.css';
 
-
 export default class ResultRow extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {selected: false};
+    this.state = { selected: false };
   }
 
   checkbox = () => {
-    if( this.props.selectable){
-      return <td><input type="checkbox" checked={this.state.selected} onChange={this.click} onClick={this.click}></input></td>
+    if (this.props.selectable) {
+      return (
+        <td>
+          <input
+            type="checkbox"
+            checked={this.state.selected}
+            onChange={this.click}
+            onClick={this.click}
+          ></input>
+        </td>
+      );
     }
-  }
+  };
 
-  formatAddress = (address) => {
-    return address ? address.split("\n").map(el => el.trim()).join(', ') : ''
-  }
+  formatAddress = address => {
+    return address
+      ? address
+          .split('\n')
+          .map(el => el.trim())
+          .join(', ')
+      : '';
+  };
 
   click = () => {
-    this.setState((state) => {
-      let selected = !state.selected
-      if(selected){
+    this.setState(state => {
+      let selected = !state.selected;
+      if (selected) {
         this.props.onSelected(this.props.result);
-      }else{
+      } else {
         this.props.onDeselected(this.props.result);
       }
-      return {selected: selected};
+      return { selected: selected };
     });
-  }
+  };
 
-  render(){
-    return(
-      <tr onClick={this.click} className={this.state.selected ? 'selected' : null}>
+  render() {
+    return (
+      <tr
+        onClick={this.click}
+        className={this.state.selected ? 'selected' : null}
+      >
         {this.checkbox()}
         <td>{this.props.result.firstName}</td>
         <td>{this.props.result.lastName}</td>

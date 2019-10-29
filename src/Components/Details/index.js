@@ -10,10 +10,10 @@ import TenancyDetails from './TenancyDetails';
 export {
   ContactDetails,
   Note,
-  Activity, 
+  Activity,
   PersonalDetails,
   QuickAccess,
   SystemIds,
   Team,
   TenancyDetails
-}
+};

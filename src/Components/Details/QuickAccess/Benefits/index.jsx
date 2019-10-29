@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class Benefits extends Component {
   render() {
     return (
       <div className="quick-access__item">
-        <h3>
-         Benefits
-        </h3>
+        <h3>Benefits</h3>
         <table>
           <tbody>
             <tr>
@@ -20,7 +18,11 @@ export default class Benefits extends Component {
           </tbody>
         </table>
         <div className="quick-access__item__links">
-          <ul><li><a href="#">More details</a></li></ul>
+          <ul>
+            <li>
+              <a href="#">More details</a>
+            </li>
+          </ul>
         </div>
       </div>
     );

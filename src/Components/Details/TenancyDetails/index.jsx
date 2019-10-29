@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 
 export default class TenancyDetails extends Component {
   lineBreakifyAddress(address) {
-    return address.split("\n").map((line, i) => {
+    return address.split('\n').map((line, i) => {
       return (
         <Fragment key={i}>
           {line}
           <br />
         </Fragment>
       );
-    })
+    });
   }
 
   render() {
@@ -23,14 +23,14 @@ export default class TenancyDetails extends Component {
               <td>
                 {this.props.customer.address.length > 0 ? (
                   this.props.customer.address.map((address, i) => {
-                    return <p key={i}>{this.lineBreakifyAddress(address)}</p>
+                    return <p key={i}>{this.lineBreakifyAddress(address)}</p>;
                   })
                 ) : (
                   <p>No data</p>
                 )}
               </td>
             </tr>
-{/*             
+            {/*             
               <tr>
                 <td>Household member(s):</td>
                 <td>
@@ -47,7 +47,6 @@ export default class TenancyDetails extends Component {
                   </ul>) : (<p>No data</p>)}
                 </td>
               </tr> */}
-      
           </tbody>
         </table>
       </div>

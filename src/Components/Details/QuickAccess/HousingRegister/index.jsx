@@ -1,16 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class HousingRegister extends Component {
   render() {
-    if(!this.props.customer.housingRegister.biddingNo) {
-      return <></>
+    if (!this.props.customer.housingRegister.biddingNo) {
+      return <></>;
     }
 
     return (
       <div className="quick-access__item">
-        <h3>
-         Housing Register
-        </h3>
+        <h3>Housing Register</h3>
         <table>
           <tbody>
             <tr>
@@ -24,7 +22,11 @@ export default class HousingRegister extends Component {
           </tbody>
         </table>
         <div className="quick-access__item__links">
-          <ul><li><a href="#">More details</a></li></ul>
+          <ul>
+            <li>
+              <a href="#">More details</a>
+            </li>
+          </ul>
         </div>
       </div>
     );

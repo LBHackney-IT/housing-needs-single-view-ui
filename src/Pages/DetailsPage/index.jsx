@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   FetchCustomerNotes,
   FetchCustomer,
   FetchCustomerDocuments
-} from "../../Gateways";
+} from '../../Gateways';
 import {
   ContactDetails,
   Activity,
@@ -12,8 +12,8 @@ import {
   SystemIds,
   Team,
   TenancyDetails
-} from "../../Components/Details";
-import moment from "moment";
+} from '../../Components/Details';
+import moment from 'moment';
 
 export default class DetailsPage extends Component {
   constructor(props) {

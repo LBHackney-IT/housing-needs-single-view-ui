@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class SearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      dob: "",
-      nino: "",
+      firstName: '',
+      lastName: '',
+      dob: '',
+      nino: '',
       searching: false
     };
   }
@@ -22,16 +22,16 @@ export default class SearchPage extends Component {
   };
 
   searchLink() {
-    let attrs = ["firstName", "lastName", "dob", "nino"];
+    let attrs = ['firstName', 'lastName', 'dob', 'nino'];
     let params = attrs
       .map(attr => {
-        return this.state[attr] === "" ? null : [attr, this.state[attr]];
+        return this.state[attr] === '' ? null : [attr, this.state[attr]];
       })
       .filter(el => el !== null)
       .map(items => {
-        return items.join("=");
+        return items.join('=');
       })
-      .join("&");
+      .join('&');
 
     return `/search?${params}`;
   }
@@ -39,8 +39,6 @@ export default class SearchPage extends Component {
   render() {
     return (
       <div className="lbh-container">
-        {process.env.REACT_APP_HN_API_URL}
-
         <form action={this.searchLink()}>
           <h1>Search for a customer</h1>
           <div className="govuk-form-group">

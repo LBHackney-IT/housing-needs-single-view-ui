@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix src/**/* --max-warnings 5 && echo 'Lint complete.'"
+    "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'"
   },
   "eslintConfig": {
     "extends": "react-app"

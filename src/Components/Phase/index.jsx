@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Phase extends Component {
   render() {
@@ -9,7 +9,8 @@ export default class Phase extends Component {
             Alpha
           </strong>
           <span className="govuk-phase-banner__text">
-            This is a new service - your <a href="#">feedback</a> will help us to improve it.
+            This is a new service - your <a href="#">feedback</a> will help us
+            to improve it.
           </span>
         </p>
       </div>

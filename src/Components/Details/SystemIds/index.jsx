@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class SystemIds extends Component {
-
   getProp(prop) {
-    return prop ? prop : 'No data'
+    return prop ? prop : 'No data';
   }
 
   render() {

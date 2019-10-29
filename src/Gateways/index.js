@@ -1,9 +1,5 @@
-import FetchCustomerNotes from "./FetchCustomerNotes";
-import FetchCustomer from "./FetchCustomer";
-import FetchCustomerDocuments from "./FetchCustomerDocuments";
+import FetchCustomerNotes from './FetchCustomerNotes';
+import FetchCustomer from './FetchCustomer';
+import FetchCustomerDocuments from './FetchCustomerDocuments';
 
-export {
-  FetchCustomerNotes,
-  FetchCustomer,
-  FetchCustomerDocuments
-}
+export { FetchCustomerNotes, FetchCustomer, FetchCustomerDocuments };
