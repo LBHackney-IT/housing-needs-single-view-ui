@@ -73,7 +73,7 @@ export default class ResultsPage extends Component {
           className="govuk-form-group results__prev-results"
           key="prevGroup"
         >
-          <h2 key="prev">Previously linked records</h2>,
+          <h2 key="prev">Previously connected records</h2>
           <ResultsTable
             key="prevResults"
             results={this.state.results.connected}
@@ -90,10 +90,7 @@ export default class ResultsPage extends Component {
       return [
         <section className="govuk-form-group" key="new">
           <h2>Other potential matches</h2>
-          <p>
-            The following records are partial matches. Please check them in
-            their original system before connecting.
-          </p>
+          <p>The following records are partial matches.</p>
 
           <div>
             <GroupedTable
@@ -123,7 +120,7 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="lbh-container results">
-        <h1>Link customer records</h1>
+        <h1>Connect customer records from different systems</h1>
 
         {this.prevResults()}
 
@@ -131,8 +128,8 @@ export default class ResultsPage extends Component {
           <h2 key="matching">Customers with matching details</h2>
 
           <p>
-            The following records have been matched on their name, date of birth
-            and other system information.
+            The following records have the same name and either date of birth or
+            national insurance number.
           </p>
 
           <div>
@@ -157,7 +154,7 @@ export default class ResultsPage extends Component {
             className="govuk-button lbh-button"
             onClick={this.connectNewCustomer}
           >
-            Link records
+            Connect records
           </button>
         </div>
       </div>
