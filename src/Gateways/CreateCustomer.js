@@ -1,10 +1,13 @@
+import { AuthHeader } from '.';
+
 function CreateCustomer(data, cb) {
-  console.log(data);
   fetch(`${process.env.REACT_APP_HN_API_URL}/customers`, {
-    method: 'POST',
-    mode: 'cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ customers: data })
+    ...{
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify({ customers: data })
+    },
+    ...AuthHeader
   })
     .then(async function(response) {
       const json = await response.json();

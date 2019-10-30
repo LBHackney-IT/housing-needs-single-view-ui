@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ResultsTable from '../../Components/ResultsTable';
 import GroupedTable from '../../Components/GroupedTable';
-import SearchCustomers from '../../Gateways/SearchCustomers';
-import CreateCustomer from '../../Gateways/CreateCustomer';
+import { CreateCustomer, SearchCustomers } from '../../Gateways';
 import { Redirect } from 'react-router-dom';
 
 export default class ResultsPage extends Component {

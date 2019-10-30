@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { saveToken } from '../../lib/Cookie';
 
-export default class SelectPage extends Component {
+export default class CallbackPage extends Component {
   componentDidMount() {
     const params = new URLSearchParams(this.props.location.search);
     let token = params.get('token');

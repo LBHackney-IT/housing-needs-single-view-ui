@@ -1,3 +1,5 @@
+import { AuthHeader } from '.';
+
 function SearchCustomers(query, cb) {
   let systems = [
     'SINGLEVIEW',
@@ -23,7 +25,10 @@ function SearchCustomers(query, cb) {
     })
     .join('&');
 
-  fetch(`${process.env.REACT_APP_HN_API_URL}/customers?${queryString}`)
+  fetch(
+    `${process.env.REACT_APP_HN_API_URL}/customers?${queryString}`,
+    AuthHeader
+  )
     .then(function(response) {
       return response.json();
     })

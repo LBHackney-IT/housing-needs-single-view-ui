@@ -3,13 +3,13 @@ import jwt from 'jsonwebtoken';
 
 export const isLoggedIn = function() {
   const hackneyToken = Cookies.get('hackneyToken');
-  if (hackneyToken) {
-    let payload = jwt.decode(hackneyToken);
-    if (payload.iss === 'Hackney') {
-      return true;
-    }
-  }
-  return false;
+  if (!hackneyToken) return false;
+
+  const payload = jwt.decode(hackneyToken);
+  return (
+    payload.groups &&
+    payload.groups.indexOf('housingneeds-singleview-beta') > -1
+  );
 };
 
 export const saveToken = function(token) {
