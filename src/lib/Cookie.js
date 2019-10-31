@@ -7,6 +7,7 @@ export const isLoggedIn = function() {
 
   const payload = jwt.decode(hackneyToken);
   return (
+    payload &&
     payload.groups &&
     payload.groups.indexOf('housingneeds-singleview-beta') > -1
   );

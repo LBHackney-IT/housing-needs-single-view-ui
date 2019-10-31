@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class LoginPage extends Component {
   render() {
-    const redirect_uri = `//${window.location.host}/callback`;
+    const redirect_uri = `${window.location.protocol}//${window.location.host}`;
 
     return (
       <div className="loginPage">
