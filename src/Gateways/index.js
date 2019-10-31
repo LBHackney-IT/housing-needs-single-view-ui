@@ -6,14 +6,10 @@ import SearchCustomers from './SearchCustomers';
 import { hackneyToken } from '../lib/Cookie';
 
 const AuthHeader = {
-  headers: new Headers(
-    {
-      Authorization: `Bearer ${hackneyToken()}`
-    },
-    {
-      'Content-Type': 'application/json'
-    }
-  )
+  headers: {
+    Authorization: `Bearer ${hackneyToken()}`,
+    'Content-Type': 'application/json'
+  }
 };
 
 export {
