@@ -13,10 +13,6 @@ export const isLoggedIn = function() {
   );
 };
 
-export const saveToken = function(token) {
-  Cookies.set('hackneyToken', token, { expires: 7 });
-};
-
 export const hackneyToken = function() {
   return Cookies.get('hackneyToken');
 };
