@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
+import Utils from '../../../../lib/Utils';
 
 export default class Rent extends Component {
-  formatCurrency(amount) {
-    if (amount) {
-      return `£${amount.toFixed(2)}`;
-    } else {
-      return '£---';
-    }
-  }
-
   render() {
     const { customer } = this.props;
 
