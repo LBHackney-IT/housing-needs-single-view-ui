@@ -85,6 +85,10 @@ p {
   border-bottom: 1px solid #ccc;
 }
 
+.details__left-column__item table {
+  width: 100%;
+}
+
 .details__right-column {
   display: flex;
   flex-direction: column;
