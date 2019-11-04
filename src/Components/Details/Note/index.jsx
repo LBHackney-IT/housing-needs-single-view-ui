@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-var moment = require('moment');
+import moment from 'moment';
 
 export default class Note extends Component {
   formatDate(date) {
     return moment(date).format('DD/MM/YYYY');
   }
   render() {
+    const { note } = this.props;
+
     return (
       <tr>
-        <td key="date">{this.formatDate(this.props.note.date)}</td>
+        <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
           <p>
-            <strong>{this.props.note.title}</strong>
+            <strong>{note.title}</strong>
           </p>
-          <p>{this.props.note.text}</p>
+          <p>{note.text}</p>
         </td>
         <td key="sys">
           <p>
-            <strong>{this.props.note.user}</strong>
+            <strong>{note.user}</strong>
           </p>
-          <p>{this.props.note.system}</p>
+          <p>{note.system}</p>
         </td>
       </tr>
     );

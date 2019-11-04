@@ -13,6 +13,8 @@ export default class TenancyDetails extends Component {
   }
 
   render() {
+    const { customer } = this.props;
+
     return (
       <div className="details__left-column__item">
         <h2>Tenancy Details</h2>
@@ -21,8 +23,8 @@ export default class TenancyDetails extends Component {
             <tr>
               <td>Known addresses:</td>
               <td>
-                {this.props.customer.address.length > 0 ? (
-                  this.props.customer.address.map((address, i) => {
+                {customer.address.length > 0 ? (
+                  customer.address.map((address, i) => {
                     return <p key={i}>{this.lineBreakifyAddress(address)}</p>;
                   })
                 ) : (

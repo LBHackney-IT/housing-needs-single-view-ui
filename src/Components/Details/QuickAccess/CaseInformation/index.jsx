@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 export default class CaseInformation extends Component {
   render() {
-    if (!this.props.customer.systemIds.jigsaw) {
+    const { customer } = this.props;
+
+    if (!customer.systemIds.jigsaw) {
       return <></>;
     }
 
@@ -14,7 +16,7 @@ export default class CaseInformation extends Component {
           <tbody>
             <tr>
               <td>Stage:</td>
-              <td>{this.props.customer.housingNeeds.status}</td>
+              <td>{customer.housingNeeds.status}</td>
             </tr>
           </tbody>
         </table>
@@ -22,14 +24,14 @@ export default class CaseInformation extends Component {
           <ul>
             <li>
               <a
-                href={`https://training.housingjigsaw.co.uk/prah/case/${this.props.customer.housingNeeds.jigsawCaseId}/php`}
+                href={`https://training.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
               >
                 Link to PHP
               </a>
             </li>
             <li>
               <a
-                href={`https://training.housingjigsaw.co.uk/customers/customer/${this.props.customer.systemIds.jigsaw}`}
+                href={`https://training.housingjigsaw.co.uk/customers/customer/${customer.systemIds.jigsaw}`}
               >
                 More details
               </a>

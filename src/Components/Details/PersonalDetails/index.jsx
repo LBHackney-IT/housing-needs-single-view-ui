@@ -3,21 +3,23 @@ import moment from 'moment';
 
 export default class PersonalDetails extends Component {
   render() {
+    const { customer } = this.props;
+
     return (
       <div className="details__left-column__item">
         <h1>
-          {this.props.customer.name[0].title}{' '}
-          {this.props.customer.name[0].first} {this.props.customer.name[0].last}
+          {customer.name[0].title} {customer.name[0].first}{' '}
+          {customer.name[0].last}
         </h1>
         <table>
           <tbody>
             <tr>
               <td>Date of birth:</td>
-              <td>{moment(this.props.customer.dob).format('DD/MM/YYYY')}</td>
+              <td>{moment(customer.dob).format('DD/MM/YYYY')}</td>
             </tr>
             <tr>
               <td>National insurance no:</td>
-              <td>{this.props.customer.nino}</td>
+              <td>{customer.nino}</td>
             </tr>
           </tbody>
         </table>

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 export default class HousingRegister extends Component {
   render() {
-    if (!this.props.customer.housingRegister.biddingNo) {
+    const { customer } = this.props;
+
+    if (!customer.housingRegister.biddingNo) {
       return <></>;
     }
 
@@ -13,11 +15,11 @@ export default class HousingRegister extends Component {
           <tbody>
             <tr>
               <td>Bidding no:</td>
-              <td>{this.props.customer.housingRegister.biddingNo}</td>
+              <td>{customer.housingRegister.biddingNo}</td>
             </tr>
             <tr>
               <td>Band:</td>
-              <td>{this.props.customer.housingRegister.band}</td>
+              <td>{customer.housingRegister.band}</td>
             </tr>
           </tbody>
         </table>

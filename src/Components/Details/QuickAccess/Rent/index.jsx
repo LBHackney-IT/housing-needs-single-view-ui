@@ -10,7 +10,9 @@ export default class Rent extends Component {
   }
 
   render() {
-    if (!this.props.customer.rentAccountRef) {
+    const { customer } = this.props;
+
+    if (!customer.rentAccountRef) {
       return <></>;
     }
     return (
@@ -20,13 +22,11 @@ export default class Rent extends Component {
           <tbody>
             <tr>
               <td>Account ref:</td>
-              <td>{this.props.customer.rentAccountRef}</td>
+              <td>{customer.rentAccountRef}</td>
             </tr>
             <tr>
               <td>Balance:</td>
-              <td>
-                {this.formatCurrency(this.props.customer.rentAccountBalance)}
-              </td>
+              <td>{Utils.formatCurrency(customer.rentAccountBalance)}</td>
             </tr>
           </tbody>
         </table>

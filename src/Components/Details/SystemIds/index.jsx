@@ -6,7 +6,7 @@ export default class SystemIds extends Component {
   }
 
   render() {
-    const cust = this.props.customer;
+    const { customer } = this.props;
 
     return (
       <div className="details__left-column__item">
@@ -15,23 +15,27 @@ export default class SystemIds extends Component {
           <tbody>
             <tr>
               <td>Application ref:</td>
-              <td>{this.getProp(cust.housingRegister.applicationRef)}</td>
-            </tr>
-            <tr>
-              <td>Academy claim ID:</td>
-              <td>{this.getProp(cust.systemIds.academy)}</td>
+              <td>{this.getProp(customer.housingRegister.applicationRef)}</td>
             </tr>
             <tr>
               <td>Jigsaw customer no:</td>
-              <td>{this.getProp(cust.systemIds.jigsaw)}</td>
+              <td>{this.getProp(customer.systemIds.jigsaw)}</td>
             </tr>
             <tr>
               <td>Jigsaw case ref:</td>
-              <td>{this.getProp(cust.housingNeeds.jigsawCaseId)}</td>
+              <td>{this.getProp(customer.housingNeeds.jigsawCaseId)}</td>
             </tr>
             <tr>
               <td>Council tax ref:</td>
-              <td>need this</td>
+              <td>{this.getProp(customer.systemIds.academyCouncilTax)}</td>
+            </tr>
+            <tr>
+              <td>Benefits ref:</td>
+              <td>{this.getProp(customer.systemIds.academyBenefits)}</td>
+            </tr>
+            <tr>
+              <td>UHW ref:</td>
+              <td>{this.getProp(customer.systemIds.uhw)}</td>
             </tr>
             <tr>
               <td>Rent account ref:</td>

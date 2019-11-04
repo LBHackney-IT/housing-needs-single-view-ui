@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 export default class ContactDetails extends Component {
   render() {
+    const { customer } = this.props;
+
     return (
       <div className="details__left-column__item">
         <h2>Contact Details</h2>
@@ -9,7 +11,7 @@ export default class ContactDetails extends Component {
           <tbody>
             <tr>
               <td>Phone no:</td>
-              <td>{this.props.customer.phone}</td>
+              <td>{customer.phone}</td>
             </tr>
             <tr>
               <td>Email:</td>
