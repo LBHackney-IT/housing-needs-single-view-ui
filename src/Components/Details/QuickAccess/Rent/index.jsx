@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Utils from '../../../../lib/Utils';
+import Modal from '../../../Modal';
 
 export default class Rent extends Component {
   render() {
@@ -26,7 +27,13 @@ export default class Rent extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <a href="#/">More details</a>
+              <Modal trigger={<a href="#/">More details</a>}>
+                <h3>...</h3>
+                <br />
+                <table>
+                  <tbody></tbody>
+                </table>
+              </Modal>
             </li>
           </ul>
         </div>
