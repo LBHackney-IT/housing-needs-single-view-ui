@@ -31,9 +31,11 @@ export default class ResultsPage extends Component {
   }
 
   connectNewCustomer = () => {
+    this.setState({ connecting: true });
     // Create a new record
     CreateCustomer(this.state.selected, (err, result) => {
       if (err) console.log(err);
+      this.setState({ connecting: false });
       this.redirectToCustomer(result.customer.id);
     });
   };
@@ -105,6 +107,14 @@ export default class ResultsPage extends Component {
   }
 
   render() {
+    if (this.state.connecting) {
+      return (
+        <div className="lbh-container">
+          <h1>Connecting records...</h1>
+        </div>
+      );
+    }
+
     if (this.state.redirect) {
       return <Redirect push to={this.state.redirect} />;
     }
