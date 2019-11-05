@@ -1,7 +1,11 @@
 let Utils = {
   formatCurrency(amount) {
-    if (amount) {
-      return `£${amount.toFixed(2)}`;
+    if (typeof amount === 'number') {
+      if (amount >= 0) {
+        return `£${amount.toFixed(2)}`;
+      } else {
+        return `-£${Math.abs(amount).toFixed(2)}`;
+      }
     } else {
       return '£---';
     }

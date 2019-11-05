@@ -17,7 +17,7 @@ export default class TenancyDetails extends Component {
 
     return (
       <div className="details__left-column__item">
-        <h2>Tenancy Details</h2>
+        <h2>Addresses</h2>
         <table>
           <tbody>
             <tr>

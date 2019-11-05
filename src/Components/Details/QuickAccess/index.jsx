@@ -3,7 +3,7 @@ import Benefits from './Benefits';
 import CaseInformation from './CaseInformation';
 import CouncilTax from './CouncilTax';
 import HousingRegister from './HousingRegister';
-import Rent from './Rent';
+import Tenancy from './Tenancy';
 
 export default class QuickAccess extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class QuickAccess extends Component {
         <div className="quick-access row">
           <CaseInformation customer={customer} />
           <HousingRegister customer={customer} />
-          <Rent customer={customer} />
+          <Tenancy customer={customer} />
           <Benefits customer={customer} />
           <CouncilTax customer={customer} />{' '}
         </div>
