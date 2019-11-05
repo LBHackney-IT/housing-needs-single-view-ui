@@ -43,32 +43,6 @@ export default class DetailsPage extends Component {
       .catch(err => console.log(err));
   }
 
-  // tenancyDetails() {
-  //   if (this.state.customer.tenancyStart) {
-  //     return (
-  //       <div className="tenancyDetails">
-  //         <h2>Tenancy Details</h2>
-  //         <table className="details">
-  //           <tbody>
-  //             <tr>
-  //               <td>Tenancy Start:</td>
-  //               <td>{this.state.customer.tenancyStart}</td>
-  //             </tr>
-  //             <tr>
-  //               <td>Tenancy End:</td>
-  //               <td>{this.state.customer.tenancyEnd}</td>
-  //             </tr>
-  //           </tbody>
-  //         </table>
-  //         <h2>Household</h2>
-  //         {this.household()}
-  //       </div>
-  //     );
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
   render() {
     if (this.state.fetching) {
       return (
