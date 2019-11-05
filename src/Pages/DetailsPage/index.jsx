@@ -34,7 +34,9 @@ export default class DetailsPage extends Component {
         return FetchCustomerDocuments(this.props.match.params.id);
       })
       .then(result => {
-        notesAndDocs = notesAndDocs.concat(result.documents);
+        notesAndDocs = notesAndDocs
+          .concat(result.documents)
+          .filter(x => x !== null);
         notesAndDocs.sort((a, b) => moment(b.date) - moment(a.date));
         this.setState({ notes: notesAndDocs, fetching: false });
       })
