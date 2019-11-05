@@ -15,7 +15,7 @@ export default class ContactDetails extends Component {
             </tr>
             <tr>
               <td>Email:</td>
-              <td>need this</td>
+              <td>{customer.email}</td>
             </tr>
           </tbody>
         </table>
