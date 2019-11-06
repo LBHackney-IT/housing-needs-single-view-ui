@@ -15,7 +15,7 @@ export default class PersonalDetails extends Component {
           <tbody>
             <tr>
               <td>Date of birth:</td>
-              <td>{moment(customer.dob).format('DD/MM/YYYY')}</td>
+              <td>{moment(customer.dob[0]).format('DD/MM/YYYY')}</td>
             </tr>
             <tr>
               <td>National insurance no:</td>
