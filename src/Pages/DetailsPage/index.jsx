@@ -11,7 +11,7 @@ import {
   QuickAccess,
   SystemIds,
   Team,
-  TenancyDetails
+  AddressDetails
 } from '../../Components/Details';
 import moment from 'moment';
 
@@ -57,7 +57,7 @@ export default class DetailsPage extends Component {
           <PersonalDetails customer={this.state.customer} />
           <SystemIds customer={this.state.customer} />
           <ContactDetails customer={this.state.customer} />
-          <TenancyDetails customer={this.state.customer} />
+          <AddressDetails customer={this.state.customer} />
           <Team />
         </div>
         <div className="details__right-column">

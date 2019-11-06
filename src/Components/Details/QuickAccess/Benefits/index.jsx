@@ -3,7 +3,7 @@ import Utils from '../../../../lib/Utils';
 import Modal from '../../../Modal';
 
 export default class Benefits extends Component {
-  uc(){
+  uc() {
     let ucBenefits = this.props.customer.benefits.income.filter(
       ben => ben.description === 'Universal Credit Award'
     );

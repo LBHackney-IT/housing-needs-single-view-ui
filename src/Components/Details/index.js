@@ -5,7 +5,7 @@ import PersonalDetails from './PersonalDetails';
 import QuickAccess from './QuickAccess';
 import SystemIds from './SystemIds';
 import Team from './Team';
-import TenancyDetails from './TenancyDetails';
+import AddressDetails from './AddressDetails';
 
 export {
   ContactDetails,
@@ -15,5 +15,5 @@ export {
   QuickAccess,
   SystemIds,
   Team,
-  TenancyDetails
+  AddressDetails
 };
