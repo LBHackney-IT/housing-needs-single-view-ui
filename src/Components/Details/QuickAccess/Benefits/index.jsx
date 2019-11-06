@@ -48,8 +48,16 @@ export default class Benefits extends Component {
                               return (
                                 <tr key={i}>
                                   <td>{income.description}</td>
-                                  <td>{income.frequency}x</td>
-                                  <td>{income.period_len}</td>
+                                  <td>
+                                    {income.frequency > 0
+                                      ? `${income.frequency} x`
+                                      : null}
+                                  </td>
+                                  <td>
+                                    {income.frequency > 0
+                                      ? income.period
+                                      : null}
+                                  </td>
                                   <td>{Utils.formatCurrency(income.amount)}</td>
                                 </tr>
                               );
