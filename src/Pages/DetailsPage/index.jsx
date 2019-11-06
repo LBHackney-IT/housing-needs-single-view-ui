@@ -58,7 +58,7 @@ export default class DetailsPage extends Component {
           <SystemIds customer={this.state.customer} />
           <ContactDetails customer={this.state.customer} />
           <AddressDetails customer={this.state.customer} />
-          <Team />
+          <Team customer={this.state.customer} />
         </div>
         <div className="details__right-column">
           <QuickAccess customer={this.state.customer} />
