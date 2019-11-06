@@ -3,6 +3,12 @@ import Utils from '../../../../lib/Utils';
 import Modal from '../../../Modal';
 
 export default class Benefits extends Component {
+  uc(){
+    let ucBenefits = this.props.customer.benefits.income.filter(
+      ben => ben.description === 'Universal Credit Award'
+    );
+    return ucBenefits.length > 0 ? 'Yes' : 'No';
+  }
   render() {
     const { customer } = this.props;
 
@@ -16,12 +22,12 @@ export default class Benefits extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Income:</td>
-              <td></td>
+              <td>Live claim:</td>
+              <td>{customer.benefits.live ? 'Yes' : 'No'}</td>
             </tr>
             <tr>
-              <td>Weekly:</td>
-              <td></td>
+              <td>Universal Credit:</td>
+              <td>{this.uc()}</td>
             </tr>
           </tbody>
         </table>
