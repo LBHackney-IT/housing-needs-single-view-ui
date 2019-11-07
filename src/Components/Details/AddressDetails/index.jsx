@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import moment from 'moment';
 
 export default class AddressDetails extends Component {
   lineBreakifyAddress(address) {
@@ -36,23 +37,26 @@ export default class AddressDetails extends Component {
                 )}
               </td>
             </tr>
-            {/*             
-              <tr>
-                <td>Household member(s):</td>
-                <td>
+
+            <tr>
+              <td>Household member(s):</td>
+              <td>
                 {this.props.customer.household.length > 0 ? (
                   <ul>
                     {this.props.customer.household.map((p, i) => {
                       return (
                         <li key={i}>
-                          {p.name} <br />
-                          {p.relationship} {p.dob}
+                          {p.title} {p.first} {p.last} <br />
+                          {moment(p.dob).format('DD/MM/YYYY')}
                         </li>
                       );
                     })}
-                  </ul>) : (<p>No data</p>)}
-                </td>
-              </tr> */}
+                  </ul>
+                ) : (
+                  <p>No data</p>
+                )}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

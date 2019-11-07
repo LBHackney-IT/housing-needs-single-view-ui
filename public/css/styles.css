@@ -79,6 +79,10 @@ p {
   padding-right: 25px;
 }
 
+.details__left-column ul {
+  list-style: none;
+}
+
 .details__left-column__item {
   padding-bottom: 25px;
   margin-bottom: 25px;
