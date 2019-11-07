@@ -143,6 +143,10 @@ p {
   margin-bottom: 5px;
 }
 
+.lbh-container {
+  max-width: 1140px;
+}
+
 .govuk-checkboxes__input {
   opacity: 1;
 }

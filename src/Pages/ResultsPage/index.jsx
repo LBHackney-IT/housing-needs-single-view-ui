@@ -91,7 +91,10 @@ export default class ResultsPage extends Component {
       return [
         <section className="govuk-form-group" key="new">
           <h2>Other potential matches</h2>
-          <p>The following records are partial matches.</p>
+          <p>
+            The following records are partial matches. Please check them in
+            their original system before connecting.
+          </p>
 
           <div>
             <GroupedTable
@@ -129,7 +132,7 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="lbh-container results">
-        <h1>Connect customer records from different systems</h1>
+        <h1>Create a single view of a customer</h1>
 
         {this.prevResults()}
 

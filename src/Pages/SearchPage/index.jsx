@@ -6,8 +6,6 @@ export default class SearchPage extends Component {
     this.state = {
       firstName: '',
       lastName: '',
-      dob: '',
-      nino: '',
       searching: false
     };
   }
@@ -22,7 +20,7 @@ export default class SearchPage extends Component {
   };
 
   searchLink() {
-    let attrs = ['firstName', 'lastName', 'dob', 'nino'];
+    let attrs = ['firstName', 'lastName'];
     let params = attrs
       .map(attr => {
         return this.state[attr] === '' ? null : [attr, this.state[attr]];
@@ -39,8 +37,15 @@ export default class SearchPage extends Component {
   render() {
     return (
       <div className="lbh-container">
+        <h1>Welcome to Single View</h1>
+        <p>
+          View customer data from UHT, UHW, Jigsaw and Academy in one place
+          [read only]
+        </p>
+        <br />
+        <h2>Search for a customer</h2>
+
         <form action={this.searchLink()}>
-          <h1>Search for a customer</h1>
           <div className="govuk-form-group">
             <label className="govuk-label" htmlFor="firstName">
               First Name
@@ -63,30 +68,6 @@ export default class SearchPage extends Component {
               name="lastName"
               onChange={this.handleChange}
               value={this.state.lastName}
-            />
-          </div>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="dob">
-              Date of Birth
-            </label>
-            <input
-              className="govuk-input"
-              type="text"
-              name="dob"
-              onChange={this.handleChange}
-              value={this.state.dob}
-            />
-          </div>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="nino">
-              National Insurance number
-            </label>
-            <input
-              className="govuk-input lbh-input"
-              type="text"
-              name="nino"
-              onChange={this.handleChange}
-              value={this.state.nino}
             />
           </div>
           <div className="govuk-form-group">
