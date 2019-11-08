@@ -64,6 +64,7 @@ export default class GroupedTable extends Component {
                       selectable={this.props.selectable}
                       onSelected={this.rowSelected}
                       onDeselected={this.rowDeselected}
+                      filter={this.props.filter}
                     />
                   );
                 })

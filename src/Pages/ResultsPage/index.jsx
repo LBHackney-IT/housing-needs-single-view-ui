@@ -26,7 +26,7 @@ export default class ResultsPage extends Component {
       search[k] = v;
     });
     SearchCustomers(search, response => {
-      this.setState({ results: response, searching: false });
+      this.setState({ results: response, searching: false, filter: {} });
     });
   }
 
@@ -40,11 +40,19 @@ export default class ResultsPage extends Component {
     });
   };
 
+  generateFilter() {
+    return this.state.selected.reduce((acc, record) => {
+      if (!acc.dob && record.dob) acc.dob = record.dob;
+      if (!acc.nino && record.nino) acc.nino = record.nino;
+      return acc;
+    }, {});
+  }
+
   addSelection = record => {
     this.setState(() => {
       let selected = this.state.selected;
       selected.push(record);
-      return { selected: selected };
+      return { selected: selected, filter: this.generateFilter() };
     });
   };
 
@@ -53,7 +61,7 @@ export default class ResultsPage extends Component {
       let selected = this.state.selected;
       delete selected[selected.indexOf(record)];
       selected = selected.filter(x => x);
-      return { selected: selected };
+      return { selected: selected, filter: this.generateFilter() };
     });
   };
 
@@ -102,6 +110,7 @@ export default class ResultsPage extends Component {
               selectable={true}
               onSelect={this.addSelection}
               onDeselect={this.removeSelection}
+              filter={this.state.filter}
             />
           </div>
         </section>
@@ -153,6 +162,7 @@ export default class ResultsPage extends Component {
                   selectable={true}
                   onSelect={this.addSelection}
                   onDeselect={this.removeSelection}
+                  filter={this.state.filter}
                 />
               );
             })}

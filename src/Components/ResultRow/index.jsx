@@ -4,7 +4,22 @@ import './index.css';
 export default class ResultRow extends Component {
   constructor(props) {
     super(props);
-    this.state = { selected: false };
+    this.state = { selected: false, filtered: false };
+  }
+
+  static getDerivedStateFromProps(props) {
+    if (props.filter) {
+      for (var k in props.filter) {
+        if (
+          props.result[k] &&
+          props.result[k] !== '' &&
+          props.result[k] !== props.filter[k]
+        ) {
+          return { filtered: true };
+        }
+      }
+    }
+    return { filtered: false };
   }
 
   checkbox = () => {
@@ -19,6 +34,7 @@ export default class ResultRow extends Component {
                 checked={this.state.selected}
                 onChange={this.click}
                 onClick={this.click}
+                disabled={this.state.filtered}
               ></input>
             </div>
           </div>
@@ -28,23 +44,31 @@ export default class ResultRow extends Component {
   };
 
   click = () => {
-    this.setState(state => {
-      let selected = !state.selected;
-      if (selected) {
-        this.props.onSelected(this.props.result);
-      } else {
-        this.props.onDeselected(this.props.result);
-      }
-      return { selected: selected };
-    });
+    if (!this.state.filtered) {
+      this.setState(state => {
+        let selected = !state.selected;
+        if (selected) {
+          this.props.onSelected(this.props.result);
+        } else {
+          this.props.onDeselected(this.props.result);
+        }
+        return { selected: selected };
+      });
+    }
   };
+
+  className() {
+    return [
+      this.state.selected ? 'selected' : null,
+      this.state.filtered ? 'filtered' : null
+    ]
+      .filter(x => x)
+      .join(' ');
+  }
 
   render() {
     return (
-      <tr
-        onClick={this.click}
-        className={this.state.selected ? 'selected' : null}
-      >
+      <tr onClick={this.click} className={this.className()} title={this.state.filtered ? "This record has a conflicting date of birth or Ni No and can't be connected" : null}>
         {this.checkbox()}
         <td>{this.props.result.firstName}</td>
         <td>{this.props.result.lastName}</td>
