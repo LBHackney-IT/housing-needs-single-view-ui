@@ -105,7 +105,7 @@ export default class Tenancy extends Component {
     }
     return (
       <div className="quick-access__item">
-        <h3>Tenancy</h3>
+        <h3>Council Tenancy</h3>
         {this.tenancyInfo()}
         <div className="quick-access__item__links">
           <ul>
