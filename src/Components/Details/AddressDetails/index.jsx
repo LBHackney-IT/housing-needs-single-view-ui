@@ -41,7 +41,8 @@ export default class AddressDetails extends Component {
             <tr>
               <td>Household member(s):</td>
               <td>
-                {this.props.customer.household.length > 0 ? (
+                {this.props.customer.household &&
+                this.props.customer.household.length > 0 ? (
                   <ul>
                     {this.props.customer.household.map((p, i) => {
                       return (
