@@ -63,8 +63,8 @@ p {
   border-bottom: 1px solid #ccc;
 }
 
-.results__prev-results td {
-  cursor: default;
+.results__prev-results {
+  display: flex;
 }
 
 .details {

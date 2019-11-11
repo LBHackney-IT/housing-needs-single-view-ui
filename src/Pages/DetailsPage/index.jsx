@@ -51,6 +51,7 @@ export default class DetailsPage extends Component {
         </div>
       );
     }
+
     return (
       <div className="lbh-container row details">
         <div className="details__left-column">

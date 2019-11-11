@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import ResultsTable from '../../Components/ResultsTable';
-import GroupedTable from '../../Components/GroupedTable';
 import { CreateCustomer, SearchCustomers } from '../../Gateways';
 import { Redirect } from 'react-router-dom';
+import { PreviousRecord, GroupedTable } from '../../Components/Results';
 
 export default class ResultsPage extends Component {
   sources = [
@@ -35,8 +34,10 @@ export default class ResultsPage extends Component {
     // Create a new record
     CreateCustomer(this.state.selected, (err, result) => {
       if (err) console.log(err);
-      this.setState({ connecting: false });
-      this.redirectToCustomer(result.customer.id);
+      this.setState({
+        connecting: false,
+        redirect: `/customer/${result.customer.id}`
+      });
     });
   };
 
@@ -65,30 +66,18 @@ export default class ResultsPage extends Component {
     });
   };
 
-  redirectToCustomer(id) {
-    this.setState({ redirect: `/customer/${id}` });
-  }
-
-  selectExisting = data => {
-    if (data.SINGLEVIEW && Object.keys(data.SINGLEVIEW).length === 1) {
-      this.redirectToCustomer(Object.values(data.SINGLEVIEW)[0].id);
-    }
-  };
-
   prevResults() {
     if (this.state.results.connected.length > 0) {
       return [
-        <section
-          className="govuk-form-group results__prev-results"
-          key="prevGroup"
-        >
-          <h2 key="prev">Previously connected records</h2>
-          <ResultsTable
-            key="prevResults"
-            results={this.state.results.connected}
-            selectable={false}
-            onChange={this.selectExisting}
-          />
+        <section className="govuk-form-group" key="prevGroup">
+          <h2 key="prev">
+            There are previously connected records for your search
+          </h2>
+          <div className="results__prev-results">
+            {this.state.results.connected.map((record, i) => {
+              return <PreviousRecord key={i} record={record} />;
+            })}
+          </div>
         </section>
       ];
     }

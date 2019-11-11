@@ -9,6 +9,23 @@ let Utils = {
     } else {
       return '£---';
     }
+  },
+
+  nameCase(input) {
+    input = Utils.checkString(input);
+    if (!input) return null;
+    return input
+      .split(' ')
+      .map(i => {
+        return i.charAt(0).toUpperCase() + i.toLowerCase().slice(1);
+      })
+      .join(' ');
+  },
+
+  checkString(input) {
+    if (typeof input === 'string') input = input.trim();
+    if (input === '') return null;
+    return input;
   }
 };
 

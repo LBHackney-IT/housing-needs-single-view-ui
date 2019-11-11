@@ -68,7 +68,15 @@ export default class ResultRow extends Component {
 
   render() {
     return (
-      <tr onClick={this.click} className={this.className()} title={this.state.filtered ? "This record has a conflicting date of birth or Ni No and can't be connected" : null}>
+      <tr
+        onClick={this.click}
+        className={this.className()}
+        title={
+          this.state.filtered
+            ? "This record has a conflicting date of birth or Ni No and can't be connected"
+            : null
+        }
+      >
         {this.checkbox()}
         <td>{this.props.result.firstName}</td>
         <td>{this.props.result.lastName}</td>
