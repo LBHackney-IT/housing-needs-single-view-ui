@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 }
 
-.row {
+.previousRecord .row {
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
