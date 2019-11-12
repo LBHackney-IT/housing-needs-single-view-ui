@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Utils from '../../../lib/Utils';
 import './index.css';
 import { RecordsTable } from '../';
+import { DeleteCustomerRecord } from '../../../Gateways';
 
 export default class PreviousRecord extends Component {
   constructor(props) {
@@ -14,6 +15,11 @@ export default class PreviousRecord extends Component {
       const visible = !state.visible;
       return { visible: visible };
     });
+  };
+
+  deleteRecord = async id => {
+    await DeleteCustomerRecord(id);
+    window.location.reload();
   };
 
   render() {
@@ -41,7 +47,12 @@ export default class PreviousRecord extends Component {
             >
               View Record
             </a>
-            <a href={`#/`} role="button" className="govuk-button lbh-button">
+            <a
+              href={`#/`}
+              role="button"
+              className="govuk-button lbh-button"
+              onClick={() => this.deleteRecord(this.props.record.id)}
+            >
               Disconnect Record
             </a>
           </div>
