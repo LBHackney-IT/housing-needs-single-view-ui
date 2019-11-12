@@ -36,7 +36,7 @@ export default class ResultsPage extends Component {
       if (err) console.log(err);
       this.setState({
         connecting: false,
-        redirect: `/customer/${result.customer.id}`
+        redirect: `/customers/${result.customer.id}`
       });
     });
   };

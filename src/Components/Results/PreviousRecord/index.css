@@ -2,8 +2,8 @@
   border: 1px solid #ccc;
   padding: 20px;
   display: flex;
-  width: 400px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .previousRecord .row {
@@ -13,6 +13,6 @@
   align-items: baseline;
 }
 
-.open {
-  width: 100%;
+.previousRecord .lbh-button {
+  margin-left: 5px;
 }

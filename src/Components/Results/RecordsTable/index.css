@@ -1,19 +1,16 @@
-.groupedTable {
-  margin-bottom: 30px;
+.recordsTable {
   width: 100%;
+  margin-top: 15px;
 }
-
-.groupedTable thead {
+.recordsTable thead {
   font-weight: bold;
   background-color: #ddd;
 }
-
-.groupedTable td {
+.recordsTable td {
   padding: 3px;
   margin: 0;
   vertical-align: middle;
 }
-
-.groupedTable td.subHeader {
+.recordsTable td.subHeader {
   font-weight: bold;
 }

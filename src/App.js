@@ -19,7 +19,7 @@ export default class App extends Component {
             <Route path="/login" component={LoginPage} />
             <PrivateRoute path="/" exact component={SearchPage} />
             <PrivateRoute path="/search" component={ResultsPage} />
-            <PrivateRoute path="/customer/:id" component={DetailsPage} />
+            <PrivateRoute path="/customers/:id" component={DetailsPage} />
           </Router>
         </div>
       </>

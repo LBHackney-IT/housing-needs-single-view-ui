@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Utils from '../../../lib/Utils';
 import './index.css';
+import { RecordsTable } from '../';
 
 export default class PreviousRecord extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class PreviousRecord extends Component {
     this.state = { visible: false };
   }
 
-  view = () => {
+  show = () => {
     this.setState(state => {
       const visible = !state.visible;
       return { visible: visible };
@@ -17,41 +18,50 @@ export default class PreviousRecord extends Component {
 
   render() {
     return (
-      <div className={`previousRecord ${this.state.visible ? 'open' : ''}`}>
+      <div className="previousRecord">
         <div className="row">
-          <h3>
-            {Utils.nameCase(
-              `${this.props.record.firstName} ${this.props.record.lastName}`
-            )}
-          </h3>
-          <a
-            href={`/customer/${this.props.record.id}`}
-            role="button"
-            className="govuk-button lbh-button"
-          >
-            View Record
-          </a>
-        </div>
-        <div className="row">
-          <a href="#/" onClick={this.view}>
-            View connected records &gt;
-          </a>
+          <div>
+            <h3>
+              {Utils.nameCase(
+                `${this.props.record.firstName} ${this.props.record.lastName}`
+              )}
+            </h3>
+            <a href="#/" onClick={this.show}>
+              {!this.state.visible
+                ? 'Show connected records >'
+                : '< Hide connected records'}
+            </a>
+          </div>
+
+          <div>
+            <a
+              href={`/customers/${this.props.record.id}`}
+              role="button"
+              className="govuk-button lbh-button"
+            >
+              View Record
+            </a>
+            <a href={`#/`} role="button" className="govuk-button lbh-button">
+              Disconnect Record
+            </a>
+          </div>
         </div>
         {this.state.visible && (
           <>
             <div className="row">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div className="row">
-              <a href="#/" role="button" className="govuk-button lbh-button">
-                Update
-              </a>
+              <RecordsTable
+                records={this.props.record.links.map(l => {
+                  return {
+                    system: l.system_name,
+                    firstName: l.first_name,
+                    lastName: l.last_name,
+                    dob: l.dob,
+                    nino: l.nino,
+                    address: l.address
+                  };
+                })}
+                selectable={false}
+              />
             </div>
           </>
         )}

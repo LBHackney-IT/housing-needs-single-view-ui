@@ -44,7 +44,7 @@ export default class ResultRow extends Component {
   };
 
   click = () => {
-    if (!this.state.filtered) {
+    if (!this.state.filtered && this.props.selectable) {
       this.setState(state => {
         let selected = !state.selected;
         if (selected) {
@@ -78,6 +78,7 @@ export default class ResultRow extends Component {
         }
       >
         {this.checkbox()}
+        {this.props.result.system && <td>{this.props.result.system}</td>}
         <td>{this.props.result.firstName}</td>
         <td>{this.props.result.lastName}</td>
         <td>{this.props.result.dob}</td>

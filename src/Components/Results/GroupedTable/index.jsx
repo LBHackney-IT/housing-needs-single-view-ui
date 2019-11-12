@@ -42,7 +42,7 @@ export default class GroupedTable extends Component {
   render() {
     if (Object.keys(this.props.records).length > 0) {
       return (
-        <table className="results">
+        <table className="groupedTable">
           <thead>
             <tr>
               {this.props.selectable ? <td></td> : null}
