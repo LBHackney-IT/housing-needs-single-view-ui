@@ -1,6 +1,6 @@
 import CreateCustomer from './CreateCustomer';
 import FetchCustomerNotes from './FetchCustomerNotes';
-import FetchCustomer from './FetchCustomer';
+import FetchCustomerRecord from './FetchCustomerRecord';
 import FetchCustomerDocuments from './FetchCustomerDocuments';
 import SearchCustomers from './SearchCustomers';
 import { hackneyToken } from '../lib/Cookie';
@@ -16,7 +16,7 @@ export {
   AuthHeader,
   CreateCustomer,
   FetchCustomerNotes,
-  FetchCustomer,
+  FetchCustomerRecord,
   FetchCustomerDocuments,
   SearchCustomers
 };

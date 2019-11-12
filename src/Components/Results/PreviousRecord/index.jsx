@@ -34,7 +34,7 @@ export default class PreviousRecord extends Component {
         </div>
         <div className="row">
           <a href="#/" onClick={this.view}>
-            View connected records >
+            View connected records &gt;
           </a>
         </div>
         {this.state.visible && (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   FetchCustomerNotes,
-  FetchCustomer,
+  FetchCustomerRecord,
   FetchCustomerDocuments
 } from '../../Gateways';
 import {
@@ -24,7 +24,7 @@ export default class DetailsPage extends Component {
 
   componentDidMount() {
     let notesAndDocs = [];
-    FetchCustomer(this.props.match.params.id)
+    FetchCustomerRecord(this.props.match.params.id)
       .then(result => {
         this.setState({ customer: result.customer });
         return FetchCustomerNotes(this.props.match.params.id);
