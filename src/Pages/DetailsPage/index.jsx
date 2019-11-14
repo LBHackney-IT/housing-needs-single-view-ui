@@ -56,10 +56,10 @@ export default class DetailsPage extends Component {
       <div className="lbh-container row details">
         <div className="details__left-column">
           <PersonalDetails customer={this.state.customer} />
-          <SystemIds customer={this.state.customer} />
           <ContactDetails customer={this.state.customer} />
           <AddressDetails customer={this.state.customer} />
           <Team customer={this.state.customer} />
+          <SystemIds customer={this.state.customer} />
         </div>
         <div className="details__right-column">
           <QuickAccess customer={this.state.customer} />
