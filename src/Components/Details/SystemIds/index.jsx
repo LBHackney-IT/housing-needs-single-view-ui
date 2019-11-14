@@ -38,8 +38,12 @@ export default class SystemIds extends Component {
               <td>{this.getProp(customer.systemIds.uhw)}</td>
             </tr>
             <tr>
+              <td>Household ref:</td>
+              <td>{this.getProp(customer.systemIds.householdRef)}</td>
+            </tr>
+            <tr>
               <td>Rent account ref:</td>
-              <td>need this</td>
+              <td>{this.getProp(customer.systemIds.rent)}</td>
             </tr>
           </tbody>
         </table>
