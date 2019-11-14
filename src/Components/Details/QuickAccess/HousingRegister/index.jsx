@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from '../../../Modal';
 
 export default class HousingRegister extends Component {
   render() {
@@ -24,7 +23,7 @@ export default class HousingRegister extends Component {
             </tr>
           </tbody>
         </table>
-        <div className="quick-access__item__links">
+        {/* <div className="quick-access__item__links">
           <ul>
             <li>
               <Modal trigger={<a href="#/">More details</a>}>
@@ -36,7 +35,7 @@ export default class HousingRegister extends Component {
               </Modal>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }
