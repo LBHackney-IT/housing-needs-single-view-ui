@@ -12,10 +12,17 @@ function SearchCustomers(query, cb) {
     AuthHeader
   )
     .then(function(response) {
+      if(response.status >= 400){
+        return cb("Error searching")
+      }
       return response.json();
     })
     .then(function(myJson) {
-      cb(myJson);
+      cb(null, myJson);
+    })
+    .catch(err => {
+      console.log(err);
+      cb(err);
     });
 }
 

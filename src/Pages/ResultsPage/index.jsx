@@ -24,8 +24,15 @@ export default class ResultsPage extends Component {
     params.forEach((v, k) => {
       search[k] = v;
     });
-    SearchCustomers(search, response => {
-      this.setState({ results: response, searching: false, filter: {} });
+    SearchCustomers(search, (err, response) => {
+      if (err) {
+        this.setState({
+          searching: false,
+          error: 'Error when searching for records. Please reload to try again.'
+        });
+      } else {
+        this.setState({ results: response, searching: false, filter: {} });
+      }
     });
   }
 
@@ -124,6 +131,14 @@ export default class ResultsPage extends Component {
       return (
         <div className="lbh-container">
           <h1>Searching for customers...</h1>
+        </div>
+      );
+    }
+
+    if (this.state.error) {
+      return (
+        <div className="lbh-container">
+          <h1>{this.state.error}</h1>
         </div>
       );
     }
