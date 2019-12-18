@@ -15,13 +15,13 @@ export default class Note extends Component {
           <p>
             <strong>{note.title}</strong>
           </p>
-          <p>{note.text}</p>
+          <p style={{overflowWrap: 'break-word', maxWidth: '350px'}}>{note.text}</p>
         </td>
         <td key="sys">
           <p>
             <strong>{note.user}</strong>
           </p>
-          <p>{note.system}</p>
+          <p>{ note.system.join ? note.system.join(', ') : note.system}</p>
         </td>
       </tr>
     );
