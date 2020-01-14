@@ -24,7 +24,7 @@ export default class AddressDetails extends Component {
             <tr>
               <td>Known addresses:</td>
               <td>
-                {customer.address.length > 0 ? (
+                {customer.address && customer.address.length > 0 ? (
                   customer.address.map((address, i) => {
                     return (
                       <p key={i} title={address.source.join(', ')}>
