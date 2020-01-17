@@ -30,13 +30,19 @@ export default class DetailsPage extends Component {
         return FetchCustomerNotes(this.props.match.params.id);
       })
       .then(result => {
-        notesAndDocs = notesAndDocs.concat(result.notes);
+        const notes = result.notes.map(note => {
+          note.type = 'note';
+          return note;
+        });
+        notesAndDocs = notesAndDocs.concat(notes);
         return FetchCustomerDocuments(this.props.match.params.id);
       })
       .then(result => {
-        notesAndDocs = notesAndDocs
-          .concat(result.documents)
-          .filter(x => x !== null);
+        const docs = result.documents.map(doc => {
+          doc.type = 'document';
+          return doc;
+        });
+        notesAndDocs = notesAndDocs.concat(docs).filter(x => x !== null);
         notesAndDocs.sort((a, b) => moment(b.date) - moment(a.date));
         this.setState({ notes: notesAndDocs, fetching: false });
       })

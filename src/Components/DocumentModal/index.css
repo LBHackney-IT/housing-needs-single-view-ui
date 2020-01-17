@@ -1,0 +1,22 @@
+.documentModal .popup-content {
+  border-radius: 4px;
+  width:inherit !important;
+}
+
+.documentModal iframe {
+  height: 90vh;
+  width: 90vw;
+}
+
+.documentModal .close {
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  line-height: 20px;
+  right: 0;
+  top: -30px;
+  font-size: 30px;
+  text-decoration: none;
+}
