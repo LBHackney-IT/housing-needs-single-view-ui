@@ -1,12 +1,18 @@
 version: 2.1
+
 orbs:
   aws-s3: circleci/aws-s3@1.0.11
-jobs:
-  build:
+
+executors:
+  my-executor:
     docker:
       - image: circleci/node:12.9.1-browsers
 
     working_directory: ~/repo
+
+jobs:
+  build:
+    executor: my-executor
 
     steps:
       - checkout
@@ -24,8 +30,42 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn build
+      - run:
+          name: set api env
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]
+            then
+              export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
+              yarn build
+            elif [ "${CIRCLE_BRANCH}" == "production" ]
+            then
+              export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
+              yarn build
+            fi
 
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  deploy-staging:
+    executor: my-executor
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - aws-s3/sync:
+          from: build
+          to: 's3://staging.singleview.hackney.gov.uk/'
+          arguments: |
+            --acl public-read \
+            --cache-control "max-age=86400"
+          overwrite: true
+
+  deploy-production:
+    executor: my-executor
+
+    steps:
       - aws-s3/sync:
           from: build
           to: 's3://beta.singleview.hackney.gov.uk/'
@@ -33,3 +73,23 @@ jobs:
             --acl public-read \
             --cache-control "max-age=86400"
           overwrite: true
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-production:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - production
