@@ -66,6 +66,9 @@ jobs:
     executor: my-executor
 
     steps:
+      - attach_workspace:
+          at: ~/repo
+
       - aws-s3/sync:
           from: build
           to: 's3://beta.singleview.hackney.gov.uk/'
