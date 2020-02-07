@@ -31,8 +31,17 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: build
-          command: yarn build
+          name: set api env
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]
+            then
+              export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
+              yarn build
+            elif [ "${CIRCLE_BRANCH}" == "production" ]
+            then
+              export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
+              yarn build
+            fi
 
       - persist_to_workspace:
           root: ~/repo
@@ -44,12 +53,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-
-      - run:
-          name: set environment vars
-          command: |
-            export ENV=staging
-            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
 
       - aws-s3/sync:
           from: build
@@ -65,12 +68,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-
-      - run:
-          name: set environment vars
-          command: |
-            export ENV=production
-            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
 
       - aws-s3/sync:
           from: build
