@@ -44,6 +44,7 @@ jobs:
       - run:
           name: build
           command: |
+            export ENV=staging
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
             yarn build
 
@@ -65,6 +66,7 @@ jobs:
       - run:
           name: build
           command: |
+            export ENV=production
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
             yarn build
 
