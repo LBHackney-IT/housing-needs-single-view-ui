@@ -23,6 +23,11 @@ export default class Note extends Component {
           docUrl: `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
           showDoc: true
         });
+      } else if (this.props.note.system === 'COMINO') {
+        this.setState({
+          docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
+          showDoc: true
+        });
       }
     }
   };
