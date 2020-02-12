@@ -26,7 +26,7 @@ export default class CaseInformation extends Component {
           <ul>
             <li>
               <a
-                href={`https://training.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
+                href={`https://live.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
               >
                 Link to PHP
               </a>
