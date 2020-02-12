@@ -33,7 +33,7 @@ export default class CaseInformation extends Component {
             </li>
             <li>
               <a
-                href={`https://training.housingjigsaw.co.uk/customers/customer/${customer.systemIds.jigsaw}`}
+                href={`https://live.housingjigsaw.co.uk/customers/customer/${customer.systemIds.jigsaw}`}
               >
                 Link to Jigsaw
               </a>
