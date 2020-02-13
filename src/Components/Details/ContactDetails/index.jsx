@@ -4,6 +4,14 @@ export default class ContactDetails extends Component {
   render() {
     const { customer } = this.props;
 
+    const phonesComponent = (
+      <td>
+        {customer.phone.map(phone => (
+          <p> {phone.replace(/\D/g, '')} </p>
+        ))}
+      </td>
+    );
+
     return (
       <div className="details__left-column__item">
         <h2>Contact Details</h2>
@@ -11,7 +19,7 @@ export default class ContactDetails extends Component {
           <tbody>
             <tr>
               <td>Phone no:</td>
-              <td>{customer.phone}</td>
+              {phonesComponent}
             </tr>
             <tr>
               <td>Email:</td>
