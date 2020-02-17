@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class SystemIds extends Component {
   getProp(prop) {
-    return prop ? prop : ['No Data'];
+    return prop ? prop : 'No Data';
   }
 
   separateId(ids) {
