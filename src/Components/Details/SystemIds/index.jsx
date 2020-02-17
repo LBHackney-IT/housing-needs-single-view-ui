@@ -7,7 +7,7 @@ export default class SystemIds extends Component {
 
   separateId(ids) {
     if (typeof ids === 'string') return <p> {ids} </p>;
-    return ids.map(id => <p key={id}> {id} </p>);
+    return ids.map((id, i) => <p key={i}> {id} </p>);
   }
 
   render() {
