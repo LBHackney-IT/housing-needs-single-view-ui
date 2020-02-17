@@ -2,12 +2,27 @@ import React, { Component } from 'react';
 
 export default class SystemIds extends Component {
   getProp(prop) {
-    return prop ? prop : 'No data';
+    return prop ? prop : ['No Data'];
+  }
+
+  separateId(ids) {
+    if (typeof ids === 'string')
+      return (
+        <td>
+          <p> {ids} </p>
+        </td>
+      );
+    return (
+      <td>
+        {ids.map(id => (
+          <p> {id} </p>
+        ))}
+      </td>
+    );
   }
 
   render() {
     const { customer } = this.props;
-
     return (
       <div className="details__left-column__item">
         <h2>System IDs</h2>
@@ -15,35 +30,44 @@ export default class SystemIds extends Component {
           <tbody>
             <tr>
               <td>Application ref:</td>
-              <td>{this.getProp(customer.housingRegister.applicationRef)}</td>
+              {this.separateId(
+                this.getProp(customer.housingRegister.applicationRef),
+                'applicationRef'
+              )}
             </tr>
             <tr>
               <td>Jigsaw customer no:</td>
-              <td>{this.getProp(customer.systemIds.jigsaw)}</td>
+              {this.separateId(this.getProp(customer.systemIds.jigsaw))}
             </tr>
             <tr>
               <td>Jigsaw case ref:</td>
-              <td>{this.getProp(customer.housingNeeds.jigsawCaseId)}</td>
+              {this.separateId(
+                this.getProp(customer.housingNeeds.jigsawCaseId)
+              )}
             </tr>
             <tr>
               <td>Council tax ref:</td>
-              <td>{this.getProp(customer.systemIds.academyCouncilTax)}</td>
+              {this.separateId(
+                this.getProp(customer.systemIds.academyCouncilTax)
+              )}
             </tr>
             <tr>
               <td>Benefits ref:</td>
-              <td>{this.getProp(customer.systemIds.academyBenefits)}</td>
+              {this.separateId(
+                this.getProp(customer.systemIds.academyBenefits)
+              )}
             </tr>
             <tr>
               <td>UHW ref:</td>
-              <td>{this.getProp(customer.systemIds.uhw)}</td>
+              {this.separateId(this.getProp(customer.systemIds.uhw))}
             </tr>
             <tr>
               <td>Household ref:</td>
-              <td>{this.getProp(customer.systemIds.householdRef)}</td>
+              {this.separateId(this.getProp(customer.systemIds.householdRef))}
             </tr>
             <tr>
               <td>Rent account ref:</td>
-              <td>{this.getProp(customer.systemIds.rent)}</td>
+              {this.separateId(this.getProp(customer.systemIds.rent))}
             </tr>
           </tbody>
         </table>
