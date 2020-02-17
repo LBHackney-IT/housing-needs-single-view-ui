@@ -27,7 +27,6 @@ export default class CaseInformation extends Component {
             <li>
               <a
                 href={`https://live.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
-                target="_blank"
               >
                 Link to PHP
               </a>
@@ -35,7 +34,6 @@ export default class CaseInformation extends Component {
             <li>
               <a
                 href={`https://live.housingjigsaw.co.uk/customers/customer/${customer.systemIds.jigsaw}`}
-                target="_blank"
               >
                 Link to Jigsaw
               </a>
