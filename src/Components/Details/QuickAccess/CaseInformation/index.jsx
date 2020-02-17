@@ -10,6 +10,19 @@ export default class CaseInformation extends Component {
       return <></>;
     }
 
+    let phpLink = '';
+    if (customer.housingNeeds.jigsawCaseId) {
+      phpLink = (
+        <a
+          href={`https://live.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Link to PHP
+        </a>
+      );
+    }
+
     return (
       <div className="quick-access__item">
         <h3>Case Information</h3>
@@ -24,15 +37,7 @@ export default class CaseInformation extends Component {
         </table>
         <div className="quick-access__item__links">
           <ul>
-            <li>
-              <a
-                href={`https://live.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Link to PHP
-              </a>
-            </li>
+            <li>{phpLink}</li>
             <li>
               <a
                 href={`https://live.housingjigsaw.co.uk/customers/customer/${customer.systemIds.jigsaw}`}
