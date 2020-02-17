@@ -7,7 +7,7 @@ export default class ContactDetails extends Component {
     const phonesComponent = (
       <td>
         {customer.phone.map(phone => (
-          <p> {phone.replace(/\D/g, '')} </p>
+          <p key={phone}> {phone.replace(/\D/g, '')} </p>
         ))}
       </td>
     );
