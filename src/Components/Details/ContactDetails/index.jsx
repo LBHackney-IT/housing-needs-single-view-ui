@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 export default class ContactDetails extends Component {
   render() {
     const { customer } = this.props;
+    let phonesComponent = '';
 
-    const phonesComponent = (
-      <td>
-        {customer.phone.map(phone => (
-          <p> {phone.replace(/\D/g, '')} </p>
-        ))}
-      </td>
-    );
+    if (customer.phone) {
+      phonesComponent = customer.phone.map(phone => (
+        <p key={phone}> {phone.replace(/\D/g, '')} </p>
+      ));
+    }
 
     return (
       <div className="details__left-column__item">
@@ -19,7 +18,7 @@ export default class ContactDetails extends Component {
           <tbody>
             <tr>
               <td>Phone no:</td>
-              {phonesComponent}
+              <td>{phonesComponent}</td>
             </tr>
             <tr>
               <td>Email:</td>
