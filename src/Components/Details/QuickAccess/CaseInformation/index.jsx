@@ -26,7 +26,6 @@ export default class CaseInformation extends Component {
           <ul>
             <li>
               <a
-                //`https://live.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`
                 href={`https://live.housingjigsaw.co.uk/prah/case/${customer.housingNeeds.jigsawCaseId}/php`}
                 target="_blank"
                 rel="noopener noreferrer"
