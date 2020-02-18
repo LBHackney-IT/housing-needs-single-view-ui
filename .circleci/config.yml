@@ -35,6 +35,8 @@ jobs:
           paths: .
 
   build-test:
+    executor: my-executor
+
     steps:
       - attach_workspace:
           at: ~/repo
