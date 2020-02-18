@@ -56,10 +56,10 @@ export default class GroupedTable extends Component {
           <tbody>
             {Object.keys(this.state.groupedRecords).map(source => {
               return [this.divider(source)].concat(
-                this.state.groupedRecords[source].map(record => {
+                this.state.groupedRecords[source].map((record, i) => {
                   return (
                     <ResultRow
-                      key={record.id}
+                      key={i}
                       result={record}
                       selectable={this.props.selectable}
                       onSelected={this.rowSelected}

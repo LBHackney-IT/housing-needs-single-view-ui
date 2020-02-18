@@ -11,6 +11,7 @@ export default class ContactDetails extends Component {
       ));
     }
 
+
     return (
       <div className="details__left-column__item">
         <h2>Contact Details</h2>
