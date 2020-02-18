@@ -53,8 +53,6 @@ jobs:
           commad: |
             yarn start
 
-          background: true
-
       - run:
           name: test
           commad: |
