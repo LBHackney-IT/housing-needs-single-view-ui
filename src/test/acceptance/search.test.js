@@ -27,10 +27,6 @@ describe('Search', () => {
     });
   };
 
-  beforeAll(async () => {
-    process.env.REACT_APP_HN_API_URL = 'http://localhost:3000';
-  });
-
   describe('Login to Single View with valid token', () => {
     beforeAll(async () => {
       await openBrowser({ headless: false });
@@ -71,17 +67,17 @@ describe('Search', () => {
 
   describe('Search Single View', () => {
     beforeAll(async () => {
-      await openBrowser({ headless: true });
+      await openBrowser({ headless: false, args: ['--disable-web-security'] });
       await setHackneyCookie(true);
       await intercept(
-        'http://localdev.hackney.gov.uk:3000/customers?firstName=john&lastName=smith',
-        request => {
-          request.respond({
+        'http://localdev.hackney.gov.uk:3000/customers?firstName=John&lastName=Smith',
+        {
+          body: {
             grouped: [
               [
                 {
-                  id: '014541/1',
-                  firstName: 'Leon John',
+                  id: '012345/1',
+                  firstName: 'John',
                   lastName: 'Smith',
                   dob: null,
                   nino: null,
@@ -89,12 +85,12 @@ describe('Search', () => {
                   postcode: null,
                   source: 'UHT-Contacts',
                   links: {
-                    uhContact: 1852
+                    uhContact: 1002
                   }
                 },
                 {
-                  id: '41565',
-                  firstName: 'Leon John',
+                  id: '12346',
+                  firstName: 'John',
                   lastName: 'Smith',
                   dob: null,
                   nino: null,
@@ -102,29 +98,29 @@ describe('Search', () => {
                   postcode: null,
                   source: 'UHW',
                   links: {
-                    uhContact: 1852
+                    uhContact: 1342
                   }
                 }
               ],
               [
                 {
-                  id: '043362/1',
+                  id: '04242/1',
                   firstName: 'John',
                   lastName: 'Smith',
-                  dob: '17/05/1939',
+                  dob: '17/07/1993',
                   nino: null,
                   address: null,
-                  postcode: 'N1 6PN',
+                  postcode: 'E8 1EA',
                   source: 'UHT-Contacts',
                   links: {
-                    uhContact: 11920
+                    uhContact: 12320
                   }
                 },
                 {
                   id: '26280',
                   firstName: 'John',
                   lastName: 'Smith',
-                  dob: '17/05/1939',
+                  dob: '17/07/1993',
                   nino: null,
                   address: '',
                   postcode: null,
@@ -137,13 +133,13 @@ describe('Search', () => {
             ],
             ungrouped: [
               {
-                id: '30108713X',
+                id: '3234213X',
                 firstName: null,
                 lastName: null,
                 dob: null,
                 nino: null,
-                address: '4 Stuart House, Queen Anne Road, London, E9 7AJ',
-                postcode: 'E9 7AJ',
+                address: '1 Hillman St, Hackney, London E8 1DY',
+                postcode: 'E8 1DY',
                 source: 'ACADEMY-CouncilTax',
                 links: {
                   hbClaimId: null
@@ -151,7 +147,7 @@ describe('Search', () => {
               }
             ],
             connected: []
-          });
+          }
         }
       );
     });
@@ -169,8 +165,15 @@ describe('Search', () => {
       await waitFor('Create a single view of a customer');
     }, 30000);
 
+    // obvs this is wrong
+    test('Page contains "Error"', async () => {
+      await expect(text('Error').exists()).toBeTruthy();
+    });
+
     test('Page contains "Customer records"', async () => {
-      await expect(text('Customers with matching details\n').exists()).toBeTruthy();
+      await expect(
+        text('Customers with matching details\n').exists()
+      ).toBeTruthy();
     });
 
     afterAll(async () => {
