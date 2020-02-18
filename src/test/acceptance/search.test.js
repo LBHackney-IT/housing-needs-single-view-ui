@@ -29,7 +29,7 @@ describe('Search', () => {
 
   describe('Login to Single View with valid token', () => {
     beforeAll(async () => {
-      await openBrowser({ headless: false });
+      await openBrowser({ headless: true });
       await setHackneyCookie(true);
     });
 
@@ -48,7 +48,7 @@ describe('Search', () => {
 
   describe('Cannot login to Single View with invalid token', () => {
     beforeAll(async () => {
-      await openBrowser({ headless: false });
+      await openBrowser({ headless: true });
       await setHackneyCookie(false);
     });
 
