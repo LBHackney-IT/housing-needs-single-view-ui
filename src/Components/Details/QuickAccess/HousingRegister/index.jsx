@@ -31,7 +31,7 @@ export default class HousingRegister extends Component {
   render() {
     const { customer } = this.props;
 
-    if (!customer.housingRegister[0].biddingNo) {
+    if (!customer.housingRegister[0]) {
       return <></>;
     }
 

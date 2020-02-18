@@ -12,6 +12,15 @@ export default class SystemIds extends Component {
 
   render() {
     const { customer } = this.props;
+
+    let appRef = 'No Data';
+    if (customer.housingRegister[0]) {
+      appRef = this.separateId(
+        this.getProp(customer.housingRegister[0].applicationRef),
+        'applicationRef'
+      );
+    }
+
     return (
       <div className="details__left-column__item">
         <h2>System IDs</h2>
@@ -19,12 +28,7 @@ export default class SystemIds extends Component {
           <tbody>
             <tr>
               <td>Application ref:</td>
-              <td>
-                {this.separateId(
-                  this.getProp(customer.housingRegister[0].applicationRef),
-                  'applicationRef'
-                )}
-              </td>
+              <td>{appRef}</td>
             </tr>
             <tr>
               <td>Jigsaw customer no:</td>
