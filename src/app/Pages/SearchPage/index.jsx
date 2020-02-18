@@ -46,35 +46,37 @@ export default class SearchPage extends Component {
         <h2>Search for a customer</h2>
 
         <form action={this.searchLink()}>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="firstName">
-              First Name
-            </label>
-            <input
-              className="govuk-input"
-              type="text"
-              name="firstName"
-              onChange={this.handleChange}
-              value={this.state.firstname}
-            />
-          </div>
-          <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="first_name">
-              Last Name
-            </label>
-            <input
-              className="govuk-input"
-              type="text"
-              name="lastName"
-              onChange={this.handleChange}
-              value={this.state.lastName}
-            />
-          </div>
-          <div className="govuk-form-group">
-            <button className="govuk-button lbh-button" type="submit">
-              Search
-            </button>
-          </div>
+          <fieldset className="govuk-fieldset lbh-fieldset">
+            <div className="govuk-form-group govuk-body govuk-!-margin-bottom-5 lbh-form-group">
+              <label className="govuk-label lbh-label" htmlFor="firstName">
+                First Name
+              </label>
+              <input
+                className="govuk-input lbh-input"
+                type="text"
+                name="firstName"
+                onChange={this.handleChange}
+                value={this.state.firstname}
+              />
+            </div>
+            <div className="govuk-form-group govuk-body govuk-!-margin-bottom-5 lbh-form-group">
+              <label className="govuk-label lbh-label" htmlFor="lastName">
+                Last Name
+              </label>
+              <input
+                className="govuk-input lbh-input"
+                type="text"
+                name="lastName"
+                onChange={this.handleChange}
+                value={this.state.lastName}
+              />
+            </div>
+            <div className="govuk-form-group govuk-body govuk-!-margin-bottom-5 lbh-form-group">
+              <button className="govuk-button lbh-button" type="submit">
+                Search
+              </button>
+            </div>
+          </fieldset>
         </form>
       </div>
     );
