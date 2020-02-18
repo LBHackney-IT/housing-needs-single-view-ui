@@ -47,7 +47,10 @@ jobs:
             export ENV=test
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
             yarn build
-      - run: yarn start
+      - run:
+          name: Run the application
+          commad: yarn start
+          background: true
       - run: yarn test
 
   build-deploy-staging:
