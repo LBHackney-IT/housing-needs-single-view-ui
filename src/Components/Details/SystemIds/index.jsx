@@ -21,7 +21,7 @@ export default class SystemIds extends Component {
               <td>Application ref:</td>
               <td>
                 {this.separateId(
-                  this.getProp(customer.housingRegister.applicationRef),
+                  this.getProp(customer.housingRegister[0].applicationRef),
                   'applicationRef'
                 )}
               </td>

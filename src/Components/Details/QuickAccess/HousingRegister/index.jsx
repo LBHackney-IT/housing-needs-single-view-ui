@@ -4,7 +4,7 @@ export default class HousingRegister extends Component {
   render() {
     const { customer } = this.props;
 
-    if (!customer.housingRegister.biddingNo) {
+    if (!customer.housingRegister[0].biddingNo) {
       return <></>;
     }
 
@@ -15,11 +15,11 @@ export default class HousingRegister extends Component {
           <tbody>
             <tr>
               <td>Bidding no:</td>
-              <td>{customer.housingRegister.biddingNo}</td>
+              <td>{customer.housingRegister[0].biddingNo}</td>
             </tr>
             <tr>
               <td>Band:</td>
-              <td>{customer.housingRegister.band}</td>
+              <td>{customer.housingRegister[0].band}</td>
             </tr>
           </tbody>
         </table>
