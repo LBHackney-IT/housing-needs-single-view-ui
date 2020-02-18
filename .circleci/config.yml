@@ -34,6 +34,20 @@ jobs:
           root: ~/repo
           paths: .
 
+  build-test:
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: build
+          command: |
+            export ENV=test
+            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
+            yarn build
+      - run: yarn start
+      - run: yarn test
+
   build-deploy-staging:
     executor: my-executor
 
@@ -83,6 +97,7 @@ workflows:
   continuous-delivery:
     jobs:
       - install-dependencies
+      - build-test
       - build-deploy-staging:
           requires:
             - install-dependencies

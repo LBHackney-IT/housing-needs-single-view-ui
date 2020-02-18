@@ -10,7 +10,8 @@ const {
   textBox,
   setCookie,
   below,
-  intercept
+  intercept,
+  waitFor
 } = require('taiko');
 
 describe('Search', () => {
@@ -70,26 +71,106 @@ describe('Search', () => {
 
   describe('Search Single View', () => {
     beforeAll(async () => {
-      await openBrowser({ headless: false });
+      await openBrowser({ headless: true });
       await setHackneyCookie(true);
-      // await intercept(
-      //   'http://localhost:3000/customers?firstName=Matthew&lastName='
-      // );
+      await intercept(
+        'http://localdev.hackney.gov.uk:3000/customers?firstName=john&lastName=smith',
+        request => {
+          request.respond({
+            grouped: [
+              [
+                {
+                  id: '014541/1',
+                  firstName: 'Leon John',
+                  lastName: 'Smith',
+                  dob: null,
+                  nino: null,
+                  address: null,
+                  postcode: null,
+                  source: 'UHT-Contacts',
+                  links: {
+                    uhContact: 1852
+                  }
+                },
+                {
+                  id: '41565',
+                  firstName: 'Leon John',
+                  lastName: 'Smith',
+                  dob: null,
+                  nino: null,
+                  address: '',
+                  postcode: null,
+                  source: 'UHW',
+                  links: {
+                    uhContact: 1852
+                  }
+                }
+              ],
+              [
+                {
+                  id: '043362/1',
+                  firstName: 'John',
+                  lastName: 'Smith',
+                  dob: '17/05/1939',
+                  nino: null,
+                  address: null,
+                  postcode: 'N1 6PN',
+                  source: 'UHT-Contacts',
+                  links: {
+                    uhContact: 11920
+                  }
+                },
+                {
+                  id: '26280',
+                  firstName: 'John',
+                  lastName: 'Smith',
+                  dob: '17/05/1939',
+                  nino: null,
+                  address: '',
+                  postcode: null,
+                  source: 'UHW',
+                  links: {
+                    uhContact: 11920
+                  }
+                }
+              ]
+            ],
+            ungrouped: [
+              {
+                id: '30108713X',
+                firstName: null,
+                lastName: null,
+                dob: null,
+                nino: null,
+                address: '4 Stuart House, Queen Anne Road, London, E9 7AJ',
+                postcode: 'E9 7AJ',
+                source: 'ACADEMY-CouncilTax',
+                links: {
+                  hbClaimId: null
+                }
+              }
+            ],
+            connected: []
+          });
+        }
+      );
     });
 
     test('Goto single view home page', async () => {
       await goto('http://localhost:3001');
     });
 
-    test('Search for "Matthew"', async () => {
+    test('Search for "John Smith"', async () => {
       await focus(textBox(below('First Name')));
-      await write('Matthew');
+      await write('John');
+      await focus(textBox(below('Last Name')));
+      await write('Smith');
       await press('Enter');
-    });
+      await waitFor('Create a single view of a customer');
+    }, 30000);
 
-    // obvs this is wrong
-    test('Page contains "Error"', async () => {
-      await expect(text('Error').exists()).toBeTruthy();
+    test('Page contains "Customer records"', async () => {
+      await expect(text('Customers with matching details\n').exists()).toBeTruthy();
     });
 
     afterAll(async () => {
