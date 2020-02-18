@@ -99,7 +99,9 @@ workflows:
   continuous-delivery:
     jobs:
       - install-dependencies
-      - build-test
+      - build-test:
+          requires:
+            - install-dependencies
       - build-deploy-staging:
           requires:
             - install-dependencies
