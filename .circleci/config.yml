@@ -46,6 +46,7 @@ jobs:
           command: |
             export ENV=test
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
+            export PORT=3001
             yarn build
       - run: npm run ci
 
