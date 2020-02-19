@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Utils from '../../../lib/Utils';
 import './index.scss';
-import { RecordsTable } from '../';
+import { RecordsTable } from '..';
 import { DeleteCustomerRecord } from '../../../Gateways';
 
 export default class PreviousRecord extends Component {
