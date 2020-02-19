@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../../../Modal';
+import { formatDisplayDate } from '../../../../lib/Utils';
 
 export default class HousingRegister extends Component {
   housingRegisterRecord(t) {
@@ -20,7 +21,7 @@ export default class HousingRegister extends Component {
           </tr>
           <tr>
             <td>Effective Band Date:</td>
-            <td>{t.startDate}</td>
+            <td>{formatDisplayDate(t.startDate)}</td>
           </tr>
           <br />
         </tbody>
