@@ -19,7 +19,7 @@ export default class HousingRegister extends Component {
             <td>{t.band}</td>
           </tr>
           <tr>
-            <td>Date:</td>
+            <td>Effective Band Date:</td>
             <td>{t.startDate}</td>
           </tr>
           <br />
