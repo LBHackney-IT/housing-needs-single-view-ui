@@ -26,6 +26,15 @@ export default class PersonalDetails extends Component {
             </tr>
           </tbody>
         </table>
+        <div class="row">
+          <a
+            href={`/customers/${this.props.record.id}/vulnerable`}
+            role="button"
+            className="govuk-button lbh-button"
+          >
+            Add vulnerable customer notes
+          </a>
+        </div>
       </div>
     );
   }
