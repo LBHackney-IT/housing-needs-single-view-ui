@@ -41,7 +41,7 @@ export default class PreviousRecord extends Component {
 
           <div>
             <a
-              href={`/customers/${this.props.record.id}`}
+              href={`/customers/${this.props.record.id}/view`}
               role="button"
               className="govuk-button lbh-button"
             >
