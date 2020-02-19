@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
-import './index.css';
+import './index.scss';
 
 export default class DocumentModal extends Component {
   render() {

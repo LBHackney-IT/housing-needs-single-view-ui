@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ResultRow from '../ResultRow';
-import './index.css';
+import './index.scss';
 
 export default class GroupedTable extends Component {
   constructor(props) {

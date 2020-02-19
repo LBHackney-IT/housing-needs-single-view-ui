@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Utils from '../../../../lib/Utils';
 import Modal from '../../../Modal';
 import moment from 'moment';
-import './index.css';
+import './index.scss';
 
 export default class Tenancy extends Component {
   tenancyInfo() {
