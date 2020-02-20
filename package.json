@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@sentry/browser": "^5.12.1",
+    "govuk-frontend": "^3.5.0",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
+    "lbh-frontend": "^1.7.0",
     "moment": "^2.24.0",
+    "node-sass": "^4.13.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.2",

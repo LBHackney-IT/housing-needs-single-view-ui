@@ -1,0 +1,19 @@
+.previousRecord {
+  border: 1px solid #ccc;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.previousRecord .row {
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.previousRecord .lbh-button {
+  margin-left: 5px;
+  margin-top: 0;
+}
