@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
+import Modal from '../../../Modal';
+import { formatDisplayDate } from '../../../../lib/Utils';
 
 export default class HousingRegister extends Component {
+  housingRegisterRecord(t) {
+    return (
+      <table>
+        <tbody>
+          <tr>
+            <td>Application Ref:</td>
+            <td>{t.applicationRef}</td>
+          </tr>
+          <tr>
+            <td>Bidding no:</td>
+            <td>{t.biddingNo}</td>
+          </tr>
+          <tr>
+            <td>Band:</td>
+            <td>{t.band}</td>
+          </tr>
+          <tr>
+            <td>Effective Band Date:</td>
+            <td>{formatDisplayDate(t.startDate)}</td>
+          </tr>
+          <br />
+        </tbody>
+      </table>
+    );
+  }
+
   render() {
     const { customer } = this.props;
 
-    if (!customer.housingRegister.biddingNo) {
+    if (!customer.housingRegister[0]) {
       return <></>;
     }
 
@@ -15,27 +43,29 @@ export default class HousingRegister extends Component {
           <tbody>
             <tr>
               <td>Bidding no:</td>
-              <td>{customer.housingRegister.biddingNo}</td>
+              <td>{customer.housingRegister[0].biddingNo}</td>
             </tr>
             <tr>
               <td>Band:</td>
-              <td>{customer.housingRegister.band}</td>
+              <td>{customer.housingRegister[0].band}</td>
             </tr>
           </tbody>
         </table>
-        {/* <div className="quick-access__item__links">
+        <div className="quick-access__item__links">
           <ul>
             <li>
               <Modal trigger={<a href="#/">More details</a>}>
-                <h3>...</h3>
+                <h3>Housing Register Information</h3>
                 <br />
                 <table>
-                  <tbody></tbody>
+                  {customer.housingRegister.map(t =>
+                    this.housingRegisterRecord(t)
+                  )}
                 </table>
               </Modal>
             </li>
           </ul>
-        </div> */}
+        </div>
       </div>
     );
   }

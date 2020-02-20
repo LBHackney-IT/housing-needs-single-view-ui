@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 let Utils = {
   formatCurrency(amount) {
     if (typeof amount === 'number') {
@@ -26,6 +28,10 @@ let Utils = {
     if (typeof input === 'string') input = input.trim();
     if (input === '') return null;
     return input;
+  },
+
+  formatDisplayDate(input) {
+    return moment(input).format('DD/MM/YYYY');
   }
 };
 

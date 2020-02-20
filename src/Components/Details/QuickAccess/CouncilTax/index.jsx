@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../../../Modal';
-import Utils from '../../../../lib/Utils';
-import moment from 'moment';
+import { formatCurrency, formatDisplayDate } from '../../../../lib/Utils';
 
 export default class CouncilTax extends Component {
   render() {
@@ -18,9 +17,7 @@ export default class CouncilTax extends Component {
           <tbody>
             <tr>
               <td>Balance:</td>
-              <td>
-                {Utils.formatCurrency(customer.councilTax.accountBalance)}
-              </td>
+              <td>{formatCurrency(customer.councilTax.accountBalance)}</td>
             </tr>
           </tbody>
         </table>
@@ -39,9 +36,7 @@ export default class CouncilTax extends Component {
                     <tr>
                       <td>Account balance</td>
                       <td>
-                        {Utils.formatCurrency(
-                          customer.councilTax.accountBalance
-                        )}
+                        {formatCurrency(customer.councilTax.accountBalance)}
                       </td>
                     </tr>
                     <tr>
@@ -56,9 +51,9 @@ export default class CouncilTax extends Component {
                             {customer.councilTax.transactions.map((t, i) => {
                               return (
                                 <tr key={i}>
-                                  <td>{moment(t.date).format('DD/MM/YYYY')}</td>
+                                  <td>{formatDisplayDate(t.date)}</td>
                                   <td>{t.description}</td>
-                                  <td>{Utils.formatCurrency(t.amount)}</td>
+                                  <td>{formatCurrency(t.amount)}</td>
                                 </tr>
                               );
                             })}
