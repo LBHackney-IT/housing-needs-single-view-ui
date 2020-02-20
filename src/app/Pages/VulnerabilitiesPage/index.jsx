@@ -28,33 +28,36 @@ export default class VulnerabilitiesPage extends Component {
     }
     return (
       <div className="lbh-container">
-        <div className="row">
-          <h2 className="lbh-heading-h2">Add a note about vulnerabilities</h2>
-        </div>
-        <div className="govuk-form-group lbh-form-group">
-          <label
-            className="govuk-label lbh-label"
-            htmlFor="vulnerabilities-detail"
-          >
-            Write a description about any vulnerabilities you are aware of here.
-          </label>
-          <textarea
-            className="govuk-textarea lbh-textarea"
-            id="vulnerabilities-detail"
-            name="vulnerabilities-detail"
-            rows="5"
-            onChange={this.setText}
-            value={this.state.text}
-          ></textarea>
-        </div>
-        <div className="row">
-          <button
-            className="govuk-button lbh-button"
-            data-module="govuk-button"
-            onClick={this.addVulnerability}
-          >
-            Save and continue
-          </button>
+        <div>
+          <div className="row">
+            <h2 className="lbh-heading-h2">Add a note about vulnerabilities</h2>
+          </div>
+          <div className="govuk-form-group lbh-form-group">
+            <label
+              className="govuk-label lbh-label"
+              htmlFor="vulnerabilities-detail"
+            >
+              Write a description about any vulnerabilities you are aware of
+              here.
+            </label>
+            <textarea
+              className="govuk-textarea lbh-textarea"
+              id="vulnerabilities-detail"
+              name="vulnerabilities-detail"
+              rows="5"
+              onChange={this.setText}
+              value={this.state.text}
+            ></textarea>
+          </div>
+          <div className="row">
+            <button
+              className="govuk-button lbh-button"
+              data-module="govuk-button"
+              onClick={this.addVulnerability}
+            >
+              Save and continue
+            </button>
+          </div>
         </div>
       </div>
     );
