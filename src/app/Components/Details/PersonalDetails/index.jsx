@@ -32,7 +32,7 @@ export default class PersonalDetails extends Component {
             role="button"
             className="govuk-button lbh-button"
           >
-            Add vulnerable customer notes
+            Add vulnerable customer note
           </a>
         </div>
       </div>
