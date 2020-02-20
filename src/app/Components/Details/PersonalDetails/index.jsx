@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default class PersonalDetails extends Component {
   render() {
-    const { customer } = this.props;
+    const { id, customer } = this.props;
 
     return (
       <div className="details__left-column__item">
@@ -28,7 +28,7 @@ export default class PersonalDetails extends Component {
         </table>
         <div class="row">
           <a
-            href={`/customers/${this.props.record.id}/vulnerable`}
+            href={`/customers/${id}/vulnerabilities`}
             role="button"
             className="govuk-button lbh-button"
           >

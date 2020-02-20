@@ -61,7 +61,10 @@ export default class DetailsPage extends Component {
     return (
       <div className="lbh-container row details">
         <div className="details__left-column">
-          <PersonalDetails customer={this.state.customer} />
+          <PersonalDetails
+            customer={this.state.customer}
+            id={this.props.match.params.id}
+          />
           <ContactDetails customer={this.state.customer} />
           <AddressDetails customer={this.state.customer} />
           <Team customer={this.state.customer} />
