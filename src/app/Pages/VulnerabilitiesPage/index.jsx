@@ -28,36 +28,144 @@ export default class VulnerabilitiesPage extends Component {
     }
     return (
       <div className="lbh-container">
-        <div>
-          <div className="row">
-            <h2 className="lbh-heading-h2">Add a note about vulnerabilities</h2>
+        <div className="row">
+          <h2 className="lbh-heading-h2">Add a note about vulnerabilities</h2>
+        </div>
+
+        <div className="govuk-form-group lbh-form-group">
+          <label
+            className="govuk-label lbh-label"
+            htmlFor="vulnerabilities-detail"
+          >
+            Write a description about any vulnerabilities you are aware of here.
+          </label>
+          <textarea
+            className="govuk-textarea lbh-textarea"
+            id="vulnerabilities-detail"
+            name="vulnerabilities-detail"
+            rows="5"
+            onChange={this.setText}
+            value={this.state.text}
+          ></textarea>
+        </div>
+
+        <br />
+
+        <div className="row">
+          <h3 className="lbh-heading-h3">What to look out for</h3>
+        </div>
+        <div
+          class="govuk-accordion lbh-accordion"
+          data-module="govuk-accordion"
+        >
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  Active case with other services?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 1</li>
+              </ul>
+            </div>
           </div>
-          <div className="govuk-form-group lbh-form-group">
-            <label
-              className="govuk-label lbh-label"
-              htmlFor="vulnerabilities-detail"
-            >
-              Write a description about any vulnerabilities you are aware of
-              here.
-            </label>
-            <textarea
-              className="govuk-textarea lbh-textarea"
-              id="vulnerabilities-detail"
-              name="vulnerabilities-detail"
-              rows="5"
-              onChange={this.setText}
-              value={this.state.text}
-            ></textarea>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  At risk of arrears?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+            </div>
           </div>
-          <div className="row">
-            <button
-              className="govuk-button lbh-button"
-              data-module="govuk-button"
-              onClick={this.addVulnerability}
-            >
-              Save and continue
-            </button>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  Benefits trigger events?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+            </div>
           </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  Unusual behaviour?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  Significant change or transition?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  Emotional shock?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h5 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button">
+                  Level of stress?
+                </span>
+              </h5>
+            </div>
+            <div class="govuk-accordion__section-content">
+              <ul class="lbh-list lbh-list--bullet">
+                <li>Example item 2</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <button
+            className="govuk-button lbh-button"
+            data-module="govuk-button"
+            onClick={this.addVulnerability}
+          >
+            Save and continue
+          </button>
         </div>
       </div>
     );
