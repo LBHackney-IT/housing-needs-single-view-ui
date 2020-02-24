@@ -1,9 +1,27 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
+import nock from 'nock';
 
 describe('Search', () => {
   before(async () => {
-    cy.route('/local/', { id: 'wabalubadubdub' });
+    const url = `http://localdev.hackney.gov.uk:3000/customers?firstName=John&lastName=Smith`;
+    //cy.server();
+    //cy.route(url, 'response');
+
+    const scope = nock(`${process.env.REACT_APP_HN_API_URL}`)
+      .get('/customers?firstName=John&lastName=Smith')
+      .reply(200, {
+        license: {
+          key: 'mit',
+          name: 'MIT License',
+          spdx_id: 'MIT',
+          url: 'https://api.github.com/licenses/mit',
+          node_id: 'MDc6TGljZW5zZTEz'
+        }
+      });
+    // cy.route('/local/', {
+    //   id: 'wabalubadubdub'
+    // });
   });
 
   const setHackneyCookie = async isValidGroup => {
