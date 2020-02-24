@@ -1,24 +1,28 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
-import nock from 'nock';
+const nock = require('nock');
 
 describe('Search', () => {
-  before(async () => {
-    const url = `http://localdev.hackney.gov.uk:3000/customers?firstName=John&lastName=Smith`;
+  beforeEach(async () => {
+    //const url = `http://localdev.hackney.gov.uk:3000/customers?firstName=John&lastName=Smith`;
     //cy.server();
     //cy.route(url, 'response');
 
-    const scope = nock(`${process.env.REACT_APP_HN_API_URL}`)
-      .get('/customers?firstName=John&lastName=Smith')
-      .reply(200, {
-        license: {
-          key: 'mit',
-          name: 'MIT License',
-          spdx_id: 'MIT',
-          url: 'https://api.github.com/licenses/mit',
-          node_id: 'MDc6TGljZW5zZTEz'
-        }
-      });
+    await nock('http://localdev.hackney.gov.uk:3000')
+      .get('/customers')
+      //.query({ firstName: 'John', lastName: 'Smith' })
+      .reply(200, 'domain matched');
+
+    // const scope = nock('http://localdev.hackney.gov.uk:3000')
+    //   .get('/customers?firstName=John&lastName=Smith')
+    //   .reply(200, {
+    //     license: {
+    //       key: 'mit',
+    //       name: 'MIT License',
+    //       spdx_id: 'MIT',
+    //       node_id: 'MDc6TGljZW5zZTEz'
+    //     }
+    //   });
     // cy.route('/local/', {
     //   id: 'wabalubadubdub'
     // });
@@ -37,6 +41,14 @@ describe('Search', () => {
 
   it('opens the page', () => {
     cy.visit('http://localhost:3001');
+    const Http = new XMLHttpRequest();
+    const url = 'http://localdev.hackney.gov.uk:3000/customers';
+    Http.open('GET', url);
+    Http.send();
+
+    Http.onreadystatechange = e => {
+      console.log(Http.responseText);
+    };
   });
 
   it('Logs into Single View with a valid token', () => {

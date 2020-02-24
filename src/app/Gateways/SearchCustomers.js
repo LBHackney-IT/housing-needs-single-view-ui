@@ -7,13 +7,10 @@ function SearchCustomers(query, cb) {
     })
     .join('&');
 
-  fetch(
-    `${process.env.REACT_APP_HN_API_URL}/customers?${queryString}`,
-    AuthHeader
-  )
+  fetch(`${process.env.REACT_APP_HN_API_URL}/customers`, AuthHeader)
     .then(function(response) {
-      if(response.status >= 400){
-        return cb("Error searching")
+      if (response.status >= 400) {
+        return cb('Error searching');
       }
       return response.json();
     })
