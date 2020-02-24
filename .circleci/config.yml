@@ -85,6 +85,8 @@ workflows:
     jobs:
       - install-dependencies
       - cypress/run:
+          start: yarn start
+          wait-on: 'http://localhost:3001'
           requires:
             - install-dependencies
       - build-deploy-staging:
