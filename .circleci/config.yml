@@ -35,17 +35,6 @@ jobs:
           root: ~/repo
           paths: .
 
-  run-tests:
-    executor: my-executor
-
-    steps:
-      - attach_workspace:
-          at: ~/repo
-
-      - run:
-          name: 'Start server'
-          command: npm run react-scripts start
-
   build-deploy-staging:
     executor: my-executor
 
@@ -95,12 +84,12 @@ workflows:
   continuous-delivery:
     jobs:
       - install-dependencies
-      - run-tests:
+      - cypress/run:
           requires:
             - install-dependencies
       - build-deploy-staging:
           requires:
-            - run-tests
+            - cypress/run
           filters:
             branches:
               only:
