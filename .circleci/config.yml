@@ -43,9 +43,8 @@ jobs:
           at: ~/repo
 
       - run:
-          name: 'Start tests'
-          command: npm run cypress
-          background: true
+          name: 'Start server'
+          command: npm run react-scripts start
 
   build-deploy-staging:
     executor: my-executor
