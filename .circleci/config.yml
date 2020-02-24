@@ -35,6 +35,18 @@ jobs:
           root: ~/repo
           paths: .
 
+  run-tests:
+    executor: my-executor
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: 'Start tests'
+          command: npm run cypress
+          background: true
+
   build-deploy-staging:
     executor: my-executor
 
@@ -84,9 +96,12 @@ workflows:
   continuous-delivery:
     jobs:
       - install-dependencies
-      - build-deploy-staging:
+      - run-tests:
           requires:
             - install-dependencies
+      - build-deploy-staging:
+          requires:
+            - run-tests
           filters:
             branches:
               only:
