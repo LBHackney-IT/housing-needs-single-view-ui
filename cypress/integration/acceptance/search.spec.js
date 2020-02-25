@@ -1,9 +1,44 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
-const nock = require('nock');
+import { FakeServer } from 'simple-fake-server';
 
 describe('Search', () => {
+  let fakeServer;
+  const body = {
+    grouped: [],
+    ungrouped: [],
+    connected: [
+      {
+        id: 10,
+        firstName: 'John',
+        lastName: 'Smith',
+        dob: null,
+        nino: null,
+        address: '',
+        source: 'SINGLEVIEW',
+        links: [
+          {
+            id: 26,
+            customer_id: 10,
+            system_id: 5,
+            remote_id: '111111/1',
+            first_name: 'John',
+            last_name: 'Smith',
+            address: '33 address, Address, Stamford Hill, LAMAMA, ZO6 5FE',
+            nino: 'SC1234565',
+            dob: '1946-02-03T00:00:00.000Z',
+            created_at: '2020-02-10T16:32:28.405Z',
+            updated_at: '2020-02-10T16:32:28.405Z',
+            system_name: 'ACADEMY-Benefits'
+          }
+        ]
+      }
+    ]
+  };
+
   beforeEach(async () => {
+    fakeServer = new FakeServer(8080);
+    fakeServer.start();
     //const url = `http://localdev.hackney.gov.uk:3000/customers?firstName=John&lastName=Smith`;
     //cy.server();
     //cy.route(url, 'response');
@@ -27,40 +62,10 @@ describe('Search', () => {
   });
 
   it('makes a fake request', () => {
-    nock('http://localdev.hackney.gov.uk:3000')
-      .get('/customers', { firstName: 'John', lastName: 'Smith' })
-      .reply(200, {
-        grouped: [],
-        ungrouped: [],
-        connected: [
-          {
-            id: 10,
-            firstName: 'John',
-            lastName: 'Smith',
-            dob: null,
-            nino: null,
-            address: '',
-            source: 'SINGLEVIEW',
-            links: [
-              {
-                id: 26,
-                customer_id: 10,
-                system_id: 5,
-                remote_id: '111111/1',
-                first_name: 'John',
-                last_name: 'Smith',
-                address: '33 address, Address, Stamford Hill, LAMAMA, ZO6 5FE',
-                nino: 'SC1234565',
-                dob: '1946-02-03T00:00:00.000Z',
-                created_at: '2020-02-10T16:32:28.405Z',
-                updated_at: '2020-02-10T16:32:28.405Z',
-                system_name: 'ACADEMY-Benefits'
-              }
-            ]
-          }
-        ]
-      });
-
+    fakeServer.http
+      .get()
+      .to('/customers?firstName=John&lastName=Smith')
+      .willReturn(body);
     setHackneyCookie(true);
     cy.visit('http://localhost:3001');
     cy.get('.govuk-input:first').type('John');
