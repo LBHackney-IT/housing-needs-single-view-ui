@@ -27,25 +27,59 @@ describe('Search', () => {
   });
 
   it('makes a fake request', () => {
-    const params = new URLSearchParams({
-      fistName: 'zahina',
-      lastName: 'khan'
-    });
-    nock('https://beta.singleview.hackney.gov.uk')
-      .get('/search', { firstName: 'zahina', lastName: 'khan' })
-      .reply(200, { results: [{ id: 'pgte' }] });
+    nock('http://localdev.hackney.gov.uk:3000')
+      .get('/customers', { firstName: 'John', lastName: 'Smith' })
+      .reply(200, {
+        grouped: [],
+        ungrouped: [],
+        connected: [
+          {
+            id: 10,
+            firstName: 'John',
+            lastName: 'Smith',
+            dob: null,
+            nino: null,
+            address: '',
+            source: 'SINGLEVIEW',
+            links: [
+              {
+                id: 26,
+                customer_id: 10,
+                system_id: 5,
+                remote_id: '111111/1',
+                first_name: 'John',
+                last_name: 'Smith',
+                address: '33 address, Address, Stamford Hill, LAMAMA, ZO6 5FE',
+                nino: 'SC1234565',
+                dob: '1946-02-03T00:00:00.000Z',
+                created_at: '2020-02-10T16:32:28.405Z',
+                updated_at: '2020-02-10T16:32:28.405Z',
+                system_name: 'ACADEMY-Benefits'
+              }
+            ]
+          }
+        ]
+      });
+
+    setHackneyCookie(true);
+    cy.visit('http://localhost:3001');
+    cy.get('.govuk-input:first').type('John');
+    cy.get('.govuk-input:last')
+      .type('Smith')
+      .type('{enter}');
+    cy.contains('Customers with matching details');
   });
 
-  // const setHackneyCookie = async isValidGroup => {
-  //   const group = isValidGroup
-  //     ? 'housingneeds-singleview-beta'
-  //     : 'some-other-group';
-  //   const token = jwt.sign({ groups: [group] }, 'a-secure-signature');
-  //   await cy.setCookie('hackneyToken', token, {
-  //     url: 'http://localhost:3001',
-  //     domain: 'localhost'
-  //   });
-  // };
+  const setHackneyCookie = async isValidGroup => {
+    const group = isValidGroup
+      ? 'housingneeds-singleview-beta'
+      : 'some-other-group';
+    const token = jwt.sign({ groups: [group] }, 'a-secure-signature');
+    await cy.setCookie('hackneyToken', token, {
+      url: 'http://localhost:3001',
+      domain: 'localhost'
+    });
+  };
 
   // it('opens the page', () => {
   //   cy.visit('http://localhost:3001');
