@@ -88,7 +88,7 @@ workflows:
           command: |
             export ENV=dev
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_DEV}
-          start: yarn start
+          start: yarn start & node ../src/FakeSVapi.js
           wait-on: 'http://localhost:3001'
           requires:
             - install-dependencies
