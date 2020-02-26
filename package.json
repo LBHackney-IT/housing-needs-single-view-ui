@@ -24,8 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'",
+    "cy:start": "react-scripts start & node ./src/FakeSVapi.js",
     "cy:run": "cypress run",
-    "cypress": "start-server-and-test start http://localhost:3001 cy:run"
+    "cypress": "start-server-and-test cy:start http://localhost:3001 cy:run"
   },
   "eslintConfig": {
     "extends": "react-app"
