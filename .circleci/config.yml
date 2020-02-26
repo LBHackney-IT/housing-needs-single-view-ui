@@ -85,10 +85,10 @@ workflows:
     jobs:
       - install-dependencies
       - cypress/run:
-          command: |
+          start: |
             export ENV=dev
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_DEV}
-          start: npm run cy:start
+            npm run cy:start
           wait-on: 'http://localhost:3001'
           requires:
             - install-dependencies
