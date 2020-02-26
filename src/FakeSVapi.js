@@ -11,8 +11,8 @@ const body = {
   connected: [
     {
       id: 10,
-      firstName: 'John',
-      lastName: 'Smith',
+      firstName: 'Rick',
+      lastName: 'Sanchez',
       dob: null,
       nino: null,
       address: '',
@@ -23,8 +23,8 @@ const body = {
           customer_id: 10,
           system_id: 5,
           remote_id: '111111/1',
-          first_name: 'John',
-          last_name: 'Smith',
+          first_name: 'Rick',
+          last_name: 'Sanchez',
           address: '33 address, Address, Stamford Hill, LAMAMA, ZO6 5FE',
           nino: 'SC1234565',
           dob: '1946-02-03T00:00:00.000Z',

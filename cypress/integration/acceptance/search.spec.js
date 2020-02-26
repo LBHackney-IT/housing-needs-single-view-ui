@@ -33,5 +33,6 @@ describe('Search', () => {
       .type('Smith')
       .type('{enter}');
     cy.contains('Customers with matching details');
+    cy.contains('Rick Sanchez');
   });
 });
