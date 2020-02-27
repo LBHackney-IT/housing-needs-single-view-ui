@@ -6,6 +6,7 @@ import QuickAccess from './QuickAccess';
 import SystemIds from './SystemIds';
 import Team from './Team';
 import AddressDetails from './AddressDetails';
+import PrototypesLink from './PrototypesLink';
 
 export {
   ContactDetails,
@@ -15,5 +16,6 @@ export {
   QuickAccess,
   SystemIds,
   Team,
-  AddressDetails
+  AddressDetails,
+  PrototypesLink
 };

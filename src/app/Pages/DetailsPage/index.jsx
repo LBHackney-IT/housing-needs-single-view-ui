@@ -11,7 +11,8 @@ import {
   QuickAccess,
   SystemIds,
   Team,
-  AddressDetails
+  AddressDetails,
+  PrototypesLink
 } from '../../Components/Details';
 import moment from 'moment';
 
@@ -69,6 +70,10 @@ export default class DetailsPage extends Component {
           <AddressDetails customer={this.state.customer} />
           <Team customer={this.state.customer} />
           <SystemIds customer={this.state.customer} />
+          <PrototypesLink
+            customer={this.state.customer}
+            id={this.props.match.params.id}
+          />
         </div>
         <div className="details__right-column">
           <QuickAccess customer={this.state.customer} />
