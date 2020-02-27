@@ -11,6 +11,14 @@ export default class ContactDetails extends Component {
       ));
     }
 
+    let emailsComponent = '';
+
+    if (customer.email) {
+      emailsComponent = customer.email.map(email => (
+        <p key={email}><a href={`mailto:${email}`}>{email}</a></p>
+      ));
+    }
+
 
     return (
       <div className="details__left-column__item">
@@ -23,7 +31,7 @@ export default class ContactDetails extends Component {
             </tr>
             <tr>
               <td>Email:</td>
-              <td>{customer.email}</td>
+              <td>{emailsComponent}</td>
             </tr>
           </tbody>
         </table>
