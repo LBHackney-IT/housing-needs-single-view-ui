@@ -307,7 +307,7 @@ app.get('/customers/:id/record', (req, res) => {
       ],
       dob: ['1969-02-01 12:00:00'],
       email: ['w.day@yahoo.co.uk'],
-      phone: ['07666666666'],
+      phone: ['07666666666', '07999666999'],
       nino: ['NR006660A'],
       name: [{ first: 'Wednesday', last: 'Adams', title: 'Miss' }],
       postcode: ['E7 8LS'],

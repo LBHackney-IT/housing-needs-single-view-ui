@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
+import { italic } from 'ansi-colors';
 
 describe('Search', () => {
   const setHackneyCookie = async isValidGroup => {
@@ -47,11 +48,21 @@ describe('Search', () => {
         .then(result => {
           result.each((_, otherThing) => {
             otherThing.click();
+            console.log(otherThing);
           });
         });
+
+      cy.get('.selected').should(
+        'have.css',
+        'background-color',
+        'rgb(158, 219, 158)'
+      );
+    });
+
+    it('Connects reconds', () => {
       cy.contains('Connect records')
         .scrollIntoView()
-        .click({force: true});
+        .click({ force: true });
     });
 
     it('User sees customer info', () => {
@@ -59,3 +70,11 @@ describe('Search', () => {
     });
   });
 });
+
+/*
+.then(result => {
+          console.log(result[0]);
+        });
+        */
+
+//.get('ul>li').each(function () {...})
