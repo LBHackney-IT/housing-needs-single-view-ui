@@ -40,14 +40,18 @@ describe('Search', () => {
     });
 
     it('Join relevant records', () => {
-      cy.get('.groupedTable').first()
+      cy.get('.groupedTable')
+        .first()
+        .scrollIntoView()
         .find('tr')
         .then(result => {
           result.each((_, otherThing) => {
             otherThing.click();
           });
         });
-      cy.contains('Connect records').click();
+      cy.contains('Connect records')
+        .scrollIntoView()
+        .click({force: true});
     });
 
     it('User sees customer info', () => {
