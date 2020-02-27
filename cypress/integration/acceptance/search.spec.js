@@ -68,6 +68,10 @@ describe('Search', () => {
     it('User sees customer info', () => {
       cy.get('h1').should('contain', 'Miss Wednesday Adams');
     });
+
+    it('User sees customer phone number', () => {
+      cy.contains('07666666666 07999666999');
+    });
   });
 });
 
