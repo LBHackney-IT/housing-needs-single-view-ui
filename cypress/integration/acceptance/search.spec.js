@@ -74,11 +74,3 @@ describe('Search', () => {
     });
   });
 });
-
-/*
-.then(result => {
-          console.log(result[0]);
-        });
-        */
-
-//.get('ul>li').each(function () {...})
