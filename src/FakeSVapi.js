@@ -32,6 +32,17 @@ const generateResponse = props => {
           }
         },
         {
+          id: '333333399',
+          firstName: 'Wednesday',
+          lastName: 'Adams',
+          dob: null,
+          nino: null,
+          address: '001 Cemetery Lane, London, E7 8LS',
+          postcode: 'E7 8LS',
+          source: 'ACADEMY-CouncilTax',
+          links: { hbClaimId: 5058118 }
+        },
+        {
           id: '0122132/1',
           firstName: 'Wednesday',
           lastName: 'Adams',
@@ -265,6 +276,7 @@ app.get('/customers/:id/record', (req, res) => {
       systemIds: {
         jigsaw: ['263272'],
         academyBenefits: ['60940760'],
+        // academyCouncilTax: ['333333399'],
         uhtContacts: '0',
         householdRef: '0122132   ',
         rent: '0122132/01',
@@ -348,6 +360,27 @@ app.get('/customers/:id/record', (req, res) => {
           dob: '2001-11-21 12:00:00'
         }
       ],
+      councilTax: {
+        accountBalance: 55.55,
+        paymentMethod: 'CASH MONTHLY',
+        income: [
+          {
+            date: '2010-01-08T00:00:00.000Z',
+            amount: -2.5,
+            description: 'SOME COSTS'
+          },
+          {
+            date: '2007-01-08T00:00:00.000Z',
+            amount: -2.5,
+            description: 'SOME COSTS'
+          },
+          {
+            date: '2006-01-08T00:00:00.000Z',
+            amount: -2.5,
+            description: 'SOME COSTS'
+          }
+        ]
+      },
       tenancies: {
         current: [],
         previous: [
