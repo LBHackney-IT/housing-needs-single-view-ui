@@ -72,5 +72,9 @@ describe('Search', () => {
     it('User sees customer phone number', () => {
       cy.contains('07666666666 07999666999');
     });
+
+    it('User sees customer council tax reference', () => {
+      cy.contains('333333399 399999999');
+    });
   });
 });
