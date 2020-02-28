@@ -73,8 +73,12 @@ describe('Search', () => {
       cy.contains('07666666666 07999666999');
     });
 
-    it('User sees customer council tax reference', () => {
+    it('User sees customer Academy-CouncilTax IDs', () => {
       cy.contains('333333399 399999999');
+    });
+
+    it('User sees customer Academy-Benefits IDs', () => {
+      cy.contains('60940760 60940888');
     });
   });
 });

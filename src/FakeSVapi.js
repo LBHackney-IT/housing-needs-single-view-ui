@@ -275,7 +275,7 @@ app.get('/customers/:id/record', (req, res) => {
     customer: {
       systemIds: {
         jigsaw: ['263272'],
-        academyBenefits: ['60940760'],
+        academyBenefits: ['60940760', '60940888'],
         academyCouncilTax: ['333333399', '399999999'],
         uhtContacts: '0',
         householdRef: '0122132   ',
