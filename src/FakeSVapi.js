@@ -276,7 +276,7 @@ app.get('/customers/:id/record', (req, res) => {
       systemIds: {
         jigsaw: ['263272'],
         academyBenefits: ['60940760'],
-        // academyCouncilTax: ['333333399'],
+        academyCouncilTax: ['333333399'],
         uhtContacts: '0',
         householdRef: '0122132   ',
         rent: '0122132/01',
@@ -363,7 +363,7 @@ app.get('/customers/:id/record', (req, res) => {
       councilTax: {
         accountBalance: 55.55,
         paymentMethod: 'CASH MONTHLY',
-        income: [
+        transactions: [
           {
             date: '2010-01-08T00:00:00.000Z',
             amount: -2.5,
