@@ -14,14 +14,18 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.1",
-    "reactjs-popup": "^1.5.0"
+    "reactjs-popup": "^1.5.0",
+    "start-server-and-test": "^1.10.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npx cypress open",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'"
+    "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'",
+    "cy:start": "react-scripts start & node ./src/FakeSVapi.js",
+    "cy:run": "cypress run",
+    "cypress": "start-server-and-test cy:start http://localhost:3001 cy:run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,11 +43,13 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^4.0.2",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.2.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "cors": "^2.8.5"
   }
 }
