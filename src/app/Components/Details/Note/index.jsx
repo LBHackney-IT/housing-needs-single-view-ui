@@ -54,15 +54,23 @@ export default class Note extends Component {
     const { note } = this.props;
     let noteComponent = '';
     if (note && note.type === 'document') {
-      noteComponent = <strong style={linkStyle}>{note.title}</strong>;
+      noteComponent = (
+        <a href="#/">
+          <strong style={linkStyle}>{note.title}</strong>
+        </a>
+      );
     } else {
-      noteComponent = <strong>{note.title}</strong>;
+      noteComponent = (
+        <p>
+          <strong>{note.title}</strong>
+        </p>
+      );
     }
     return (
       <tr onClick={this.click}>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
-          <p>{noteComponent}</p>
+          {noteComponent}
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
             {note.text}
           </p>
