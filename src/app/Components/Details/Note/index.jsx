@@ -12,6 +12,11 @@ export default class Note extends Component {
     return moment(date).format('DD/MM/YYYY');
   }
 
+  //  if note is doc
+  //    make a tag with title and href #
+  //   else
+  //     return just title
+
   click = () => {
     if (
       this.props.note &&
@@ -39,15 +44,25 @@ export default class Note extends Component {
   };
 
   render() {
+    const linkStyle = {
+      textDecoration: 'underline',
+      border: 'none',
+      background: 'transparent',
+      fontSize: '100%',
+      color: '#00664f'
+    };
     const { note } = this.props;
-
+    let noteComponent = '';
+    if (note && note.type === 'document') {
+      noteComponent = <strong style={linkStyle}>{note.title}</strong>;
+    } else {
+      noteComponent = <strong>{note.title}</strong>;
+    }
     return (
       <tr onClick={this.click}>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
-          <p>
-            <strong>{note.title}</strong>
-          </p>
+          <p>{noteComponent}</p>
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
             {note.text}
           </p>
