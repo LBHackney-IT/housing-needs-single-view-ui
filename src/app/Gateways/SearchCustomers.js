@@ -12,8 +12,8 @@ function SearchCustomers(query, cb) {
     AuthHeader
   )
     .then(function(response) {
-      if(response.status >= 400){
-        return cb("Error searching")
+      if (response.status >= 400) {
+        return cb('Error searching');
       }
       return response.json();
     })

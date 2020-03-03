@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   aws-s3: circleci/aws-s3@1.0.11
+  cypress: cypress-io/cypress@1
 
 executors:
   my-executor:
@@ -83,9 +84,17 @@ workflows:
   continuous-delivery:
     jobs:
       - install-dependencies
-      - build-deploy-staging:
+      - cypress/run:
+          start: |
+            export ENV=dev
+            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_DEV}
+            npm run cy:start
+          wait-on: 'http://localhost:3001'
           requires:
             - install-dependencies
+      - build-deploy-staging:
+          requires:
+            - cypress/run
           filters:
             branches:
               only:
