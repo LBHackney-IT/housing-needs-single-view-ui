@@ -13,11 +13,12 @@ describe('Documents', () => {
     cy.visit('http://localhost:3001/customers/5/view');
 
     cy.get('tbody > tr > td > a').each($el =>
-      cy.wrap($el).contains('Document')
-    );
-
-    cy.get('tbody > tr > td > a').each($el =>
-      cy.wrap($el).should('have.attr', 'href')
+      cy
+        .wrap($el)
+        .should('contain', 'Document')
+        .and('not.contain', 'Note')
+        .and('not.contain', 'Academy')
+        .and('have.attr', 'href')
     );
   });
 });

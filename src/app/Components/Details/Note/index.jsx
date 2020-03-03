@@ -53,7 +53,11 @@ export default class Note extends Component {
     };
     const { note } = this.props;
     let noteComponent = '';
-    if (note && note.type === 'document') {
+    if (
+      note &&
+      note.type === 'document' &&
+      (note.system === 'UHW' || note.system === 'COMINO')
+    ) {
       noteComponent = (
         <a href="#/">
           <strong style={linkStyle}>{note.title}</strong>
