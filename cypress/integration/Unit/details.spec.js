@@ -15,5 +15,9 @@ describe('Documents', () => {
     cy.get('tbody > tr > td > a').each($el =>
       cy.wrap($el).contains('Document')
     );
+
+    cy.get('tbody > tr > td > a').each($el =>
+      cy.wrap($el).should('have.attr', 'href')
+    );
   });
 });
