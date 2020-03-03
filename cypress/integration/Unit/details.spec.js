@@ -47,8 +47,13 @@ describe('Details Page', () => {
 
   describe('Documents', () => {
     it('Has a link', () => {
-      cy.get('tbody > tr > td > a').each($el =>
-        cy.wrap($el).should('contain', 'Document')
+      cy.get('.activity > table > tbody > tr > td > strong > a').each($el =>
+        cy
+          .wrap($el)
+          .should('contain', 'Document')
+          .and('not.contain', 'Note')
+          .and('not.contain', 'Academy')
+          .and('have.attr', 'href')
       );
     });
   });
