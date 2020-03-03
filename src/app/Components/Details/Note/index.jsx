@@ -12,11 +12,6 @@ export default class Note extends Component {
     return moment(date).format('DD/MM/YYYY');
   }
 
-  //  if note is doc
-  //    make a tag with title and href #
-  //   else
-  //     return just title
-
   click = () => {
     if (
       this.props.note &&
@@ -59,9 +54,9 @@ export default class Note extends Component {
       (note.system === 'UHW' || note.system === 'COMINO')
     ) {
       noteComponent = (
-        <a href="#/">
-          <strong style={linkStyle}>{note.title}</strong>
-        </a>
+        <strong>
+          <a href="#/">{note.title}</a>
+        </strong>
       );
     } else {
       noteComponent = (

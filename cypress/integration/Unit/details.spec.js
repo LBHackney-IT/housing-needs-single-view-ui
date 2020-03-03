@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
 describe('Documents', () => {
-  it('Has a link', () => {
+  it('Displays title as a clickable link', () => {
     const token = jwt.sign(
       { groups: ['housingneeds-singleview-beta'] },
       'a-secure-signature'
@@ -12,7 +12,7 @@ describe('Documents', () => {
     });
     cy.visit('http://localhost:3001/customers/5/view');
 
-    cy.get('tbody > tr > td > a').each($el =>
+    cy.get('.activity > table > tbody > tr > td > strong > a').each($el =>
       cy
         .wrap($el)
         .should('contain', 'Document')
