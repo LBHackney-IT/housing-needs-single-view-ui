@@ -12,8 +12,8 @@ describe('Documents', () => {
     });
     cy.visit('http://localhost:3001/customers/5/view');
 
-    cy.get('tbody > tr > td:nth-child(2) > a')
-      .should('have.attr', 'href')
-      .and('include', '#/');
+    cy.get('tbody > tr > td > a').each($el =>
+      cy.wrap($el).contains('Document')
+    );
   });
 });
