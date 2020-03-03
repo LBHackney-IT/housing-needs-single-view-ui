@@ -39,13 +39,6 @@ export default class Note extends Component {
   };
 
   render() {
-    const linkStyle = {
-      textDecoration: 'underline',
-      border: 'none',
-      background: 'transparent',
-      fontSize: '100%',
-      color: '#00664f'
-    };
     const { note } = this.props;
     let noteComponent = '';
     if (
