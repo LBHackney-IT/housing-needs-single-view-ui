@@ -66,6 +66,12 @@ export default class Note extends Component {
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
             {note.text}
           </p>
+          <details data-module="govuk-details">
+            <summary className="govuk-details__summary">
+              <a className="govuk-details__summary-text">Continue reading</a>
+            </summary>
+            <div>{note.text}</div>
+          </details>
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
