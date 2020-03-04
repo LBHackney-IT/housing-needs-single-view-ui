@@ -66,7 +66,10 @@ export default class Note extends Component {
       }
       if (this.state.expanded) {
         return (
-          <span onClick={this.toggleNote} className="govuk-details__summary govuk-details__summary__arrow-up">
+          <span
+            onClick={this.toggleNote}
+            className="govuk-details__summary govuk-details__summary__arrow-up"
+          >
             Read less
           </span>
         );
@@ -86,7 +89,11 @@ export default class Note extends Component {
     ) {
       noteComponent = (
         <strong>
-          <a href="#/">{note.title}</a>
+          <p>
+            <a onClick={this.click} href="#/">
+              {note.title}
+            </a>
+          </p>
         </strong>
       );
     } else {
@@ -97,7 +104,7 @@ export default class Note extends Component {
       );
     }
     return (
-      <tr onClick={this.click}>
+      <tr>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
           {noteComponent}
