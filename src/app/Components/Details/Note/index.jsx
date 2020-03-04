@@ -66,27 +66,15 @@ export default class Note extends Component {
       }
       if (this.state.expanded) {
         return (
-          <summary>
-            <a
-              href="#/"
-              onClick={this.toggleNote}
-              className="govuk-details__summary"
-            >
-              Read less
-            </a>
-          </summary>
+          <span onClick={this.toggleNote} className="govuk-details__summary">
+            Read less
+          </span>
         );
       }
       return (
-        <summary>
-          <a
-            href="#/"
-            onClick={this.toggleNote}
-            className="govuk-details__summary"
-          >
-            Read more
-          </a>
-        </summary>
+        <span onClick={this.toggleNote} className="govuk-details__summary">
+          Read more
+        </span>
       );
     };
 
