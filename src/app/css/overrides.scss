@@ -157,3 +157,8 @@ p {
 .govuk-details__summary {
   color: #00664f !important;
 }
+
+.govuk-details__summary__arrow-up:before {
+  @include govuk-shape-arrow($direction: up, $base: 14px);
+}
+
