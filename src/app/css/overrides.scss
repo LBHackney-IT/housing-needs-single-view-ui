@@ -150,3 +150,21 @@ p {
 .govuk-accordion__icon {
   margin-top: -8px !important;
 }
+
+@include govuk-exports('govuk/component/details') {
+  .govuk-details__summary {
+    background: none !important;
+    cursor: pointer;
+    color: #00664f;
+    outline: none;
+  }
+  .govuk-details__summary:before {
+    content: '>';
+    position: absolute;
+    top: -1px;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    @include govuk-shape-arrow($direction: right, $base: 14px);
+  }
+}

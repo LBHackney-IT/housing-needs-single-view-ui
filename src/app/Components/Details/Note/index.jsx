@@ -5,7 +5,8 @@ import DocumentModal from '../../DocumentModal';
 export default class Note extends Component {
   state = {
     showDoc: false,
-    docUrl: null
+    docUrl: null,
+    expanded: false
   };
 
   formatDate(date) {
@@ -38,40 +39,65 @@ export default class Note extends Component {
     });
   };
 
+  toggleNote = () => {
+    this.setState(state => {
+      state.expanded = !state.expanded;
+      return state;
+    });
+  };
+
   render() {
     const { note } = this.props;
-    let noteComponent = '';
-    if (
-      note &&
-      note.type === 'document' &&
-      (note.system === 'UHW' || note.system === 'COMINO')
-    ) {
-      noteComponent = (
-        <strong>
-          <a href="#/">{note.title}</a>
-        </strong>
+    const noteLength = 128;
+
+    const checkLength = (text, length) => {
+      return text.length <= length;
+    };
+
+    const trimText = (note, length) => {
+      return checkLength(note, length) || this.state.expanded
+        ? note
+        : `${note.substring(0, length)} ...`;
+    };
+
+    const createButton = (note, length) => {
+      if (checkLength(note, length)) {
+        return;
+      }
+      if (this.state.expanded) {
+        return (
+          <summary>
+            <a
+              href="#/"
+              onClick={this.toggleNote}
+              className="govuk-details__summary"
+            >
+              Read less
+            </a>
+          </summary>
+        );
+      }
+      return (
+        <summary>
+          <a
+            href="#/"
+            onClick={this.toggleNote}
+            className="govuk-details__summary"
+          >
+            Read more
+          </a>
+        </summary>
       );
-    } else {
-      noteComponent = (
-        <p>
-          <strong>{note.title}</strong>
-        </p>
-      );
-    }
+    };
+
     return (
       <tr onClick={this.click}>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
-          {noteComponent}
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
-            {note.text}
+            {trimText(note.text, noteLength)}
           </p>
-          <details data-module="govuk-details">
-            <summary className="govuk-details__summary">
-              <a className="govuk-details__summary-text">Continue reading</a>
-            </summary>
-            <div>{note.text}</div>
-          </details>
+          {createButton(note.text, noteLength)}
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
