@@ -5,7 +5,8 @@ import DocumentModal from '../../DocumentModal';
 export default class Note extends Component {
   state = {
     showDoc: false,
-    docUrl: null
+    docUrl: null,
+    expanded: false
   };
 
   formatDate(date) {
@@ -38,8 +39,56 @@ export default class Note extends Component {
     });
   };
 
+  toggleNote = () => {
+    this.setState(state => {
+      state.expanded = !state.expanded;
+      return state;
+    });
+  };
+
   render() {
     const { note } = this.props;
+    const noteLength = 128;
+
+    const checkLength = (text, length) => {
+      return text.length <= length;
+    };
+
+    const trimText = (note, length) => {
+      return checkLength(note, length) || this.state.expanded
+        ? note
+        : `${note.substring(0, length)} ...`;
+    };
+
+    const createButton = (note, length) => {
+      if (checkLength(note, length)) {
+        return;
+      }
+      if (this.state.expanded) {
+        return (
+          <summary>
+            <a
+              href="#/"
+              onClick={this.toggleNote}
+              className="govuk-details__summary"
+            >
+              Read less
+            </a>
+          </summary>
+        );
+      }
+      return (
+        <summary>
+          <a
+            href="#/"
+            onClick={this.toggleNote}
+            className="govuk-details__summary"
+          >
+            Read more
+          </a>
+        </summary>
+      );
+    };
 
     return (
       <tr onClick={this.click}>
@@ -49,8 +98,9 @@ export default class Note extends Component {
             <strong>{note.title}</strong>
           </p>
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
-            {note.text}
+            {trimText(note.text, noteLength)}
           </p>
+          {createButton(note.text, noteLength)}
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
