@@ -82,6 +82,9 @@ export default class Note extends Component {
       <tr onClick={this.click}>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
+          <p>
+            <strong>{note.title}</strong>
+          </p>
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
             {trimText(note.text, noteLength)}
           </p>
