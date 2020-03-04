@@ -139,6 +139,48 @@ p {
   margin-bottom: 5px;
 }
 
+.activity__search input {
+  width: initial;
+  height: initial;
+  font-size: initial;
+}
+
+.activity__search input[type=text] {
+  height: 34px;
+  font-size: initial;
+  float: left;
+  width: 80%;
+  border-right: none;
+}
+
+.activity__search button {
+  float: left;
+  padding: 9px;
+  background: #00664f;
+  color: white;
+  border: 2px solid #0b0c0c;
+  border-left: none;
+  cursor: pointer;
+  border-left: none;
+  height: 34px;
+}
+
+.activity__search button:hover {
+  background: #00513f
+}
+
+.activity__search input:focus,.activity__search button:focus {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.activity__search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .lbh-container {
   max-width: 1140px;
 }
