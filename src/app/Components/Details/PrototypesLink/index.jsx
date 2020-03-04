@@ -31,7 +31,7 @@ export default function PrototypesLink(props){
             : null }
           <p><a href={`${process.env.REACT_APP_VULNERABILITIES_APP_URL}/customers/${customerId}/plan`}>Visit Shared Plan</a></p>
           <h4 style={{'margin':'10px 0'}}>SMS Tool:</h4>
-          <p><a href={`${process.env.REACT_APP_VULNERABILITIES_APP_URL}/customers/${customerId}/plan`}>Visit SMS Tool</a></p>
+          <p><a href="https://proto.collabtools.hackney.gov.uk/">Visit SMS Tool</a></p>
         </Modal>
       </div>
     );
