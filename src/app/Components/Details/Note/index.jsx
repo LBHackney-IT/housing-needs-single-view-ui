@@ -78,13 +78,29 @@ export default class Note extends Component {
       );
     };
 
+    let noteComponent = '';
+    if (
+      note &&
+      note.type === 'document' &&
+      (note.system === 'UHW' || note.system === 'COMINO')
+    ) {
+      noteComponent = (
+        <strong>
+          <a href="#/">{note.title}</a>
+        </strong>
+      );
+    } else {
+      noteComponent = (
+        <p>
+          <strong>{note.title}</strong>
+        </p>
+      );
+    }
     return (
       <tr onClick={this.click}>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
-          <p>
-            <strong>{note.title}</strong>
-          </p>
+          {noteComponent}
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
             {trimText(note.text, noteLength)}
           </p>
