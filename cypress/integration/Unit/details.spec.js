@@ -33,15 +33,10 @@ describe('Details Page', () => {
 
       cy.visit('http://localhost:3001/customers/5/view');
 
-      cy.get(
-        '.activity > table > tbody > tr:nth-child(3) > td:nth-child(2)'
-      ).each($el =>
-        cy
-          .wrap($el)
-          .should('contain', '...')
-          .and('contain', 'Read more')
-          .and('not.contain', 'Read less')
-      );
+      cy.get('.activity > table > tbody > tr:nth-child(3) > td:nth-child(2)')
+        .should('contain', '...')
+        .and('contain', 'Read more')
+        .and('not.contain', 'Read less');
       cy.get(
         '.activity > table > tbody > tr:nth-child(3) > td:nth-child(2) > span'
       )
@@ -58,15 +53,10 @@ describe('Details Page', () => {
     });
 
     it('Does not display read more/less button if note is less than 128 characters', () => {
-      cy.get(
-        '.activity > table > tbody > tr:nth-child(4) > td:nth-child(2)'
-      ).each($el =>
-        cy
-          .wrap($el)
-          .should('not.contain', '...')
-          .and('not.contain', 'Read more')
-          .and('not.contain', 'Read less')
-      );
+      cy.get('.activity > table > tbody > tr:nth-child(4) > td:nth-child(2)')
+        .should('not.contain', '...')
+        .and('not.contain', 'Read more')
+        .and('not.contain', 'Read less');
     });
   });
 });
