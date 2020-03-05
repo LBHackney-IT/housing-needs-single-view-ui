@@ -29,6 +29,19 @@ export default class AddressDetails extends Component {
                     return (
                       <p key={i} title={address.source.join(', ')}>
                         {this.lineBreakifyAddress(address.address)}
+                        <details
+                          class="govuk-details  lbh-details"
+                          data-module="govuk-details"
+                        >
+                          <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                              Help with nationality
+                            </span>
+                          </summary>
+                          <div class="govuk-details__text">
+                            {this.lineBreakifyAddress(address.address)}
+                          </div>
+                        </details>
                       </p>
                     );
                   })
