@@ -16,7 +16,7 @@ describe('Details Page', () => {
       setHackneyCookie(true);
 
       cy.visit('http://localhost:3001/customers/5/view');
-      cy.get('.activity > table > tbody > tr > td > strong > a').each($el =>
+      cy.get('.activity > table > tbody > tr > td > strong > p > a').each($el =>
         cy
           .wrap($el)
           .should('contain', 'Document')
@@ -40,8 +40,7 @@ describe('Details Page', () => {
       cy.get(
         '.activity > table > tbody > tr:nth-child(3) > td:nth-child(2) > span'
       )
-        .scrollIntoView()
-        .click()
+        .click({ force: true })
         .should('contain', 'Read less')
         .and('not.contain', 'Read more');
 
@@ -49,7 +48,7 @@ describe('Details Page', () => {
         .first()
         .scrollIntoView()
         .find('span')
-        .click()
+        .click({ force: true })
         .should('contain', 'Read more')
         .and('not.contain', 'Read less');
     });
@@ -61,7 +60,7 @@ describe('Details Page', () => {
         .first()
         .scrollIntoView()
         .find('td:nth-child(2)')
-        .click()
+        .click({ force: true })
         .should('not.contain', '...')
         .and('not.contain', 'Read more')
         .and('not.contain', 'Read less');
