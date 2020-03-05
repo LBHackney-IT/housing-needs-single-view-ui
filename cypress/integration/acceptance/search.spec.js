@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
-import { italic } from 'ansi-colors';
 
 describe('Search', () => {
   const setHackneyCookie = async isValidGroup => {
@@ -66,7 +65,10 @@ describe('Search', () => {
     });
 
     it('User sees customer info', () => {
-      cy.get('h1').should('contain', 'Miss Wednesday Adams');
+      cy.get('h1')
+        .should('contain', 'Miss')
+        .and('contain', 'Wednesday')
+        .and('contain', 'Adams');
     });
 
     it('User sees customer phone number', () => {

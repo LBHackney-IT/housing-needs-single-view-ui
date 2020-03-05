@@ -5,7 +5,8 @@ import DocumentModal from '../../DocumentModal';
 export default class Note extends Component {
   state = {
     showDoc: false,
-    docUrl: null
+    docUrl: null,
+    expanded: false
   };
 
   formatDate(date) {
@@ -38,8 +39,48 @@ export default class Note extends Component {
     });
   };
 
+  toggleNote = () => {
+    this.setState(state => {
+      state.expanded = !state.expanded;
+      return state;
+    });
+  };
+
   render() {
     const { note } = this.props;
+    const noteLength = 128;
+
+    const checkLength = (text, length) => {
+      return text.length <= length;
+    };
+
+    const trimText = (note, length) => {
+      return checkLength(note, length) || this.state.expanded
+        ? note
+        : `${note.substring(0, length)} ...`;
+    };
+
+    const createButton = (note, length) => {
+      if (checkLength(note, length)) {
+        return;
+      }
+      if (this.state.expanded) {
+        return (
+          <span
+            onClick={this.toggleNote}
+            className="govuk-details__summary govuk-details__summary__arrow-up"
+          >
+            Read less
+          </span>
+        );
+      }
+      return (
+        <span onClick={this.toggleNote} className="govuk-details__summary">
+          Read more
+        </span>
+      );
+    };
+
     let noteComponent = '';
     if (
       note &&
@@ -48,7 +89,11 @@ export default class Note extends Component {
     ) {
       noteComponent = (
         <strong>
-          <a href="#/">{note.title}</a>
+          <p>
+            <a onClick={this.click} href="#/">
+              {note.title}
+            </a>
+          </p>
         </strong>
       );
     } else {
@@ -59,13 +104,14 @@ export default class Note extends Component {
       );
     }
     return (
-      <tr onClick={this.click}>
+      <tr>
         <td key="date">{this.formatDate(note.date)}</td>
         <td key="text">
           {noteComponent}
           <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
-            {note.text}
+            {trimText(note.text, noteLength)}
           </p>
+          {createButton(note.text, noteLength)}
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
