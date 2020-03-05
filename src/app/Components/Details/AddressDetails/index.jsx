@@ -28,18 +28,18 @@ export default class AddressDetails extends Component {
                   customer.address.map((address, i) => {
                     return (
                       <p key={i} title={address.source.join(', ')}>
-                        {this.lineBreakifyAddress(address.address)}
+                        <p>{this.lineBreakifyAddress(address.address)}</p>
                         <details
-                          class="govuk-details  lbh-details"
+                          class="govuk-details"
                           data-module="govuk-details"
                         >
                           <summary class="govuk-details__summary">
                             <span class="govuk-details__summary-text">
-                              Help with nationality
+                              Where is this from?
                             </span>
                           </summary>
                           <div class="govuk-details__text">
-                            {this.lineBreakifyAddress(address.address)}
+                            {this.lineBreakifyAddress(address.source)}
                           </div>
                         </details>
                       </p>
