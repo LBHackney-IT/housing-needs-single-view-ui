@@ -139,6 +139,11 @@ p {
   margin-bottom: 5px;
 }
 
+.activity__search {
+  width: 180px;
+  position: relative;
+}
+
 .activity__search input {
   width: initial;
   height: initial;
@@ -149,7 +154,7 @@ p {
   height: 34px;
   font-size: initial;
   float: left;
-  width: 80%;
+  width: 146px;
   border-right: none;
 }
 
@@ -163,6 +168,15 @@ p {
   cursor: pointer;
   border-left: none;
   height: 34px;
+  width: 34px;
+}
+.activity__filters {
+  border: 2px solid #0b0c0c;
+  width: 164px;
+  position: absolute;
+  top: 32px;
+  padding: 6px;
+  background: #fff;
 }
 
 .activity__search button:hover {
@@ -192,3 +206,36 @@ p {
 .govuk-accordion__icon {
   margin-top: -8px !important;
 }
+
+
+//.govuk-checkboxes__label::after {
+//  content: "";
+//  position: absolute;
+//  top: 7px;
+//  left: 5px;
+//  width: 9px;
+//  height: 3px;
+//  transform: rotate(-45deg);
+//  border: solid;
+//  border-width: 0 0 2px 2px;
+//  border-top-color: transparent;
+//  opacity: 0;
+//  background: transparent;
+//}
+//.govuk-checkboxes__label::before {
+//  content: "";
+//  box-sizing: border-box;
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  width: 20px;
+//  height: 20px;
+//  border: 2px solid currentColor;
+//  background: transparent;
+//}
+//.lbh-checkboxes .govuk-checkboxes__label {
+//  font-size: 19px;
+//  font-size: 1rem;
+//  line-height: 30px;
+//  line-height: 1.875rem;
+//}
