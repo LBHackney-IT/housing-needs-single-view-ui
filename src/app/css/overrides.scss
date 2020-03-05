@@ -151,11 +151,8 @@ p {
   margin-top: -8px !important;
 }
 
-@include govuk-exports('govuk/component/details') {
-}
-
 .govuk-details__summary {
-  color: #00664f !important;
+  color: #00664f;
 }
 
 .govuk-details__summary__arrow-up:before {
