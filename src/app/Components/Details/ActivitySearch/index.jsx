@@ -5,51 +5,32 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default class ActivitySearch extends Component {
   state = {
-    notes: this.props.notes,
+    // notes: this.props.notes,
     filter: null,
-    showFilters: false
+    searchTerm: ''
   };
 
   setFilter = event => {
     const type = event.target.value;
     if (type === 'note' || type === 'document') {
+      this.props.onChange({ filter: type });
       if (type === this.state.filter) {
         event.target.checked = false;
         this.setState({
-          filter: null,
-          notes: this.props.notes
+          filter: null
         });
       } else {
         this.setState({
-          filter: type,
-          notes: this.filteredNotesByType(type)
+          filter: type
         });
       }
     }
     this.toggleFilters();
   };
 
-  filteredNotesByType = type => {
-    return this.props.notes.filter(note => note.type == type);
-  };
-
-  searchNotes = event => {
-    // const notes = this.state.filter
-    //   ? this.filteredNotesByType(this.state.filter)
-    //   : this.props.notes;
-    const notes = this.props.notes;
-    const foundNotes = notes.filter(item => {
-      const byTitle =
-        item.title.toLowerCase().search(event.target.value.toLowerCase()) !==
-        -1;
-      const byText =
-        item.text.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-      return byText || byTitle;
-    });
-
-    this.setState({
-      notes: foundNotes
-    });
+  handleSearchTermChange = event => {
+    const text = event.target.value.toLowerCase();
+    this.props.onChange({ searchTerm: text });
   };
 
   toggleFilters = () => {
@@ -79,7 +60,7 @@ export default class ActivitySearch extends Component {
           type="text"
           placeholder="Search"
           className="govuk-input"
-          onChange={this.searchNotes}
+          onChange={this.handleSearchTermChange}
         />
         <button onClick={this.toggleFilters}>
           {this.state.filter ? (
