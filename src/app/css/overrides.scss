@@ -151,11 +151,11 @@ p {
   margin-top: -8px !important;
 }
 
-.govuk-details__summary {
+.govuk-details__summary,
+.govuk-details__summary:hover {
   color: #00664f;
 }
 
 .govuk-details__summary__arrow-up:before {
   @include govuk-shape-arrow($direction: up, $base: 14px);
 }
-
