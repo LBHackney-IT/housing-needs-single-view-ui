@@ -40,20 +40,28 @@ describe('Details Page', () => {
       cy.get(
         '.activity > table > tbody > tr:nth-child(3) > td:nth-child(2) > span'
       )
+        .scrollIntoView()
         .click()
         .should('contain', 'Read less')
         .and('not.contain', 'Read more');
 
-      cy.get(
-        '.activity > table > tbody > tr:nth-child(3) > td:nth-child(2) > span'
-      )
+      cy.get('.activity > table > tbody > tr:nth-child(3) > td:nth-child(2)')
+        .first()
+        .scrollIntoView()
+        .find('span')
         .click()
         .should('contain', 'Read more')
         .and('not.contain', 'Read less');
     });
+  });
 
+  describe('Read More', () => {
     it('Does not display read more/less button if note is less than 128 characters', () => {
-      cy.get('.activity > table > tbody > tr:nth-child(4) > td:nth-child(2)')
+      cy.get('.activity > table > tbody > tr:nth-child(4)')
+        .first()
+        .scrollIntoView()
+        .find('td:nth-child(2)')
+        .click()
         .should('not.contain', '...')
         .and('not.contain', 'Read more')
         .and('not.contain', 'Read less');

@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
-import { italic } from 'ansi-colors';
 
 describe('Search', () => {
   const setHackneyCookie = async isValidGroup => {
