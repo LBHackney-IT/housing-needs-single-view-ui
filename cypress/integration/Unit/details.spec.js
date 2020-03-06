@@ -16,10 +16,11 @@ describe('Details Page', () => {
   beforeEach(() => {
     setHackneyCookie(true);
     cy.visit('http://localhost:3001/customers/5/view');
+    cy.contains('Activity').scrollIntoView();
   });
 
   describe('Search Activity', () => {
-    it('can filter by note tile', () => {
+    it('can search by note tile', () => {
       const testNoteTitle = 'Case Note';
 
       cy.get('#search')
@@ -32,7 +33,7 @@ describe('Details Page', () => {
         .each($el => cy.wrap($el).should('contain', testNoteTitle));
     });
 
-    it('can filter by note text', () => {
+    it('can search by note text', () => {
       const testNoteText = 'Change in Circs ICL';
 
       cy.get('#search')
@@ -49,7 +50,7 @@ describe('Details Page', () => {
       beforeEach(() => {
         cy.get('.activity__search button')
           .should('be.visible')
-          .click();
+          .click({ force: true });
 
         cy.get('.activity__filters')
           .should('be.visible')
@@ -61,7 +62,7 @@ describe('Details Page', () => {
         cy.get('.activity__filters > :nth-child(1)')
           .should('be.visible')
           .and('contain', 'All Notes')
-          .click();
+          .click({ force: true });
 
         cy.get('.selectedFilter')
           .should('be.visible')
@@ -72,7 +73,7 @@ describe('Details Page', () => {
           .each($el => cy.wrap($el).should('contain', 'Note'));
 
         cy.get('.selectedFilter')
-          .click()
+          .click({ force: true })
           .should('not.be.visible');
       });
 
@@ -80,7 +81,7 @@ describe('Details Page', () => {
         cy.get('.activity__filters > :nth-child(2)')
           .should('be.visible')
           .and('contain', 'All Documents')
-          .click();
+          .click({ force: true });
         cy.get('.selectedFilter')
           .should('be.visible')
           .and('contain', 'All Documents');
@@ -90,7 +91,7 @@ describe('Details Page', () => {
           .each($el => cy.wrap($el).should('contain', 'Document'));
 
         cy.get('.selectedFilter')
-          .click()
+          .click({ force: true })
           .should('not.be.visible');
       });
     });
