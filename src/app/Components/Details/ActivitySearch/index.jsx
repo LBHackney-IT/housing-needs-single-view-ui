@@ -1,36 +1,38 @@
-import React, { Component, useState, useEffect } from 'react';
-import Note from '../Note';
+import React, { Component} from 'react';
+import './index.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default class ActivitySearch extends Component {
   state = {
-    // notes: this.props.notes,
-    filter: null,
-    searchTerm: ''
+    filter: null
   };
 
-  setFilter = event => {
-    const type = event.target.value;
-    if (type === 'note' || type === 'document') {
-      this.props.onChange({ filter: type });
-      if (type === this.state.filter) {
-        event.target.checked = false;
-        this.setState({
-          filter: null
-        });
-      } else {
-        this.setState({
-          filter: type
-        });
-      }
+  changeSearchState = criteria => {
+    this.props.onChange(criteria);
+  };
+
+  setFilter = (event, type) => {
+    this.changeSearchState({ filter: type });
+
+    if (type === this.state.filter) {
+      this.setState({
+        filter: null
+      });
+    } else {
+      this.setState({
+        filter: type
+      });
     }
     this.toggleFilters();
   };
 
   handleSearchTermChange = event => {
     const text = event.target.value.toLowerCase();
-    this.props.onChange({ searchTerm: text });
+    this.setState({
+      showFilters: false
+    });
+    this.changeSearchState({ searchTerm: text, filter: null });
   };
 
   toggleFilters = () => {
@@ -43,17 +45,27 @@ export default class ActivitySearch extends Component {
         showFilters: true
       });
       if (this.state.filter) {
+        this.changeSearchState({ filter: null });
         this.setState({
-          filter: null,
-          notes: this.props.notes
+          filter: null
         });
       }
     }
   };
 
-  render() {
-    // const notes = this.state.notes;
+  searchIcon = () => {
+    if (this.state.filter) return <FontAwesomeIcon icon={faTimes} fixedWidth />;
+    return <FontAwesomeIcon icon={faSearch} fixedWidth />;
+  };
+  clearFilter = () => {
+    this.setState({
+      showFilters: true,
+      filter: null
+    });
+  };
 
+  render() {
+    const filters = { note: 'Notes', document: 'Documents' };
     return (
       <div className="activity__search">
         <input
@@ -61,39 +73,22 @@ export default class ActivitySearch extends Component {
           placeholder="Search"
           className="govuk-input"
           onChange={this.handleSearchTermChange}
+          onFocus={e => this.setState({ filter: null })}
         />
-        <button onClick={this.toggleFilters}>
-          {this.state.filter ? (
-            <FontAwesomeIcon icon={faTimes} fixedWidth />
-          ) : (
-            <FontAwesomeIcon icon={faSearch} fixedWidth />
-          )}
-        </button>
-
-        <div
-          className={
-            this.state.showFilters
-              ? 'activity__filters'
-              : 'govuk-visually-hidden'
-          }
-        >
-          <input
-            type="radio"
-            id="note"
-            value="note"
-            name="filter"
-            onClick={this.setFilter}
-          />
-          <label htmlFor="note">All Notes</label>
-          <br />
-          <input
-            type="radio"
-            value="document"
-            id="document"
-            name="filter"
-            onClick={this.setFilter}
-          />
-          <label htmlFor="document">All Documents</label>
+        <button onClick={this.toggleFilters}>{this.searchIcon()}</button>
+        <div hidden={!this.state.filter}>
+          <span className="selectedFilter">
+            <a href="#/" onClick={this.clearFilter}>All {filters[this.state.filter]}</a>
+          </span>
+        </div>
+        <div hidden={!this.state.showFilters} className="activity__filters">
+          {Object.keys(filters).map(type => {
+            return (
+              <a href="#/" onClick={e => this.setFilter(e, type)}>
+                All {filters[type]}
+              </a>
+            );
+          })}
         </div>
       </div>
     );
