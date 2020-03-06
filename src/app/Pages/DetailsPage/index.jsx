@@ -23,6 +23,7 @@ export default class DetailsPage extends Component {
     this.state = { notes: [], fetching: true };
   }
 
+  backUrl = document.referrer;
   componentDidMount() {
     let notesAndDocs = [];
     FetchCustomerRecord(this.props.match.params.id)
@@ -60,24 +61,33 @@ export default class DetailsPage extends Component {
     }
 
     return (
-      <div className="lbh-container row details">
-        <div className="details__left-column">
-          <PersonalDetails
-            customer={this.state.customer}
-            id={this.props.match.params.id}
-          />
-          <ContactDetails customer={this.state.customer} />
-          <AddressDetails customer={this.state.customer} />
-          <Team customer={this.state.customer} />
-          <SystemIds customer={this.state.customer} />
-          <PrototypesLink
-            customer={this.state.customer}
-            id={this.props.match.params.id}
-          />
+      <div>
+        <div className="lbh-container row details">
+          <p>
+            <a href={this.backUrl} class="govuk-back-link">
+              Back to search
+            </a>
+          </p>
         </div>
-        <div className="details__right-column">
-          <QuickAccess customer={this.state.customer} />
-          <Activity notes={this.state.notes} />
+        <div className="lbh-container row details">
+          <div className="details__left-column">
+            <PersonalDetails
+              customer={this.state.customer}
+              id={this.props.match.params.id}
+            />
+            <ContactDetails customer={this.state.customer} />
+            <AddressDetails customer={this.state.customer} />
+            <Team customer={this.state.customer} />
+            <SystemIds customer={this.state.customer} />
+            <PrototypesLink
+              customer={this.state.customer}
+              id={this.props.match.params.id}
+            />
+          </div>
+          <div className="details__right-column">
+            <QuickAccess customer={this.state.customer} />
+            <Activity notes={this.state.notes} />
+          </div>
         </div>
       </div>
     );
