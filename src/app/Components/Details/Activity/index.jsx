@@ -14,7 +14,7 @@ export default class Activity extends Component {
       this.setState({
         notes: this.props.notes.filter(note => note.type === criteria.filter)
       });
-    } else {
+    } else if (criteria.searchTerm) {
       const notes = this.props.notes;
       const foundNotes = notes.filter(item => {
         const byTitle =
@@ -28,6 +28,10 @@ export default class Activity extends Component {
 
       this.setState({
         notes: foundNotes
+      });
+    } else {
+      this.setState({
+        notes: this.props.notes
       });
     }
   };
