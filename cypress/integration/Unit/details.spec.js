@@ -23,6 +23,7 @@ describe('Details Page', () => {
       const testNoteTitle = 'Case Note';
 
       cy.get('#search')
+        .scrollIntoView()
         .should('be.visible')
         .type(testNoteTitle);
 
@@ -35,6 +36,7 @@ describe('Details Page', () => {
       const testNoteText = 'Change in Circs ICL';
 
       cy.get('#search')
+        .scrollIntoView()
         .should('be.visible')
         .type(testNoteText);
 
