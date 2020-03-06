@@ -71,6 +71,7 @@ export default class ActivitySearch extends Component {
         <input
           type="text"
           placeholder="Search"
+          id="search"
           className="govuk-input"
           onChange={this.handleSearchTermChange}
           onFocus={e => this.setState({ filter: null })}

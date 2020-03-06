@@ -19,7 +19,6 @@ describe('Details Page', () => {
   });
 
   describe('Search Activity', () => {
-
     it('can filter by note tile', () => {
       const testNoteTitle = 'Case Note';
 
@@ -42,6 +41,56 @@ describe('Details Page', () => {
       cy.get('.activity > table > tbody > tr > :nth-child(2)')
         .should('have.length', '1')
         .each($el => cy.wrap($el).should('contain', testNoteText));
+    });
+
+    describe('filters', () => {
+      beforeEach(() => {
+        cy.get('.activity__search button')
+          .should('be.visible')
+          .click();
+
+        cy.get('.activity__filters')
+          .should('be.visible')
+          .children()
+          .should('have.length', '2');
+      });
+
+      it('can filter by notes', () => {
+        cy.get('.activity__filters > :nth-child(1)')
+          .should('be.visible')
+          .and('contain', 'All Notes')
+          .click();
+
+        cy.get('.selectedFilter')
+          .should('be.visible')
+          .and('contain', 'All Notes');
+
+        cy.get('.activity > table > tbody > tr > :nth-child(2)')
+          .should('have.length', '34')
+          .each($el => cy.wrap($el).should('contain', 'Note'));
+
+        cy.get('.selectedFilter')
+          .click()
+          .should('not.be.visible');
+      });
+
+      it('can filter by documents', () => {
+        cy.get('.activity__filters > :nth-child(2)')
+          .should('be.visible')
+          .and('contain', 'All Documents')
+          .click();
+        cy.get('.selectedFilter')
+          .should('be.visible')
+          .and('contain', 'All Documents');
+
+        cy.get('.activity > table > tbody > tr > :nth-child(2)')
+          .should('have.length', '42')
+          .each($el => cy.wrap($el).should('contain', 'Document'));
+
+        cy.get('.selectedFilter')
+          .click()
+          .should('not.be.visible');
+      });
     });
   });
 
