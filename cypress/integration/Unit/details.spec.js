@@ -66,4 +66,50 @@ describe('Details Page', () => {
         .and('not.contain', 'Read less');
     });
   });
+
+  describe('Back to search button', () => {
+    it('Shows back to search button', () => {
+      setHackneyCookie(true);
+      cy.visit(
+        'http://localhost:3001/search?firstName=wednesday&lastName=adams'
+      );
+      cy.get('.govuk-button')
+        .first()
+        .click();
+      cy.get('.govuk-back-link')
+        .scrollIntoView()
+        .should('contain', 'Back to search')
+        .and('have.attr', 'href')
+        .and('include', 'firstName=');
+    });
+
+    it('Has correct href after connecting records', () => {
+      setHackneyCookie(true);
+      cy.visit(
+        'http://localhost:3001/search?firstName=wednesday&lastName=adams'
+      );
+
+      cy.get('.groupedTable')
+        .first()
+        .scrollIntoView()
+        .find('tr')
+        .then(result => {
+          result.each((_, otherThing) => {
+            otherThing.click();
+            console.log(otherThing);
+          });
+        });
+
+      cy.get('.govuk-button')
+        .last()
+        .scrollIntoView()
+        .click();
+
+      cy.get('.govuk-back-link')
+        .scrollIntoView()
+        .should('contain', 'Back to search')
+        .and('have.attr', 'href')
+        .and('include', 'firstName=');
+    });
+  });
 });

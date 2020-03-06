@@ -44,7 +44,6 @@ export default class PreviousRecord extends Component {
               href={`/customers/${this.props.record.id}/view`}
               role="button"
               className="govuk-button lbh-button"
-              previousUrl={window.location.href}
             >
               View Record
             </a>
