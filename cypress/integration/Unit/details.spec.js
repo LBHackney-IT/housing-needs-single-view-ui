@@ -19,7 +19,7 @@ describe('Details Page', () => {
   });
 
   describe('Search Activity', () => {
-    it('can search by note tile', () => {
+    it('can search by note title', () => {
       const testNoteTitle = 'Case Note';
 
       cy.get('#search')
