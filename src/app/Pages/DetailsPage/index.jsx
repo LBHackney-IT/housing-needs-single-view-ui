@@ -23,7 +23,6 @@ export default class DetailsPage extends Component {
     this.state = { notes: [], fetching: true };
   }
 
-  backUrl = document.referrer;
   componentDidMount() {
     let notesAndDocs = [];
     FetchCustomerRecord(this.props.match.params.id)
@@ -51,6 +50,11 @@ export default class DetailsPage extends Component {
       .catch(err => console.log(err));
   }
 
+  goBack() {
+    if (window.location.href.includes('#/')) window.history.go(-2);
+    else window.history.go(-1);
+  }
+
   render() {
     if (this.state.fetching) {
       return (
@@ -64,9 +68,9 @@ export default class DetailsPage extends Component {
       <div>
         <div className="lbh-container row details">
           <p>
-            <a href={this.backUrl} class="govuk-back-link">
+            <button onClick={this.goBack} class="govuk-back-link">
               Back to search
-            </a>
+            </button>
           </p>
         </div>
         <div className="lbh-container row details">

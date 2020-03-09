@@ -176,12 +176,13 @@ export default class ResultsPage extends Component {
         {this.otherResults()}
 
         <div className="govuk-form-group">
-          <button
+          <a
+            href="#/"
             className="govuk-button lbh-button"
             onClick={this.connectNewCustomer}
           >
             Connect records
-          </button>
+          </a>
         </div>
       </div>
     );
