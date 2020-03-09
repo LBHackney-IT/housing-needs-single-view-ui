@@ -1,0 +1,60 @@
+.activity__search {
+  width: 180px;
+  position: relative;
+
+  ::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  span {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    display: block;
+    padding: 5px;
+    background: #fff;
+  }
+
+  input[type=text] {
+    font-size: initial;
+    height: 34px;
+    float: left;
+    width: 146px;
+    border-right: none;
+  }
+
+  button {
+    float: left;
+    padding: 9px;
+    background: #00664f;
+    color: white;
+    border: 2px solid #0b0c0c;
+    border-left: none;
+    cursor: pointer;
+    border-left: none;
+    height: 34px;
+    width: 34px;
+
+    :hover {
+      background: #00513f
+    }
+  }
+}
+.activity__filters {
+  border: 2px solid #0b0c0c;
+  width: 164px;
+  position: absolute;
+  top: 32px;
+  padding: 6px;
+  background: #fff;
+}
+
+
+.activity__search input:focus,
+.activity__search button:focus {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
