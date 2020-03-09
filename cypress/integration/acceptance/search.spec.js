@@ -16,7 +16,7 @@ describe('Search', () => {
     it('Does not log into Single View with an invalid token', () => {
       setHackneyCookie(false);
       cy.visit('http://localhost:3001');
-      cy.contains('Please log in');
+      cy.get('body').should('contain', 'Please log in');
     });
   });
 
@@ -27,7 +27,7 @@ describe('Search', () => {
 
     it('Logs into Single View with a valid token', () => {
       cy.visit('http://localhost:3001');
-      cy.contains('Welcome to Single View');
+      cy.get('body').should('contain', 'Welcome to Single View');
     });
 
     it('Verify that relevant results are returned', () => {
@@ -35,8 +35,8 @@ describe('Search', () => {
       cy.get('.govuk-input:last')
         .type('Adams')
         .type('{enter}');
-      cy.contains('Customers with matching details');
-      cy.contains('Wednesday Adams');
+      cy.get('body').should('contain', 'Customers with matching details');
+      cy.get('body').should('contain', 'Wednesday Adams');
     });
 
     it('Join relevant records', () => {
@@ -59,6 +59,7 @@ describe('Search', () => {
     });
 
     it('Connects reconds', () => {
+      cy.get('body').should('contain', 'Connect records');
       cy.contains('Connect records')
         .scrollIntoView()
         .click({ force: true });
@@ -72,15 +73,21 @@ describe('Search', () => {
     });
 
     it('User sees customer phone number', () => {
-      cy.contains('07666666666 07999666999');
+      cy.get('.details__left-column')
+        .should('contain', '07666666666')
+        .and('contain', '07999666999');
     });
 
     it('User sees customer Academy-CouncilTax IDs', () => {
-      cy.contains('333333399 399999999');
+      cy.get('.details__left-column__item')
+        .should('contain', '333333399')
+        .and('contain', '399999999');
     });
 
     it('User sees customer Academy-Benefits IDs', () => {
-      cy.contains('60940760 60940888');
+      cy.get('.details__left-column__item')
+        .should('contain', '60940760')
+        .and('contain', '60940888');
     });
   });
 });
