@@ -71,10 +71,9 @@ describe('Details Page', () => {
           .should('have.length', '34')
           .each($el => cy.wrap($el).should('contain', 'Note'));
 
-        cy.get('.selectedFilter')
-          .scrollIntoView()
-          .click({ force: true })
-          .should('not.be.visible');
+        cy.get('.activity__search button').click({ force: true });
+
+        cy.get('.selectedFilter').should('not.be.visible');
       });
 
       it('can filter by documents', () => {
@@ -91,10 +90,9 @@ describe('Details Page', () => {
           .should('have.length', '42')
           .each($el => cy.wrap($el).should('contain', 'Document'));
 
-        cy.get('.selectedFilter')
-          .scrollIntoView()
-          .click({ force: true })
-          .should('not.be.visible');
+        cy.get('.activity__search button').click({ force: true });
+
+        cy.get('.selectedFilter').should('not.be.visible');
       });
     });
   });
