@@ -26,7 +26,7 @@ describe('Details Page', () => {
       cy.get('#search')
         .scrollIntoView()
         .should('be.visible')
-        .type(testNoteTitle);
+        .type(testNoteTitle, { force: true });
 
       cy.get('.activity > table > tbody > tr > :nth-child(2)')
         .should('have.length', '4')
@@ -39,7 +39,7 @@ describe('Details Page', () => {
       cy.get('#search')
         .scrollIntoView()
         .should('be.visible')
-        .type(testNoteText);
+        .type(testNoteText, { force: true });
 
       cy.get('.activity > table > tbody > tr > :nth-child(2)')
         .should('have.length', '1')
