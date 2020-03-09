@@ -72,6 +72,7 @@ describe('Details Page', () => {
           .each($el => cy.wrap($el).should('contain', 'Note'));
 
         cy.get('.selectedFilter')
+          .scrollIntoView()
           .click()
           .should('not.be.visible');
       });
@@ -90,6 +91,7 @@ describe('Details Page', () => {
           .each($el => cy.wrap($el).should('contain', 'Document'));
 
         cy.get('.selectedFilter')
+          .scrollIntoView()
           .click()
           .should('not.be.visible');
       });
