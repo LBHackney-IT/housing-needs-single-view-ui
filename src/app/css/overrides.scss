@@ -156,6 +156,24 @@ p {
   color: #00664f;
 }
 
+.govuk-details {
+  :focus {
+    background-color: white;
+    box-shadow: none;
+    text-decoration: underline;
+    color: #00664f;
+  }
+}
+
 .govuk-details__summary__arrow-up:before {
   @include govuk-shape-arrow($direction: up, $base: 14px);
+}
+
+.lbh-main-wrapper {
+  padding-top: 0px;
+}
+
+.govuk-back-link {
+  border: none;
+  font-weight: bold;
 }

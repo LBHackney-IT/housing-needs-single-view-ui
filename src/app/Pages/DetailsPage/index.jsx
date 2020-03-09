@@ -50,6 +50,11 @@ export default class DetailsPage extends Component {
       .catch(err => console.log(err));
   }
 
+  goBack() {
+    if (window.location.href.includes('#/')) window.history.go(-2);
+    else window.history.go(-1);
+  }
+
   render() {
     if (this.state.fetching) {
       return (
@@ -60,24 +65,33 @@ export default class DetailsPage extends Component {
     }
 
     return (
-      <div className="lbh-container row details">
-        <div className="details__left-column">
-          <PersonalDetails
-            customer={this.state.customer}
-            id={this.props.match.params.id}
-          />
-          <ContactDetails customer={this.state.customer} />
-          <AddressDetails customer={this.state.customer} />
-          <Team customer={this.state.customer} />
-          <SystemIds customer={this.state.customer} />
-          <PrototypesLink
-            customer={this.state.customer}
-            id={this.props.match.params.id}
-          />
+      <div>
+        <div className="lbh-container row details">
+          <p>
+            <button onClick={this.goBack} class="govuk-back-link">
+              Back to search
+            </button>
+          </p>
         </div>
-        <div className="details__right-column">
-          <QuickAccess customer={this.state.customer} />
-          <Activity notes={this.state.notes} />
+        <div className="lbh-container row details">
+          <div className="details__left-column">
+            <PersonalDetails
+              customer={this.state.customer}
+              id={this.props.match.params.id}
+            />
+            <ContactDetails customer={this.state.customer} />
+            <AddressDetails customer={this.state.customer} />
+            <Team customer={this.state.customer} />
+            <SystemIds customer={this.state.customer} />
+            <PrototypesLink
+              customer={this.state.customer}
+              id={this.props.match.params.id}
+            />
+          </div>
+          <div className="details__right-column">
+            <QuickAccess customer={this.state.customer} />
+            <Activity notes={this.state.notes} />
+          </div>
         </div>
       </div>
     );
