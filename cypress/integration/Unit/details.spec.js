@@ -73,7 +73,7 @@ describe('Details Page', () => {
 
         cy.get('.selectedFilter')
           .scrollIntoView()
-          .click()
+          .click({ force: true })
           .should('not.be.visible');
       });
 
@@ -93,7 +93,7 @@ describe('Details Page', () => {
 
         cy.get('.selectedFilter')
           .scrollIntoView()
-          .click()
+          .click({ force: true })
           .should('not.be.visible');
       });
     });
