@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import moment from 'moment';
+import './index.scss';
 
 export default class AddressDetails extends Component {
   lineBreakifyAddress(address) {
