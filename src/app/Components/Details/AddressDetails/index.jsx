@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import moment from 'moment';
+import './index.scss';
 
 export default class AddressDetails extends Component {
   lineBreakifyAddress(address) {
@@ -28,7 +29,20 @@ export default class AddressDetails extends Component {
                   customer.address.map((address, i) => {
                     return (
                       <p key={i} title={address.source.join(', ')}>
-                        {this.lineBreakifyAddress(address.address)}
+                        <p>{this.lineBreakifyAddress(address.address)}</p>
+                        <details
+                          class="govuk-details"
+                          data-module="govuk-details"
+                        >
+                          <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                              Where is this from?
+                            </span>
+                          </summary>
+                          <div class="govuk-details__text">
+                            {this.lineBreakifyAddress(address.source)}
+                          </div>
+                        </details>
                       </p>
                     );
                   })

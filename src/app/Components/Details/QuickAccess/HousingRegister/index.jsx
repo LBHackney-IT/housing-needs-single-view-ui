@@ -3,9 +3,9 @@ import Modal from '../../../Modal';
 import { formatDisplayDate } from '../../../../lib/Utils';
 
 export default class HousingRegister extends Component {
-  housingRegisterRecord(t) {
+  housingRegisterRecord(t, index) {
     return (
-      <table>
+      <table key={index}>
         <tbody>
           <tr>
             <td>Application Ref:</td>
@@ -23,7 +23,6 @@ export default class HousingRegister extends Component {
             <td>Effective Band Date:</td>
             <td>{formatDisplayDate(t.startDate)}</td>
           </tr>
-          <br />
         </tbody>
       </table>
     );
@@ -56,12 +55,9 @@ export default class HousingRegister extends Component {
             <li>
               <Modal trigger={<a href="#/">More details</a>}>
                 <h3>Housing Register Information</h3>
-                <br />
-                <table>
-                  {customer.housingRegister.map(t =>
-                    this.housingRegisterRecord(t)
-                  )}
-                </table>
+                {customer.housingRegister.map((t, index) =>
+                  this.housingRegisterRecord(t, index)
+                )}
               </Modal>
             </li>
           </ul>
