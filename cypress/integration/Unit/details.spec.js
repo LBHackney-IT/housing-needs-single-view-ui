@@ -82,6 +82,7 @@ describe('Details Page', () => {
           .should('be.visible')
           .and('contain', 'All Documents')
           .click({ force: true });
+
         cy.get('.selectedFilter')
           .should('be.visible')
           .and('contain', 'All Documents');
