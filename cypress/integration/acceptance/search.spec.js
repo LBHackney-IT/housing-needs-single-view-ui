@@ -27,7 +27,9 @@ describe('Search', () => {
     });
 
     it('Logs into Single View with a valid token', () => {
-      cy.visit('http://localhost:3001');
+      cy.visit('http://localhost:3001', {
+        onLoad: () => console.log('*** PAGE IS LOADED ***')
+      });
       cy.contains('Welcome to Single View');
     });
 
