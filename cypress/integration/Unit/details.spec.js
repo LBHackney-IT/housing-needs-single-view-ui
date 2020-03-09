@@ -66,7 +66,24 @@ describe('Details Page', () => {
         .and('not.contain', 'Read less');
     });
   });
+  describe('Where is this from?', () => {
+    it('Displays Where is this from as an expandable menu', () => {
+      setHackneyCookie(true);
 
+      cy.visit('http://localhost:3001/customers/5/view');
+      cy.contains('Where is this from?');
+      cy.get('.govuk-details').first();
+      'not.contain', 'JIGSAW';
+
+      cy.get('.govuk-details__summary > .govuk-details__summary-text')
+        .first()
+        .scrollIntoView()
+        .click({ force: true });
+
+      cy.get('.govuk-details > .govuk-details__text');
+      'contain', 'JIGSAW';
+    });
+  });
   describe('Back to search button', () => {
     it('Back to search takes you back to search after viewing record', () => {
       setHackneyCookie(true);
