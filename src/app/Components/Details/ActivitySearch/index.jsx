@@ -47,7 +47,8 @@ export default class ActivitySearch extends Component {
       if (this.state.filter) {
         this.changeSearchState({ filter: null });
         this.setState({
-          filter: null
+          filter: null,
+          searchTerm: ''
         });
       }
     }
@@ -73,6 +74,7 @@ export default class ActivitySearch extends Component {
           placeholder="Search"
           id="search"
           className="govuk-input"
+          value={this.state.searchTerm}
           onChange={this.handleSearchTermChange}
           onFocus={e => this.setState({ filter: null })}
         />
