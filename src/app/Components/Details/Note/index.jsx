@@ -90,7 +90,7 @@ export default class Note extends Component {
       noteComponent = (
         <strong>
           <p>
-            <a onClick={this.click} href="#/">
+            <a onClick={this.click} href="#/" class="govuk-link">
               {note.title}
             </a>
           </p>
