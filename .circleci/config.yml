@@ -24,7 +24,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
       - save_cache:
           paths:
@@ -47,7 +47,7 @@ jobs:
           command: |
             export ENV=staging
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
-            yarn build
+            npm run build
 
       - aws-s3/sync:
           from: build
@@ -69,7 +69,7 @@ jobs:
           command: |
             export ENV=production
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
-            yarn build
+            npm run build
 
       - aws-s3/sync:
           from: build
