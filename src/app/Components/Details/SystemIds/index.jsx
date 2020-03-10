@@ -71,8 +71,12 @@ export default class SystemIds extends Component {
               </td>
             </tr>
             <tr>
-              <td>Rent account ref:</td>
+              <td>Tenancy ref:</td>
               <td>{this.separateId(this.getProp(customer.systemIds.rent))}</td>
+            </tr>
+            <tr>
+              <td>Payment ref:</td>
+              <td>{this.separateId(this.getProp(customer.systemIds.paymentRef))}</td>
             </tr>
           </tbody>
         </table>
