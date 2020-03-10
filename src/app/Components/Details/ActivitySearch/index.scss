@@ -27,7 +27,7 @@
 
   button {
     float: left;
-    padding: 9px;
+    padding: 8px;
     background: #00664f;
     color: white;
     border: 2px solid #0b0c0c;
@@ -36,6 +36,7 @@
     border-left: none;
     height: 34px;
     width: 34px;
+    font-size: 14px;
 
     :hover {
       background: #00513f
@@ -49,6 +50,11 @@
   top: 32px;
   padding: 6px;
   background: #fff;
+
+  a {
+    display: block;
+    margin: 6px 0;
+  }
 }
 
 

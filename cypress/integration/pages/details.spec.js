@@ -28,7 +28,7 @@ describe('Details Page', () => {
       it('can search by note title', () => {
         const testNoteTitle = 'Case Note';
 
-        cy.get('#search')
+        cy.get('#searchActivity')
           .scrollIntoView()
           .should('be.visible')
           .type(testNoteTitle, { force: true });
@@ -41,7 +41,7 @@ describe('Details Page', () => {
       it('can search by note text', () => {
         const testNoteText = 'Change in Circs ICL';
 
-        cy.get('#search')
+        cy.get('#searchActivity')
           .scrollIntoView()
           .should('be.visible')
           .type(testNoteText, { force: true });

@@ -72,11 +72,11 @@ export default class ActivitySearch extends Component {
         <input
           type="text"
           placeholder="Search"
-          id="search"
+          id="searchActivity"
           className="govuk-input"
           value={this.state.searchTerm}
           onChange={this.handleSearchTermChange}
-          onFocus={e => this.setState({ filter: null })}
+          onFocus={e => this.setState({ filter: null, showFilters: true })}
         />
         <button onClick={this.toggleFilters}>{this.searchIcon()}</button>
         <div hidden={!this.state.filter}>
