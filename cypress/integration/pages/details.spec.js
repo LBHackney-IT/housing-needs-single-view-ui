@@ -23,6 +23,39 @@ describe('Details Page', () => {
     });
   });
 
+  describe('System IDs', () => {
+    describe('Labels', () => {
+      it('Displays correct label names', () => {
+        cy.get('.details__left-column__item')
+          //.scrollIntoView()
+          .should('contain', 'Application ref:')
+          .and('contain', 'Jigsaw customer no:')
+          .and('contain', 'Jigsaw case ref:')
+          .and('contain', 'Council tax ref:')
+          .and('contain', 'Benefits ref:')
+          .and('contain', 'UHW contact ref:')
+          .and('contain', 'Household ref:')
+          .and('contain', 'Tenancy ref:')
+          .and('contain', 'Payment ref:');
+      });
+
+      it('Displays correct label values', () => {
+        cy.get('.details__left-column__item')
+          //.scrollIntoView()
+          .should('contain', 'DIR0148754')
+          .and('contain', '263272')
+          .and('contain', '270305')
+          .and('contain', '333333399')
+          .and('contain', '60940760')
+          .and('contain', '60940888')
+          .and('contain', '334351')
+          .and('contain', '0122132')
+          .and('contain', '0122132/01')
+          .and('contain', '12345');
+      });
+    });
+  });
+
   describe('Activity', () => {
     describe('Search', () => {
       it('can search by note title', () => {
