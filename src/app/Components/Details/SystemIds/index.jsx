@@ -61,7 +61,7 @@ export default class SystemIds extends Component {
               </td>
             </tr>
             <tr>
-              <td>UHW ref:</td>
+              <td>UHW contact ref:</td>
               <td>{this.separateId(this.getProp(customer.systemIds.uhw))}</td>
             </tr>
             <tr>
