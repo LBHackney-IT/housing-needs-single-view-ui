@@ -1,21 +1,11 @@
 /// <reference types="cypress" />
 import jwt from 'jsonwebtoken';
 describe('Details Page', () => {
-  const setHackneyCookie = async isValidGroup => {
-    const group = isValidGroup
-      ? 'housingneeds-singleview-beta'
-      : 'some-other-group';
-    const token = jwt.sign({ groups: [group] }, 'a-secure-signature');
-    await cy.setCookie('hackneyToken', token, {
-      url: 'http://localhost:3001',
-      domain: 'localhost'
-    });
-  };
 
   beforeEach(() => {
-    setHackneyCookie(true);
+    cy.setHackneyCookie(true);
     cy.visit('http://localhost:3001/customers/5/view');
-    cy.contains('Activity').scrollIntoView();
+    // cy.contains('Activity').scrollIntoView();
   });
 
   describe('Search Activity', () => {
@@ -99,7 +89,7 @@ describe('Details Page', () => {
 
   describe('Documents', () => {
     it('Displays title as a clickable link', () => {
-      setHackneyCookie(true);
+      cy.setHackneyCookie(true);
 
       cy.visit('http://localhost:3001/customers/5/view');
       cy.get('.activity > table > tbody > tr > td > strong > p > a').each($el =>
@@ -115,7 +105,7 @@ describe('Details Page', () => {
 
   describe('Read more', () => {
     it('Displays read more button if note is longer than 128 characters', () => {
-      setHackneyCookie(true);
+      cy.setHackneyCookie(true);
 
       cy.visit('http://localhost:3001/customers/5/view');
 
@@ -153,7 +143,7 @@ describe('Details Page', () => {
 
   describe('Where is this from?', () => {
     it('Displays Where is this from as an expandable menu', () => {
-      setHackneyCookie(true);
+      cy.setHackneyCookie(true);
 
       cy.visit('http://localhost:3001/customers/5/view');
       cy.contains('Where is this from?');
