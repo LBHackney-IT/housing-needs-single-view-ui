@@ -280,6 +280,7 @@ app.get('/customers/:id/record', (req, res) => {
         uhtContacts: '0',
         householdRef: '0122132   ',
         rent: '0122132/01',
+        paymentRef: '12345',
         uhtHousingRegister: ['DIR0148754/1'],
         uhw: ['334351']
       },

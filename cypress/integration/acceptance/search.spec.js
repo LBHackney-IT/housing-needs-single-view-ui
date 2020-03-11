@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 describe('Search', () => {
-  xdescribe('When not logged in', () => {
+  describe('When not logged in', () => {
     it('Does not log into Single View with an invalid token', () => {
       cy.setHackneyCookie(false);
       cy.visit('http://localhost:3001');
@@ -8,7 +8,7 @@ describe('Search', () => {
     });
   });
 
-  xdescribe('When logged in', () => {
+  describe('When logged in', () => {
     beforeEach(() => {
       cy.setHackneyCookie(true);
     });
