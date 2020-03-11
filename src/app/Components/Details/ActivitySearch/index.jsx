@@ -30,7 +30,8 @@ export default class ActivitySearch extends Component {
   handleSearchTermChange = event => {
     const text = event.target.value.toLowerCase();
     this.setState({
-      showFilters: false
+      showFilters: false,
+      searchTerm: text
     });
     this.changeSearchState({ searchTerm: text, filter: null });
   };
