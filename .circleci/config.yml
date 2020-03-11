@@ -45,7 +45,7 @@ jobs:
       - run:
           name: build
           command: |
-            export ENV=staging
+            export REACT_APP_ENV=staging
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
             npm run build
 
@@ -67,7 +67,7 @@ jobs:
       - run:
           name: build
           command: |
-            export ENV=production
+            export REACT_APP_ENV=production
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
             npm run build
 
@@ -86,7 +86,7 @@ workflows:
       - install-dependencies
       - cypress/run:
           start: |
-            export ENV=dev
+            export REACT_APP_ENV=dev
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_DEV}
             npm run cy:start
           wait-on: 'http://localhost:3001'
