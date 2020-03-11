@@ -24,97 +24,65 @@ describe('Details Page', () => {
   });
 
   describe('System IDs', () => {
-    it('Displays application reference', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(1)'
-      ).as('applicationRefRow');
+    const tablePath = '.details__left-column > :nth-child(5) > table > tbody';
+    const systemIdRowSelector = rowNumber => {
+      return `${tablePath} > :nth-child(${rowNumber})`;
+    }
 
-      cy.get('@applicationRefRow')
+    it('Displays application reference', () => {
+      cy.get(systemIdRowSelector(1))
         .should('contain', 'Application ref:')
         .and('contain', 'DIR0148754');
     });
 
     it('Displays jigsaw customer no', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(2)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(2))
         .should('contain', 'Jigsaw customer no:')
         .and('contain', '263272');
     });
 
     it('Displays jigsaw case ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(3)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(3))
         .should('contain', 'Jigsaw case ref:')
         .and('contain', '270305');
     });
 
     it('Displays council tax ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(4)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(4))
         .should('contain', 'Council tax ref:')
         .and('contain', '333333399')
         .and('contain', '399999999');
     });
 
     it('Displays benefits ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(5)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(5))
         .should('contain', 'Benefits ref:')
         .and('contain', '60940760')
         .and('contain', '60940888');
     });
 
-
     it('Displays UHW contact ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(6)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(6))
         .should('contain', 'UHW contact ref:')
         .and('contain', '334351');
     });
 
     it('Displays Household ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(7)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(7))
         .should('contain', 'Household ref:')
         .and('contain', '0122132');
     });
 
     it('Displays Tenancy ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(8)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(8))
         .should('contain', 'Tenancy ref:')
         .and('contain', '0122132/01');
     });
 
     it('Displays Payment ref', () => {
-      cy.get(
-        '.details__left-column > :nth-child(5) > table > tbody > :nth-child(9)'
-      ).as('idRow');
-
-      cy.get('@idRow')
+      cy.get(systemIdRowSelector(9))
         .should('contain', 'Payment ref:')
-        .and('contain', 'No Data');
+        .and('contain', '12345');
     });
   });
 
