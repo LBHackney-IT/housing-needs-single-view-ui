@@ -19,7 +19,7 @@
 module.exports = (on, config) => {
   console.log(config);
 
-  config.defaultCommandTimeout = 20000;
+  config.defaultCommandTimeout = 6000;
 
   return config;
 };
