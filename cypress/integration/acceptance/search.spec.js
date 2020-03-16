@@ -47,8 +47,8 @@ describe('Search', () => {
     });
 
     it('Connects reconds', () => {
-      cy.get('body').should('contain', 'Connect records');
-      cy.contains('Connect records')
+      cy.get('body').should('contain', 'Create new connected record');
+      cy.contains('Create new connected record')
         .scrollIntoView()
         .click({ force: true });
     });
