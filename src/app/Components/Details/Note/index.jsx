@@ -29,6 +29,11 @@ export default class Note extends Component {
           docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
           showDoc: true
         });
+      } else if (this.props.note.system === 'JIGSAW') {
+        this.setState({
+          docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
+          showDoc: true
+        });
       }
     }
   };
@@ -85,7 +90,9 @@ export default class Note extends Component {
     if (
       note &&
       note.type === 'document' &&
-      (note.system === 'UHW' || note.system === 'COMINO')
+      (note.system === 'UHW' ||
+        note.system === 'COMINO' ||
+        note.system === 'JIGSAW')
     ) {
       noteComponent = (
         <strong>
