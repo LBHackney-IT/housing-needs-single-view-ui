@@ -145,10 +145,21 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="lbh-container results">
-        <h1>Create a single view of a customer</h1>
-
         {this.prevResults()}
-
+        <div className="connectRecords">
+          <div className="row">
+            <div>
+              <h1>Create a single view of a customer</h1>
+            </div>
+            <button
+              disabled={this.state.selected.length === 0}
+              className="govuk-button lbh-button"
+              onClick={this.connectNewCustomer}
+            >
+              Create new connected record
+            </button>
+          </div>
+        </div>
         <section className="govuk-form-group">
           <h2 key="matching">Customers with matching details</h2>
 
@@ -172,17 +183,7 @@ export default class ResultsPage extends Component {
             })}
           </div>
         </section>
-
         {this.otherResults()}
-
-        <div className="govuk-form-group">
-          <button
-            className="govuk-button lbh-button"
-            onClick={this.connectNewCustomer}
-          >
-            Connect records
-          </button>
-        </div>
       </div>
     );
   }

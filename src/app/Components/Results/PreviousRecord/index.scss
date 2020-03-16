@@ -6,7 +6,8 @@
   margin-bottom: 10px;
 }
 
-.previousRecord .row {
+.previousRecord .row,
+.connectRecords .row {
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
