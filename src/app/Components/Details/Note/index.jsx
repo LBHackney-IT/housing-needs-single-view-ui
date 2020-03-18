@@ -31,7 +31,7 @@ export default class Note extends Component {
         });
       } else if (this.props.note.system === 'JIGSAW') {
         this.setState({
-          docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
+          docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/jigsaw/${this.props.note.id}`,
           showDoc: true
         });
       }
