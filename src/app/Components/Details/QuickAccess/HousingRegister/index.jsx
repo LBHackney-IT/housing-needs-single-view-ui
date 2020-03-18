@@ -23,6 +23,10 @@ export default class HousingRegister extends Component {
             <td>Effective Band Date:</td>
             <td>{formatDisplayDate(t.startDate)}</td>
           </tr>
+          <tr>
+            <td>Bedroom requirements:</td>
+            <td>{t.bedroomReq}</td>
+          </tr>
         </tbody>
       </table>
     );
