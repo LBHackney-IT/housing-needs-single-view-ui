@@ -40,7 +40,7 @@ export default class HousingRegister extends Component {
     }
 
     return (
-      <div className="quick-access__item">
+      <div className="quick-access__item" id="housingRegister">
         <h3>Housing Register</h3>
         <table>
           <tbody>
