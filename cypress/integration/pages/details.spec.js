@@ -6,115 +6,187 @@ describe('Details Page', () => {
   });
 
   describe('Quick Access', () => {
-    const pathToMoreDetailsAnchor = '#housingRegister > div > ul > li > a';
-    it('Displays Housing Register', () => {
-      cy.get('#quickAccess > div > #housingRegister').should(
-        'contain',
-        'Housing Register'
-      );
-    });
-
-    it('Displays Bidding no', () => {
-      const pathToTd =
-        '#housingRegister > table > tbody > tr:nth-child(1) > td:nth-child(1)';
-      cy.get(pathToTd).should('contain', 'Bidding no:');
-      cy.get(pathToTd)
-        .siblings()
-        .should('contain', '2156200');
-    });
-
-    it('Displays Band', () => {
-      const pathToTd =
-        '#housingRegister > table > tbody > tr:nth-child(2) > td:nth-child(1)';
-      cy.get(pathToTd).should('contain', 'Band:');
-      cy.get(pathToTd)
-        .siblings()
-        .should('contain', 'Homeless')
-        .and('have.length', 1);
-    });
-
-    it('Can click more details and display pop up box with housing register information', () => {
-      const pathToPopUpBox =
-        '#housingRegister > div > ul > li > div.popup-overlay > div > div > div';
-      cy.get(pathToMoreDetailsAnchor).should('contain', 'More details');
-      cy.get(pathToMoreDetailsAnchor)
-        .scrollIntoView()
-        .click({ force: true });
-      cy.get(pathToPopUpBox).should('contain', 'Housing Register Information');
-    });
-
-    describe('Housing Register Information', () => {
-      const pathToHousingRegisterInformationTable = '#housingRegister > div > ul > li > div.popup-overlay > div > div > div > table > tbody';
-      const rowSelector = rowNumber => {
-        return `${pathToHousingRegisterInformationTable} > :nth-child(${rowNumber})`;
+    describe('Case Information', () => {
+      const pathToUl = '#quickAccess > div > div:nth-child(1) > div > ul';
+      const rowSelectorUl = rowNumber => {
+        return `${pathToUl} > :nth-child(${rowNumber})`;
       };
-      it('Displays Application Ref', () => {
-        cy.get(pathToMoreDetailsAnchor)
+      const pathToMoreDetails = `${rowSelectorUl(3)} > a`;
+      const pathToPopUpBox =
+        '#quickAccess > div > div:nth-child(1) > div > ul > li:nth-child(3) > div.popup-overlay > div > div > div';
+      const rowSelectorPopUpBox = rowNumber => {
+        return `${pathToPopUpBox} > table > tbody > :nth-child(${rowNumber})`;
+      };
+      it('Displays Case Information', () => {
+        cy.get('#quickAccess > div > div:nth-child(1) > h3').should(
+          'contain',
+          'Case Information'
+        );
+      });
+
+      it('Displays Stage', () => {
+        const pathToTd =
+          '#quickAccess > div > div:nth-child(1) > table > tbody > tr > td:nth-child(1)';
+        cy.get(pathToTd).should('contain', 'Stage:');
+        cy.get(pathToTd)
+          .siblings()
+          .should('contain', 'Main duty accepted');
+      });
+
+      it('Displays Link to PHP', () => {
+        cy.get(`${rowSelectorUl(1)} > a`)
+          .should('contain', 'Link to PHP')
+          .and('have.attr', 'href');
+      });
+
+      it('Displays Link to Jigsaw', () => {
+        cy.get(`${rowSelectorUl(2)} > a`)
+          .should('contain', 'Link to Jigsaw')
+          .and('have.attr', 'href');
+      });
+
+      it('Can click more details and display pop up box with case details', () => {
+        cy.get(pathToMoreDetails).should('contain', 'More details');
+        cy.get(pathToMoreDetails)
           .scrollIntoView()
           .click({ force: true });
-        cy.get(`${rowSelector(1)} > :nth-child(1)`).should(
+        cy.get(pathToPopUpBox).should('contain', 'Case details');
+      });
+
+      describe('Case information More details', () => {
+        it('Displays Tenancy ID', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(1)} > :nth-child(1)`).should(
+            'contain',
+            'Tenancy ID'
+          );
+          cy.get(`${rowSelectorPopUpBox(1)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '59538')
+            .and('have.length', 1);
+        });
+      });
+    });
+
+    describe('Housing Register', () => {
+      const pathToMoreDetailsAnchor = '#housingRegister > div > ul > li > a';
+
+      it('Displays Housing Register', () => {
+        cy.get('#quickAccess > div > #housingRegister').should(
           'contain',
-          'Application Ref:'
+          'Housing Register'
         );
-        cy.get(`${rowSelector(1)} > :nth-child(1)`)
-          .siblings()
-          .should('contain', 'DIR0148754')
-          .and('have.length', 1);
       });
 
       it('Displays Bidding no', () => {
-        cy.get(pathToMoreDetailsAnchor)
-          .scrollIntoView()
-          .click({ force: true });
-        cy.get(`${rowSelector(2)} > :nth-child(1)`).should(
-          'contain',
-          'Bidding no:'
-        );
-        cy.get(`${rowSelector(2)} > :nth-child(1)`)
+        const pathToTd =
+          '#housingRegister > table > tbody > tr:nth-child(1) > td:nth-child(1)';
+        cy.get(pathToTd).should('contain', 'Bidding no:');
+        cy.get(pathToTd)
           .siblings()
-          .should('contain', '2156200')
-          .and('have.length', 1);
+          .should('contain', '2156200');
       });
 
       it('Displays Band', () => {
-        cy.get(pathToMoreDetailsAnchor)
-          .scrollIntoView()
-          .click({ force: true });
-        cy.get(`${rowSelector(3)} > :nth-child(1)`).should(
-          'contain',
-          'Band:');
-        cy.get(`${rowSelector(3)} > :nth-child(1)`)
+        const pathToTd =
+          '#housingRegister > table > tbody > tr:nth-child(2) > td:nth-child(1)';
+        cy.get(pathToTd).should('contain', 'Band:');
+        cy.get(pathToTd)
           .siblings()
           .should('contain', 'Homeless')
           .and('have.length', 1);
       });
 
-      it('Displays Effective Band Date', () => {
+      it('Can click more details and display pop up box with housing register information', () => {
+        const pathToPopUpBox =
+          '#housingRegister > div > ul > li > div.popup-overlay > div > div > div';
+        cy.get(pathToMoreDetailsAnchor).
+        should('contain', 'More details')
+        .and('have.attr', 'href');;
         cy.get(pathToMoreDetailsAnchor)
           .scrollIntoView()
           .click({ force: true });
-        cy.get(`${rowSelector(4)} > :nth-child(1)`).should(
+        cy.get(pathToPopUpBox).should(
           'contain',
-          'Effective Band Date:'
+          'Housing Register Information'
         );
-        cy.get(`${rowSelector(4)} > :nth-child(1)`)
-          .siblings()
-          .should('contain', '18/07/2019')
-          .and('have.length', 1);
       });
 
-      it('Displays Bedroom requirements', () => {
-        cy.get(pathToMoreDetailsAnchor)
-          .scrollIntoView()
-          .click({ force: true });
-        cy.get(`${rowSelector(5)} > :nth-child(1)`).should(
-          'contain',
-          'Bedroom requirements:'
-        );
-        cy.get(`${rowSelector(5)} > :nth-child(1)`)
-          .siblings()
-          .should('contain', '2')
-          .and('have.length', 1);
+      describe('Housing Register More Details', () => {
+        const pathToHousingRegisterInformationTable = '#housingRegister > div > ul > li > div.popup-overlay > div > div > div > table > tbody';
+        const rowSelector = rowNumber => {
+          return `${pathToHousingRegisterInformationTable} > :nth-child(${rowNumber})`;
+        };
+        it('Displays Application Ref', () => {
+          cy.get(pathToMoreDetailsAnchor)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelector(1)} > :nth-child(1)`).should(
+            'contain',
+            'Application Ref:'
+          );
+          cy.get(`${rowSelector(1)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', 'DIR0148754')
+            .and('have.length', 1);
+        });
+
+        it('Displays Bidding no', () => {
+          cy.get(pathToMoreDetailsAnchor)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelector(2)} > :nth-child(1)`).should(
+            'contain',
+            'Bidding no:'
+          );
+          cy.get(`${rowSelector(2)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '2156200')
+            .and('have.length', 1);
+        });
+
+        it('Displays Band', () => {
+          cy.get(pathToMoreDetailsAnchor)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelector(3)} > :nth-child(1)`).should(
+            'contain',
+            'Band:');
+          cy.get(`${rowSelector(3)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', 'Homeless')
+            .and('have.length', 1);
+        });
+
+        it('Displays Effective Band Date', () => {
+          cy.get(pathToMoreDetailsAnchor)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelector(4)} > :nth-child(1)`).should(
+            'contain',
+            'Effective Band Date:'
+          );
+          cy.get(`${rowSelector(4)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '18/07/2019')
+            .and('have.length', 1);
+        });
+
+        it('Displays Bedroom requirements', () => {
+          cy.get(pathToMoreDetailsAnchor)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelector(5)} > :nth-child(1)`).should(
+            'contain',
+            'Bedroom requirements:'
+          );
+          cy.get(`${rowSelector(5)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '2')
+            .and('have.length', 1);
+        });
       });
     });
   });
