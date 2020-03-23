@@ -70,6 +70,321 @@ describe('Details Page', () => {
       });
     });
 
+    describe('Council Tenancy', () => {
+      const pathToMoreDetails =
+        '#quickAccess > div > div:nth-child(3) > div > ul > li > a';
+      const pathToPopUpBox =
+        '#quickAccess > div > div:nth-child(3) > div > ul > li > div.popup-overlay > div > div > div > div';
+      const rowSelectorPopUpBox = rowNumber => {
+        return `${pathToPopUpBox} > table > tbody > :nth-child(${rowNumber})`;
+      };
+      it('Displays Council Tenancy', () => {
+        cy.get('#quickAccess > div > div:nth-child(3) > h3').should(
+          'contain',
+          'Council Tenancy'
+        );
+      });
+
+      it('Displays current tenancy', () => {
+        cy.get('#quickAccess > div > div:nth-child(3) > p');
+      });
+
+      it('Can click more details and display pop up box with previous tenancies', () => {
+        cy.get(pathToMoreDetails).should('contain', 'More details');
+        cy.get(pathToMoreDetails)
+          .scrollIntoView()
+          .click({ force: true });
+        cy.get(pathToPopUpBox).should('contain', 'Previous Tenancies');
+      });
+
+      describe('Council Tenancy More details', () => {
+        it('Displays Address', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(1)} > :nth-child(1)`).should(
+            'contain',
+            'Address:'
+          );
+          cy.get(`${rowSelectorPopUpBox(1)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '001 Cemetery LaneForest GateLondonE7 8LS')
+            .and('have.length', 1);
+        });
+
+        it('Displays Start Date', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(2)} > :nth-child(1)`).should(
+            'contain',
+            'Start Date:'
+          );
+          cy.get(`${rowSelectorPopUpBox(2)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '18/07/2019')
+            .and('have.length', 1);
+        });
+
+        it('Displays End Date', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(3)} > :nth-child(1)`).should(
+            'contain',
+            'End Date:'
+          );
+          cy.get(`${rowSelectorPopUpBox(3)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '01/01/1900')
+            .and('have.length', 1);
+        });
+
+        it('Displays Tenure', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(4)} > :nth-child(1)`).should(
+            'contain',
+            'Tenure:'
+          );
+          cy.get(`${rowSelectorPopUpBox(4)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', 'Temp Annex')
+            .and('have.length', 1);
+        });
+
+        it('Displays Property Ref', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(5)} > :nth-child(1)`).should(
+            'contain',
+            'Property Ref:'
+          );
+          cy.get(`${rowSelectorPopUpBox(5)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '10090323559')
+            .and('have.length', 1);
+        });
+
+        it('Displays Rent', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(6)} > :nth-child(1)`).should(
+            'contain',
+            'Rent:'
+          );
+          cy.get(`${rowSelectorPopUpBox(6)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '£216.54')
+            .and('have.length', 1);
+        });
+
+        it('Displays Balance', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(7)} > :nth-child(1)`).should(
+            'contain',
+            'Balance:'
+          );
+          cy.get(`${rowSelectorPopUpBox(7)} > :nth-child(1)`)
+            .siblings()
+            .should('contain', '£2.00')
+            .and('have.length', 1);
+        });
+      });
+    });
+
+    describe('Benefits', () => {
+      const pathToTbody =
+        '#quickAccess > div > div:nth-child(4) > table > tbody';
+      const pathToMoreDetails =
+        '#quickAccess > div > div:nth-child(4) > div > ul > li > a';
+      const pathToPopUpBox =
+        '#quickAccess > div > div:nth-child(4) > div > ul > li > div.popup-overlay > div > div > div';
+      const pathToDetailsTbody =
+        '#quickAccess > div > div:nth-child(4) > div > ul > li > div.popup-overlay > div > div > div > table > tbody > tr > td:nth-child(2) > table > tbody';
+      const rowSelectorTr = rowNumber => {
+        return `${pathToTbody} > :nth-child(${rowNumber})`;
+      };
+      const rowSelectorPopUpBox = rowNumber => {
+        return `${pathToDetailsTbody} > :nth-child(${rowNumber})`;
+      };
+
+      it('Displays Benefits', () => {
+        cy.get('#quickAccess > div > div:nth-child(4) > h3');
+      });
+
+      it('Displays Live Claim', () => {
+        const pathToTd = rowSelectorTr(1);
+        cy.get(pathToTd).should('contain', 'Live claim:');
+        cy.get(pathToTd)
+          .siblings()
+          .should('contain', 'Yes');
+      });
+
+      it('Displays Universal Credit', () => {
+        const pathToTd = rowSelectorTr(2);
+        cy.get(pathToTd).should('contain', 'Universal Credit:');
+        cy.get(pathToTd)
+          .siblings()
+          .should('contain', 'Yes');
+      });
+
+      it('Can click more details and display pop up box with Benefits Information', () => {
+        cy.get(pathToMoreDetails)
+          .should('contain', 'More details')
+          .scrollIntoView()
+          .click({ force: true });
+        cy.get(pathToPopUpBox).should('contain', 'Benefits information');
+      });
+
+      describe('Benefits More details', () => {
+        it('Displays Income', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(pathToPopUpBox).should('contain', 'Income');
+        });
+
+        it('Displays Child Benefit', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(1)} > :nth-child(1)`)
+            .should('contain', 'Child Benefit')
+            .next()
+            .should('contain', '1 x')
+            .next()
+            .should('contain', 'Weekly')
+            .next()
+            .should('contain', '£34.40');
+        });
+
+        it('Displays Miscellaneous Income', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(2)} > :nth-child(1)`)
+            .should('contain', 'Miscellaneous Income')
+            .next()
+            .should('contain', '')
+            .next()
+            .should('contain', '')
+            .next()
+            .should('contain', '£0.00');
+        });
+
+        it('Displays Universal Credit Award', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(3)} > :nth-child(1)`)
+            .should('contain', 'Universal Credit Award')
+            .next()
+            .should('contain', '1 x')
+            .next()
+            .should('contain', 'Monthly')
+            .next()
+            .should('contain', '£826.57');
+        });
+      });
+    });
+
+    describe('Council Tax',() => {
+      const pathToMoreDetails =
+        '#quickAccess > div > div:nth-child(5) > div > ul > li > a';
+      const pathToPopUpBox =
+        '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div';
+      const pathToDetailsTbody =
+        '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div > table > tbody';
+      const pathToSecondTbody =
+        '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(2) > table > tbody';
+      const rowSelectorPopUpBox = rowNumber => {
+        return `${pathToDetailsTbody} > :nth-child(${rowNumber})`;
+      };
+      const rowSelectorSecondTbody = rowNumber => {
+        return `${pathToSecondTbody} > :nth-child(${rowNumber})`;
+      };
+      it('Displays Council Tax', () => {
+        cy.get('#quickAccess > div > div:nth-child(5) > h3');
+      });
+
+      it('Displays Balance', () => {
+        const pathToTd =
+          '#quickAccess > div > div:nth-child(5) > table > tbody > tr > td:nth-child(1)';
+        cy.get(pathToTd).should('contain', 'Balance:')
+          .siblings()
+          .should('contain', '£55.55')
+          .and('have.length', 1);
+      });
+
+      it('Can click more details and display pop up box with Council tax information', () => {
+        cy.get(pathToMoreDetails).should('contain', 'More details');
+        cy.get(pathToMoreDetails)
+          .scrollIntoView()
+          .click({ force: true });
+        cy.get(pathToPopUpBox).should('contain', 'Council tax information');
+      });
+
+      describe('Council Tax More details',() => {
+        it('Displays Council tax ref', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(1)} > :nth-child(1)`)
+            .should('contain', 'Council tax ref')
+            .siblings()
+            .should('contain', '333333399399999999')
+            .and('have.length', 1);
+        });
+
+        it('Displays Account balance', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(2)} > :nth-child(1)`)
+            .should('contain', 'Account balance')
+            .siblings()
+            .should('contain', '£55.55')
+            .and('have.length', 1);
+        });
+
+        it('Displays Payment method', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorPopUpBox(3)} > :nth-child(1)`)
+            .should('contain', 'Payment method')
+            .siblings()
+            .should('contain', 'CASH MONTHLY')
+            .and('have.length', 1);
+        });
+
+        it('Displays Recent transactions', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(pathToPopUpBox).should('contain', 'Recent transactions');
+        });
+
+        it('Displays transaction', () => {
+          cy.get(pathToMoreDetails)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelectorSecondTbody(1)} > :nth-child(1)`)
+            .should('contain', '08/01/2010')
+            .next()
+            .should('contain', 'SOME COSTS')
+            .next()
+            .should('contain', '-£2.50');
+        });
+      });
+    });
+
     describe('Housing Register', () => {
       const pathToMoreDetailsAnchor = '#housingRegister > div > ul > li > a';
 
