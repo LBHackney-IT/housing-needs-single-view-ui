@@ -95,7 +95,7 @@ export default class Note extends Component {
       note.type === 'document' &&
       (note.system === 'UHW' ||
         note.system === 'COMINO' ||
-        note.system === 'JIGSAW')
+        (note.system === 'JIGSAW' && note.format === '.pdf'))
     ) {
       noteComponent = (
         <strong>
