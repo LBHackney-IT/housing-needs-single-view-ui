@@ -10,7 +10,7 @@ export default class QuickAccess extends Component {
     const { customer } = this.props;
 
     return (
-      <div>
+      <div id="quickAccess">
         <h2>Quick Access</h2>
         <div className="quick-access row">
           <CaseInformation customer={customer} />
