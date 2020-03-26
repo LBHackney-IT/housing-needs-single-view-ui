@@ -403,7 +403,8 @@ app.get('/customers/:id/record', (req, res) => {
           biddingNo: '2156200',
           band: 'Homeless',
           startDate: '2019-07-18T00:00:00.000Z',
-          bedroomReq: '2'
+          bedroomReq: '2',
+          applicationStatus: 'Active'
         }
       ]
     }
