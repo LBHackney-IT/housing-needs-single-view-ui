@@ -429,11 +429,22 @@ describe('Details Page', () => {
             .and('have.length', 1);
         });
 
-        it('Displays Bidding no', () => {
+        it('Displays Application Status', () => {
           cy.get(pathToMoreDetailsAnchor)
             .scrollIntoView()
             .click({ force: true });
           cy.get(`${rowSelector(2)} > :nth-child(1)`)
+            .should('contain', 'Application status:')
+            .siblings()
+            .should('contain', 'Active')
+            .and('have.length', 1);
+        });
+
+        it('Displays Bidding no', () => {
+          cy.get(pathToMoreDetailsAnchor)
+            .scrollIntoView()
+            .click({ force: true });
+          cy.get(`${rowSelector(3)} > :nth-child(1)`)
             .should('contain', 'Bidding no:')
             .siblings()
             .should('contain', '2156200')
@@ -444,7 +455,7 @@ describe('Details Page', () => {
           cy.get(pathToMoreDetailsAnchor)
             .scrollIntoView()
             .click({ force: true });
-          cy.get(`${rowSelector(3)} > :nth-child(1)`)
+          cy.get(`${rowSelector(4)} > :nth-child(1)`)
             .should('contain', 'Band:')
             .siblings()
             .should('contain', 'Homeless')
@@ -455,7 +466,7 @@ describe('Details Page', () => {
           cy.get(pathToMoreDetailsAnchor)
             .scrollIntoView()
             .click({ force: true });
-          cy.get(`${rowSelector(4)} > :nth-child(1)`)
+          cy.get(`${rowSelector(5)} > :nth-child(1)`)
             .should('contain', 'Effective Band Date:')
             .siblings()
             .should('contain', '18/07/2019')
@@ -466,7 +477,7 @@ describe('Details Page', () => {
           cy.get(pathToMoreDetailsAnchor)
             .scrollIntoView()
             .click({ force: true });
-          cy.get(`${rowSelector(5)} > :nth-child(1)`)
+          cy.get(`${rowSelector(6)} > :nth-child(1)`)
             .should('contain', 'Bedroom requirements:')
             .siblings()
             .should('contain', '2')

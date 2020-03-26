@@ -12,6 +12,10 @@ export default class HousingRegister extends Component {
             <td>{t.applicationRef}</td>
           </tr>
           <tr>
+            <td>Application status:</td>
+            <td>{t.applicationStatus}</td>
+          </tr>
+          <tr>
             <td>Bidding no:</td>
             <td>{t.biddingNo}</td>
           </tr>
