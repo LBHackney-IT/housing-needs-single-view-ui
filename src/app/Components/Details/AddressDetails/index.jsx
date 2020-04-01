@@ -31,15 +31,15 @@ export default class AddressDetails extends Component {
                       <p key={i} title={address.source.join(', ')}>
                         <p>{this.lineBreakifyAddress(address.address)}</p>
                         <details
-                          class="govuk-details"
+                          className="govuk-details"
                           data-module="govuk-details"
                         >
-                          <summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text">
+                          <summary className="govuk-details__summary">
+                            <span className="govuk-details__summary-text">
                               Where is this from?
                             </span>
                           </summary>
-                          <div class="govuk-details__text">
+                          <div className="govuk-details__text">
                             {this.lineBreakifyAddress(address.source)}
                           </div>
                         </details>
