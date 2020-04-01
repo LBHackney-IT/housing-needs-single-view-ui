@@ -5,6 +5,7 @@ import FetchCustomerDocuments from './FetchCustomerDocuments';
 import SearchCustomers from './SearchCustomers';
 import DeleteCustomerRecord from './DeleteCustomerRecord';
 import AddVulnerability from './AddVulnerability';
+import FetchJigsawDoc from './FetchJigsawDoc';
 import { hackneyToken } from '../lib/Cookie';
 
 const AuthHeader = {
@@ -22,5 +23,6 @@ export {
   FetchCustomerDocuments,
   SearchCustomers,
   DeleteCustomerRecord,
-  AddVulnerability
+  AddVulnerability,
+  FetchJigsawDoc
 };

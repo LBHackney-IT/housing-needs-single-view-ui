@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DocumentModal from '../../DocumentModal';
+import { FetchJigsawDoc } from '../../../Gateways';
 
 export default class Note extends Component {
   state = {
@@ -31,9 +32,16 @@ export default class Note extends Component {
         });
       } else if (this.props.note.system === 'JIGSAW') {
         this.setState({
-          docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/jigsaw/${this.props.note.id}`,
           showDoc: true
         });
+        FetchJigsawDoc(this.props.note.userid, this.props.note.id)
+          .then(response => response.blob())
+          .then(blob => {
+            const tempUrl = URL.createObjectURL(blob);
+            this.setState({
+              docUrl: tempUrl
+            });
+          });
       }
     }
   };
@@ -97,7 +105,7 @@ export default class Note extends Component {
       noteComponent = (
         <strong>
           <p>
-            <a onClick={this.click} href="#/" class="govuk-link">
+            <a onClick={this.click} href="#/" className="govuk-link">
               {note.title}
             </a>
           </p>
