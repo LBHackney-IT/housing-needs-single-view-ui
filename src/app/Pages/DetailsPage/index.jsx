@@ -68,7 +68,7 @@ export default class DetailsPage extends Component {
       <div>
         <div className="lbh-container row details">
           <p>
-            <button onClick={this.goBack} class="govuk-back-link">
+            <button onClick={this.goBack} className="govuk-back-link">
               Back to search
             </button>
           </p>
