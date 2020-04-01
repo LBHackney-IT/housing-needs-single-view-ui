@@ -55,103 +55,103 @@ export default class VulnerabilitiesPage extends Component {
           <h3 className="lbh-heading-h3">What to look out for</h3>
         </div>
         <div
-          class="govuk-accordion lbh-accordion"
+          className="govuk-accordion lbh-accordion"
           data-module="govuk-accordion"
         >
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   Active case with other services?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 1</li>
               </ul>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   At risk of arrears?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 2</li>
               </ul>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   Benefits trigger events?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 2</li>
               </ul>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   Unusual behaviour?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 2</li>
               </ul>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   Significant change or transition?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 2</li>
               </ul>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   Emotional shock?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 2</li>
               </ul>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h5 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button">
+          <div className="govuk-accordion__section ">
+            <div className="govuk-accordion__section-header">
+              <h5 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button">
                   Level of stress?
                 </span>
               </h5>
             </div>
-            <div class="govuk-accordion__section-content">
-              <ul class="lbh-list lbh-list--bullet">
+            <div className="govuk-accordion__section-content">
+              <ul className="lbh-list lbh-list--bullet">
                 <li>Example item 2</li>
               </ul>
             </div>
