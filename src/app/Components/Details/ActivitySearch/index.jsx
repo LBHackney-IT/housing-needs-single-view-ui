@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import './index.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -70,6 +70,9 @@ export default class ActivitySearch extends Component {
     const filters = { note: 'Notes', document: 'Documents' };
     return (
       <div className="activity__search">
+        <label htmlFor="searchActivity" className="visuallyhidden">
+          Search Activity
+        </label>
         <input
           type="text"
           placeholder="Search"
@@ -79,10 +82,15 @@ export default class ActivitySearch extends Component {
           onChange={this.handleSearchTermChange}
           onFocus={e => this.setState({ filter: null, showFilters: true })}
         />
-        <button onClick={this.toggleFilters}>{this.searchIcon()}</button>
+        <button onClick={this.toggleFilters}>
+          {this.searchIcon()}
+          <span className="visuallyhidden">Search</span>
+        </button>
         <div hidden={!this.state.filter}>
           <span className="selectedFilter">
-            <a href="#/" onClick={this.clearFilter}>All {filters[this.state.filter]}</a>
+            <a href="#/" onClick={this.clearFilter}>
+              All {filters[this.state.filter]}
+            </a>
           </span>
         </div>
         <div hidden={!this.state.showFilters} className="activity__filters">
