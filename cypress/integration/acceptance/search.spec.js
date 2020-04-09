@@ -23,8 +23,9 @@ describe('Search', () => {
       cy.get('.govuk-input:last')
         .type('Adams')
         .type('{enter}');
-      cy.get('body').should('contain', 'Customers with matching details');
-      cy.get('body').should('contain', 'Wednesday Adams');
+      cy.get('body')
+        .should('contain', 'Customers with matching details')
+        .and('contain', 'Wednesday Adams');
     });
 
     it('Join relevant records', () => {
@@ -112,7 +113,7 @@ describe('Search', () => {
         });
 
       cy.get('.govuk-button')
-        .last()
+        .eq(2)
         .scrollIntoView()
         .click({ force: true });
 
