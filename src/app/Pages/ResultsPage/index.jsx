@@ -73,6 +73,11 @@ export default class ResultsPage extends Component {
     });
   };
 
+  goBack() {
+    if (window.location.href.includes('#/')) window.history.go(-2);
+    else window.history.go(-1);
+  }
+
   prevResults() {
     if (this.state.results.connected.length > 0) {
       return [
@@ -114,6 +119,20 @@ export default class ResultsPage extends Component {
     }
   }
 
+  resultsOutcome() {
+    if (
+      this.state.results.ungrouped.length > 0 &&
+      this.state.results.grouped.length > 0
+    )
+      return (
+        <p>
+          The following records have the same name and either date of birth or
+          national insurance number.
+        </p>
+      );
+    else return <p>There are no records that match those details</p>;
+  }
+
   render() {
     if (this.state.connecting) {
       return (
@@ -143,8 +162,19 @@ export default class ResultsPage extends Component {
       );
     }
 
+    let recordsExist = '';
+    if (
+      this.state.results.ungrouped.length === 0 &&
+      this.state.results.grouped.length === 0
+    ) {
+      recordsExist = 'noRecords';
+    }
+
     return (
       <div className="lbh-container results">
+        <button onClick={this.goBack} className="govuk-back-link">
+          Back to search
+        </button>
         {this.prevResults()}
         <div className="connectRecords">
           <div className="row">
@@ -153,7 +183,7 @@ export default class ResultsPage extends Component {
             </div>
             <button
               disabled={this.state.selected.length === 0}
-              className="govuk-button lbh-button"
+              className={'govuk-button lbh-button ' + recordsExist}
               onClick={this.connectNewCustomer}
             >
               Create new connected record
@@ -162,12 +192,7 @@ export default class ResultsPage extends Component {
         </div>
         <section className="govuk-form-group">
           <h2 key="matching">Customers with matching details</h2>
-
-          <p>
-            The following records have the same name and either date of birth or
-            national insurance number.
-          </p>
-
+          {this.resultsOutcome()}
           <div>
             {this.state.results.grouped.map((group, index) => {
               return (
@@ -184,6 +209,9 @@ export default class ResultsPage extends Component {
           </div>
         </section>
         {this.otherResults()}
+        <button onClick={this.goBack} className="govuk-button lbh-button">
+          Search again
+        </button>
       </div>
     );
   }
