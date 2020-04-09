@@ -27,5 +27,42 @@ describe('Results Page', () => {
         .should('contain', 'Create new connected record')
         .and('not.have.attr', 'disabled');
     });
+
+    it('does not display the button if there are no results', () => {
+      cy.visit('http://localhost:3001/search?firstName=fake&lastName=name');
+      cy.get('.connectRecords > .row > .govuk-button')
+        .should('have.class', 'noRecords')
+        .and('not.be.visible');
+    });
+  });
+
+  describe('Back to search', () => {
+    it('Back to search takes you back to search page', () => {
+      cy.visit('http://localhost:3001/');
+      cy.get('.govuk-input:last')
+        .type('Fake')
+        .type('{enter}');
+      cy.get('.govuk-back-link')
+        .scrollIntoView()
+        .should('contain', 'Back to search')
+        .click();
+
+      cy.get('body').should('contain', 'Search for a customer');
+    });
+  });
+
+  describe('Search again button', () => {
+    it('Back to search takes you back to search page', () => {
+      cy.visit('http://localhost:3001/');
+      cy.get('.govuk-input:last')
+        .type('Fake')
+        .type('{enter}');
+      cy.get('.govuk-button:last')
+        .scrollIntoView()
+        .should('contain', 'Search again')
+        .click();
+
+      cy.get('body').should('contain', 'Search for a customer');
+    });
   });
 });
