@@ -27,11 +27,11 @@ export default class PreviousRecord extends Component {
       <div className="previousRecord">
         <div className="row">
           <div>
-            <h3>
+            <p className="connectedName">
               {Utils.nameCase(
                 `${this.props.record.firstName} ${this.props.record.lastName}`
               )}
-            </h3>
+            </p>
             <a href="#/" onClick={this.show}>
               {!this.state.visible
                 ? 'Show connected records >'
