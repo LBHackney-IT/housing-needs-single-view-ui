@@ -78,6 +78,7 @@ export default class ResultsPage extends Component {
     if (this.state.results.connected.length > 0) {
       return [
         <section className="govuk-form-group" key="prevGroup">
+          <h1 key="prev">Matching customers</h1>
           <h2 key="prev">
             There are previously connected records for your search
           </h2>
@@ -167,7 +168,7 @@ export default class ResultsPage extends Component {
         <div className="connectRecords">
           <div className="row">
             <div>
-              <h1>Create a single view of a customer</h1>
+              <h2>Create a single view of a customer</h2>
             </div>
             {(this.state.results.ungrouped.length > 0 ||
               this.state.results.grouped.length > 0) && (
