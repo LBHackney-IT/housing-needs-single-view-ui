@@ -10,7 +10,7 @@ const generateResponse = props => {
     return `${v}`;
   });
   console.log(q);
-  if (q[0] === 'Wednesday')
+  if (q[0].toLowerCase() === 'wednesday')
     return {
       grouped: [
         [
@@ -240,8 +240,8 @@ const generateResponse = props => {
       connected: [
         {
           id: 10,
-          firstName: props.firstName || 'Rick',
-          lastName: props.lastName || 'Sanchez',
+          firstName: props.firstName || 'Wednesday',
+          lastName: props.lastName || 'Adams',
           dob: null,
           nino: null,
           address: '',
@@ -252,8 +252,8 @@ const generateResponse = props => {
               customer_id: 10,
               system_id: 5,
               remote_id: '111111/1',
-              first_name: props.firstName || 'Rick',
-              last_name: props.lastName || 'Sanchez',
+              first_name: props.firstName || 'Wednesday',
+              last_name: props.lastName || 'Adams',
               address:
                 '33 address Street, Address, Stamford Hill, LAMAMA, ZO6 5FE',
               nino: 'SC1234565',
