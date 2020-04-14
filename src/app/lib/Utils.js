@@ -32,6 +32,11 @@ let Utils = {
 
   formatDisplayDate(input) {
     return moment(input).format('DD/MM/YYYY');
+  },
+
+  goBack() {
+    if (window.location.href.includes('#/')) window.history.go(-2);
+    else window.history.go(-1);
   }
 };
 

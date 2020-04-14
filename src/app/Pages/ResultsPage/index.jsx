@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CreateCustomer, SearchCustomers } from '../../Gateways';
 import { Redirect } from 'react-router-dom';
 import { PreviousRecord, GroupedTable } from '../../Components/Results';
+import { goBack } from '../../lib/Utils';
 
 export default class ResultsPage extends Component {
   sources = [
@@ -72,11 +73,6 @@ export default class ResultsPage extends Component {
       return { selected: selected, filter: this.generateFilter() };
     });
   };
-
-  goBack() {
-    if (window.location.href.includes('#/')) window.history.go(-2);
-    else window.history.go(-1);
-  }
 
   prevResults() {
     if (this.state.results.connected.length > 0) {
@@ -172,7 +168,7 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="lbh-container results">
-        <button onClick={this.goBack} className="govuk-back-link">
+        <button onClick={goBack} className="govuk-back-link">
           Back to search
         </button>
         {this.prevResults()}
