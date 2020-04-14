@@ -205,7 +205,7 @@ export default class ResultsPage extends Component {
           </div>
         </section>
         {this.otherResults()}
-        <button onClick={this.goBack} className="govuk-button lbh-button">
+        <button onClick={goBack} className="govuk-button lbh-button">
           Search again
         </button>
       </div>
