@@ -173,6 +173,7 @@ export default class ResultsPage extends Component {
               return (
                 <GroupedTable
                   key={index}
+                  group={index + 1}
                   records={group}
                   selectable={true}
                   onSelect={this.addSelection}

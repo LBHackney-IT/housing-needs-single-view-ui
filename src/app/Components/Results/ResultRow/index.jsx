@@ -22,12 +22,11 @@ export default class ResultRow extends Component {
     return { filtered: false };
   }
 
-  checkbox = id => {
-    console.log(this.props);
+  checkbox = key => {
     if (this.props.selectable) {
       return (
         <td>
-          <label htmlFor={`checkbox_${id}`} className="visuallyhidden">
+          <label htmlFor={`checkbox_${key}`} className="visuallyhidden">
             Checkbox
           </label>
           <div className="govuk-checkboxes">
@@ -39,7 +38,7 @@ export default class ResultRow extends Component {
                 onChange={this.click}
                 onClick={this.click}
                 disabled={this.state.filtered}
-                id={`checkbox_${id}`}
+                id={`checkbox_${key}`}
               ></input>
             </div>
           </div>
@@ -82,7 +81,7 @@ export default class ResultRow extends Component {
             : null
         }
       >
-        {this.checkbox(this.props.result.id)}
+        {this.checkbox(this.props.checkbox)}
         {this.props.result.system && <td>{this.props.result.system}</td>}
         <td>{this.props.result.firstName}</td>
         <td>{this.props.result.lastName}</td>

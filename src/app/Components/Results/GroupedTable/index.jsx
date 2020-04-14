@@ -7,7 +7,8 @@ export default class GroupedTable extends Component {
     super(props);
     this.state = {
       selected: {},
-      groupedRecords: this.groupRecords(props.records)
+      groupedRecords: this.groupRecords(props.records),
+      index: 0
     };
   }
 
@@ -38,6 +39,11 @@ export default class GroupedTable extends Component {
       </tr>
     );
   }
+  setIndex(i) {
+    this.setState({
+      index: i
+    });
+  }
 
   render() {
     if (Object.keys(this.props.records).length > 0) {
@@ -57,9 +63,12 @@ export default class GroupedTable extends Component {
             {Object.keys(this.state.groupedRecords).map(source => {
               return [this.divider(source)].concat(
                 this.state.groupedRecords[source].map((record, i) => {
+                  this.state.index += 1;
+                  //this.setIndex(this.state.index + 1);
                   return (
                     <ResultRow
                       key={i}
+                      checkbox={`group_${this.props.group}_record_${this.state.index}`}
                       result={record}
                       selectable={this.props.selectable}
                       onSelected={this.rowSelected}
