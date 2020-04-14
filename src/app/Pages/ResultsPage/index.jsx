@@ -13,6 +13,7 @@ export default class ResultsPage extends Component {
     'ACADEMY'
   ];
 
+  group = 0;
   constructor(props) {
     super(props);
     this.state = { results: {}, selected: [], searching: true };
@@ -104,6 +105,7 @@ export default class ResultsPage extends Component {
             <GroupedTable
               records={this.state.results.ungrouped}
               selectable={true}
+              group={this.group + 1}
               onSelect={this.addSelection}
               onDeselect={this.removeSelection}
               filter={this.state.filter}
@@ -170,10 +172,11 @@ export default class ResultsPage extends Component {
 
           <div>
             {this.state.results.grouped.map((group, index) => {
+              this.group = index + 1;
               return (
                 <GroupedTable
                   key={index}
-                  group={index + 1}
+                  group={this.group}
                   records={group}
                   selectable={true}
                   onSelect={this.addSelection}
