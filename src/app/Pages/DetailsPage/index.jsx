@@ -52,6 +52,7 @@ export default class DetailsPage extends Component {
   }
 
   render() {
+    document.title = 'Customer details - Single View';
     if (this.state.fetching) {
       return (
         <div className="lbh-container">

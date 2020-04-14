@@ -4,6 +4,7 @@ import { isLoggedIn } from '../../lib/Cookie';
 
 export default class LoginPage extends Component {
   render() {
+    document.title = 'Login - Single View';
     if (isLoggedIn() === true) {
       return <Redirect to="/" />;
     }
