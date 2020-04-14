@@ -115,6 +115,7 @@ export default class ResultsPage extends Component {
   }
 
   render() {
+    document.title = 'Search results - Single View';
     if (this.state.connecting) {
       return (
         <div className="lbh-container">

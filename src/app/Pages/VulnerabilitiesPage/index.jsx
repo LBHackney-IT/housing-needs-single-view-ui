@@ -23,6 +23,7 @@ export default class VulnerabilitiesPage extends Component {
   };
 
   render() {
+    document.title = 'Vulnerabilities - Single View';
     if (this.state.redirect) {
       return <Redirect to={`/customers/${this.props.match.params.id}/view`} />;
     }
