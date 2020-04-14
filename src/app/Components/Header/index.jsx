@@ -39,7 +39,9 @@ export default class Header extends Component {
                     height="37"
                   ></image>
                 </svg>
-                <span className="lbh-header__logo-text">Hackney</span>
+                <span className="lbh-header__logo-text visually_hidden">
+                  Hackney
+                </span>
               </a>
             </h1>
             <div className="lbh-header__content">SINGLE VIEW</div>
