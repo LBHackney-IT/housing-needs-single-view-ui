@@ -98,7 +98,7 @@ p {
 }
 
 .details td {
-  padding: 0 10px 10px 0;
+  padding: 0 0 10px 0;
 }
 
 .details tr > td:first-of-type {
@@ -112,7 +112,7 @@ p {
 }
 
 .quick-access__item {
-  width: 162px;
+  width: auto;
   border: 1px solid #ccc;
   padding: 11px;
   margin: 0 15px 15px 0;
