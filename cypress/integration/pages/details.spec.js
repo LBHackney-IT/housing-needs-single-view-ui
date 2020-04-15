@@ -660,6 +660,11 @@ describe('Details Page', () => {
               .and('have.attr', 'href')
         );
       });
+      it('does not display note and academy document title as a clickable link', () => {
+        cy.get('.activity > table > tbody > tr > td > p > strong').each($el =>
+          cy.wrap($el).should('not.have.text', 'Document')
+        );
+      });
     });
 
     describe('Read more', () => {
