@@ -4,7 +4,6 @@ import FetchCustomerRecord from './FetchCustomerRecord';
 import FetchCustomerDocuments from './FetchCustomerDocuments';
 import SearchCustomers from './SearchCustomers';
 import DeleteCustomerRecord from './DeleteCustomerRecord';
-import AddVulnerability from './AddVulnerability';
 import FetchJigsawDoc from './FetchJigsawDoc';
 import { hackneyToken } from '../lib/Cookie';
 
@@ -23,6 +22,5 @@ export {
   FetchCustomerDocuments,
   SearchCustomers,
   DeleteCustomerRecord,
-  AddVulnerability,
   FetchJigsawDoc
 };

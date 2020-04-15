@@ -28,7 +28,7 @@ export default class AddressDetails extends Component {
                 {customer.address && customer.address.length > 0 ? (
                   customer.address.map((address, i) => {
                     return (
-                      <p key={i} title={address.source.join(', ')}>
+                      <div key={i} title={address.source.join(', ')}>
                         <p>{this.lineBreakifyAddress(address.address)}</p>
                         <details
                           className="govuk-details"
@@ -43,7 +43,7 @@ export default class AddressDetails extends Component {
                             {this.lineBreakifyAddress(address.source)}
                           </div>
                         </details>
-                      </p>
+                      </div>
                     );
                   })
                 ) : (
