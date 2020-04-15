@@ -40,11 +40,6 @@ export default class GroupedTable extends Component {
       </tr>
     );
   }
-  setIndex(i) {
-    this.setState({
-      index: i
-    });
-  }
 
   render() {
     if (Object.keys(this.props.records).length > 0) {
