@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CreateCustomer, SearchCustomers } from '../../Gateways';
 import { Redirect } from 'react-router-dom';
 import { PreviousRecord, GroupedTable } from '../../Components/Results';
+import { goBack } from '../../lib/Utils';
 
 export default class ResultsPage extends Component {
   sources = [
@@ -78,6 +79,7 @@ export default class ResultsPage extends Component {
     if (this.state.results.connected.length > 0) {
       return [
         <section className="govuk-form-group" key="prevGroup">
+          <h1 key="prev">Matching customers</h1>
           <h2 key="prev">
             There are previously connected records for your search
           </h2>
@@ -116,7 +118,22 @@ export default class ResultsPage extends Component {
     }
   }
 
+  resultsOutcome() {
+    if (
+      this.state.results.ungrouped.length > 0 &&
+      this.state.results.grouped.length > 0
+    )
+      return (
+        <p>
+          The following records have the same name and either date of birth or
+          national insurance number.
+        </p>
+      );
+    else return <p>There are no records that match those details</p>;
+  }
+
   render() {
+    document.title = 'Search results - Single View';
     if (this.state.connecting) {
       return (
         <div className="lbh-container">
@@ -147,29 +164,30 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="lbh-container results">
+        <button onClick={goBack} className="govuk-back-link">
+          Back to search
+        </button>
         {this.prevResults()}
         <div className="connectRecords">
           <div className="row">
             <div>
-              <h1>Create a single view of a customer</h1>
+              <h2>Create a single view of a customer</h2>
             </div>
-            <button
-              disabled={this.state.selected.length === 0}
-              className="govuk-button lbh-button"
-              onClick={this.connectNewCustomer}
-            >
-              Create new connected record
-            </button>
+            {(this.state.results.ungrouped.length > 0 ||
+              this.state.results.grouped.length > 0) && (
+              <button
+                disabled={this.state.selected.length === 0}
+                className={'govuk-button lbh-button '}
+                onClick={this.connectNewCustomer}
+              >
+                Create new connected record
+              </button>
+            )}
           </div>
         </div>
         <section className="govuk-form-group">
           <h2 key="matching">Customers with matching details</h2>
-
-          <p>
-            The following records have the same name and either date of birth or
-            national insurance number.
-          </p>
-
+          {this.resultsOutcome()}
           <div>
             {this.state.results.grouped.map((group, index) => {
               this.group = index + 1;
@@ -188,6 +206,9 @@ export default class ResultsPage extends Component {
           </div>
         </section>
         {this.otherResults()}
+        <button onClick={goBack} className="govuk-button lbh-button">
+          Search again
+        </button>
       </div>
     );
   }

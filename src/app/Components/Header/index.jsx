@@ -6,7 +6,7 @@ export default class Header extends Component {
       <header className="lbh-header">
         <div className="lbh-header__main">
           <div className="lbh-container lbh-header__wrapper">
-            <h1 className="lbh-header__title govuk-header__logo">
+            <div className="lbh-header__title govuk-header__logo">
               <a href="/" className="lbh-header__title-link">
                 <svg
                   className="lbh-header__logo"
@@ -43,7 +43,7 @@ export default class Header extends Component {
                   Hackney
                 </span>
               </a>
-            </h1>
+            </div>
             <div className="lbh-header__content">SINGLE VIEW</div>
           </div>
         </div>

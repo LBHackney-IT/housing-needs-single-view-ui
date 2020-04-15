@@ -35,6 +35,7 @@ export default class SearchPage extends Component {
   }
 
   render() {
+    document.title = 'Search - Single View';
     return (
       <div className="lbh-container">
         <h1>Welcome to Single View</h1>
