@@ -158,14 +158,6 @@ export default class ResultsPage extends Component {
       );
     }
 
-    let recordsExist = '';
-    if (
-      this.state.results.ungrouped.length === 0 &&
-      this.state.results.grouped.length === 0
-    ) {
-      recordsExist = 'noRecords';
-    }
-
     return (
       <div className="lbh-container results">
         <button onClick={goBack} className="govuk-back-link">
@@ -177,13 +169,16 @@ export default class ResultsPage extends Component {
             <div>
               <h1>Create a single view of a customer</h1>
             </div>
-            <button
-              disabled={this.state.selected.length === 0}
-              className={'govuk-button lbh-button ' + recordsExist}
-              onClick={this.connectNewCustomer}
-            >
-              Create new connected record
-            </button>
+            {(this.state.results.ungrouped.length > 0 ||
+              this.state.results.grouped.length > 0) && (
+              <button
+                disabled={this.state.selected.length === 0}
+                className={'govuk-button lbh-button '}
+                onClick={this.connectNewCustomer}
+              >
+                Create new connected record
+              </button>
+            )}
           </div>
         </div>
         <section className="govuk-form-group">

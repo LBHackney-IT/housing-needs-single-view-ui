@@ -30,9 +30,7 @@ describe('Results Page', () => {
 
     it('does not display the button if there are no results', () => {
       cy.visit('http://localhost:3001/search?firstName=fake&lastName=name');
-      cy.get('.connectRecords > .row > .govuk-button')
-        .should('have.class', 'noRecords')
-        .and('not.be.visible');
+      cy.get('.connectRecords > .row > .govuk-button').should('not.exist');
     });
   });
 
