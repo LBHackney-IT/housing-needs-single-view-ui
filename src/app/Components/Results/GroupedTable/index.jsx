@@ -3,11 +3,13 @@ import ResultRow from '../ResultRow';
 import './index.scss';
 
 export default class GroupedTable extends Component {
+  recordIndex = 0;
   constructor(props) {
     super(props);
     this.state = {
       selected: {},
-      groupedRecords: this.groupRecords(props.records)
+      groupedRecords: this.groupRecords(props.records),
+      index: 0
     };
   }
 
@@ -57,9 +59,11 @@ export default class GroupedTable extends Component {
             {Object.keys(this.state.groupedRecords).map(source => {
               return [this.divider(source)].concat(
                 this.state.groupedRecords[source].map((record, i) => {
+                  this.recordIndex += 1;
                   return (
                     <ResultRow
                       key={i}
+                      checkbox={`group_${this.props.group}_record_${this.recordIndex}`}
                       result={record}
                       selectable={this.props.selectable}
                       onSelected={this.rowSelected}
