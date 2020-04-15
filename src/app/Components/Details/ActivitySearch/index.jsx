@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import './index.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -82,13 +82,15 @@ export default class ActivitySearch extends Component {
         <button onClick={this.toggleFilters}>{this.searchIcon()}</button>
         <div hidden={!this.state.filter}>
           <span className="selectedFilter">
-            <a href="#/" onClick={this.clearFilter}>All {filters[this.state.filter]}</a>
+            <a href="#/" onClick={this.clearFilter}>
+              All {filters[this.state.filter]}
+            </a>
           </span>
         </div>
         <div hidden={!this.state.showFilters} className="activity__filters">
-          {Object.keys(filters).map(type => {
+          {Object.keys(filters).map((type, i) => {
             return (
-              <a href="#/" onClick={e => this.setFilter(e, type)}>
+              <a href="#/" key={i} onClick={e => this.setFilter(e, type)}>
                 All {filters[type]}
               </a>
             );
