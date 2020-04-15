@@ -15,6 +15,7 @@ import {
   PrototypesLink
 } from '../../Components/Details';
 import moment from 'moment';
+import { goBack } from '../../lib/Utils';
 
 export default class DetailsPage extends Component {
   constructor(props) {
@@ -50,11 +51,6 @@ export default class DetailsPage extends Component {
       .catch(err => console.log(err));
   }
 
-  goBack() {
-    if (window.location.href.includes('#/')) window.history.go(-2);
-    else window.history.go(-1);
-  }
-
   render() {
     document.title = 'Customer details - Single View';
     if (this.state.fetching) {
@@ -69,7 +65,7 @@ export default class DetailsPage extends Component {
       <div>
         <div className="lbh-container row details">
           <p>
-            <button onClick={this.goBack} className="govuk-back-link">
+            <button onClick={goBack} className="govuk-back-link">
               Back to search
             </button>
           </p>

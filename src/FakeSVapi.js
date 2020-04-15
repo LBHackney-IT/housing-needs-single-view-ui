@@ -6,264 +6,275 @@ const port = 8080;
 app.use(cors());
 
 const generateResponse = props => {
-  return {
-    grouped: [
-      [
-        {
-          id: '263272',
-          firstName: 'Wednesday',
-          lastName: 'Adams',
-          dob: '01/02/1969',
-          nino: 'NR006660A',
-          address: '50 HUSHMORE ROAD E5 0ET',
-          source: 'JIGSAW'
-        },
-        {
-          id: '60940760/1',
-          firstName: 'Wednesday',
-          lastName: 'Adams',
-          dob: '01/02/1969',
-          nino: 'NR006660A',
-          address: '001 Cemetery Lane, London, E7 8LS',
-          postcode: 'E7 8LS',
-          source: 'ACADEMY-Benefits',
-          links: {
-            hbClaimId: 6094076
+  const q = Object.entries(props.query).map(([k, v]) => {
+    return `${v}`;
+  });
+  console.log(q);
+  if (q[0].toLowerCase() === 'wednesday')
+    return {
+      grouped: [
+        [
+          {
+            id: '263272',
+            firstName: 'Wednesday',
+            lastName: 'Adams',
+            dob: '01/02/1969',
+            nino: 'NR006660A',
+            address: '50 HUSHMORE ROAD E5 0ET',
+            source: 'JIGSAW'
+          },
+          {
+            id: '60940760/1',
+            firstName: 'Wednesday',
+            lastName: 'Adams',
+            dob: '01/02/1969',
+            nino: 'NR006660A',
+            address: '001 Cemetery Lane, London, E7 8LS',
+            postcode: 'E7 8LS',
+            source: 'ACADEMY-Benefits',
+            links: {
+              hbClaimId: 6094076
+            }
+          },
+          {
+            id: '333333399',
+            firstName: 'Wednesday',
+            lastName: 'Adams',
+            dob: null,
+            nino: null,
+            address: '001 Cemetery Lane, London, E7 8LS',
+            postcode: 'E7 8LS',
+            source: 'ACADEMY-CouncilTax',
+            links: { hbClaimId: 5058118 }
+          },
+          {
+            id: '0122132/1',
+            firstName: 'Wednesday',
+            lastName: 'Adams',
+            dob: '01/02/1969',
+            nino: 'NR006660A',
+            address: '001 Cemetery Lane, London, E7 8LS',
+            postcode: 'E7 8LS',
+            source: 'UHT-Contacts',
+            links: {
+              uhContact: 100087201
+            }
+          },
+          {
+            id: 'DIR0148754/1',
+            firstName: 'Wednesday',
+            lastName: 'Adams',
+            dob: '01/02/1969',
+            nino: 'NR006660A',
+            address:
+              'Housing Action Management, 001 Cemetery Lane, London, E7 8LS',
+            postcode: null,
+            source: 'UHT-HousingRegister',
+            links: {
+              uhContact: 100087201
+            }
+          },
+          {
+            id: '334351',
+            firstName: 'Wednesday',
+            lastName: 'Adams',
+            dob: '01/02/1969',
+            nino: 'NR006660A',
+            address: '',
+            postcode: null,
+            source: 'UHW',
+            links: {
+              uhContact: 100087201
+            }
           }
-        },
+        ],
+        [
+          {
+            id: '068366/1',
+            firstName: 'Gomez Wednesday',
+            lastName: 'Adams',
+            dob: '03/11/1955',
+            nino: null,
+            address: null,
+            postcode: 'E8 4JS',
+            source: 'UHT-Contacts',
+            links: {
+              uhContact: 42558
+            }
+          },
+          {
+            id: '16681',
+            firstName: 'Gomez Wednesday',
+            lastName: 'Adams',
+            dob: '03/11/1955',
+            nino: null,
+            address: '',
+            postcode: null,
+            source: 'UHW',
+            links: {
+              uhContact: 42558
+            }
+          },
+          {
+            id: '066567/1',
+            firstName: 'Gomez Wednesday',
+            lastName: 'Adams',
+            dob: '03/11/1955',
+            nino: null,
+            address: null,
+            postcode: null,
+            source: 'UHT-Contacts',
+            links: {
+              uhContact: 38308
+            }
+          }
+        ]
+      ],
+      ungrouped: [
         {
-          id: '333333399',
+          id: '308405993',
           firstName: 'Wednesday',
           lastName: 'Adams',
           dob: null,
           nino: null,
-          address: '001 Cemetery Lane, London, E7 8LS',
-          postcode: 'E7 8LS',
+          address: 'Mais 2nd Flr & Attic, 146d Graveman Road, London, E8 1BS',
+          postcode: 'E8 1BS',
           source: 'ACADEMY-CouncilTax',
-          links: { hbClaimId: 5058118 }
-        },
-        {
-          id: '0122132/1',
-          firstName: 'Wednesday',
-          lastName: 'Adams',
-          dob: '01/02/1969',
-          nino: 'NR006660A',
-          address: '001 Cemetery Lane, London, E7 8LS',
-          postcode: 'E7 8LS',
-          source: 'UHT-Contacts',
           links: {
-            uhContact: 100087201
+            hbClaimId: null
           }
         },
         {
-          id: 'DIR0148754/1',
+          id: '310226430',
           firstName: 'Wednesday',
           lastName: 'Adams',
-          dob: '01/02/1969',
-          nino: 'NR006660A',
+          dob: null,
+          nino: null,
+          address: 'Flat 3 At, 110 Kingssea Road, London, E2 8DP',
+          postcode: 'E2 8DP',
+          source: 'ACADEMY-CouncilTax',
+          links: {
+            hbClaimId: null
+          }
+        },
+        {
+          id: '311356021',
+          firstName: 'Fester',
+          lastName: 'Adams',
+          dob: null,
+          nino: null,
+          address: 'Flat 7, Block A, 100 Nightmare Street, London, E8 3FG',
+          postcode: 'E8 3FG',
+          source: 'ACADEMY-CouncilTax',
+          links: {
+            hbClaimId: null
+          }
+        },
+        {
+          id: '311820520',
+          firstName: 'Wednesday',
+          lastName: 'Adams',
+          dob: null,
+          nino: null,
+          address: '131 Riverside Close, Mount Unpleasant Hill, London, E5 9ST',
+          postcode: 'E5 9ST',
+          source: 'ACADEMY-CouncilTax',
+          links: {
+            hbClaimId: null
+          }
+        },
+        {
+          id: '50131089/1',
+          firstName: 'Wednesdaya',
+          lastName: 'Adams',
+          dob: '07/10/1935',
+          nino: null,
+          address: "28 Deadman's Court, Pownall Road, London, E8 4PZ",
+          postcode: 'E8 4PZ',
+          source: 'ACADEMY-Benefits',
+          links: {
+            hbClaimId: 5013108
+          }
+        },
+        {
+          id: '6023790X/1',
+          firstName: 'Augustine Wednesday',
+          lastName: 'Adams',
+          dob: '28/05/1965',
+          nino: 'SH123456B',
           address:
-            'Housing Action Management, 001 Cemetery Lane, London, E7 8LS',
-          postcode: null,
-          source: 'UHT-HousingRegister',
+            'Mais 1st & 2nd Flrs, 108 Lower Claypot Road, London, E5 0QR',
+          postcode: 'E5 0QR',
+          source: 'ACADEMY-Benefits',
           links: {
-            uhContact: 100087201
+            hbClaimId: 6023790
           }
         },
         {
-          id: '334351',
+          id: '308328514',
+          firstName: 'Gomez',
+          lastName: 'Adams',
+          dob: null,
+          nino: null,
+          address: '17 Casket Close, Broadway Market, London, E8 4JS',
+          postcode: 'E8 4JS',
+          source: 'ACADEMY-CouncilTax',
+          links: {
+            hbClaimId: 6030343
+          }
+        },
+        {
+          id: '60532586/1',
           firstName: 'Wednesday',
           lastName: 'Adams',
-          dob: '01/02/1969',
-          nino: 'NR006660A',
-          address: '',
-          postcode: null,
-          source: 'UHW',
+          dob: '05/07/1959',
+          nino: 'WE086421C',
+          address: 'Room 4, 52 Peril Road, London, N16 8AT',
+          postcode: 'N16 8AT',
+          source: 'ACADEMY-Benefits',
           links: {
-            uhContact: 100087201
+            hbClaimId: 6053258
           }
         }
       ],
-      [
+      connected: [
         {
-          id: '068366/1',
-          firstName: 'Gomez Wednesday',
-          lastName: 'Adams',
-          dob: '03/11/1955',
-          nino: null,
-          address: null,
-          postcode: 'E8 4JS',
-          source: 'UHT-Contacts',
-          links: {
-            uhContact: 42558
-          }
-        },
-        {
-          id: '16681',
-          firstName: 'Gomez Wednesday',
-          lastName: 'Adams',
-          dob: '03/11/1955',
+          id: 10,
+          firstName: props.firstName || 'Wednesday',
+          lastName: props.lastName || 'Adams',
+          dob: null,
           nino: null,
           address: '',
-          postcode: null,
-          source: 'UHW',
-          links: {
-            uhContact: 42558
-          }
-        },
-        {
-          id: '066567/1',
-          firstName: 'Gomez Wednesday',
-          lastName: 'Adams',
-          dob: '03/11/1955',
-          nino: null,
-          address: null,
-          postcode: null,
-          source: 'UHT-Contacts',
-          links: {
-            uhContact: 38308
-          }
+          source: 'SINGLEVIEW',
+          links: [
+            {
+              id: 26,
+              customer_id: 10,
+              system_id: 5,
+              remote_id: '111111/1',
+              first_name: props.firstName || 'Wednesday',
+              last_name: props.lastName || 'Adams',
+              address:
+                '33 address Street, Address, Stamford Hill, LAMAMA, ZO6 5FE',
+              nino: 'SC1234565',
+              dob: '1946-02-03T00:00:00.000Z',
+              created_at: '2020-02-10T16:32:28.405Z',
+              updated_at: '2020-02-10T16:32:28.405Z',
+              system_name: 'Test-test'
+            }
+          ]
         }
       ]
-    ],
-    ungrouped: [
-      {
-        id: '308405993',
-        firstName: 'Wednesday',
-        lastName: 'Adams',
-        dob: null,
-        nino: null,
-        address: 'Mais 2nd Flr & Attic, 146d Graveman Road, London, E8 1BS',
-        postcode: 'E8 1BS',
-        source: 'ACADEMY-CouncilTax',
-        links: {
-          hbClaimId: null
-        }
-      },
-      {
-        id: '310226430',
-        firstName: 'Wednesday',
-        lastName: 'Adams',
-        dob: null,
-        nino: null,
-        address: 'Flat 3 At, 110 Kingssea Road, London, E2 8DP',
-        postcode: 'E2 8DP',
-        source: 'ACADEMY-CouncilTax',
-        links: {
-          hbClaimId: null
-        }
-      },
-      {
-        id: '311356021',
-        firstName: 'Fester',
-        lastName: 'Adams',
-        dob: null,
-        nino: null,
-        address: 'Flat 7, Block A, 100 Nightmare Street, London, E8 3FG',
-        postcode: 'E8 3FG',
-        source: 'ACADEMY-CouncilTax',
-        links: {
-          hbClaimId: null
-        }
-      },
-      {
-        id: '311820520',
-        firstName: 'Wednesday',
-        lastName: 'Adams',
-        dob: null,
-        nino: null,
-        address: '131 Riverside Close, Mount Unpleasant Hill, London, E5 9ST',
-        postcode: 'E5 9ST',
-        source: 'ACADEMY-CouncilTax',
-        links: {
-          hbClaimId: null
-        }
-      },
-      {
-        id: '50131089/1',
-        firstName: 'Wednesdaya',
-        lastName: 'Adams',
-        dob: '07/10/1935',
-        nino: null,
-        address: "28 Deadman's Court, Pownall Road, London, E8 4PZ",
-        postcode: 'E8 4PZ',
-        source: 'ACADEMY-Benefits',
-        links: {
-          hbClaimId: 5013108
-        }
-      },
-      {
-        id: '6023790X/1',
-        firstName: 'Augustine Wednesday',
-        lastName: 'Adams',
-        dob: '28/05/1965',
-        nino: 'SH123456B',
-        address: 'Mais 1st & 2nd Flrs, 108 Lower Claypot Road, London, E5 0QR',
-        postcode: 'E5 0QR',
-        source: 'ACADEMY-Benefits',
-        links: {
-          hbClaimId: 6023790
-        }
-      },
-      {
-        id: '308328514',
-        firstName: 'Gomez',
-        lastName: 'Adams',
-        dob: null,
-        nino: null,
-        address: '17 Casket Close, Broadway Market, London, E8 4JS',
-        postcode: 'E8 4JS',
-        source: 'ACADEMY-CouncilTax',
-        links: {
-          hbClaimId: 6030343
-        }
-      },
-      {
-        id: '60532586/1',
-        firstName: 'Wednesday',
-        lastName: 'Adams',
-        dob: '05/07/1959',
-        nino: 'WE086421C',
-        address: 'Room 4, 52 Peril Road, London, N16 8AT',
-        postcode: 'N16 8AT',
-        source: 'ACADEMY-Benefits',
-        links: {
-          hbClaimId: 6053258
-        }
-      }
-    ],
-    connected: [
-      {
-        id: 10,
-        firstName: props.firstName || 'Rick',
-        lastName: props.lastName || 'Sanchez',
-        dob: null,
-        nino: null,
-        address: '',
-        source: 'SINGLEVIEW',
-        links: [
-          {
-            id: 26,
-            customer_id: 10,
-            system_id: 5,
-            remote_id: '111111/1',
-            first_name: props.firstName || 'Rick',
-            last_name: props.lastName || 'Sanchez',
-            address:
-              '33 address Street, Address, Stamford Hill, LAMAMA, ZO6 5FE',
-            nino: 'SC1234565',
-            dob: '1946-02-03T00:00:00.000Z',
-            created_at: '2020-02-10T16:32:28.405Z',
-            updated_at: '2020-02-10T16:32:28.405Z',
-            system_name: 'Test-test'
-          }
-        ]
-      }
-    ]
+    };
+  return {
+    grouped: [],
+    ungrouped: [],
+    connected: []
   };
 };
 
 app.get('/customers', (req, res) => {
-  res.send(generateResponse(req.query));
+  res.send(generateResponse({ query: req.query }));
 });
 
 app.post('/customers', (req, res) => {
@@ -1058,4 +1069,4 @@ app.get('/customers/:id/documents', (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));

@@ -25,9 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "npx cypress open",
-    "eject": "react-scripts eject",
     "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'",
-    "cy:start": "react-scripts start & node ./src/FakeSVapi.js",
+    "cy:start": "node ./src/FakeSVapi.js & react-scripts start",
     "cy:run": "cypress run",
     "cypress": "start-server-and-test cy:start http://localhost:3001 cy:run"
   },
@@ -48,7 +47,7 @@
   },
   "devDependencies": {
     "cors": "^2.8.5",
-    "cypress": "^4.0.2",
+    "cypress": "^4.4.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",

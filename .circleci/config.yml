@@ -89,7 +89,7 @@ workflows:
       - cypress/run:
           start: |
             export REACT_APP_ENV=dev
-            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_DEV}
+            export REACT_APP_HN_API_URL=http://localhost:8080
             npm run cy:start
           wait-on: 'http://localhost:3001'
           requires:
