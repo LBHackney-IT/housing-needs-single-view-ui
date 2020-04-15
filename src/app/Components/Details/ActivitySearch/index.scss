@@ -3,7 +3,7 @@
   position: relative;
 
   ::after {
-    content: "";
+    content: '';
     clear: both;
     display: table;
   }
@@ -17,7 +17,7 @@
     background: #fff;
   }
 
-  input[type=text] {
+  input[type='text'] {
     font-size: initial;
     height: 34px;
     float: left;
@@ -39,7 +39,7 @@
     font-size: 14px;
 
     :hover {
-      background: #00513f
+      background: #00513f;
     }
   }
 }
@@ -57,6 +57,15 @@
   }
 }
 
+button:disabled:hover {
+  color: black !important;
+}
+button:disabled {
+  opacity: 1;
+  color: black;
+  background: rgb(217, 219, 217) !important;
+  box-shadow: 0 2px 0 rgb(164, 170, 164) !important;
+}
 
 .activity__search input:focus,
 .activity__search button:focus {

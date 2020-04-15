@@ -55,18 +55,20 @@ export default class SearchPage extends Component {
               className="govuk-input"
               type="text"
               name="firstName"
+              id="firstName"
               onChange={this.handleChange}
               value={this.state.firstname}
             />
           </div>
           <div className="govuk-form-group">
-            <label className="govuk-label" htmlFor="first_name">
+            <label className="govuk-label" htmlFor="lastName">
               Last Name
             </label>
             <input
               className="govuk-input"
               type="text"
               name="lastName"
+              id="lastName"
               onChange={this.handleChange}
               value={this.state.lastName}
             />
