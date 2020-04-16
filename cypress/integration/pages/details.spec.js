@@ -660,6 +660,45 @@ describe('Details Page', () => {
               .and('have.attr', 'href')
         );
       });
+
+      it('Requests correct COMINO doc', () => {
+        cy.get('.activity > table > tbody > tr > td > strong > p')
+          .first()
+          .scrollIntoView()
+          .find('a')
+          .click({ force: true });
+
+        cy.get('iframe')
+          .should('have.attr', 'title', 'document')
+          .and('have.attr', 'src')
+          .and('match', /hncomino\/documents\/40564358\/view/);
+      });
+
+      it('Requests correct UHW doc', () => {
+        cy.get('.activity > table > tbody > tr > td > strong > p')
+          .eq(1)
+          .scrollIntoView()
+          .find('a')
+          .click({ force: true });
+
+        cy.get('iframe')
+          .should('have.attr', 'title', 'document')
+          .and('have.attr', 'src')
+          .and('match', /uhw\/documents\/8355548\/view/);
+      });
+    });
+
+    it('Sends jigsaw doc back as a blob link', () => {
+      cy.get('.activity > table > tbody > tr > td > strong > p')
+        .eq(30)
+        .scrollIntoView()
+        .find('a')
+        .click({ force: true });
+
+      cy.get('iframe')
+        .should('have.attr', 'title', 'document')
+        .and('have.attr', 'src')
+        .and('match', /blob/);
     });
 
     describe('Read more', () => {
