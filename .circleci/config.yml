@@ -6,14 +6,13 @@ orbs:
 executors:
   my-executor:
     docker:
-      - image: circleci/node:12.9.1
+      - image: circleci/node:12.9.1-browsers
 
     working_directory: ~/repo
 
 jobs:
   install-dependencies-and-test:
-    docker:
-      - image: cypress/base:8
+    executor: my-executor
 
     working_directory: ~/repo
 
@@ -22,15 +21,14 @@ jobs:
 
       - run:
           name: Install dependencies
-          command: npm ci
+          command: CYPRESS_CACHE_FOLDER=~/repo/cypress_cache npm install
 
       - run:
           name: Run tests
           command: |
             export REACT_APP_ENV=dev
             export REACT_APP_HN_API_URL=http://localhost:8080
-            export PATH=$PATH:~/repo/node_modules/.bin
-            npm run cypress
+            CYPRESS_CACHE_FOLDER=~/repo/cypress_cache npm run cypress
 
       - persist_to_workspace:
           root: ~/repo
