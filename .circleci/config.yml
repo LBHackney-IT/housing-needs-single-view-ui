@@ -2,34 +2,35 @@ version: 2.1
 
 orbs:
   aws-s3: circleci/aws-s3@1.0.11
-  cypress: cypress-io/cypress@1
 
 executors:
   my-executor:
     docker:
-      - image: circleci/node:12.9.1-browsers
+      - image: circleci/node:12.9.1
 
     working_directory: ~/repo
 
 jobs:
-  install-dependencies:
-    executor: my-executor
+  install-dependencies-and-test:
+    docker:
+      - image: cypress/base:8
+
+    working_directory: ~/repo
 
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: npm ci
 
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Run tests
+          command: |
+            export REACT_APP_ENV=dev
+            export REACT_APP_HN_API_URL=http://localhost:8080
+            export PATH=$PATH:~/repo/node_modules/.bin
+            npm run cypress
 
       - persist_to_workspace:
           root: ~/repo
@@ -85,18 +86,10 @@ workflows:
   version: 2
   continuous-delivery:
     jobs:
-      - install-dependencies
-      - cypress/run:
-          start: |
-            export REACT_APP_ENV=dev
-            export REACT_APP_HN_API_URL=http://localhost:8080
-            npm run cy:start
-          wait-on: 'http://localhost:3001'
-          requires:
-            - install-dependencies
+      - install-dependencies-and-test
       - build-deploy-staging:
           requires:
-            - cypress/run
+            - install-dependencies-and-test
           filters:
             branches:
               only:
