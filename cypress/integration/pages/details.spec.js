@@ -688,6 +688,19 @@ describe('Details Page', () => {
       });
     });
 
+    it('Sends jigsaw doc back as a blob link', () => {
+      cy.get('.activity > table > tbody > tr > td > strong > p')
+        .eq(30)
+        .scrollIntoView()
+        .find('a')
+        .click({ force: true });
+
+      cy.get('iframe')
+        .should('have.attr', 'title', 'document')
+        .and('have.attr', 'src')
+        .and('match', /blob/);
+    });
+
     describe('Read more', () => {
       it('Displays read more button if note is longer than 128 characters', () => {
         cy.get('.activity > table > tbody > tr:nth-child(3) > td:nth-child(2)')
