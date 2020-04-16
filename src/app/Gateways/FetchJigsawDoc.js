@@ -2,7 +2,7 @@ import { AuthHeader } from '.';
 
 function FetchJigsawDoc(userId, documentId) {
   return fetch(
-    `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${userId}/documents/jigsaw/${documentId}`,
+    `${process.env.REACT_APP_HN_API_URL}/jigsaw/${userId}/documents/${documentId}`,
     AuthHeader
   ).then(function(response) {
     return response;
