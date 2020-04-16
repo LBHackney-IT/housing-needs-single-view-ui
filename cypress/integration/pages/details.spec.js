@@ -660,10 +660,31 @@ describe('Details Page', () => {
               .and('have.attr', 'href')
         );
       });
-      it('does not display note and academy document title as a clickable link', () => {
-        cy.get('.activity > table > tbody > tr > td > p > strong').each($el =>
-          cy.wrap($el).should('not.have.text', 'Document')
-        );
+
+      it('Requests correct COMINO doc', () => {
+        cy.get('.activity > table > tbody > tr > td > strong > p')
+          .first()
+          .scrollIntoView()
+          .find('a')
+          .click({ force: true });
+
+        cy.get('iframe')
+          .should('have.attr', 'title', 'document')
+          .and('have.attr', 'src')
+          .and('match', /hncomino\/documents\/40564358\/view/);
+      });
+
+      it('Requests correct UHW doc', () => {
+        cy.get('.activity > table > tbody > tr > td > strong > p')
+          .eq(1)
+          .scrollIntoView()
+          .find('a')
+          .click({ force: true });
+
+        cy.get('iframe')
+          .should('have.attr', 'title', 'document')
+          .and('have.attr', 'src')
+          .and('match', /uhw\/documents\/8355548\/view/);
       });
     });
 
