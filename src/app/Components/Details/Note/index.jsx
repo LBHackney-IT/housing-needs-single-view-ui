@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import DocumentModal from '../../DocumentModal';
 // import { FetchJigsawDoc } from '../../../Gateways';
+import { hackneyToken } from '../../../lib/Cookie';
 
 export default class Note extends Component {
   state = {
@@ -33,7 +34,9 @@ export default class Note extends Component {
       } else if (this.props.note.system === 'JIGSAW') {
         this.setState({
           showDoc: true,
-          docUrl: `${process.env.REACT_APP_HN_API_URL}/jigsaw/${this.props.note.userid}/documents/${this.props.note.id}`
+          docUrl: `${process.env.REACT_APP_HN_API_URL}/jigsaw/${
+            this.props.note.userid
+          }/documents/${this.props.note.id}?authToken=${hackneyToken()}`
         });
         // FetchJigsawDoc(this.props.note.userid, this.props.note.id)
         //   .then(response => response.blob())
