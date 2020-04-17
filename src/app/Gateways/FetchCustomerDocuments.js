@@ -1,12 +1,15 @@
-import { AuthHeader } from '.';
+import { hackneyToken } from '../lib/Cookie';
 
-function FetchCustomerDocuments(id) {
-  return fetch(
+export default async id => {
+  const response = await fetch(
     `${process.env.REACT_APP_HN_API_URL}/customers/${id}/documents`,
-    AuthHeader
-  ).then(function(response) {
-    return response.json();
-  });
-}
-
-export default FetchCustomerDocuments;
+    {
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${hackneyToken()}`
+      }
+    }
+  );
+  return response.json();
+};
