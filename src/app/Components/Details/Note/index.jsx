@@ -38,7 +38,6 @@ export default class Note extends Component {
             this.props.note.userid
           }/documents/${this.props.note.id}?authToken=${hackneyToken()}`
         });
-
         // FetchJigsawDoc(this.props.note.userid, this.props.note.id)
         //   .then(response => response.blob())
         //   .then(blob => {

@@ -79,7 +79,7 @@ export default class ResultsPage extends Component {
     if (this.state.results.connected.length > 0) {
       return [
         <section className="govuk-form-group" key="prevGroup">
-          <h1 key="prev">Matching customers</h1>
+          <h1>Matching customers</h1>
           <h2 key="prev">
             There are previously connected records for your search
           </h2>
