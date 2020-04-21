@@ -28,6 +28,9 @@ jobs:
           command: |
             export REACT_APP_ENV=dev
             export REACT_APP_HN_API_URL=http://localhost:8080
+            export REACT_APP_UHW_DOCUMENT_API_URL=${REACT_APP_UHW_DOCUMENT_API_URL_PRODUCTION}
+            export REACT_APP_COMINO_DOCUMENT_API_URL=${REACT_APP_COMINO_DOCUMENT_API_URL_PRODUCTION}
+            export REACT_APP_JIGSAW_DOCUMENT_API_URL=${REACT_APP_JIGSAW_DOCUMENT_API_URL_PRODUCTION}
             CYPRESS_CACHE_FOLDER=~/repo/cypress_cache npm run cypress
 
       - persist_to_workspace:
@@ -46,6 +49,9 @@ jobs:
           command: |
             export REACT_APP_ENV=staging
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
+            export REACT_APP_UHW_DOCUMENT_API_URL=${REACT_APP_UHW_DOCUMENT_API_URL_STAGING}
+            export REACT_APP_COMINO_DOCUMENT_API_URL=${REACT_APP_COMINO_DOCUMENT_API_URL_STAGING}
+            export REACT_APP_JIGSAW_DOCUMENT_API_URL=${REACT_APP_JIGSAW_DOCUMENT_API_URL_STAGING}
             npm run build
 
       - aws-s3/sync:
@@ -68,6 +74,9 @@ jobs:
           command: |
             export REACT_APP_ENV=production
             export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_PRODUCTION}
+            export REACT_APP_UHW_DOCUMENT_API_URL=${REACT_APP_UHW_DOCUMENT_API_URL_PRODUCTION}
+            export REACT_APP_COMINO_DOCUMENT_API_URL=${REACT_APP_COMINO_DOCUMENT_API_URL_PRODUCTION}
+            export REACT_APP_JIGSAW_DOCUMENT_API_URL=${REACT_APP_JIGSAW_DOCUMENT_API_URL_PRODUCTION}
             npm run build
 
       - aws-s3/sync:
