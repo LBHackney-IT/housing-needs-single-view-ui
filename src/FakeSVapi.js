@@ -9,7 +9,10 @@ const generateResponse = props => {
   const q = Object.entries(props.query).map(([k, v]) => {
     return `${v}`;
   });
+
+  console.log('HELLO');
   console.log(q);
+
   if (q[0].toLowerCase() === 'wednesday')
     return {
       grouped: [
