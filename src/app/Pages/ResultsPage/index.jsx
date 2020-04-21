@@ -21,33 +21,29 @@ export default class ResultsPage extends Component {
   }
 
   componentDidMount() {
-    const search = {};
-    const params = new URLSearchParams(this.props.location.search);
-    params.forEach((v, k) => {
-      search[k] = v;
-    });
-    SearchCustomers(search, (err, response) => {
-      if (err) {
+    SearchCustomers(this.props.location.search)
+      .then(results => {
+        this.setState({ results, searching: false, filter: {} });
+      })
+      .catch(err => {
         this.setState({
           searching: false,
           error: 'Error when searching for records. Please reload to try again.'
         });
-      } else {
-        this.setState({ results: response, searching: false, filter: {} });
-      }
-    });
+      });
   }
 
   connectNewCustomer = () => {
     this.setState({ connecting: true });
-    // Create a new record
-    CreateCustomer(this.state.selected, (err, result) => {
-      if (err) console.log(err);
-      this.setState({
-        connecting: false,
-        redirect: `/customers/${result.customer.id}/view`
-      });
-    });
+
+    CreateCustomer(this.state.selected)
+      .then(result => {
+        this.setState({
+          connecting: false,
+          redirect: `/customers/${result.customer.id}/view`
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   generateFilter() {
