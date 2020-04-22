@@ -1,29 +1,16 @@
-import { AuthHeader } from '.';
+import { hackneyToken } from '../lib/Cookie';
 
-function SearchCustomers(query, cb) {
-  let queryString = Object.entries(query)
-    .map(([k, v]) => {
-      return `${k}=${v}`;
-    })
-    .join('&');
-
-  fetch(
-    `${process.env.REACT_APP_HN_API_URL}/customers?${queryString}`,
-    AuthHeader
-  )
-    .then(function(response) {
-      if (response.status >= 400) {
-        return cb('Error searching');
+export default async query => {
+  const response = await fetch(
+    `${process.env.REACT_APP_HN_API_URL}/customers${query}`,
+    {
+      headers: {
+        Authorization: `Bearer ${hackneyToken()}`
       }
-      return response.json();
-    })
-    .then(function(myJson) {
-      cb(null, myJson);
-    })
-    .catch(err => {
-      console.log(err);
-      cb(err);
-    });
-}
-
-export default SearchCustomers;
+    }
+  );
+  if (response.status >= 400) {
+    return new Error('Error searching');
+  }
+  return response.json();
+};

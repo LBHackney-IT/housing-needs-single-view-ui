@@ -1,53 +1,50 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DocumentModal from '../../DocumentModal';
-// import { FetchJigsawDoc } from '../../../Gateways';
-import { hackneyToken } from '../../../lib/Cookie';
 
 export default class Note extends Component {
-  state = {
-    showDoc: false,
-    docUrl: null,
-    expanded: false
-  };
+  constructor(props) {
+    super(props);
 
-  formatDate(date) {
-    return moment(date).format('DD/MM/YYYY');
+    this.state = {
+      showDoc: false,
+      docUrl: null,
+      expanded: false
+    };
+
+    this.maxNoteLength = 128;
   }
 
-  click = () => {
-    if (
+  isViewableDoc = () => {
+    return (
       this.props.note &&
       this.props.note.type === 'document' &&
-      this.props.note.id
-    ) {
+      ['UHW', 'COMINO', 'JIGSAW'].includes(this.props.note.system)
+    );
+  };
+
+  componentDidMount() {
+    if (this.isViewableDoc()) {
       if (this.props.note.system === 'UHW') {
         this.setState({
-          docUrl: `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
-          showDoc: true
+          docUrl: `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
         });
       } else if (this.props.note.system === 'COMINO') {
         this.setState({
-          docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`,
-          showDoc: true
+          docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
         });
       } else if (this.props.note.system === 'JIGSAW') {
         this.setState({
-          showDoc: true,
-          docUrl: `${process.env.REACT_APP_HN_API_URL}/jigsaw/${
-            this.props.note.userid
-          }/documents/${this.props.note.id}?authToken=${hackneyToken()}`
+          docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`
         });
-        // FetchJigsawDoc(this.props.note.userid, this.props.note.id)
-        //   .then(response => response.blob())
-        //   .then(blob => {
-        //     const tempUrl = URL.createObjectURL(blob);
-        //     this.setState({
-        //       docUrl: tempUrl
-        //     });
-        //   });
       }
     }
+  }
+
+  click = () => {
+    this.setState({
+      showDoc: true
+    });
   };
 
   closeDoc = () => {
@@ -57,80 +54,55 @@ export default class Note extends Component {
   };
 
   toggleNote = () => {
-    this.setState(state => {
-      state.expanded = !state.expanded;
-      return state;
+    this.setState({
+      expanded: !this.state.expanded
     });
   };
 
-  render() {
-    const { note } = this.props;
-    const noteLength = 128;
+  noteText = () => {
+    if (
+      this.props.note.text.length > this.maxNoteLength &&
+      !this.state.expanded
+    ) {
+      return `${this.props.note.text.substring(0, 128)} ...`;
+    }
+    return this.props.note.text;
+  };
 
-    const checkLength = (text, length) => {
-      return text.length <= length;
-    };
-
-    const trimText = (note, length) => {
-      return checkLength(note, length) || this.state.expanded
-        ? note
-        : `${note.substring(0, length)} ...`;
-    };
-
-    const createButton = (note, length) => {
-      if (checkLength(note, length)) {
-        return;
-      }
-      if (this.state.expanded) {
-        return (
-          <span
-            onClick={this.toggleNote}
-            className="govuk-details__summary govuk-details__summary__arrow-up"
-          >
-            Read less
-          </span>
-        );
-      }
+  expandButton = () => {
+    if (this.props.note.text.length > this.maxNoteLength) {
+      const className = this.state.expanded
+        ? 'govuk-details__summary govuk-details__summary__arrow-up'
+        : 'govuk-details__summary';
+      const linkText = this.state.expanded ? 'Read less' : 'Read more';
       return (
-        <span onClick={this.toggleNote} className="govuk-details__summary">
-          Read more
+        <span onClick={this.toggleNote} className={className}>
+          {linkText}
         </span>
       );
-    };
-
-    let noteComponent = '';
-    if (
-      note &&
-      note.type === 'document' &&
-      (note.system === 'UHW' ||
-        note.system === 'COMINO' ||
-        note.system === 'JIGSAW')
-    ) {
-      noteComponent = (
-        <strong>
-          <p>
-            <a onClick={this.click} href="#/" className="govuk-link">
-              {note.title}
-            </a>
-          </p>
-        </strong>
-      );
-    } else {
-      noteComponent = (
-        <p>
-          <strong>{note.title}</strong>
-        </p>
-      );
     }
+  };
+
+  render() {
     return (
       <tr>
-        <td key="date">{this.formatDate(note.date)}</td>
+        <td key="date">{moment(this.props.note.date).format('DD/MM/YYYY')}</td>
         <td key="text">
-          {noteComponent}
-          <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
-            {trimText(note.text, noteLength)}
+          <p>
+            <strong>
+              {this.isViewableDoc() ? (
+                <a onClick={this.click} href="#/" className="govuk-link">
+                  {this.props.note.title}
+                </a>
+              ) : (
+                this.props.note.title
+              )}
+            </strong>
           </p>
-          {createButton(note.text, noteLength)}
+          <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
+            {this.noteText()}
+          </p>
+          {this.expandButton()}
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
@@ -139,9 +111,13 @@ export default class Note extends Component {
         </td>
         <td key="sys">
           <p>
-            <strong>{note.user}</strong>
+            <strong>{this.props.note.user}</strong>
           </p>
-          <p>{note.system.join ? note.system.join(', ') : note.system}</p>
+          <p>
+            {this.props.note.system.join
+              ? this.props.note.system.join(', ')
+              : this.props.note.system}
+          </p>
         </td>
       </tr>
     );
