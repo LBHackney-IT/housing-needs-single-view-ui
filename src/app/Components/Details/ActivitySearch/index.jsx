@@ -84,7 +84,7 @@ export default class ActivitySearch extends Component {
         />
         <button onClick={this.toggleFilters}>
           {this.searchIcon()}
-          <span className="visuallyhidden">Search</span>
+          <p className="visuallyhidden">Search</p>
         </button>
         <div hidden={!this.state.filter}>
           <span className="selectedFilter">
