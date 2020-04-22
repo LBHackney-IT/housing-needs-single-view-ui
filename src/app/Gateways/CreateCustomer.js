@@ -1,23 +1,16 @@
-import { AuthHeader } from '.';
+import { hackneyToken } from '../lib/Cookie';
 
-function CreateCustomer(data, cb) {
-  const req = {
-    ...{
+export default async data => {
+  const response = await fetch(
+    `${process.env.REACT_APP_HN_API_URL}/customers`,
+    {
       method: 'POST',
-      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${hackneyToken()}`
+      },
       body: JSON.stringify({ customers: data })
-    },
-    ...AuthHeader
-  };
-
-  fetch(`${process.env.REACT_APP_HN_API_URL}/customers`, req)
-    .then(async function(response) {
-      const json = await response.json();
-      return json;
-    })
-    .then(function(myJson) {
-      cb(null, myJson);
-    });
-}
-
-export default CreateCustomer;
+    }
+  );
+  return response.json();
+};

@@ -650,7 +650,7 @@ describe('Details Page', () => {
 
     describe('Documents', () => {
       it('Displays title as a clickable link', () => {
-        cy.get('.activity > table > tbody > tr > td > strong > p > a').each(
+        cy.get('.activity > table > tbody > tr > td > p > strong > a').each(
           $el =>
             cy
               .wrap($el)
@@ -662,10 +662,9 @@ describe('Details Page', () => {
       });
 
       it('Requests correct COMINO doc', () => {
-        cy.get('.activity > table > tbody > tr > td > strong > p')
+        cy.get('.activity > table > tbody > tr > td > p > strong > a')
           .first()
           .scrollIntoView()
-          .find('a')
           .click({ force: true });
 
         cy.get('iframe')
@@ -675,10 +674,9 @@ describe('Details Page', () => {
       });
 
       it('Requests correct UHW doc', () => {
-        cy.get('.activity > table > tbody > tr > td > strong > p')
+        cy.get('.activity > table > tbody > tr > td > p > strong > a')
           .eq(1)
           .scrollIntoView()
-          .find('a')
           .click({ force: true });
 
         cy.get('iframe')
@@ -687,19 +685,6 @@ describe('Details Page', () => {
           .and('match', /uhw\/documents\/8355548\/view/);
       });
     });
-
-    // it('Sends jigsaw doc back as a blob link', () => {
-    //   cy.get('.activity > table > tbody > tr > td > strong > p')
-    //     .eq(30)
-    //     .scrollIntoView()
-    //     .find('a')
-    //     .click({ force: true });
-
-    //   cy.get('iframe')
-    //     .should('have.attr', 'title', 'document')
-    //     .and('have.attr', 'src')
-    //     .and('match', /blob/);
-    // });
 
     describe('Read more', () => {
       it('Displays read more button if note is longer than 128 characters', () => {
