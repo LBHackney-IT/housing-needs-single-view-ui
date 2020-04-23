@@ -22,11 +22,11 @@ export default class Benefits extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Live claim:</td>
+              <th>Live claim:</th>
               <td>{customer.benefits.live ? 'Yes' : 'No'}</td>
             </tr>
             <tr>
-              <td>Universal Credit:</td>
+              <th>Universal Credit:</th>
               <td>{this.uc()}</td>
             </tr>
           </tbody>

@@ -14,19 +14,19 @@ export default class Team extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Contact:</td>
+              <th>Contact:</th>
               <td>{customer.team.name}</td>
             </tr>
             <tr>
-              <td>Job Title:</td>
+              <th>Job Title:</th>
               <td>{customer.team.jobTitle}</td>
             </tr>
             <tr>
-              <td>Agency:</td>
+              <th>Agency:</th>
               <td>{customer.team.agency}</td>
             </tr>
             <tr>
-              <td>Phone:</td>
+              <th>Phone:</th>
               <td>{customer.team.phone}</td>
             </tr>
           </tbody>

@@ -16,7 +16,7 @@ export default class CouncilTax extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Balance:</td>
+              <th>Balance:</th>
               <td>{formatCurrency(customer.councilTax.accountBalance)}</td>
             </tr>
           </tbody>
@@ -32,21 +32,21 @@ export default class CouncilTax extends Component {
                 <table>
                   <tbody>
                     <tr>
-                      <td>Council tax ref</td>
+                      <th>Council tax ref</th>
                       <td>{customer.systemIds.academyCouncilTax}</td>
                     </tr>
                     <tr>
-                      <td>Account balance</td>
+                      <th>Account balance</th>
                       <td>
                         {formatCurrency(customer.councilTax.accountBalance)}
                       </td>
                     </tr>
                     <tr>
-                      <td>Payment method</td>
+                      <th>Payment method</th>
                       <td>{customer.councilTax.paymentMethod}</td>
                     </tr>
                     <tr>
-                      <td>Recent transactions</td>
+                      <th>Recent transactions</th>
                       <td>
                         <table>
                           <tbody>

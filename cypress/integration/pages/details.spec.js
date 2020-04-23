@@ -26,7 +26,7 @@ describe('Details Page', () => {
 
       it('Displays Stage', () => {
         const pathToTd =
-          '#quickAccess > div > div:nth-child(1) > table > tbody > tr > td:nth-child(1)';
+          '#quickAccess > div > div:nth-child(1) > table > tbody > tr > th:nth-child(1)';
         cy.get(pathToTd)
           .should('contain', 'Stage:')
           .siblings()
@@ -284,7 +284,7 @@ describe('Details Page', () => {
       const pathToDetailsTbody =
         '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div > table > tbody';
       const pathToSecondTbody =
-        '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(2) > table > tbody';
+        '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div > table > tbody > td:nth-child(4) > th:nth-child(2) > table > tbody';
       const rowSelectorPopUpBox = rowNumber => {
         return `${pathToDetailsTbody} > :nth-child(${rowNumber})`;
       };
@@ -297,7 +297,7 @@ describe('Details Page', () => {
 
       it('Displays Balance', () => {
         const pathToTd =
-          '#quickAccess > div > div:nth-child(5) > table > tbody > tr > td:nth-child(1)';
+          '#quickAccess > div > div:nth-child(5) > table > tbody > tr > th:nth-child(1)';
         cy.get(pathToTd)
           .should('contain', 'Balance:')
           .siblings()
@@ -358,12 +358,10 @@ describe('Details Page', () => {
           cy.get(pathToMoreDetails)
             .scrollIntoView()
             .click({ force: true });
-          cy.get(`${rowSelectorSecondTbody(1)} > :nth-child(1)`)
+          cy.get('.content > table > tbody')
             .should('contain', '08/01/2010')
-            .next()
-            .should('contain', 'SOME COSTS')
-            .next()
-            .should('contain', '-£2.50');
+            .and('contain', 'SOME COSTS')
+            .and('contain', '-£2.50');
         });
       });
     });
@@ -381,7 +379,7 @@ describe('Details Page', () => {
 
       it('Displays Bidding no', () => {
         const pathToTd =
-          '#housingRegister > table > tbody > tr:nth-child(1) > td:nth-child(1)';
+          '#housingRegister > table > tbody > tr:nth-child(1) > th:nth-child(1)';
         cy.get(pathToTd)
           .should('contain', 'Bidding no:')
           .siblings()
@@ -390,7 +388,7 @@ describe('Details Page', () => {
 
       it('Displays Band', () => {
         const pathToTd =
-          '#housingRegister > table > tbody > tr:nth-child(2) > td:nth-child(1)';
+          '#housingRegister > table > tbody > tr:nth-child(2) > th:nth-child(1)';
         cy.get(pathToTd)
           .should('contain', 'Band:')
           .siblings()
@@ -577,7 +575,7 @@ describe('Details Page', () => {
           .should('be.visible')
           .type(testNoteTitle, { force: true });
 
-        cy.get('.activity > table > tbody > tr > :nth-child(2)')
+        cy.get('.activity > table > tbody > tr > td:nth-child(2)')
           .should('have.length', '4')
           .each($el => cy.wrap($el).should('contain', testNoteTitle));
       });
@@ -590,7 +588,7 @@ describe('Details Page', () => {
           .should('be.visible')
           .type(testNoteText, { force: true });
 
-        cy.get('.activity > table > tbody > tr > :nth-child(2)')
+        cy.get('.activity > table > tbody > tr > td:nth-child(2)')
           .should('have.length', '1')
           .each($el => cy.wrap($el).should('contain', testNoteText));
       });
@@ -618,7 +616,7 @@ describe('Details Page', () => {
             .should('be.visible')
             .and('contain', 'All Notes');
 
-          cy.get('.activity > table > tbody > tr > :nth-child(2)')
+          cy.get('.activity > table > tbody > tr > td:nth-child(2)')
             .should('have.length', '34')
             .each($el => cy.wrap($el).should('contain', 'Note'));
 
@@ -639,7 +637,7 @@ describe('Details Page', () => {
             .should('be.visible')
             .and('contain', 'All Documents');
 
-          cy.get('.activity > table > tbody > tr > :nth-child(2)')
+          cy.get('.activity > table > tbody > tr > td:nth-child(2)')
             .should('have.length', '42')
             .each($el => cy.wrap($el).should('contain', 'Document'));
 
@@ -716,7 +714,7 @@ describe('Details Page', () => {
         cy.get('.activity > table > tbody > tr:nth-child(4)')
           .first()
           .scrollIntoView()
-          .find('td:nth-child(2)')
+          .find('td:nth-child(3)')
           .click({ force: true })
           .should('not.contain', '...')
           .and('not.contain', 'Read more')

@@ -23,7 +23,7 @@ export default class AddressDetails extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Known addresses:</td>
+              <th>Known addresses:</th>
               <td>
                 {customer.address && customer.address.length > 0 ? (
                   customer.address.map((address, i) => {
@@ -53,7 +53,7 @@ export default class AddressDetails extends Component {
             </tr>
 
             <tr>
-              <td>Household member(s):</td>
+              <th>Household member(s):</th>
               <td>
                 {this.props.customer.household &&
                 this.props.customer.household.length > 0 ? (
