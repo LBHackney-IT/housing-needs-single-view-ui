@@ -35,9 +35,9 @@ export default class AddressDetails extends Component {
                           data-module="govuk-details"
                         >
                           <summary className="govuk-details__summary">
-                            <span className="govuk-details__summary-text">
+                            <button className="govuk-details__summary-text linkStyle">
                               Where is this from?
-                            </span>
+                            </button>
                           </summary>
                           <div className="govuk-details__text">
                             {this.lineBreakifyAddress(address.source)}
