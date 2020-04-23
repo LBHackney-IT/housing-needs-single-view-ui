@@ -82,13 +82,13 @@ export default class ActivitySearch extends Component {
           onChange={this.handleSearchTermChange}
           onFocus={e => this.setState({ filter: null, showFilters: true })}
         />
-        <button onClick={this.toggleFilters}>
+        <button className="searchIcon" onClick={this.toggleFilters}>
           {this.searchIcon()}
           <p className="visuallyhidden">Search</p>
         </button>
         <div hidden={!this.state.filter}>
           <span className="selectedFilter">
-            <button onClick={this.clearFilter}>
+            <button className="linkStyle" onClick={this.clearFilter}>
               All {filters[this.state.filter]}
             </button>
           </span>

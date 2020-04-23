@@ -15,7 +15,8 @@
 }
 
 .groupedTable td.subHeader {
-  font-weight: bold;
+  font-weight: bold !important;
+  color: #000 !important;
 }
 .connectedName {
   font-size: larger;

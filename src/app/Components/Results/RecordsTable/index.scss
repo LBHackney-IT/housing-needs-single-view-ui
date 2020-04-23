@@ -12,5 +12,6 @@
   vertical-align: middle;
 }
 .recordsTable td.subHeader {
-  font-weight: bold;
+  font-weight: bold !important;
+  color: #000 !important;
 }
