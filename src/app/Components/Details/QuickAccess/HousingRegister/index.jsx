@@ -61,7 +61,9 @@ export default class HousingRegister extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <Modal trigger={<a href="#/">More details</a>}>
+              <Modal
+                trigger={<button className="linkStyle">More details</button>}
+              >
                 <h3>Housing Register Information</h3>
                 {customer.housingRegister.map((t, index) =>
                   this.housingRegisterRecord(t, index)

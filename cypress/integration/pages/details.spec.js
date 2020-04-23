@@ -11,7 +11,7 @@ describe('Details Page', () => {
       const rowSelectorUl = rowNumber => {
         return `${pathToUl} > :nth-child(${rowNumber})`;
       };
-      const pathToMoreDetails = `${rowSelectorUl(3)} > a`;
+      const pathToMoreDetails = `${rowSelectorUl(3)} > button`;
       const pathToPopUpBox =
         '#quickAccess > div > div:nth-child(1) > div > ul > li:nth-child(3) > div.popup-overlay > div > div > div';
       const rowSelectorPopUpBox = rowNumber => {
@@ -72,7 +72,7 @@ describe('Details Page', () => {
 
     describe('Council Tenancy', () => {
       const pathToMoreDetails =
-        '#quickAccess > div > div:nth-child(3) > div > ul > li > a';
+        '#quickAccess > div > div:nth-child(3) > div > ul > li > button';
       const pathToPopUpBox =
         '#quickAccess > div > div:nth-child(3) > div > ul > li > div.popup-overlay > div > div > div > div';
       const rowSelectorPopUpBox = rowNumber => {
@@ -184,7 +184,7 @@ describe('Details Page', () => {
       const pathToTbody =
         '#quickAccess > div > div:nth-child(4) > table > tbody';
       const pathToMoreDetails =
-        '#quickAccess > div > div:nth-child(4) > div > ul > li > a';
+        '#quickAccess > div > div:nth-child(4) > div > ul > li > button';
       const pathToPopUpBox =
         '#quickAccess > div > div:nth-child(4) > div > ul > li > div.popup-overlay > div > div > div';
       const pathToDetailsTbody =
@@ -278,7 +278,7 @@ describe('Details Page', () => {
 
     describe('Council Tax', () => {
       const pathToMoreDetails =
-        '#quickAccess > div > div:nth-child(5) > div > ul > li > a';
+        '#quickAccess > div > div:nth-child(5) > div > ul > li > button';
       const pathToPopUpBox =
         '#quickAccess > div > div:nth-child(5) > div > ul > li > div.popup-overlay > div > div > div';
       const pathToDetailsTbody =
@@ -369,7 +369,8 @@ describe('Details Page', () => {
     });
 
     describe('Housing Register', () => {
-      const pathToMoreDetailsAnchor = '#housingRegister > div > ul > li > a';
+      const pathToMoreDetailsAnchor =
+        '#housingRegister > div > ul > li > button';
 
       it('Displays Housing Register', () => {
         cy.get('#quickAccess > div > #housingRegister').should(
@@ -400,9 +401,7 @@ describe('Details Page', () => {
       it('Can click more details and display pop up box with housing register information', () => {
         const pathToPopUpBox =
           '#housingRegister > div > ul > li > div.popup-overlay > div > div > div';
-        cy.get(pathToMoreDetailsAnchor)
-          .should('contain', 'More details')
-          .and('have.attr', 'href');
+        cy.get(pathToMoreDetailsAnchor).should('contain', 'More details');
         cy.get(pathToMoreDetailsAnchor)
           .scrollIntoView()
           .click({ force: true });
@@ -599,6 +598,7 @@ describe('Details Page', () => {
       describe('filters', () => {
         beforeEach(() => {
           cy.get('.activity__search button')
+            .first()
             .should('be.visible')
             .click({ force: true });
 
@@ -622,7 +622,9 @@ describe('Details Page', () => {
             .should('have.length', '34')
             .each($el => cy.wrap($el).should('contain', 'Note'));
 
-          cy.get('.activity__search button').click({ force: true });
+          cy.get('.activity__search button')
+            .first()
+            .click({ force: true });
 
           cy.get('.selectedFilter').should('not.be.visible');
         });
@@ -641,7 +643,9 @@ describe('Details Page', () => {
             .should('have.length', '42')
             .each($el => cy.wrap($el).should('contain', 'Document'));
 
-          cy.get('.activity__search button').click({ force: true });
+          cy.get('.activity__search button')
+            .first()
+            .click({ force: true });
 
           cy.get('.selectedFilter').should('not.be.visible');
         });
@@ -650,19 +654,19 @@ describe('Details Page', () => {
 
     describe('Documents', () => {
       it('Displays title as a clickable link', () => {
-        cy.get('.activity > table > tbody > tr > td > p > strong > a').each(
-          $el =>
-            cy
-              .wrap($el)
-              .should('contain', 'Document')
-              .and('not.contain', 'Note')
-              .and('not.contain', 'Academy')
-              .and('have.attr', 'href')
+        cy.get(
+          '.activity > table > tbody > tr > td > p > strong > button'
+        ).each($el =>
+          cy
+            .wrap($el)
+            .should('contain', 'Document')
+            .and('not.contain', 'Note')
+            .and('not.contain', 'Academy')
         );
       });
 
       it('Requests correct COMINO doc', () => {
-        cy.get('.activity > table > tbody > tr > td > p > strong > a')
+        cy.get('.activity > table > tbody > tr > td > p > strong > button')
           .first()
           .scrollIntoView()
           .click({ force: true });
@@ -674,7 +678,7 @@ describe('Details Page', () => {
       });
 
       it('Requests correct UHW doc', () => {
-        cy.get('.activity > table > tbody > tr > td > p > strong > a')
+        cy.get('.activity > table > tbody > tr > td > p > strong > button')
           .eq(1)
           .scrollIntoView()
           .click({ force: true });

@@ -34,7 +34,9 @@ export default class Benefits extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <Modal trigger={<a href="#/">More details</a>}>
+              <Modal
+                trigger={<button className="linkStyle">More details</button>}
+              >
                 <h3>Benefits information</h3>
                 <br />
                 <table>

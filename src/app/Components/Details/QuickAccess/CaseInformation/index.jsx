@@ -49,7 +49,9 @@ export default class CaseInformation extends Component {
             </li>
             {customer.housingNeeds.currentPlacement && (
               <li>
-                <Modal trigger={<a href="#/">More details</a>}>
+                <Modal
+                  trigger={<button className="linkStyle">More details</button>}
+                >
                   <h3>Case details</h3>
                   <br />
                   <table>

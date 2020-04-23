@@ -24,7 +24,9 @@ export default class CouncilTax extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <Modal trigger={<a href="#/">More details</a>}>
+              <Modal
+                trigger={<button className="linkStyle">More details</button>}
+              >
                 <h3>Council tax information</h3>
                 <br />
                 <table>

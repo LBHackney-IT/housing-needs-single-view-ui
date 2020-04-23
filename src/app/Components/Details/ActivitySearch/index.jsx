@@ -88,17 +88,21 @@ export default class ActivitySearch extends Component {
         </button>
         <div hidden={!this.state.filter}>
           <span className="selectedFilter">
-            <a href="#/" onClick={this.clearFilter}>
+            <button onClick={this.clearFilter}>
               All {filters[this.state.filter]}
-            </a>
+            </button>
           </span>
         </div>
         <div hidden={!this.state.showFilters} className="activity__filters">
           {Object.keys(filters).map((type, i) => {
             return (
-              <a href="#/" key={i} onClick={e => this.setFilter(e, type)}>
+              <button
+                className="linkStyle"
+                key={i}
+                onClick={e => this.setFilter(e, type)}
+              >
                 All {filters[type]}
-              </a>
+              </button>
             );
           })}
         </div>

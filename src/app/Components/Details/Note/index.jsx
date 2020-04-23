@@ -91,9 +91,9 @@ export default class Note extends Component {
           <p>
             <strong>
               {this.isViewableDoc() ? (
-                <a onClick={this.click} href="#/" className="govuk-link">
+                <button onClick={this.click} className="linkStyle govuk-link">
                   {this.props.note.title}
-                </a>
+                </button>
               ) : (
                 this.props.note.title
               )}
