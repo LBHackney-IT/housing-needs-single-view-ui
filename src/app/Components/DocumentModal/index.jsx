@@ -8,13 +8,7 @@ export default class DocumentModal extends Component {
 
     return (
       <div className="documentModal">
-        <Popup
-          modal
-          closeOnDocumentClick
-          onOpen={console.log(url)}
-          open={open}
-          onClose={onClose}
-        >
+        <Popup modal closeOnDocumentClick open={open} onClose={onClose}>
           {close => (
             <div>
               <a className="close" href="#/" onClick={close}>

@@ -8,7 +8,6 @@ export default class Note extends Component {
 
     this.state = {
       showDoc: false,
-      //docUrl: null,
       expanded: false
     };
 
@@ -25,34 +24,6 @@ export default class Note extends Component {
         this.docUrl = `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`;
       }
     }
-  }
-
-  isViewableDoc = () => {
-    return (
-      this.props.note &&
-      this.props.note.type === 'document' &&
-      ['UHW', 'COMINO', 'JIGSAW'].includes(this.props.note.system)
-    );
-  };
-
-  componentDidMount() {
-    // if (this.isViewableDoc()) {
-    //   if (this.props.note.system === 'UHW') {
-    //     return this.setState({
-    //       docUrl: `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
-    //     });
-    //   }
-    //   if (this.props.note.system === 'COMINO') {
-    //     return this.setState({
-    //       docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
-    //     });
-    //   }
-    //   if (this.props.note.system === 'JIGSAW') {
-    //     return this.setState({
-    //       docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`
-    //     });
-    //   }
-    // }
   }
 
   click = () => {
