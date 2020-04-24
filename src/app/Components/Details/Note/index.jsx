@@ -8,11 +8,23 @@ export default class Note extends Component {
 
     this.state = {
       showDoc: false,
-      docUrl: null,
+      //docUrl: null,
       expanded: false
     };
 
     this.maxNoteLength = 128;
+
+    if (this.props.note && this.props.note.type === 'document') {
+      if (this.props.note.system === 'UHW') {
+        this.docUrl = `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`;
+      }
+      if (this.props.note.system === 'COMINO') {
+        this.docUrl = `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`;
+      }
+      if (this.props.note.system === 'JIGSAW') {
+        this.docUrl = `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`;
+      }
+    }
   }
 
   isViewableDoc = () => {
@@ -24,21 +36,23 @@ export default class Note extends Component {
   };
 
   componentDidMount() {
-    if (this.isViewableDoc()) {
-      if (this.props.note.system === 'UHW') {
-        this.setState({
-          docUrl: `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
-        });
-      } else if (this.props.note.system === 'COMINO') {
-        this.setState({
-          docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
-        });
-      } else if (this.props.note.system === 'JIGSAW') {
-        this.setState({
-          docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`
-        });
-      }
-    }
+    // if (this.isViewableDoc()) {
+    //   if (this.props.note.system === 'UHW') {
+    //     return this.setState({
+    //       docUrl: `${process.env.REACT_APP_UHW_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
+    //     });
+    //   }
+    //   if (this.props.note.system === 'COMINO') {
+    //     return this.setState({
+    //       docUrl: `${process.env.REACT_APP_COMINO_DOCUMENT_API_URL}/documents/${this.props.note.id}/view`
+    //     });
+    //   }
+    //   if (this.props.note.system === 'JIGSAW') {
+    //     return this.setState({
+    //       docUrl: `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`
+    //     });
+    //   }
+    // }
   }
 
   click = () => {
@@ -90,7 +104,7 @@ export default class Note extends Component {
         <td key="text">
           <p>
             <strong>
-              {this.isViewableDoc() ? (
+              {this.docUrl ? (
                 <a onClick={this.click} href="#/" className="govuk-link">
                   {this.props.note.title}
                 </a>
@@ -106,7 +120,7 @@ export default class Note extends Component {
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
-            url={this.state.docUrl}
+            url={this.docUrl}
           />
         </td>
         <td key="sys">
