@@ -23,7 +23,7 @@ export default class AddressDetails extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Known addresses:</td>
+              <th>Known addresses:</th>
               <td>
                 {customer.address && customer.address.length > 0 ? (
                   customer.address.map((address, i) => {
@@ -35,9 +35,9 @@ export default class AddressDetails extends Component {
                           data-module="govuk-details"
                         >
                           <summary className="govuk-details__summary">
-                            <span className="govuk-details__summary-text">
+                            <button className="govuk-details__summary-text linkStyle">
                               Where is this from?
-                            </span>
+                            </button>
                           </summary>
                           <div className="govuk-details__text">
                             {this.lineBreakifyAddress(address.source)}
@@ -53,7 +53,7 @@ export default class AddressDetails extends Component {
             </tr>
 
             <tr>
-              <td>Household member(s):</td>
+              <th>Household member(s):</th>
               <td>
                 {this.props.customer.household &&
                 this.props.customer.household.length > 0 ? (

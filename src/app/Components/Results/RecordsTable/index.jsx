@@ -11,12 +11,12 @@ export default class RecordsTable extends Component {
       <table className="recordsTable">
         <thead>
           <tr>
-            <td key="system">System</td>
-            <td key="first">First Name</td>
-            <td key="last">Last Name</td>
-            <td key="dob">Date of Birth</td>
-            <td key="nino">National Insurance No</td>
-            <td key="address">Address</td>
+            <th key="system">System</th>
+            <th key="first">First Name</th>
+            <th key="last">Last Name</th>
+            <th key="dob">Date of Birth</th>
+            <th key="nino">National Insurance No</th>
+            <th key="address">Address</th>
           </tr>
         </thead>
         <tbody>

@@ -47,12 +47,16 @@ export default class GroupedTable extends Component {
         <table className="groupedTable">
           <thead>
             <tr>
-              {this.props.selectable ? <td></td> : null}
-              <td key="first">First Name</td>
-              <td key="last">Last Name</td>
-              <td key="dob">Date of Birth</td>
-              <td key="nino">National Insurance No</td>
-              <td key="address">Address</td>
+              {this.props.selectable ? (
+                <th>
+                  <span className="visuallyhidden">select</span>
+                </th>
+              ) : null}
+              <th key="first">First Name</th>
+              <th key="last">Last Name</th>
+              <th key="dob">Date of Birth</th>
+              <th key="nino">National Insurance No</th>
+              <th key="address">Address</th>
             </tr>
           </thead>
           <tbody>

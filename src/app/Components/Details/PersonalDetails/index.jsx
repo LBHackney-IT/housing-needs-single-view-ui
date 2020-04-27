@@ -15,13 +15,13 @@ export default class PersonalDetails extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Date of birth:</td>
+              <th>Date of birth:</th>
               <td>
                 {customer.dob && moment(customer.dob[0]).format('DD/MM/YYYY')}
               </td>
             </tr>
             <tr>
-              <td>National insurance no:</td>
+              <th>National insurance no:</th>
               <td>{customer.nino}</td>
             </tr>
           </tbody>

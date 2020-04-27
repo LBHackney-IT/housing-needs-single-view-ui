@@ -11,9 +11,9 @@ export default class DocumentModal extends Component {
         <Popup modal closeOnDocumentClick open={open} onClose={onClose}>
           {close => (
             <div>
-              <a className="close" href="#/" onClick={close}>
+              <button className="linkStyle close" onClick={close}>
                 &times;
-              </a>
+              </button>
               <iframe title="document" src={url}></iframe>
             </div>
           )}

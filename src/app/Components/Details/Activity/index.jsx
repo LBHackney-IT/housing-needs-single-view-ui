@@ -54,6 +54,11 @@ export default class Activity extends Component {
         {notes.length > 0 ? (
           <table>
             <tbody>
+              <tr>
+                <th>Date</th>
+                <th className="activity_th">Activity</th>
+                <th className="activity_th">System</th>
+              </tr>
               {notes.map(note => {
                 return <Note key={note.id} note={note} />;
               })}
