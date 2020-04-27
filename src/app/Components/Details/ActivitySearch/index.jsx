@@ -82,23 +82,27 @@ export default class ActivitySearch extends Component {
           onChange={this.handleSearchTermChange}
           onFocus={e => this.setState({ filter: null, showFilters: true })}
         />
-        <button onClick={this.toggleFilters}>
+        <button className="searchIcon" onClick={this.toggleFilters}>
           {this.searchIcon()}
           <p className="visuallyhidden">Search</p>
         </button>
         <div hidden={!this.state.filter}>
           <span className="selectedFilter">
-            <a href="#/" onClick={this.clearFilter}>
+            <button className="linkStyle" onClick={this.clearFilter}>
               All {filters[this.state.filter]}
-            </a>
+            </button>
           </span>
         </div>
         <div hidden={!this.state.showFilters} className="activity__filters">
           {Object.keys(filters).map((type, i) => {
             return (
-              <a href="#/" key={i} onClick={e => this.setFilter(e, type)}>
+              <button
+                className="linkStyle"
+                key={i}
+                onClick={e => this.setFilter(e, type)}
+              >
                 All {filters[type]}
-              </a>
+              </button>
             );
           })}
         </div>

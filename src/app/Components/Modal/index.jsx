@@ -10,9 +10,9 @@ export default class Modal extends Component {
       <Popup trigger={trigger} modal closeOnDocumentClick>
         {close => (
           <div className="modal">
-            <a className="close" href="#/" onClick={close}>
+            <button className="linkStyle close" onClick={close}>
               &times;
-            </a>
+            </button>
             <div className="content">{children}</div>
           </div>
         )}

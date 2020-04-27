@@ -32,11 +32,11 @@ export default class PreviousRecord extends Component {
                 `${this.props.record.firstName} ${this.props.record.lastName}`
               )}
             </p>
-            <a href="#/" onClick={this.show}>
+            <button className="linkStyle" onClick={this.show}>
               {!this.state.visible
                 ? 'Show connected records >'
                 : '< Hide connected records'}
-            </a>
+            </button>
           </div>
 
           <div>
@@ -47,14 +47,12 @@ export default class PreviousRecord extends Component {
             >
               View Record
             </a>
-            <a
-              href={`#/`}
-              role="button"
+            <button
               className="govuk-button lbh-button"
               onClick={() => this.deleteRecord(this.props.record.id)}
             >
               Disconnect Record
-            </a>
+            </button>
           </div>
         </div>
         {this.state.visible && (

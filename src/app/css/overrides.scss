@@ -132,6 +132,11 @@ p {
   border-bottom: 1px solid #ccc;
 }
 
+.activity_th {
+  padding: 15px 0 15px 15px;
+  font-weight: bold;
+}
+
 .activity tr > td:first-of-type {
   padding-left: 0;
   font-weight: normal;
@@ -193,4 +198,27 @@ p {
 
 .visuallyhidden {
   display: none;
+}
+
+.linkStyle {
+  text-decoration: underline;
+  border: none;
+  background: transparent;
+  font-size: 100%;
+  color: #00664f;
+  padding: 0 0 0 0;
+  font-size: 16px;
+}
+
+th {
+  text-align: left;
+  padding: 0 0 0 0;
+  color: #000;
+  font-weight: bold;
+}
+
+td {
+  padding-right: 0;
+  color: #666 !important;
+  font-weight: normal !important;
 }

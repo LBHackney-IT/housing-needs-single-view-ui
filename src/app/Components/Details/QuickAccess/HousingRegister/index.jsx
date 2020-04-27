@@ -8,27 +8,27 @@ export default class HousingRegister extends Component {
       <table key={index}>
         <tbody>
           <tr>
-            <td>Application Ref:</td>
+            <th>Application Ref:</th>
             <td>{t.applicationRef}</td>
           </tr>
           <tr>
-            <td>Application status:</td>
+            <th>Application status:</th>
             <td>{t.applicationStatus}</td>
           </tr>
           <tr>
-            <td>Bidding no:</td>
+            <th>Bidding no:</th>
             <td>{t.biddingNo}</td>
           </tr>
           <tr>
-            <td>Band:</td>
+            <th>Band:</th>
             <td>{t.band}</td>
           </tr>
           <tr>
-            <td>Effective Band Date:</td>
+            <th>Effective Band Date:</th>
             <td>{formatDisplayDate(t.startDate)}</td>
           </tr>
           <tr>
-            <td>Bedroom requirements:</td>
+            <th>Bedroom requirements:</th>
             <td>{t.bedroomReq}</td>
           </tr>
         </tbody>
@@ -49,11 +49,11 @@ export default class HousingRegister extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Bidding no:</td>
+              <th>Bidding no:</th>
               <td>{customer.housingRegister[0].biddingNo}</td>
             </tr>
             <tr>
-              <td>Band:</td>
+              <th>Band:</th>
               <td>{customer.housingRegister[0].band}</td>
             </tr>
           </tbody>
@@ -61,7 +61,9 @@ export default class HousingRegister extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <Modal trigger={<a href="#/">More details</a>}>
+              <Modal
+                trigger={<button className="linkStyle">More details</button>}
+              >
                 <h3>Housing Register Information</h3>
                 {customer.housingRegister.map((t, index) =>
                   this.housingRegisterRecord(t, index)

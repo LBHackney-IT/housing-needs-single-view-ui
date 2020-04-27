@@ -75,7 +75,6 @@ export default class ResultsPage extends Component {
     if (this.state.results.connected.length > 0) {
       return [
         <section className="govuk-form-group" key="prevGroup">
-          <h1>Matching customers</h1>
           <h2 key="prev">
             There are previously connected records for your search
           </h2>
@@ -163,6 +162,7 @@ export default class ResultsPage extends Component {
         <button onClick={goBack} className="govuk-back-link">
           Back to search
         </button>
+        <h1>Matching customers</h1>
         {this.prevResults()}
         <div className="connectRecords">
           <div className="row">

@@ -22,11 +22,11 @@ export default class Benefits extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Live claim:</td>
+              <th>Live claim:</th>
               <td>{customer.benefits.live ? 'Yes' : 'No'}</td>
             </tr>
             <tr>
-              <td>Universal Credit:</td>
+              <th>Universal Credit:</th>
               <td>{this.uc()}</td>
             </tr>
           </tbody>
@@ -34,7 +34,9 @@ export default class Benefits extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <Modal trigger={<a href="#/">More details</a>}>
+              <Modal
+                trigger={<button className="linkStyle">More details</button>}
+              >
                 <h3>Benefits information</h3>
                 <br />
                 <table>

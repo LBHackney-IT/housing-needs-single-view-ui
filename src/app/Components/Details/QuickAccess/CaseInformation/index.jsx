@@ -30,7 +30,7 @@ export default class CaseInformation extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Stage:</td>
+              <th>Stage:</th>
               <td>{customer.housingNeeds.status}</td>
             </tr>
           </tbody>
@@ -49,39 +49,40 @@ export default class CaseInformation extends Component {
             </li>
             {customer.housingNeeds.currentPlacement && (
               <li>
-                <Modal trigger={<a href="#/">More details</a>}>
+                <Modal
+                  trigger={<button className="linkStyle">More details</button>}
+                >
                   <h3>Case details</h3>
                   <br />
                   <table>
                     <tbody>
                       <tr>
-                        <td>Tenancy ID</td>
+                        <th>Tenancy ID</th>
                         <td>
                           {customer.housingNeeds.currentPlacement.tenancyId}
                         </td>
                       </tr>
                       <tr>
-                        <td>Placement Type</td>
+                        <th>Placement Type</th>
                         <td>{customer.housingNeeds.currentPlacement.type}</td>
                       </tr>
                       <tr>
-                        <td>Duty</td>
+                        <th>Duty</th>
                         <td>{customer.housingNeeds.currentPlacement.duty}</td>
                       </tr>
                       <tr>
-                        <td>Placement Address</td>
+                        <th>Placement Address</th>
                         <td>
                           {customer.housingNeeds.currentPlacement.address}
                         </td>
                       </tr>
                       <tr>
-                        <td>Start date</td>
+                        <th>Start date</th>
                         <td>
                           {customer.housingNeeds.currentPlacement.startDate}
                         </td>
                       </tr>
                       <tr>
-                        <td>Customer rent cost</td>
                         <td>
                           {Utils.formatCurrency(
                             customer.housingNeeds.currentPlacement

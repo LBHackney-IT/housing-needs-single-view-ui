@@ -13,11 +13,11 @@ export default class Tenancy extends Component {
         <table>
           <tbody>
             <tr>
-              <td>Account ref:</td>
+              <th>Account ref:</th>
               <td>{customer.tenancies.current[0].tagRef}</td>
             </tr>
             <tr>
-              <td>Balance:</td>
+              <th>Balance:</th>
               <td>
                 {Utils.formatCurrency(
                   customer.tenancies.current[0].currentBalance
@@ -37,33 +37,33 @@ export default class Tenancy extends Component {
       <table key={tenancy.propRef} className="tenancy">
         <tbody>
           <tr>
-            <td>Address:</td>
+            <th>Address:</th>
             <td>{tenancy.address}</td>
           </tr>
           <tr>
-            <td>Start Date:</td>
+            <th>Start Date:</th>
             <td>{moment(tenancy.startDate).format('DD/MM/YYYY')}</td>
           </tr>
           {tenancy.endDate ? (
             <tr>
-              <td>End Date:</td>
+              <th>End Date:</th>
               <td>{moment(tenancy.endDate).format('DD/MM/YYYY')}</td>
             </tr>
           ) : null}
           <tr>
-            <td>Tenure:</td>
+            <th>Tenure:</th>
             <td>{tenancy.tenure}</td>
           </tr>
           <tr>
-            <td>Property Ref:</td>
+            <th>Property Ref:</th>
             <td>{tenancy.propRef}</td>
           </tr>
           <tr>
-            <td>Rent:</td>
+            <th>Rent:</th>
             <td>{Utils.formatCurrency(tenancy.rentAmount)}</td>
           </tr>
           <tr>
-            <td>Balance:</td>
+            <th>Balance:</th>
             <td>{Utils.formatCurrency(tenancy.currentBalance)}</td>
           </tr>
         </tbody>
@@ -110,7 +110,9 @@ export default class Tenancy extends Component {
         <div className="quick-access__item__links">
           <ul>
             <li>
-              <Modal trigger={<a href="#/">More details</a>}>
+              <Modal
+                trigger={<button className="linkStyle">More details</button>}
+              >
                 {this.currentTenancy()}
                 {this.previousTenancies()}
               </Modal>
