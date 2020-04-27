@@ -16,6 +16,7 @@ export default class Activity extends Component {
       });
     } else if (criteria.searchTerm) {
       const notes = this.props.notes;
+
       const foundNotes = notes.filter(item => {
         const byTitle =
           item.title.toLowerCase().search(criteria.searchTerm.toLowerCase()) !==
@@ -38,7 +39,6 @@ export default class Activity extends Component {
 
   render() {
     const notes = this.state.notes;
-
     return (
       <div className="activity">
         <div className="govuk-grid-row">
@@ -59,8 +59,8 @@ export default class Activity extends Component {
                 <th className="activity_th">Activity</th>
                 <th className="activity_th">System</th>
               </tr>
-              {notes.map((note, id) => {
-                return <Note key={id} note={note} />;
+              {notes.map(note => {
+                return <Note key={note.id} note={note} />;
               })}
             </tbody>
           </table>
