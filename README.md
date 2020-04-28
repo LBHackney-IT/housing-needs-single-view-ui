@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Housing Needs Single View UI
 
-## Available Scripts
+Displays data from multiple systems for the Single View of a Hackney Customer.
 
-In the project directory, you can run:
+## Installation
 
-### `npm run start`
+1\. Install dependencies:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+```
+$ npm i
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+2\. Add a .env file in the root directory (see .env.sample for file structure).
 
-### `npm run test`
+## Setup hosts for local dev
 
-Launches the test runner (cypress) in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To use the cookie-based auth that we use in Single View, your application needs to be on a Hackney domain.
 
-### `npm run build`
+Add the following line to /private/etc/hosts (Mac) or :\Windows\System32\etc\hosts (Windows):
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+127.0.0.1	localdev.hackney.gov.uk
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Run the UI
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ npm run start
+```
 
-### `npm run eject`
+## Run the integration tests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm run cypress
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Config for debugging the API (VS Code)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Create a new file at .vscode/launch.json and add the following:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localdev.hackney.gov.uk:3001",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
+```
 
-## Learn More
+## Linting
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+$ npm run lint
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Prettier
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+We recommend installing the Prettier extension in your editor to keep formatting consistent.
