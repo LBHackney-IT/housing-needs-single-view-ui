@@ -59,8 +59,8 @@ export default class Activity extends Component {
                 <th className="activity_th">Activity</th>
                 <th className="activity_th">System</th>
               </tr>
-              {notes.map(note => {
-                return <Note key={note.id} note={note} />;
+              {notes.map((note, i) => {
+                return <Note key={note.id ? note.id : i} note={note} />;
               })}
             </tbody>
           </table>
