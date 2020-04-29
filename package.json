@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "npx cypress open",
     "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'",
-    "cy:start": "node ./src/FakeSVapi.js & react-scripts start",
+    "cy:start": "node cypress/FakeSVapi.js & react-scripts start",
     "cy:run": "cypress run",
     "cypress": "start-server-and-test cy:start http://localhost:3001 cy:run"
   },

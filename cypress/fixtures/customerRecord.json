@@ -1,0 +1,138 @@
+{
+  "customer": {
+    "systemIds": {
+      "jigsaw": ["263272"],
+      "academyBenefits": ["60940760", "60940888"],
+      "academyCouncilTax": ["333333399", "399999999"],
+      "uhtContacts": "0",
+      "householdRef": "0122132   ",
+      "rent": "0122132/01",
+      "paymentRef": "12345",
+      "uhtHousingRegister": ["DIR0148754/1"],
+      "uhw": ["334351"]
+    },
+    "housingNeeds": {
+      "jigsawCaseId": "270305",
+      "status": "Main duty accepted",
+      "currentPlacement": {
+        "address": "001 Cemetery Lane, London, E7 8LS",
+        "duty": "Section 193(2)",
+        "type": "Accommodation secured by the Local Authority",
+        "rentCostCustomer": 0,
+        "tenancyId": 59538,
+        "startDate": "2019-09-28 12:00:00"
+      }
+    },
+    "team": {},
+    "address": [
+      { "source": ["JIGSAW"], "address": ["50 HUSHMORE ROAD, LONDON, E5 0ET"] },
+      {
+        "source": ["ACADEMY-Benefits", "UHT-Contacts"],
+        "address": ["001 Cemetery Lane", "Forest Gate", "London", "E7 8LS"]
+      },
+      {
+        "source": ["UHT-HousingRegister-WaitingList"],
+        "address": ["50", "Hushmore Road", "Hackney", "London", "E5 0ET"]
+      },
+      {
+        "source": ["UHT-HousingRegister-Correspondence"],
+        "address": [
+          "Housing Action Management",
+          "001 Cemetery Lane",
+          "Newham",
+          "London",
+          "E7 8LS"
+        ]
+      }
+    ],
+    "dob": ["1969-02-01 12:00:00"],
+    "email": ["w.day@yahoo.co.uk"],
+    "phone": ["07666666666", "07999666999"],
+    "nino": ["NR006660A"],
+    "name": [{ "first": "Wednesday", "last": "Adams", "title": "Miss" }],
+    "postcode": ["E7 8LS"],
+    "benefits": {
+      "live": true,
+      "income": [
+        {
+          "amount": 34.4,
+          "description": "Child Benefit",
+          "period": "Weekly",
+          "frequency": 1
+        },
+        {
+          "amount": 0,
+          "description": "Miscellaneous Income",
+          "period": "N/A",
+          "frequency": 0
+        },
+        {
+          "amount": 826.57,
+          "description": "Universal Credit Award",
+          "period": "Monthly",
+          "frequency": 1
+        }
+      ]
+    },
+    "household": [
+      {
+        "title": "Mr",
+        "first": "Pugsley",
+        "last": "Adams",
+        "dob": "2008-09-05 12:00:00"
+      },
+      {
+        "title": "Miss",
+        "first": "Lurch",
+        "last": "Adams",
+        "dob": "2001-11-21 12:00:00"
+      }
+    ],
+    "councilTax": {
+      "accountBalance": 55.55,
+      "paymentMethod": "CASH MONTHLY",
+      "transactions": [
+        {
+          "date": "2010-01-08T00:00:00.000Z",
+          "amount": -2.5,
+          "description": "SOME COSTS"
+        },
+        {
+          "date": "2007-01-08T00:00:00.000Z",
+          "amount": -2.5,
+          "description": "SOME COSTS"
+        },
+        {
+          "date": "2006-01-08T00:00:00.000Z",
+          "amount": -2.5,
+          "description": "SOME COSTS"
+        }
+      ]
+    },
+    "tenancies": {
+      "current": [],
+      "previous": [
+        {
+          "tagRef": "0122132/01",
+          "startDate": "2019-07-18T00:00:00.000Z",
+          "endDate": "1900-01-01T00:00:00.000Z",
+          "tenure": "Temp Annex",
+          "currentBalance": 2,
+          "rentAmount": 216.54,
+          "propRef": "10090323559",
+          "address": ["001 Cemetery Lane", "Forest Gate", "London", "E7 8LS"]
+        }
+      ]
+    },
+    "housingRegister": [
+      {
+        "applicationRef": "DIR0148754",
+        "biddingNo": "2156200",
+        "band": "Homeless",
+        "startDate": "2019-07-18T00:00:00.000Z",
+        "bedroomReq": "2",
+        "applicationStatus": "Active"
+      }
+    ]
+  }
+}
