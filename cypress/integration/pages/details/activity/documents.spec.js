@@ -38,4 +38,14 @@ describe('Documents', () => {
       .and('have.attr', 'src')
       .and('match', /uhw\/documents\/8355548\/view/);
   });
+
+  it('Requests correct JIGSAW doc', () => {
+    cy.get('.activity > table > tbody > tr > td > p > strong > button')
+      .eq(-2)
+      .should('contain', 'Document');
+
+    cy.get(
+      '#main-content > div > div:nth-child(2) > div.details__right-column > div.activity > table > tbody > tr:nth-child(72) > td:nth-child(3) > p:nth-child(2)'
+    ).should('contain', 'JIGSAW');
+  });
 });
