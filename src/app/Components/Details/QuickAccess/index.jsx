@@ -4,10 +4,11 @@ import CaseInformation from './CaseInformation';
 import CouncilTax from './CouncilTax';
 import HousingRegister from './HousingRegister';
 import Tenancy from './Tenancy';
+import SharedPlanQuickBox from './SharedPlan';
 
 export default class QuickAccess extends Component {
   render() {
-    const { customer } = this.props;
+    const { customer, customerId } = this.props;
 
     return (
       <div id="quickAccess">
@@ -17,7 +18,8 @@ export default class QuickAccess extends Component {
           <HousingRegister customer={customer} />
           <Tenancy customer={customer} />
           <Benefits customer={customer} />
-          <CouncilTax customer={customer} />{' '}
+          <CouncilTax customer={customer} />
+          <SharedPlanQuickBox customerId={customerId} />
         </div>
       </div>
     );
