@@ -12,11 +12,11 @@ export default async ({ customerId }) => {
   );
 
   if (response.ok) {
-    const { id } = response.json();
+    const { id } = await response.json();
 
     return {
-      id,
-      location: `${process.env.SINGLE_VIEW_PLAN_URL}/${id}`
+      id: id,
+      location: `${process.env.REACT_APP_SHARED_PLAN_URL}/${id}`
     };
   }
 
