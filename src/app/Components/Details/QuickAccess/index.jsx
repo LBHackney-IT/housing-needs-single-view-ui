@@ -5,6 +5,7 @@ import CouncilTax from './CouncilTax';
 import HousingRegister from './HousingRegister';
 import Tenancy from './Tenancy';
 import SharedPlanQuickBox from './SharedPlan';
+import FeatureZone from '../../FeatureZone';
 
 export default class QuickAccess extends Component {
   render() {
@@ -19,7 +20,9 @@ export default class QuickAccess extends Component {
           <Tenancy customer={customer} />
           <Benefits customer={customer} />
           <CouncilTax customer={customer} />
-          <SharedPlanQuickBox customerId={customerId} />
+          <FeatureZone featureName="shared_plan">
+            <SharedPlanQuickBox customerId={customerId} />
+          </FeatureZone>
         </div>
       </div>
     );
