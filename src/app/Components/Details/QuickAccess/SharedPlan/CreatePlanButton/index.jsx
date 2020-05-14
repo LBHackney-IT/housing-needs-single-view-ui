@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import createSharedPlan from '../../../../../Gateways/CreateSharedPlan';
+import styles from './index.module.css';
 
 const CreatePlanButton = ({ customerId }) => {
   const [state, setState] = useState({
@@ -19,7 +20,11 @@ const CreatePlanButton = ({ customerId }) => {
     }
   }, [state, customerId]);
 
-  return <button onClick={handleClick}>Create new plan</button>;
+  return (
+    <button className={styles.button} onClick={handleClick}>
+      Create new plan
+    </button>
+  );
 };
 
 export default CreatePlanButton;
