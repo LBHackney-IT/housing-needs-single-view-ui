@@ -21,7 +21,11 @@ const CreatePlanButton = ({ customerId }) => {
   }, [state, customerId]);
 
   return (
-    <button className={styles.button} onClick={handleClick}>
+    <button
+      disabled={state.loading}
+      className={styles.button}
+      onClick={handleClick}
+    >
       Create new plan
     </button>
   );
