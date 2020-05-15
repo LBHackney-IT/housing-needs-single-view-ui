@@ -43,4 +43,8 @@ app.get('/customers/:id/documents', (req, res) => {
   res.send(customerDocuments);
 });
 
+app.post('/customers/:id/shared-plans', (req, res) => {
+  res.status(201).send({ id: '1' });
+});
+
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));

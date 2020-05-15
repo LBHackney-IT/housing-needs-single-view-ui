@@ -26,10 +26,12 @@ export default class DetailsPage extends Component {
 
   componentDidMount() {
     let notesAndDocs = [];
-    FetchCustomerRecord(this.props.match.params.id)
+    const customerId = this.props.match.params.id;
+
+    FetchCustomerRecord(customerId)
       .then(result => {
         this.setState({ customer: result.customer });
-        return FetchCustomerNotes(this.props.match.params.id);
+        return FetchCustomerNotes(customerId);
       })
       .then(result => {
         const notes = result.notes.map(note => {
@@ -37,7 +39,7 @@ export default class DetailsPage extends Component {
           return note;
         });
         notesAndDocs = notesAndDocs.concat(notes);
-        return FetchCustomerDocuments(this.props.match.params.id);
+        return FetchCustomerDocuments(customerId);
       })
       .then(result => {
         const docs = result.documents.map(doc => {
@@ -53,6 +55,8 @@ export default class DetailsPage extends Component {
 
   render() {
     document.title = 'Customer details - Single View';
+    const customerId = this.props.match.params.id;
+
     if (this.state.fetching) {
       return (
         <div className="lbh-container">
@@ -72,10 +76,7 @@ export default class DetailsPage extends Component {
         </div>
         <div className="lbh-container row details">
           <div className="details__left-column">
-            <PersonalDetails
-              customer={this.state.customer}
-              id={this.props.match.params.id}
-            />
+            <PersonalDetails customer={this.state.customer} id={customerId} />
             <ContactDetails customer={this.state.customer} />
             <AddressDetails customer={this.state.customer} />
             <Team customer={this.state.customer} />
@@ -86,7 +87,10 @@ export default class DetailsPage extends Component {
             />
           </div>
           <div className="details__right-column">
-            <QuickAccess customer={this.state.customer} />
+            <QuickAccess
+              customer={this.state.customer}
+              customerId={customerId}
+            />
             <Activity notes={this.state.notes} />
           </div>
         </div>
