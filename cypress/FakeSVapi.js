@@ -48,7 +48,7 @@ app.post('/customers/:id/shared-plans', (req, res) => {
 });
 
 app.get('/customers/:id/shared-plans', (req, res) => {
-  res.status(201).send({ planIds: ['1'] });
+  res.status(200).send({ planIds: ['1'] });
 });
 
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));
