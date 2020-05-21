@@ -30,9 +30,9 @@ const SharedPlansList = ({ customerId }) => {
     <div className={styles.wrapper}>
       <h4 className={styles.heading}>Existing plans</h4>
       <ul>
-        {state.plans.map(({ id, location }) => (
+        {state.plans.map(({ id, location }, i) => (
           <li key={id}>
-            <a href={location}>{id}</a>
+            <a href={location}>Plan {i + 1}</a>
           </li>
         ))}
       </ul>
