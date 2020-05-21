@@ -85,4 +85,16 @@ describe('Details Page', () => {
         .and('contain', '12345');
     });
   });
+
+  describe.only('Shared plans', () => {
+    const selector = '[data-testid="shared-plan-quickview"]';
+
+    it('displays the Shared Plans quick view box', () => {
+      cy.get(selector).should('exist');
+    });
+
+    it('displays a list of existing plans', () => {
+      cy.get(`${selector} ul`).should('not.be.empty');
+    });
+  });
 });
