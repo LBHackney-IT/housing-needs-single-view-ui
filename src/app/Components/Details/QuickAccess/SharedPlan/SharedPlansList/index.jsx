@@ -15,14 +15,14 @@ const SharedPlansList = ({ customerId }) => {
         const plans = await findSharedPlans({ customerId });
         setState({ plans, loading: false });
       } catch (error) {
-        setState({ error, loading: false });
+        setState({ plans: [], error, loading: false });
       }
     };
 
     fetch();
   }, [customerId]);
 
-  if (state.loading) {
+  if (state.plans.length === 0) {
     return null;
   }
 
