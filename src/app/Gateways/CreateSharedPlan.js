@@ -12,11 +12,11 @@ export default async ({ customerId }) => {
   );
 
   if (response.ok) {
-    const { id } = await response.json();
+    const { planId } = await response.json();
 
     return {
-      id: id,
-      location: `${process.env.REACT_APP_SHARED_PLAN_URL}/${id}`
+      id: planId,
+      location: `${process.env.REACT_APP_SHARED_PLAN_URL}/plans/${planId}`
     };
   }
 

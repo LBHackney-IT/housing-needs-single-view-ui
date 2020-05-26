@@ -16,7 +16,7 @@ export default async ({ customerId }) => {
 
     return planIds.map(id => ({
       id,
-      location: `${process.env.REACT_APP_SHARED_PLAN_URL}/${id}`
+      location: `${process.env.REACT_APP_SHARED_PLAN_URL}/plans/${id}`
     }));
   }
 
