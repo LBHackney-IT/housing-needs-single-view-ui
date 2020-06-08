@@ -25,7 +25,7 @@ export default class ResultsPage extends Component {
       .then(results => {
         this.setState({ results, searching: false, filter: {} });
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({
           searching: false,
           error: 'Error when searching for records. Please reload to try again.'

@@ -80,7 +80,7 @@ export default class ActivitySearch extends Component {
           className="govuk-input"
           value={this.state.searchTerm}
           onChange={this.handleSearchTermChange}
-          onFocus={e => this.setState({ filter: null, showFilters: true })}
+          onFocus={() => this.setState({ filter: null, showFilters: true })}
         />
         <button className="searchIcon" onClick={this.toggleFilters}>
           {this.searchIcon()}
