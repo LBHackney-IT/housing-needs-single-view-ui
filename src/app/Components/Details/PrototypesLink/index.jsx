@@ -37,7 +37,7 @@ export default function PrototypesLink(props) {
         <ul style={{ margin: '10px 0' }}>
           <li>
             <a
-              href={`${process.env.REACT_APP_VULNERABILITIES_APP_URL}/customers/${customerId}`}
+              href={`${process.env.REACT_APP_VULNERABILITIES_APP_URL_OLD}/customers/${customerId}`}
             >
               Checklist
             </a>
@@ -52,7 +52,7 @@ export default function PrototypesLink(props) {
         ) : null}
         <p>
           <a
-            href={`${process.env.REACT_APP_VULNERABILITIES_APP_URL}/customers/${customerId}/plan`}
+            href={`${process.env.REACT_APP_VULNERABILITIES_APP_URL_OLD}/customers/${customerId}/plan`}
           >
             Visit Shared Plan
           </a>
