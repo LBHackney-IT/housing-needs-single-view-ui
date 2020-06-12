@@ -7,6 +7,7 @@ import SystemIds from './SystemIds';
 import Team from './Team';
 import AddressDetails from './AddressDetails';
 import PrototypesLink from './PrototypesLink';
+import ThingsToNote from './ThingsToNote';
 
 export {
   ContactDetails,
@@ -17,5 +18,6 @@ export {
   SystemIds,
   Team,
   AddressDetails,
-  PrototypesLink
+  PrototypesLink,
+  ThingsToNote
 };

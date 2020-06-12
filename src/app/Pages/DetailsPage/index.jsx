@@ -12,10 +12,12 @@ import {
   SystemIds,
   Team,
   AddressDetails,
-  PrototypesLink
+  PrototypesLink,
+  ThingsToNote
 } from '../../Components/Details';
 import moment from 'moment';
 import { goBack } from '../../lib/Utils';
+import { hasFeatureFlag } from '../../lib/FeatureFlag';
 
 export default class DetailsPage extends Component {
   constructor(props) {
@@ -77,6 +79,9 @@ export default class DetailsPage extends Component {
         <div className="lbh-container row details">
           <div className="details__left-column">
             <PersonalDetails customer={this.state.customer} id={customerId} />
+            {hasFeatureFlag('things-to-note') && (
+              <ThingsToNote customerId={customerId} />
+            )}
             <ContactDetails customer={this.state.customer} />
             <AddressDetails customer={this.state.customer} />
             <Team customer={this.state.customer} />
