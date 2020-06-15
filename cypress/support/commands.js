@@ -26,15 +26,24 @@
 
 import jwt from 'jsonwebtoken';
 
-const setHackneyCookie =  isValidGroup => {
+const setHackneyCookie = isValidGroup => {
   const group = isValidGroup
     ? 'housingneeds-singleview-beta'
     : 'some-other-group';
   const token = jwt.sign({ groups: [group] }, 'a-secure-signature');
-   cy.setCookie('hackneyToken', token, {
+  cy.setCookie('hackneyToken', token, {
     url: 'http://localhost:3001',
     domain: 'localhost'
   });
 };
 
+const setSharedPlanCookie = isValidGroup => {
+  const token = isValidGroup ? '[%22shared_plan%22]' : 'some-other-group';
+  cy.setCookie('singleViewFeatures', token, {
+    url: 'http://localhost:3001',
+    domain: 'localhost'
+  });
+};
+
+Cypress.Commands.add('setSharedPlanCookie', setSharedPlanCookie);
 Cypress.Commands.add('setHackneyCookie', setHackneyCookie);
