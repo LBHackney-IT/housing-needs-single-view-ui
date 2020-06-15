@@ -2,7 +2,7 @@
 describe('Details Page', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/customers/5/view#shared_plan');
+    cy.visit('http://localhost:3001/customers/5/view');
   });
 
   describe('Addresses', () => {
@@ -86,10 +86,21 @@ describe('Details Page', () => {
     });
   });
 
-  describe.only('Shared plans', () => {
+  describe('Shared plans', () => {
     const selector = '[data-testid="shared-plan-quickview"]';
 
+    it('does not display the Shared Plans quick view box if the cookie is not set', () => {
+      cy.get(selector).should('not.exist');
+    });
+
+    it('can set a shared plan cookie', () => {
+      cy.visit('http://localhost:3001/#shared_plan');
+      cy.visit('http://localhost:3001/customers/5/view');
+      cy.get(selector).should('exist');
+    });
+
     it('displays the Shared Plans quick view box', () => {
+      cy.setSharedPlanCookie(true);
       cy.get(selector).should('exist');
     });
 
