@@ -6,19 +6,22 @@ describe('FeatureFlag', () => {
   describe('setFeatureFlag', () => {
     it('can set a feature flag', () => {
       setFeatureFlag('my-new-feature');
-      expect(Cookies.set).toHaveBeenCalledWith('singleViewFeatures', [
-        'my-new-feature'
-      ]);
+      expect(Cookies.set).toHaveBeenCalledWith(
+        'singleViewFeatures',
+        ['my-new-feature'],
+        { expires: 365 }
+      );
     });
 
     it('can set a feature flag when there are other flags', () => {
       Cookies.get.mockImplementation(() => '["my-new-feature"]');
       setFeatureFlag('my-newer-feature');
       expect(Cookies.get).toHaveBeenCalled();
-      expect(Cookies.set).toHaveBeenCalledWith('singleViewFeatures', [
-        'my-new-feature',
-        'my-newer-feature'
-      ]);
+      expect(Cookies.set).toHaveBeenCalledWith(
+        'singleViewFeatures',
+        ['my-new-feature', 'my-newer-feature'],
+        { expires: 365 }
+      );
     });
 
     it('does not create duplicate flags', () => {

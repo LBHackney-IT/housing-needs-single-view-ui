@@ -15,7 +15,7 @@ const setFeatureFlag = featureKey => {
   if (hasFeatureFlag(featureKey)) return;
   const features = getFeatureFlags();
   features.push(featureKey);
-  Cookies.set(cookieName, features);
+  Cookies.set(cookieName, features, { expires: 365 });
 };
 
 const hasFeatureFlag = featureKey => {
