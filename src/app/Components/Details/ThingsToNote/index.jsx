@@ -11,7 +11,6 @@ const ThingsToNote = ({ customerId }) => {
     setState({ ...state, loading: true });
     try {
       const { location } = await CreateVulnerability({ customerId });
-      setState({ ...state, loading: false });
       window.location.href = location;
     } catch (error) {
       setState({ loading: false, error });
@@ -35,13 +34,13 @@ const ThingsToNote = ({ customerId }) => {
       </table>
 
       <button
-        class="govuk-button lbh-button"
+        className="govuk-button lbh-button"
         onClick={createSnapshot}
         disabled={state.loading}
       >
         Add a vulnerability snapshot
       </button>
-      {state.error && <span>{state.error}</span>}
+      {state.error && <div>Error creating snapshot.</div>}
     </div>
   );
 };
