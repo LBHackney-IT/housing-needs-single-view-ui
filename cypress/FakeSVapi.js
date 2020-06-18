@@ -51,4 +51,12 @@ app.get('/customers/:id/shared-plans', (req, res) => {
   res.status(200).send({ planIds: ['1'] });
 });
 
+app.get('/customers/:id/vulnerabilities/latest', (req, res) => {
+  if (req.params.id === '1') {
+    return res.status(404).send();
+  }
+
+  res.status(200).send(require('./fixtures/snapshot.json'));
+});
+
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));

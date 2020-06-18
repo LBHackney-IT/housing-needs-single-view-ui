@@ -1,11 +1,29 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import CreateVulnerability from '../../../Gateways/CreateVulnerability';
+import FindLatestSnapshot from '../../../Gateways/FindLatestSnapshot';
+import SnapshotSummary from './SnapshotSummary';
 
 const ThingsToNote = ({ customerId }) => {
   const [state, setState] = useState({
-    loading: false,
-    error: null
+    loading: true,
+    error: null,
+    snapshot: null
   });
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data, success } = await FindLatestSnapshot({ customerId });
+      setState(state => ({
+        ...state,
+        loading: false,
+        snapshot: data,
+        error: !success ? 'Failed to fetch latest snapshot' : null
+      }));
+    };
+
+    setState(state => ({ ...state, loading: true }));
+    fetch();
+  }, [customerId]);
 
   const createSnapshot = useCallback(async () => {
     setState({ ...state, loading: true });
@@ -13,26 +31,20 @@ const ThingsToNote = ({ customerId }) => {
       const { location } = await CreateVulnerability({ customerId });
       window.location.href = location;
     } catch (error) {
-      setState({ loading: false, error });
+      setState({
+        ...state,
+        loading: false,
+        error: 'Error creating snapshot'
+      });
     }
   }, [state, customerId]);
 
   return (
     <div className="details__left-column__item">
       <h2>Things to note</h2>
-      <table>
-        <tbody>
-          <tr>
-            <th>Vulnerabilities</th>
-            <td>None captured</td>
-          </tr>
-          <tr>
-            <th>Strengths / assets</th>
-            <td>None captured</td>
-          </tr>
-        </tbody>
-      </table>
-
+      {state.loading
+        ? 'Loading...'
+        : state.snapshot && <SnapshotSummary snapshot={state.snapshot} />}
       <button
         className="govuk-button lbh-button"
         onClick={createSnapshot}
@@ -40,7 +52,7 @@ const ThingsToNote = ({ customerId }) => {
       >
         Add a vulnerability snapshot
       </button>
-      {state.error && <div>Error creating snapshot.</div>}
+      {state.error && <div>{state.error}</div>}
     </div>
   );
 };

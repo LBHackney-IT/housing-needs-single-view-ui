@@ -1,0 +1,31 @@
+ul.points {
+  list-style: none;
+  margin: 1em 0;
+
+  li {
+    line-height: 1.5em;
+  }
+
+  li::before {
+    content: "●";
+    font-size: 1em;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+
+  &.vulnerability {
+    li::before {
+      color: #013687;
+    }
+  }
+
+  &.strength {
+    li::before {
+      color: #ff6912;
+    }
+  }
+}
+
+section.list {
+  margin-top: 15px!important; /* 😢 */
+}
