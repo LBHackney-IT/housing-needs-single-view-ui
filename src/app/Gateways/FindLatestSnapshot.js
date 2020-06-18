@@ -2,7 +2,7 @@ import { hackneyToken } from '../lib/Cookie';
 
 export default async ({ customerId }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_HN_API_URL}/customers/${customerId}/vulnerabilities/latest`,
+    `${process.env.REACT_APP_HN_API_URL}/customers/${customerId}/vulnerabilities`,
     {
       method: 'GET',
       headers: { Authorization: `Bearer ${hackneyToken()}` }
@@ -12,7 +12,7 @@ export default async ({ customerId }) => {
   if (response.ok) {
     const data = await response.json();
     return {
-      data,
+      data: data.length > 0 ? data[0] : null,
       success: true
     };
   } else if (response.status === 404) {

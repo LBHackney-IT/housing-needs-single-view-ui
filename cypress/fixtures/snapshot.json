@@ -1,17 +1,33 @@
-{
-  "id": "js783hdi",
-  "vulnerabilities": [
-    {
-      "text": "Health condition"
-    },
-    {
-      "text": "Active case with another service"
-    }
-  ],
-  "assets": [
-    {
-      "text": "Close relationships with family/friends"
-    }
-  ],
-  "notes": "Added during initial meeting with client"
-}
+[
+  {
+    "id": "js783hdi",
+    "vulnerabilities": [
+      {
+        "text": "Health condition"
+      },
+      {
+        "text": "Active case with another service"
+      }
+    ],
+    "assets": [
+      {
+        "text": "Close relationships with family/friends"
+      }
+    ],
+    "notes": "Updated during review meeting"
+  },
+  {
+    "id": "jad928hd",
+    "vulnerabilities": [
+      {
+        "text": "Health condition"
+      }
+    ],
+    "assets": [
+      {
+        "text": "Close relationships with family/friends"
+      }
+    ],
+    "notes": "Added during initial meeting with client"
+  }
+]

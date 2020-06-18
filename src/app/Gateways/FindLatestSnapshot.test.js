@@ -17,11 +17,11 @@ describe('FindLatestSnapshot', () => {
       assets: [{ text: 'Passes the test!' }]
     };
 
-    fetch.mockResponse(JSON.stringify(expectedSnapshot));
+    fetch.mockResponse(JSON.stringify([expectedSnapshot]));
     const result = await findLatestSnapshot({ customerId: 1 });
 
     expect(fetch).toHaveBeenCalledWith(
-      'http://svapi/customers/1/vulnerabilities/latest',
+      'http://svapi/customers/1/vulnerabilities',
       {
         method: 'GET',
         headers: { Authorization: 'Bearer token' }
