@@ -12,14 +12,14 @@ const ColorPointList = ({ items, type }) => (
 
 const SnapshotSummary = ({ snapshot }) => (
   <>
-    <section>
+    <section data-testid="snapshot-vulnerabilities">
       <header>
         <h3>Vulnerabilities</h3>
       </header>
       <ColorPointList type="vulnerability" items={snapshot.vulnerabilities} />
     </section>
     <hr />
-    <section className={styles.list}>
+    <section className={styles.list} data-testid="snapshot-assets">
       <header>
         <h3>Strengths / assets</h3>
       </header>
