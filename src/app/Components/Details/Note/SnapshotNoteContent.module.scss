@@ -1,0 +1,14 @@
+div.snapshot {
+  p > strong {
+    color: inherit;
+  }
+
+  p.note {
+    margin-top: 1.5em!important; /* 😠 */
+  }
+
+  a.link {
+    display: block;
+    margin-top: 1em!important; /* 😠😠 */
+  }
+}

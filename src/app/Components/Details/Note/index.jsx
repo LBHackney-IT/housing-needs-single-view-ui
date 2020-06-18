@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import DocumentModal from '../../DocumentModal';
 import NoteContent from './NoteContent';
+import SnapshotNoteContent from './SnapshotNoteContent';
 
 export default class Note extends Component {
   constructor(props) {
@@ -53,6 +54,21 @@ export default class Note extends Component {
     }
   };
 
+  renderNoteContent = () => {
+    switch (this.props.note.type) {
+      case 'snapshot':
+        return <SnapshotNoteContent snapshot={this.props.note} />;
+      default:
+        return (
+          <NoteContent
+            text={this.props.note.text}
+            trimmed={!this.state.expanded}
+            trimmedLength={this.maxNoteLength}
+          />
+        );
+    }
+  };
+
   render() {
     return (
       <tr>
@@ -69,11 +85,7 @@ export default class Note extends Component {
                 )}
             </strong>
           </p>
-          <NoteContent
-            text={this.props.note.text}
-            trimmed={!this.state.expanded}
-            trimmedLength={this.maxNoteLength}
-          />
+          {this.renderNoteContent()}
           {this.expandButton()}
           <DocumentModal
             open={this.state.showDoc}
