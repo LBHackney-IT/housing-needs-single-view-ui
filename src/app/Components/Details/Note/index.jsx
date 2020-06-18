@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import DocumentModal from '../../DocumentModal';
+import NoteContent from './NoteContent';
 
 export default class Note extends Component {
   constructor(props) {
@@ -27,35 +28,19 @@ export default class Note extends Component {
   }
 
   click = () => {
-    this.setState({
-      showDoc: true
-    });
+    this.setState({ showDoc: true });
   };
 
   closeDoc = () => {
-    this.setState({
-      showDoc: false
-    });
+    this.setState({ showDoc: false });
   };
 
   toggleNote = () => {
-    this.setState({
-      expanded: !this.state.expanded
-    });
-  };
-
-  noteText = () => {
-    if (
-      this.props.note.text.length > this.maxNoteLength &&
-      !this.state.expanded
-    ) {
-      return `${this.props.note.text.substring(0, 128)} ...`;
-    }
-    return this.props.note.text;
+    this.setState({ expanded: !this.state.expanded });
   };
 
   expandButton = () => {
-    if (this.props.note.text.length > this.maxNoteLength) {
+    if (this.props.note.text?.length > this.maxNoteLength) {
       const className = this.state.expanded
         ? 'govuk-details__summary govuk-details__summary__arrow-up'
         : 'govuk-details__summary';
@@ -80,13 +65,15 @@ export default class Note extends Component {
                   {this.props.note.title}
                 </button>
               ) : (
-                this.props.note.title
-              )}
+                  this.props.note.title
+                )}
             </strong>
           </p>
-          <p style={{ overflowWrap: 'break-word', maxWidth: '350px' }}>
-            {this.noteText()}
-          </p>
+          <NoteContent
+            text={this.props.note.text}
+            trimmed={!this.state.expanded}
+            trimmedLength={this.maxNoteLength}
+          />
           {this.expandButton()}
           <DocumentModal
             open={this.state.showDoc}
