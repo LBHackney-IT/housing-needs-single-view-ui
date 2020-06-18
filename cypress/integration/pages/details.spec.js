@@ -108,4 +108,25 @@ describe('Details Page', () => {
       cy.get(`${selector} ul`).should('not.be.empty');
     });
   });
+
+  describe('Vulnerability snapshot', () => {
+    const vulnerabilities = '[data-testid="snapshot-vulnerabilities"]';
+    const assets = '[data-testid="snapshot-assets"]';
+
+    beforeEach(() => {
+      cy.visit('http://localhost:3001/#things-to-note');
+    });
+
+    it('displays the latest vulnerability snapshot', () => {
+      cy.visit('http://localhost:3001/customers/10/view');
+      cy.get(vulnerabilities).should('exist');
+      cy.get(assets).should('exist');
+    });
+
+    it('does not display latest snapshot if there are no snapshots', () => {
+      cy.visit('http://localhost:3001/customers/1/view');
+      cy.get(vulnerabilities).should('not.exist');
+      cy.get(assets).should('not.exist');
+    })
+  });
 });

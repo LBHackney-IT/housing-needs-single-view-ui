@@ -1,2 +1,7 @@
 @import 'node_modules/lbh-frontend/lbh/all';
 @import './overrides.scss';
+
+hr {
+  border: 0px none;
+  border-bottom: 1px solid #ccc;
+}
