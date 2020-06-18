@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './SnapshotNoteContent.module.scss';
 
-const buildUrl = (id) => [process.env.REACT_APP_VULNERABILITIES_APP_URL, id].join('/');
+const buildUrl = id =>
+  [process.env.REACT_APP_VULNERABILITIES_APP_URL, 'snapshots', id].join('/');
 
 const SnapshotNoteContent = ({
   snapshot: { id, vulnerabilities, assets, notes }
