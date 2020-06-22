@@ -10,8 +10,9 @@ export default async ({ customerId }) => {
   );
 
   if (response.ok) {
+    const { snapshots } = await response.json();
     return {
-      data: await response.json(),
+      data: snapshots,
       success: true
     };
   } else if (response.status === 404) {

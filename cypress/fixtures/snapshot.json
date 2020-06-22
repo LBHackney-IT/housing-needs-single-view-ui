@@ -1,35 +1,21 @@
-[
-  {
-    "id": "js783hdi",
-    "createdDate": "2020-06-16T15:46:32.0000Z",
-    "vulnerabilities": [
-      {
-        "text": "Health condition"
-      },
-      {
-        "text": "Active case with another service"
-      }
-    ],
-    "assets": [
-      {
-        "text": "Close relationships with family/friends"
-      }
-    ],
-    "notes": "Updated during review meeting"
-  },
-  {
-    "id": "jad928hd",
-    "createdDate": "2019-07-14T11:16:30.0000Z",
-    "vulnerabilities": [
-      {
-        "text": "Health condition"
-      }
-    ],
-    "assets": [
-      {
-        "text": "Close relationships with family/friends"
-      }
-    ],
-    "notes": "Added during initial meeting with client"
-  }
-]
+{
+  "snapshots": [
+    {
+      "id": "js783hdi",
+      "createdDate": "2020-06-16T15:46:32.0000Z",
+      "vulnerabilities": [
+        "Health condition",
+        "Active case with another service"
+      ],
+      "assets": ["Close relationships with family/friends"],
+      "notes": "Updated during review meeting"
+    },
+    {
+      "id": "jad928hd",
+      "createdDate": "2019-07-14T11:16:30.0000Z",
+      "vulnerabilities": ["Health condition"],
+      "assets": ["Close relationships with family/friends"],
+      "notes": "Added during initial meeting with client"
+    }
+  ]
+}
