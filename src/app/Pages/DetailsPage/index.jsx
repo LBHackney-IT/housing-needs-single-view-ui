@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   FetchCustomerNotes,
   FetchCustomerRecord,
-  FetchCustomerDocuments
+  FetchCustomerDocuments,
+  FindSnapshots
 } from '../../Gateways';
 import {
   ContactDetails,
@@ -49,8 +50,30 @@ export default class DetailsPage extends Component {
           return doc;
         });
         notesAndDocs = notesAndDocs.concat(docs).filter(x => x !== null);
+        this.setState({ notes: notesAndDocs });
+        return FindSnapshots({ customerId });
+      })
+      .then(({ data: snapshots }) => {
+        if (hasFeatureFlag('things-to-note')) {
+          const snapshotNotes = snapshots.map(snapshot => ({
+            ...snapshot,
+            id: snapshot.id,
+            type: 'snapshot',
+            title: 'Vulnerability snapshot',
+            system: 'Vulnerability snapshot',
+            date: snapshot.createdDate
+          }));
+
+          notesAndDocs = notesAndDocs.concat(snapshotNotes);
+          this.setState({ notes: notesAndDocs });
+        }
+      })
+      .then(() => {
         notesAndDocs.sort((a, b) => moment(b.date) - moment(a.date));
-        this.setState({ notes: notesAndDocs, fetching: false });
+        this.setState({
+          notes: notesAndDocs,
+          fetching: false
+        });
       })
       .catch(err => console.log(err));
   }
