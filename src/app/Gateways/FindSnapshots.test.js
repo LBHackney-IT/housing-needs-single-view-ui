@@ -19,7 +19,7 @@ describe('FindSnapshots', () => {
       }
     ];
 
-    fetch.mockResponse(JSON.stringify(expectedSnapshots));
+    fetch.mockResponse(JSON.stringify({ snapshots: expectedSnapshots }));
     const result = await findSnapshots({ customerId: 1 });
 
     expect(fetch).toHaveBeenCalledWith(

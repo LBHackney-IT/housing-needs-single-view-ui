@@ -8,10 +8,10 @@ describe('FindLatestSnapshot', () => {
     const expectedSnapshot = {
       id: 'snap1',
       vulnerabilities: [],
-      assets: [{ text: 'Passes the test!' }]
+      assets: ['Passes the test!']
     };
 
-    fetch.mockResponse(JSON.stringify([expectedSnapshot]));
+    fetch.mockResponse(JSON.stringify({ snapshots: [expectedSnapshot] }));
     const result = await findLatestSnapshot({ customerId: 1 });
 
     expect(result).toEqual({

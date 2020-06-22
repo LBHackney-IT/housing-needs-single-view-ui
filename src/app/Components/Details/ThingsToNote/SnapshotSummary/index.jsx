@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 const ColorPointList = ({ items, type }) => (
   <ul className={classnames(styles.points, styles[type])}>
-    {items.map(({ text }) => (
+    {items.map(text => (
       <li key={text}>{text}</li>
     ))}
   </ul>

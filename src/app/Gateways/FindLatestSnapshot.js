@@ -6,7 +6,7 @@ export default async ({ customerId }) => {
   if (success) {
     return {
       success,
-      data: data.length > 0 ? data[0] : null,
+      data: data.length > 0 ? data[0] : null
     };
   }
 
