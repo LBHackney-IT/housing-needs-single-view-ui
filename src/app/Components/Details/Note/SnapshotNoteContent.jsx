@@ -5,25 +5,33 @@ const buildUrl = id =>
   [process.env.REACT_APP_VULNERABILITIES_URL, 'snapshots', id].join('/');
 
 const SnapshotNoteContent = ({
-  snapshot: { id, vulnerabilities, assets, notes }
-}) => (
-  <div className={styles.snapshot}>
-    <p>
-      <strong>Vulnerabilities:</strong> {vulnerabilities.join(', ')}
-    </p>
-    <p>
-      <strong>Strengths / assets:</strong> {assets.join(', ')}
-    </p>
-    {notes && (
-      <p className={styles.note}>
-        <strong>Additional note:</strong> {notes}
+  expandBtn,
+  snapshot: { id, vulnerabilities, assets, text },
+  trimmed,
+  trimmedLength = 128
+}) => {
+  return (
+    <div className={styles.snapshot}>
+      <p>
+        <strong>Vulnerabilities:</strong> {vulnerabilities.join(', ')}
       </p>
-    )}
-
-    <a className={styles.link} href={buildUrl(id)}>
-      View full vulnerabilities snapshot
-    </a>
-  </div>
-);
+      <p>
+        <strong>Strengths / assets:</strong> {assets.join(', ')}
+      </p>
+      {text && (
+        <p className={styles.note} style={{ overflowWrap: 'break-word' }}>
+          <strong>Additional note:</strong>{' '}
+          {trimmed && text.length > trimmedLength
+            ? `${text.substring(0, trimmedLength)} ...`
+            : text}
+        </p>
+      )}
+      {expandBtn}
+      <a className={styles.link} href={buildUrl(id)}>
+        View full vulnerabilities snapshot
+      </a>
+    </div>
+  );
+};
 
 export default SnapshotNoteContent;
