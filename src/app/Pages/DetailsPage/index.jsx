@@ -58,10 +58,12 @@ export default class DetailsPage extends Component {
           const snapshotNotes = snapshots.map(snapshot => ({
             ...snapshot,
             id: snapshot.id,
+            text: snapshot.notes,
             type: 'snapshot',
             title: 'Vulnerability snapshot',
             system: 'Vulnerability snapshot',
-            date: snapshot.createdDate
+            date: snapshot.createdDate,
+            user: snapshot.createdBy
           }));
 
           notesAndDocs = notesAndDocs.concat(snapshotNotes);
