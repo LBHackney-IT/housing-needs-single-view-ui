@@ -16,14 +16,20 @@ const SnapshotSummary = ({ snapshot }) => (
       <header>
         <h3>Vulnerabilities</h3>
       </header>
-      <ColorPointList type="vulnerability" items={snapshot.vulnerabilities} />
+      {snapshot.vulnerabilities.length === 0 && <div>None captured</div>}
+      {snapshot.vulnerabilities.length > 0 && (
+        <ColorPointList type="vulnerability" items={snapshot.vulnerabilities} />
+      )}
     </section>
     <hr />
     <section className={styles.list} data-testid="snapshot-assets">
       <header>
         <h3>Strengths / assets</h3>
       </header>
-      <ColorPointList type="strength" items={snapshot.assets} />
+      {snapshot.assets.length === 0 && <div>None captured</div>}
+      {snapshot.assets.length > 0 && (
+        <ColorPointList type="strength" items={snapshot.assets} />
+      )}
     </section>
   </>
 );
