@@ -57,13 +57,21 @@ export default class Note extends Component {
   renderNoteContent = () => {
     switch (this.props.note.type) {
       case 'snapshot':
-        return <SnapshotNoteContent snapshot={this.props.note} />;
+        return (
+          <SnapshotNoteContent
+            snapshot={this.props.note}
+            trimmed={!this.state.expanded}
+            trimmedLength={this.maxNoteLength}
+            expandBtn={this.expandButton()}
+          />
+        );
       default:
         return (
           <NoteContent
             text={this.props.note.text}
             trimmed={!this.state.expanded}
             trimmedLength={this.maxNoteLength}
+            expandBtn={this.expandButton()}
           />
         );
     }
@@ -81,12 +89,11 @@ export default class Note extends Component {
                   {this.props.note.title}
                 </button>
               ) : (
-                  this.props.note.title
-                )}
+                this.props.note.title
+              )}
             </strong>
           </p>
           {this.renderNoteContent()}
-          {this.expandButton()}
           <DocumentModal
             open={this.state.showDoc}
             onClose={this.closeDoc}
