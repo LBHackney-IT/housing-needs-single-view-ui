@@ -3,12 +3,12 @@ ul.points {
   margin: 1em 0;
 
   li {
-    line-height: 1.5em;
+    line-height: 1em;
   }
 
   li::before {
-    content: "●";
-    font-size: 1em;
+    content: '●';
+    font-size: 1.2em;
     display: inline-block;
     margin-right: 0.5em;
   }
@@ -26,6 +26,10 @@ ul.points {
   }
 }
 
+section {
+  margin-bottom: 15px;
+}
+
 section.list {
-  margin-top: 15px!important; /* 😢 */
+  margin-top: 15px !important; /* 😢 */
 }

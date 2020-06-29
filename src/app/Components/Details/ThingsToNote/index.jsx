@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import CreateVulnerability from '../../../Gateways/CreateVulnerability';
 import FindLatestSnapshot from '../../../Gateways/FindLatestSnapshot';
 import SnapshotSummary from './SnapshotSummary';
+import styles from './index.module.scss';
 
 const ThingsToNote = ({ customerId }) => {
   const [state, setState] = useState({
@@ -40,19 +41,23 @@ const ThingsToNote = ({ customerId }) => {
   }, [state, customerId]);
 
   return (
-    <div className="details__left-column__item">
+    <div className={`details__left-column__item ${styles['things_to_note']}`}>
       <h2>Things to note</h2>
-      {state.loading
-        ? 'Loading...'
-        : state.snapshot && <SnapshotSummary snapshot={state.snapshot} />}
-      <button
-        className="govuk-button lbh-button"
-        onClick={createSnapshot}
-        disabled={state.loading}
-      >
-        Add a vulnerability snapshot
-      </button>
-      {state.error && <div>{state.error}</div>}
+      {state.loading ? (
+        <div>Loading...</div>
+      ) : (
+        state.snapshot && <SnapshotSummary snapshot={state.snapshot} />
+      )}
+      <div className={styles['button_container']}>
+        <button
+          className="govuk-button lbh-button"
+          onClick={createSnapshot}
+          disabled={state.loading}
+        >
+          Add a vulnerability snapshot
+        </button>
+        {state.error && <div>{state.error}</div>}
+      </div>
     </div>
   );
 };
