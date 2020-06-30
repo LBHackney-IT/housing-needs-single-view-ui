@@ -127,6 +127,6 @@ describe('Details Page', () => {
       cy.visit('http://localhost:3001/customers/1/view');
       cy.get(vulnerabilities).should('not.exist');
       cy.get(assets).should('not.exist');
-    })
+    });
   });
 });

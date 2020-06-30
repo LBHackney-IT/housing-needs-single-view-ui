@@ -52,8 +52,8 @@ app.get('/customers/:id/shared-plans', (req, res) => {
 });
 
 app.get('/customers/:id/vulnerabilities', (req, res) => {
-  if (req.params.id === '1') {
-    return res.status(200).send(JSON.stringify([]));
+  if (req.params.id === '5') {
+    return res.status(200).send(JSON.stringify({ snapshots: [] }));
   }
 
   res.status(200).send(require('./fixtures/snapshot.json'));

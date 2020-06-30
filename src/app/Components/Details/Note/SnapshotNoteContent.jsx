@@ -27,7 +27,11 @@ const SnapshotNoteContent = ({
         </p>
       )}
       {expandBtn}
-      <a className={styles.link} href={buildUrl(id)}>
+      <a
+        className={styles.link}
+        href={buildUrl(id)}
+        data-testid="full-vulnerabilities-snapshot-link"
+      >
         View full vulnerabilities snapshot
       </a>
     </div>
