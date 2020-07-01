@@ -136,7 +136,7 @@ describe('Details Page', () => {
       cy.get('[data-testid=add-vulnerability-snapshot-button]').click({
         force: true
       });
-      cy.location('pathname').should(
+      cy.url().should(
         'eq',
         `${Cypress.env('REACT_APP_VULNERABILITIES_URL')}/snapshots/10`
       );
