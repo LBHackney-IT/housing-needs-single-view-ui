@@ -53,6 +53,7 @@ const ThingsToNote = ({ customerId }) => {
           className="govuk-button lbh-button"
           onClick={createSnapshot}
           disabled={state.loading}
+          data-testid="add-vulnerability-snapshot-button"
         >
           Add a vulnerability snapshot
         </button>

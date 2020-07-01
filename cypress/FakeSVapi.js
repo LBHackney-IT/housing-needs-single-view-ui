@@ -59,4 +59,14 @@ app.get('/customers/:id/vulnerabilities', (req, res) => {
   res.status(200).send(require('./fixtures/snapshot.json'));
 });
 
+app.post('/customers/:id/vulnerabilities', (req, res) => {
+  res.status(201).send(
+    JSON.stringify({
+      snapshotId: '10',
+      firstName: 'Wednesday',
+      lastName: 'Adams'
+    })
+  );
+});
+
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));
