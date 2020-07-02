@@ -13,10 +13,12 @@ const SnapshotNoteContent = ({
   return (
     <div className={styles.snapshot}>
       <p>
-        <strong>Vulnerabilities:</strong> {vulnerabilities.join(', ')}
+        <strong>Vulnerabilities:</strong>{' '}
+        {vulnerabilities.map(vulnerability => vulnerability.name).join(', ')}
       </p>
       <p>
-        <strong>Strengths / assets:</strong> {assets.join(', ')}
+        <strong>Strengths / assets:</strong>{' '}
+        {assets.map(asset => asset.name).join(', ')}
       </p>
       {text && (
         <p className={styles.note} style={{ overflowWrap: 'break-word' }}>
@@ -27,7 +29,11 @@ const SnapshotNoteContent = ({
         </p>
       )}
       {expandBtn}
-      <a className={styles.link} href={buildUrl(id)}>
+      <a
+        className={styles.link}
+        href={buildUrl(id)}
+        data-testid="full-vulnerabilities-snapshot-link"
+      >
         View full vulnerabilities snapshot
       </a>
     </div>
