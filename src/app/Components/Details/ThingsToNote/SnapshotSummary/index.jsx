@@ -4,8 +4,18 @@ import styles from './index.module.scss';
 
 const ColorPointList = ({ items, type }) => (
   <ul className={classnames(styles.points, styles[type])}>
-    {items.map(text => (
-      <li key={text}>{text}</li>
+    {items.map(item => (
+      <li key={item.name}>
+        {item.name}
+        <ul className={classnames(styles.nested)}>
+          {item.data.length > 0 &&
+            item.data.map((entry, i) => (
+              <li key={`vuln-${i}-${entry.id}`}>
+                {entry.id}: {entry.value}
+              </li>
+            ))}
+        </ul>
+      </li>
     ))}
   </ul>
 );
