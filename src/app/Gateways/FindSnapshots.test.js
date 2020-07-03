@@ -15,7 +15,9 @@ describe('FindSnapshots', () => {
       {
         id: 'snap1',
         vulnerabilities: [],
-        assets: [{ text: 'Passes the test!' }]
+        assets: [
+          { name: '', data: [{ id: 'text', value: 'Passes the test!' }] }
+        ]
       }
     ];
 

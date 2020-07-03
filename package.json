@@ -29,7 +29,7 @@
     "cy:start": "node cypress/FakeSVapi.js & react-scripts start",
     "cy:run": "cypress run",
     "cypress": "start-server-and-test cy:start http://localhost:3001 cy:run",
-    "unit-test": "jest --runInBand"
+    "unit-test": "jest --runInBand --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
