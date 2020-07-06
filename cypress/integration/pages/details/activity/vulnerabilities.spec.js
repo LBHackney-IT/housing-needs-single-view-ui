@@ -23,7 +23,7 @@ describe('Vulnerabilities', () => {
     cy.get('[data-testid=full-vulnerabilities-snapshot-link]').should(
       'have.attr',
       'href',
-      `${Cypress.env('REACT_APP_VULNERABILITIES_URL')}/snapshots/js783hdi`
+      'http://localhost:3001/snapshots/js783hdi'
     );
   });
 
