@@ -4,13 +4,13 @@
       "id": "js783hdi",
       "createdDate": "2020-06-16T15:46:32.0000Z",
       "vulnerabilities": [
-        { "name": "Health condition", "data": {} },
-        { "name": "Active case with another service", "data": {} }
+        { "name": "Health condition", "data": [] },
+        { "name": "Active case with another service", "data": [] }
       ],
       "assets": [
         {
           "name": "Close relationships with family/friends",
-          "data": { "For example": "description" }
+          "data": [{ "id": "For example", "value": "description" }]
         }
       ],
       "notes": "Updated during review meeting"
@@ -18,8 +18,10 @@
     {
       "id": "jad928hd",
       "createdDate": "2019-07-14T11:16:30.0000Z",
-      "vulnerabilities": [{ "name": "Health condition", "data": {} }],
-      "assets": [{ "name": "Other", "data": { "Other": "description" } }],
+      "vulnerabilities": [{ "name": "Health condition", "data": [] }],
+      "assets": [
+        { "name": "Other", "data": [{ "id": "Other", "value": "description" }] }
+      ],
       "notes": "Added during initial meeting with client"
     }
   ]

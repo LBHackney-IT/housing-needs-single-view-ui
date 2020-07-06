@@ -8,10 +8,10 @@ const ColorPointList = ({ items, type }) => (
       <li key={item.name}>
         {item.name}
         <ul className={classnames(styles.nested)}>
-          {item.data &&
-            Object.entries(item.data).map(([id, value], i) => (
-              <li key={`vuln-${i}-${id}`}>
-                {id}: {value}
+          {item.data.length > 0 &&
+            item.data.map((entry, i) => (
+              <li key={`vuln-${i}-${entry.id}`}>
+                {entry.id}: {entry.value}
               </li>
             ))}
         </ul>
