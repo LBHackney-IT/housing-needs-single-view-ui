@@ -10,7 +10,7 @@
       "assets": [
         {
           "name": "Close relationships with family/friends",
-          "data": [{ "id": "For example", "value": "description" }]
+          "data": [{ "label": "For example", "value": "description" }]
         }
       ],
       "notes": "Updated during review meeting"
@@ -20,7 +20,10 @@
       "createdDate": "2019-07-14T11:16:30.0000Z",
       "vulnerabilities": [{ "name": "Health condition", "data": [] }],
       "assets": [
-        { "name": "Other", "data": [{ "id": "Other", "value": "description" }] }
+        {
+          "name": "Other",
+          "data": [{ "label": "Other", "value": "description" }]
+        }
       ],
       "notes": "Added during initial meeting with client"
     }
