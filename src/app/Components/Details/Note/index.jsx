@@ -89,7 +89,13 @@ export default class Note extends Component {
                   {this.props.note.title}
                 </button>
               ) : (
-                this.props.note.title
+                <div>
+                  {this.props.note.title}
+                  <span className="dots-group">
+                    <span className="assets-dot"></span>
+                    <span className="vulnerabilities-dot"></span>
+                  </span>
+                </div>
               )}
             </strong>
           </p>

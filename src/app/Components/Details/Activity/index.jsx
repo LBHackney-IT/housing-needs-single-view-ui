@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.scss';
 import Note from '../Note';
 import ActivitySearch from '../ActivitySearch';
 

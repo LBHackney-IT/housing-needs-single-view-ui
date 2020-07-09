@@ -1,0 +1,21 @@
+.assets-dot,
+.vulnerabilities-dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.vulnerabilities-dot {
+  background-color: #013687;
+}
+
+.assets-dot {
+  background-color: #ff6912;
+}
+
+.dots-group {
+  margin-left: 10px;
+  margin-top: 15px;
+}
