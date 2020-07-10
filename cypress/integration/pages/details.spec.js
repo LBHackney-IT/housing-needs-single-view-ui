@@ -127,6 +127,16 @@ describe('Details Page', () => {
       cy.visit('http://localhost:3001/customers/1/view');
       cy.get(vulnerabilities).should('not.exist');
       cy.get(assets).should('not.exist');
-    })
+    });
+
+    it('redirects to the correct url after creating a new snapshot', () => {
+      cy.visit('http://localhost:3001/customers/10/view');
+      cy.get(vulnerabilities).should('exist');
+
+      cy.get('[data-testid=add-vulnerability-snapshot-button]').click({
+        force: true
+      });
+      cy.url().should('eq', 'http://localhost:3001/snapshots/10');
+    });
   });
 });
