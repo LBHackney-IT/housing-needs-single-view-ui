@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import './index.scss';
 import DocumentModal from '../../DocumentModal';
 import NoteContent from './NoteContent';
 import SnapshotNoteContent from './SnapshotNoteContent';
