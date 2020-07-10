@@ -95,10 +95,16 @@ export default class Note extends Component {
                   {note.system === 'Vulnerability snapshot' && (
                     <span className="dots-group">
                       {note.vulnerabilities.length > 0 && (
-                        <span className="assets-dot"></span>
+                        <span
+                          className="vulnerabilities-dot"
+                          data-testid="vulnerabilities-dot"
+                        ></span>
                       )}
                       {note.assets.length > 0 && (
-                        <span className="vulnerabilities-dot"></span>
+                        <span
+                          className="assets-dot"
+                          data-testid="assets-dot"
+                        ></span>
                       )}
                     </span>
                   )}

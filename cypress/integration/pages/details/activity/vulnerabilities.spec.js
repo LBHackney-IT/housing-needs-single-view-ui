@@ -35,4 +35,31 @@ describe('Vulnerabilities', () => {
       'Vulnerability snapshot'
     );
   });
+
+  it('Displays orange and blue dots next to the title if a vulnerability snapshot has an asset and vulnerability', () => {
+    cy.visit('http://localhost:3001/customers/1/view#things-to-note');
+
+    cy.get('[data-testid=assets-dot]')
+      .eq(0)
+      .should('be.visible');
+    cy.get('[data-testid=vulnerabilities-dot]')
+      .eq(0)
+      .should('be.visible');
+  });
+
+  it('Displays orange dot next to the title if a vulnerability snapshot has an asset', () => {
+    cy.visit('http://localhost:3001/customers/1/view#things-to-note');
+
+    cy.get('[data-testid=assets-dot]')
+      .eq(2)
+      .should('be.visible');
+  });
+
+  it('Displays blue dot next to the title if a vulnerability snapshot has a vulnerability', () => {
+    cy.visit('http://localhost:3001/customers/1/view#things-to-note');
+
+    cy.get('[data-testid=vulnerabilities-dot]')
+      .eq(2)
+      .should('be.visible');
+  });
 });
