@@ -111,10 +111,7 @@ export default class DetailsPage extends Component {
             <AddressDetails customer={this.state.customer} />
             <Team customer={this.state.customer} />
             <SystemIds customer={this.state.customer} />
-            <PrototypesLink
-              customer={this.state.customer}
-              id={this.props.match.params.id}
-            />
+            <PrototypesLink />
           </div>
           <div className="details__right-column">
             <QuickAccess
