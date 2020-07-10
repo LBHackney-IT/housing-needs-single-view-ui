@@ -78,23 +78,30 @@ export default class Note extends Component {
   };
 
   render() {
+    const note = this.props.note;
     return (
       <tr>
-        <td key="date">{moment(this.props.note.date).format('DD/MM/YYYY')}</td>
+        <td key="date">{moment(note.date).format('DD/MM/YYYY')}</td>
         <td key="text">
           <p>
             <strong>
               {this.docUrl ? (
                 <button onClick={this.click} className="linkStyle govuk-link">
-                  {this.props.note.title}
+                  {note.title}
                 </button>
               ) : (
                 <div>
-                  {this.props.note.title}
-                  <span className="dots-group">
-                    <span className="assets-dot"></span>
-                    <span className="vulnerabilities-dot"></span>
-                  </span>
+                  {note.title}
+                  {note.system === 'Vulnerability snapshot' && (
+                    <span className="dots-group">
+                      {note.vulnerabilities.length > 0 && (
+                        <span className="assets-dot"></span>
+                      )}
+                      {note.assets.length > 0 && (
+                        <span className="vulnerabilities-dot"></span>
+                      )}
+                    </span>
+                  )}
                 </div>
               )}
             </strong>
@@ -108,13 +115,9 @@ export default class Note extends Component {
         </td>
         <td key="sys">
           <p>
-            <strong>{this.props.note.user}</strong>
+            <strong>{note.user}</strong>
           </p>
-          <p>
-            {this.props.note.system.join
-              ? this.props.note.system.join(', ')
-              : this.props.note.system}
-          </p>
+          <p>{note.system.join ? note.system.join(', ') : note.system}</p>
         </td>
       </tr>
     );

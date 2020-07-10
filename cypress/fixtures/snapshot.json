@@ -26,6 +26,25 @@
         }
       ],
       "notes": "Added during initial meeting with client"
+    },
+    {
+      "id": "no_vulns",
+      "createdDate": "2019-07-14T11:16:30.0000Z",
+      "vulnerabilities": [],
+      "assets": [
+        {
+          "name": "Other",
+          "data": [{ "label": "Other", "value": "description" }]
+        }
+      ],
+      "notes": "Added during initial meeting with client"
+    },
+    {
+      "id": "no_assets",
+      "createdDate": "2019-07-14T11:16:30.0000Z",
+      "vulnerabilities": [{ "name": "Health condition", "data": [] }],
+      "assets": [],
+      "notes": "Added during initial meeting with client"
     }
   ]
 }
