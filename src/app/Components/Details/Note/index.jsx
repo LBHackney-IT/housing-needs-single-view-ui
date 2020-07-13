@@ -3,6 +3,7 @@ import moment from 'moment';
 import DocumentModal from '../../DocumentModal';
 import NoteContent from './NoteContent';
 import SnapshotNoteContent from './SnapshotNoteContent';
+import './index.scss';
 
 export default class Note extends Component {
   constructor(props) {
@@ -78,18 +79,37 @@ export default class Note extends Component {
   };
 
   render() {
+    const note = this.props.note;
     return (
       <tr>
-        <td key="date">{moment(this.props.note.date).format('DD/MM/YYYY')}</td>
+        <td key="date">{moment(note.date).format('DD/MM/YYYY')}</td>
         <td key="text">
           <p>
             <strong>
               {this.docUrl ? (
                 <button onClick={this.click} className="linkStyle govuk-link">
-                  {this.props.note.title}
+                  {note.title}
                 </button>
               ) : (
-                this.props.note.title
+                <div>
+                  {note.title}
+                  {note.system === 'Vulnerability snapshot' && (
+                    <span className="dots-group">
+                      {note.vulnerabilities.length > 0 && (
+                        <span
+                          className="vulnerabilities-dot"
+                          data-testid="vulnerabilities-dot"
+                        ></span>
+                      )}
+                      {note.assets.length > 0 && (
+                        <span
+                          className="assets-dot"
+                          data-testid="assets-dot"
+                        ></span>
+                      )}
+                    </span>
+                  )}
+                </div>
               )}
             </strong>
           </p>
@@ -102,13 +122,9 @@ export default class Note extends Component {
         </td>
         <td key="sys">
           <p>
-            <strong>{this.props.note.user}</strong>
+            <strong>{note.user}</strong>
           </p>
-          <p>
-            {this.props.note.system.join
-              ? this.props.note.system.join(', ')
-              : this.props.note.system}
-          </p>
+          <p>{note.system.join ? note.system.join(', ') : note.system}</p>
         </td>
       </tr>
     );

@@ -24,3 +24,5 @@ yarn-error.log*
 
 /cypress/screenshots
 /cypress/videos/*
+
+yarn.lock
