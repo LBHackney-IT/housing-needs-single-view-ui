@@ -1,0 +1,24 @@
+{
+  "staging": [
+    "contact-centre-staging",
+    "benefit-counter-staging",
+    "housing-counter-staging",
+    "housing-officer-staging",
+    "area-housing-manager-staging",
+    "housing-needs-staging",
+    "housingneeds-singleview-beta"
+  ],
+  "production": [
+    "contact-centre-production",
+    "benefit-counter-production",
+    "housing-counter-production",
+    "housing-officer-production",
+    "area-housing-manager-production",
+    "housing-needs-production",
+    "housingneeds-singleview-beta"
+  ],
+  "dev": [
+    "housingneeds-singleview-beta",
+    "housing-needs-staging"
+  ]
+}
