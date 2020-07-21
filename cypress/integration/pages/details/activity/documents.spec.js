@@ -5,7 +5,7 @@ describe('Documents', () => {
   });
 
   it('Displays title as a clickable link', () => {
-    cy.get('.activity > table > tbody > tr > td > p > strong > button').each(
+    cy.get('.activity > table > tbody > tr > td > div > strong > button').each(
       $el =>
         cy
           .wrap($el)
@@ -16,7 +16,7 @@ describe('Documents', () => {
   });
 
   it('Requests correct COMINO doc', () => {
-    cy.get('.activity > table > tbody > tr > td > p > strong > button')
+    cy.get('.activity > table > tbody > tr > td > div > strong > button')
       .first()
       .scrollIntoView()
       .click({ force: true });
@@ -28,7 +28,7 @@ describe('Documents', () => {
   });
 
   it('Requests correct UHW doc', () => {
-    cy.get('.activity > table > tbody > tr > td > p > strong > button')
+    cy.get('.activity > table > tbody > tr > td > div > strong > button')
       .eq(1)
       .scrollIntoView()
       .click({ force: true });
@@ -40,7 +40,7 @@ describe('Documents', () => {
   });
 
   it('Requests correct JIGSAW doc', () => {
-    cy.get('.activity > table > tbody > tr > td > p > strong > button')
+    cy.get('.activity > table > tbody > tr > td > div > strong > button')
       .eq(-2)
       .should('contain', 'Document');
 
