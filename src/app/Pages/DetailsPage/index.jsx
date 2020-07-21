@@ -14,7 +14,8 @@ import {
   Team,
   AddressDetails,
   PrototypesLink,
-  ThingsToNote
+  ThingsToNote,
+  RequestDocuments
 } from '../../Components/Details';
 import moment from 'moment';
 import { goBack } from '../../lib/Utils';
@@ -111,6 +112,13 @@ export default class DetailsPage extends Component {
             <AddressDetails customer={this.state.customer} />
             <Team customer={this.state.customer} />
             <SystemIds customer={this.state.customer} />
+            {hasFeatureFlag('request-documents') && (
+              <RequestDocuments
+                customerId={customerId}
+                customer={this.state.customer}
+                data-testid="request-documents"
+              />
+            )}
             <PrototypesLink />
           </div>
           <div className="details__right-column">

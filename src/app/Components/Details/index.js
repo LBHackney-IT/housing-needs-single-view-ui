@@ -8,6 +8,7 @@ import Team from './Team';
 import AddressDetails from './AddressDetails';
 import PrototypesLink from './PrototypesLink';
 import ThingsToNote from './ThingsToNote';
+import RequestDocuments from './RequestDocuments';
 
 export {
   ContactDetails,
@@ -19,5 +20,6 @@ export {
   Team,
   AddressDetails,
   PrototypesLink,
-  ThingsToNote
+  ThingsToNote,
+  RequestDocuments
 };

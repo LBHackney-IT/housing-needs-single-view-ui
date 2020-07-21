@@ -84,7 +84,7 @@ export default class Note extends Component {
       <tr>
         <td key="date">{moment(note.date).format('DD/MM/YYYY')}</td>
         <td key="text">
-          <p>
+          <div>
             <strong>
               {this.docUrl ? (
                 <button onClick={this.click} className="linkStyle govuk-link">
@@ -112,7 +112,7 @@ export default class Note extends Component {
                 </div>
               )}
             </strong>
-          </p>
+          </div>
           {this.renderNoteContent()}
           <DocumentModal
             open={this.state.showDoc}
