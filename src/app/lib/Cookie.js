@@ -1,19 +1,19 @@
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
-import allGroups from './Groups.json';
-const allowedGroups = allGroups[process.env.REACT_APP_ENV];
+import allGroups from './groups.json';
 
 const isInValidGroup = function(userGroups) {
+  const allowedGroups = allGroups[process.env.REACT_APP_ENV];
   if (!userGroups) return false;
-  for (var group of userGroups) {
+  for (const group of userGroups) {
     if (allowedGroups.indexOf(group) > -1) return true;
   }
+  return false;
 };
 
 export const isLoggedIn = function() {
   const hackneyToken = Cookies.get('hackneyToken');
   if (!hackneyToken) return false;
-
   const payload = jwt.decode(hackneyToken);
   return payload && isInValidGroup(payload.groups);
 };
