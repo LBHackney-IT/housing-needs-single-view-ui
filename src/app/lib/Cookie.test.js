@@ -1,8 +1,8 @@
 jest.mock('js-cookie');
 jest.mock('jsonwebtoken');
 jest.mock('./groups.json', () => ({
-  production: ['a-valid-prod-group'],
-  dev: ['a-valid-dev-group']
+  production: { A_GROUP: 'a-valid-prod-group' },
+  dev: { A_GROUP: 'a-valid-dev-group' }
 }));
 
 import { isLoggedIn } from './Cookie';

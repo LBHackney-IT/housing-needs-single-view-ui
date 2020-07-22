@@ -1,24 +1,24 @@
 {
-  "staging": [
-    "contact-centre-staging",
-    "benefit-counter-staging",
-    "housing-counter-staging",
-    "housing-officer-staging",
-    "area-housing-manager-staging",
-    "housing-needs-staging",
-    "housingneeds-singleview-beta"
-  ],
-  "production": [
-    "contact-centre-production",
-    "benefit-counter-production",
-    "housing-counter-production",
-    "housing-officer-production",
-    "area-housing-manager-production",
-    "housing-needs-production",
-    "housingneeds-singleview-beta"
-  ],
-  "dev": [
-    "housingneeds-singleview-beta",
-    "housing-needs-staging"
-  ]
+  "staging": {
+    "CONTACT_CENTRE": "contact-centre-staging",
+    "BENEFIT_COUNTER": "benefit-counter-staging",
+    "HOUSING_COUNTER": "housing-counter-staging",
+    "HOUSING_OFFICER": "housing-officer-staging",
+    "AREA_HOUSING_MANAGER": "area-housing-manager-staging",
+    "HOUSING_NEEDS": "housing-needs-staging",
+    "HOUSING_NEEDS_SV": "housingneeds-singleview-beta"
+  },
+  "production": {
+    "CONTACT_CENTRE": "contact-centre-production",
+    "BENEFIT_COUNTER": "benefit-counter-production",
+    "HOUSING_COUNTER": "housing-counter-production",
+    "HOUSING_OFFICER": "housing-officer-production",
+    "AREA_HOUSING_MANAGER": "area-housing-manager-production",
+    "HOUSING_NEEDS": "housing-needs-production",
+    "HOUSING_NEEDS_SV": "housingneeds-singleview-beta"
+  },
+  "dev": {
+    "HOUSING_NEEDS": "housing-needs-staging",
+    "HOUSING_NEEDS_SV": "housingneeds-singleview-beta"
+  }
 }

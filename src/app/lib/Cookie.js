@@ -2,13 +2,10 @@ import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 import allGroups from './groups.json';
 
-const isInValidGroup = function(userGroups) {
-  const allowedGroups = allGroups[process.env.REACT_APP_ENV];
+const isInValidGroup = userGroups => {
+  const allowedGroups = Object.values(allGroups[process.env.REACT_APP_ENV]);
   if (!userGroups) return false;
-  for (const group of userGroups) {
-    if (allowedGroups.indexOf(group) > -1) return true;
-  }
-  return false;
+  return userGroups.filter(g => allowedGroups.includes(g)).length > 0;
 };
 
 export const isLoggedIn = function() {
