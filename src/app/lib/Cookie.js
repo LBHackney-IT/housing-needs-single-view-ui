@@ -1,16 +1,18 @@
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
+import allGroups from './groups.json';
+
+const isInValidGroup = userGroups => {
+  const allowedGroups = Object.values(allGroups[process.env.REACT_APP_ENV]);
+  if (!userGroups) return false;
+  return userGroups.filter(g => allowedGroups.includes(g)).length > 0;
+};
 
 export const isLoggedIn = function() {
   const hackneyToken = Cookies.get('hackneyToken');
   if (!hackneyToken) return false;
-
   const payload = jwt.decode(hackneyToken);
-  return (
-    payload &&
-    payload.groups &&
-    payload.groups.indexOf('housingneeds-singleview-beta') > -1
-  );
+  return payload && isInValidGroup(payload.groups);
 };
 
 export const username = function() {
