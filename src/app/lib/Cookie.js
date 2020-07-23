@@ -1,27 +1,37 @@
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
-import allGroups from './groups.json';
+import { getAuthGroups, getGroupName } from './AuthGroups';
 
 const isInValidGroup = userGroups => {
-  const allowedGroups = Object.values(allGroups[process.env.REACT_APP_ENV]);
   if (!userGroups) return false;
-  return userGroups.filter(g => allowedGroups.includes(g)).length > 0;
+  const authGroups = getAuthGroups();
+  return userGroups.filter(g => authGroups.includes(g)).length > 0;
 };
 
 export const isLoggedIn = function() {
-  const hackneyToken = Cookies.get('hackneyToken');
-  if (!hackneyToken) return false;
-  const payload = jwt.decode(hackneyToken);
+  const token = hackneyToken();
+  if (!token) return false;
+  const payload = jwt.decode(token);
   return payload && isInValidGroup(payload.groups);
 };
 
 export const username = function() {
-  const hackneyToken = Cookies.get('hackneyToken');
-  if (!hackneyToken) return false;
-  const decoded = jwt.decode(hackneyToken);
+  const token = hackneyToken();
+  if (!token) return false;
+  const decoded = jwt.decode(token);
   return decoded ? decoded.name : '';
 };
 
 export const hackneyToken = function() {
   return Cookies.get('hackneyToken');
+};
+
+export const isMemberOfGroups = function(groupKeys) {
+  const token = hackneyToken();
+  if (!token) return false;
+  const payload = jwt.decode(token);
+  return (
+    payload.groups.filter(g => groupKeys.map(k => getGroupName(k)).includes(g))
+      .length > 0
+  );
 };

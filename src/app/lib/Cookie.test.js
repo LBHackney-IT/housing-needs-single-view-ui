@@ -1,47 +1,56 @@
 jest.mock('js-cookie');
 jest.mock('jsonwebtoken');
-jest.mock('./groups.json', () => ({
-  production: { A_GROUP: 'a-valid-prod-group' },
-  dev: { A_GROUP: 'a-valid-dev-group' }
-}));
+jest.mock('./AuthGroups');
 
-import { isLoggedIn } from './Cookie';
+import { isLoggedIn, isMemberOfGroups } from './Cookie';
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
+import { getAuthGroups, getGroupName } from './AuthGroups';
 
 describe('Cookie', () => {
   describe('isLoggedIn', () => {
+    beforeEach(() => {});
+
     it('returns true if users group is in the allowed groups', () => {
-      process.env.REACT_APP_ENV = 'production';
       Cookies.get.mockReturnValue(true);
       jwt.decode.mockReturnValue({ groups: ['a-valid-prod-group'] });
+      getAuthGroups.mockReturnValue(['a-valid-prod-group']);
       expect(isLoggedIn()).toBe(true);
     });
 
     it('returns false if users group is not in the allowed groups', () => {
-      process.env.REACT_APP_ENV = 'production';
       Cookies.get.mockReturnValue(true);
       jwt.decode.mockReturnValue({ groups: ['a-invalid-prod-group'] });
+      getAuthGroups.mockReturnValue(['a-valid-prod-group']);
       expect(isLoggedIn()).toBe(false);
     });
 
     it('returns false if no hackney token', () => {
-      process.env.REACT_APP_ENV = 'production';
       Cookies.get.mockReturnValue(undefined);
       expect(isLoggedIn()).toBe(false);
     });
+  });
 
-    it('returns false if no hackney token', () => {
-      process.env.REACT_APP_ENV = 'production';
-      Cookies.get.mockReturnValue(undefined);
-      expect(isLoggedIn()).toBe(false);
-    });
-
-    it('can use groups in different environments', () => {
-      process.env.REACT_APP_ENV = 'dev';
+  describe('isMemberOfGroups', () => {
+    it('returns true if user is a member of a given group', () => {
       Cookies.get.mockReturnValue(true);
-      jwt.decode.mockReturnValue({ groups: ['a-valid-dev-group'] });
-      expect(isLoggedIn()).toBe(true);
+      jwt.decode.mockReturnValue({ groups: ['a-valid-prod-group'] });
+      getGroupName.mockReturnValue('a-valid-prod-group');
+      expect(isMemberOfGroups(['A_DIFFERENT_GROUP', 'A_VALID_GROUP'])).toBe(
+        true
+      );
+    });
+    it('returns false if user is not a member of a given group', () => {
+      Cookies.get.mockReturnValue(true);
+      jwt.decode.mockReturnValue({ groups: ['some-group'] });
+      getGroupName.mockReturnValue('a-valid-prod-group');
+      expect(isMemberOfGroups(['A_VALID_GROUP'])).toBe(false);
+    });
+    it('returns false if a given group does not exist', () => {
+      Cookies.get.mockReturnValue(true);
+      jwt.decode.mockReturnValue({ groups: ['a-different-group'] });
+      getGroupName.mockReturnValue(undefined);
+      expect(isMemberOfGroups(['A_DIFFERENT_GROUP'])).toBe(false);
     });
   });
 });
