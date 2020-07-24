@@ -18,7 +18,7 @@ import {
 } from '../../Components/Details';
 import moment from 'moment';
 import { goBack } from '../../lib/Utils';
-import { hasFeatureFlag } from '../../lib/FeatureFlag';
+import { isMemberOfGroups } from '../../lib/Cookie';
 
 export default class DetailsPage extends Component {
   constructor(props) {
@@ -51,24 +51,28 @@ export default class DetailsPage extends Component {
         });
         notesAndDocs = notesAndDocs.concat(docs).filter(x => x !== null);
         this.setState({ notes: notesAndDocs });
-        return FindSnapshots({ customerId });
+        return isMemberOfGroups([
+          'HOUSING_NEEDS_SV',
+          'HOUSING_NEEDS',
+          'HOUSING_COUNTER',
+          'BENEFIT_COUNTER'
+        ])
+          ? FindSnapshots({ customerId })
+          : [];
       })
       .then(({ data: snapshots }) => {
-        if (hasFeatureFlag('things-to-note')) {
-          const snapshotNotes = snapshots.map(snapshot => ({
-            ...snapshot,
-            id: snapshot.id,
-            text: snapshot.notes,
-            type: 'snapshot',
-            title: 'Vulnerability snapshot',
-            system: 'Vulnerability snapshot',
-            date: snapshot.created,
-            user: snapshot.createdBy
-          }));
-
-          notesAndDocs = notesAndDocs.concat(snapshotNotes);
-          this.setState({ notes: notesAndDocs });
-        }
+        const snapshotNotes = snapshots.map(snapshot => ({
+          ...snapshot,
+          id: snapshot.id,
+          text: snapshot.notes,
+          type: 'snapshot',
+          title: 'Vulnerability snapshot',
+          system: 'Vulnerability snapshot',
+          date: snapshot.created,
+          user: snapshot.createdBy
+        }));
+        notesAndDocs = notesAndDocs.concat(snapshotNotes);
+        this.setState({ notes: notesAndDocs });
       })
       .then(() => {
         notesAndDocs.sort((a, b) => moment(b.date) - moment(a.date));
@@ -104,9 +108,12 @@ export default class DetailsPage extends Component {
         <div className="lbh-container row details">
           <div className="details__left-column">
             <PersonalDetails customer={this.state.customer} id={customerId} />
-            {hasFeatureFlag('things-to-note') && (
-              <ThingsToNote customerId={customerId} />
-            )}
+            {isMemberOfGroups([
+              'HOUSING_NEEDS_SV',
+              'HOUSING_NEEDS',
+              'HOUSING_COUNTER',
+              'BENEFIT_COUNTER'
+            ]) && <ThingsToNote customerId={customerId} />}
             <ContactDetails customer={this.state.customer} />
             <AddressDetails customer={this.state.customer} />
             <Team customer={this.state.customer} />
