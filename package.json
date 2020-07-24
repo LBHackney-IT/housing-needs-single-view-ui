@@ -22,14 +22,14 @@
     "reactjs-popup": "^1.5.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "export SKIP_PREFLIGHT_CHECK=true && react-scripts start",
+    "build": "export SKIP_PREFLIGHT_CHECK=true && react-scripts build",
     "test": "npx cypress open",
     "lint": "eslint --fix --ext js,jsx src --max-warnings 5 && echo 'Lint complete.'",
-    "cy:start": "node cypress/FakeSVapi.js & react-scripts start",
+    "cy:start": "node cypress/FakeSVapi.js & npm run start",
     "cy:run": "cypress run",
     "cypress": "start-server-and-test cy:start http://localhost:3001 cy:run",
-    "unit-test": "jest --runInBand --watch"
+    "unit-test": "jest --runInBand"
   },
   "eslintConfig": {
     "extends": "react-app"
