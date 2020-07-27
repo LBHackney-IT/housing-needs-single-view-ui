@@ -18,7 +18,7 @@ export default async ({ customerId, customer }) => {
   );
 
   const response = await fetch(
-    `${process.env.REACT_APP_INFO_EVIDENCE_API_URL}/metadata`,
+    `${process.env.REACT_APP_EVIDENCE_STORE_API_URL}/metadata`,
     {
       method: 'POST',
       headers: {

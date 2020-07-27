@@ -7,7 +7,7 @@ describe('CreateDocumentRequest', () => {
   beforeEach(() => {
     enableFetchMocks();
     hackneyToken.mockImplementation(() => 'token');
-    process.env.REACT_APP_INFO_EVIDENCE_API_URL = 'http://evidencestore';
+    process.env.REACT_APP_EVIDENCE_STORE_API_URL = 'http://evidencestore';
   });
 
   const customer = {
