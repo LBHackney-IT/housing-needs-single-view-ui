@@ -22,7 +22,7 @@ const SnapshotNoteContent = ({
       </p>
       {text && (
         <p className={styles.note} style={{ overflowWrap: 'break-word' }}>
-          <strong>Additional note:</strong>{' '}
+          <strong>Additional notes:</strong>{' '}
           {trimmed && text.length > trimmedLength
             ? `${text.substring(0, trimmedLength)} ...`
             : text}

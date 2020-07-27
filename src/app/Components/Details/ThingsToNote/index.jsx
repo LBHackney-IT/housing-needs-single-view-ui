@@ -41,7 +41,10 @@ const ThingsToNote = ({ customerId }) => {
   }, [state, customerId]);
 
   return (
-    <div className={`details__left-column__item ${styles['things_to_note']}`}>
+    <div
+      className={`details__left-column__item ${styles['things_to_note']}`}
+      data-testid="things-to-note"
+    >
       <h2>Things to note</h2>
       {state.loading ? (
         <div>Loading...</div>

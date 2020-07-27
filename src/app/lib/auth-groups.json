@@ -1,0 +1,24 @@
+{
+  "staging": {
+    "CONTACT_CENTRE": "contact-centre-staging",
+    "BENEFIT_COUNTER": "benefit-counter-staging",
+    "HOUSING_COUNTER": "housing-counter-staging",
+    "HOUSING_OFFICER": "housing-officer-staging",
+    "AREA_HOUSING_MANAGER": "area-housing-manager-staging",
+    "HOUSING_NEEDS": "housing-needs-staging",
+    "HOUSING_NEEDS_SV": "housingneeds-singleview-beta"
+  },
+  "production": {
+    "CONTACT_CENTRE": "contact-centre-production",
+    "BENEFIT_COUNTER": "benefit-counter-production",
+    "HOUSING_COUNTER": "housing-counter-production",
+    "HOUSING_OFFICER": "housing-officer-production",
+    "AREA_HOUSING_MANAGER": "area-housing-manager-production",
+    "HOUSING_NEEDS": "housing-needs-production",
+    "HOUSING_NEEDS_SV": "housingneeds-singleview-beta"
+  },
+  "dev": {
+    "HOUSING_NEEDS": "housing-needs-staging",
+    "HOUSING_NEEDS_SV": "housingneeds-singleview-beta"
+  }
+}
