@@ -116,7 +116,6 @@ export default class DetailsPage extends Component {
               <RequestDocuments
                 customerId={customerId}
                 customer={this.state.customer}
-                data-testid="request-documents"
               />
             )}
             <PrototypesLink />

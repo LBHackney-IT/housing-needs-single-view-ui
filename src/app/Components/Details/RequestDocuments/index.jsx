@@ -46,16 +46,27 @@ const RequestDocuments = ({ customerId, customer }) => {
         onClick={createDocumentRequest}
         disabled={state.loading}
         data-testid="create-document-request-button"
+        style={{ marginTop: 0, marginBottom: '10px' }}
       >
         Create Doc Upload Url
       </button>
       {state.dropboxUrl && (
         <>
           <br />
-          <div>Upload url: {state.dropboxUrl}</div>
+          <div data-testid="create-document-request-result">
+            <strong>Upload url:</strong>{' '}
+            <a
+              href={state.dropboxUrl}
+              data-testid="create-document-request-url"
+            >
+              {state.dropboxUrl}
+            </a>
+          </div>
         </>
       )}
-      {state.error && <div>{state.error}</div>}
+      {state.error && (
+        <div data-testid="create-document-request-error">{state.error}</div>
+      )}
     </div>
   );
 };

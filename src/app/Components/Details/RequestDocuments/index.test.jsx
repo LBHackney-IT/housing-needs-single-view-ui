@@ -19,7 +19,7 @@ describe('RequestDocuments', () => {
       success: true
     });
 
-    const { queryByTestId, findByText } = render(
+    const { queryByTestId, findByTestId } = render(
       <RequestDocuments
         customerId="1"
         customer={{ name: [{ first: 'Frank' }] }}
@@ -31,7 +31,9 @@ describe('RequestDocuments', () => {
       customerId: '1',
       customer: { name: [{ first: 'Frank' }] }
     });
-    expect(await findByText(`Upload url: ${dropboxUrl}`)).toBeInTheDocument();
+    expect(
+      await findByTestId('create-document-request-url')
+    ).toBeInTheDocument();
   });
 
   it('displays an error if request fails', async () => {

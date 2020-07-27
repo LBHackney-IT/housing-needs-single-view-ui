@@ -7,7 +7,7 @@ describe('CreateDocumentRequest', () => {
   beforeEach(() => {
     enableFetchMocks();
     hackneyToken.mockImplementation(() => 'token');
-    process.env.REACT_APP_HN_API_URL = 'http://svapi';
+    process.env.REACT_APP_INFO_EVIDENCE_API_URL = 'http://evidencestore';
   });
 
   const customer = {
@@ -19,13 +19,16 @@ describe('CreateDocumentRequest', () => {
       uhw: ['334351']
     },
     dob: ['1969-02-01 12:00:00'],
-    name: [{ first: 'Sarah', last: 'Smith', title: 'Miss' }]
+    name: [
+      { first: 'Sarah', last: 'Smith', title: 'Miss' },
+      { first: 'Sarahh', last: 'Smithh', title: 'Miss' }
+    ]
   };
 
   it('can create a document request', async () => {
     const expectedMetadata = {
-      firstName: [customer.name[0].first],
-      lastName: [customer.name[0].last],
+      firstName: [customer.name[0].first, customer.name[1].first],
+      lastName: [customer.name[0].last, customer.name[1].last],
       dob: customer.dob,
       'systemId.jigsaw': customer.systemIds.jigsaw,
       'systemId.academyBenefits': customer.systemIds.academyBenefits,
@@ -33,23 +36,20 @@ describe('CreateDocumentRequest', () => {
       'systemId.uhtHousingRegister': customer.systemIds.uhtHousingRegister,
       'systemId.uhw': customer.systemIds.uhw
     };
-    const dropboxUrl = 'http://doc-upload/my-new-dropbox';
-    fetch.mockResponse(JSON.stringify({ dropboxUrl }));
+    const url = 'http://doc-upload/my-new-dropbox';
+    fetch.mockResponse(JSON.stringify({ url }));
 
     const result = await createDocumentRequest({ customerId: 1, customer });
 
-    expect(fetch).toHaveBeenCalledWith(
-      'http://svapi/customers/1/document-request',
-      {
-        method: 'POST',
-        headers: { Authorization: 'Bearer token' },
-        body: JSON.stringify(expectedMetadata)
-      }
-    );
-    expect(result).toEqual({
-      success: true,
-      dropboxUrl: 'http://doc-upload/my-new-dropbox'
+    expect(fetch).toHaveBeenCalledWith('http://evidencestore/metadata', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer token',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(expectedMetadata)
     });
+    expect(result).toEqual(expect.objectContaining({ dropboxUrl: url }));
   });
 
   it('fails if no customer id', async () => {

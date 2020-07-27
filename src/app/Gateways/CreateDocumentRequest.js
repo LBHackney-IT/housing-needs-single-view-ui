@@ -13,15 +13,18 @@ export default async ({ customerId, customer }) => {
     dob: customer.dob
   };
 
-  Object.entries(customer.systemIds).map(
+  Object.entries(customer.systemIds).forEach(
     ([k, v]) => (metadata[`systemId.${k}`] = v)
   );
 
   const response = await fetch(
-    `${process.env.REACT_APP_HN_API_URL}/customers/${customerId}/document-request`,
+    `${process.env.REACT_APP_INFO_EVIDENCE_API_URL}/metadata`,
     {
       method: 'POST',
-      headers: { Authorization: `Bearer ${hackneyToken()}` },
+      headers: {
+        Authorization: `Bearer ${hackneyToken()}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(metadata)
     }
   );
@@ -30,6 +33,6 @@ export default async ({ customerId, customer }) => {
     return fail();
   }
 
-  const { dropboxUrl } = await response.json();
-  return success(dropboxUrl);
+  const { url } = await response.json();
+  return success(url);
 };
