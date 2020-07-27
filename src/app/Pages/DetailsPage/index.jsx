@@ -20,6 +20,7 @@ import {
 import moment from 'moment';
 import { goBack } from '../../lib/Utils';
 import { isMemberOfGroups } from '../../lib/Cookie';
+import { hasFeatureFlag } from '../../lib/FeatureFlag';
 
 export default class DetailsPage extends Component {
   constructor(props) {
