@@ -34,12 +34,16 @@ export default class AddressDetails extends Component {
                           className="govuk-details"
                           data-module="govuk-details"
                         >
-                          <summary className="govuk-details__summary">
-                            <button className="govuk-details__summary-text linkStyle">
-                              Where is this from?
-                            </button>
+                          <summary
+                            className="govuk-details__summary"
+                            data-testid={`where-from-summary-${i}`}
+                          >
+                            Where is this from?
                           </summary>
-                          <div className="govuk-details__text">
+                          <div
+                            className="govuk-details__text"
+                            data-testid={`where-from-details-${i}`}
+                          >
                             {this.lineBreakifyAddress(address.source)}
                           </div>
                         </details>
