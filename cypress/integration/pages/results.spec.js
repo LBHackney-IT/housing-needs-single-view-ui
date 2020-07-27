@@ -2,11 +2,13 @@
 describe('Results Page', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/search?firstName=Wednesday&lastName=Adams');
   });
 
-  describe('Create new connected record button', () => {
+  describe('Connect records', () => {
     it('Contains create new connected record button', () => {
+      cy.visit(
+        'http://localhost:3001/search?firstName=Wednesday&lastName=Adams'
+      );
       cy.get('.connectRecords > .row > .govuk-button').should(
         'contain',
         'Create new connected record'
@@ -14,6 +16,9 @@ describe('Results Page', () => {
     });
 
     it('Button is disabled unless a record is selected', () => {
+      cy.visit(
+        'http://localhost:3001/search?firstName=Wednesday&lastName=Adams'
+      );
       cy.get('.connectRecords > .row > .govuk-button')
         .should('contain', 'Create new connected record')
         .and('have.attr', 'disabled');
@@ -31,6 +36,47 @@ describe('Results Page', () => {
     it('does not display the button if there are no results', () => {
       cy.visit('http://localhost:3001/search?firstName=fake&lastName=name');
       cy.get('.connectRecords > .row > .govuk-button').should('not.exist');
+    });
+
+    it('Join relevant records', () => {
+      cy.visit(
+        'http://localhost:3001/search?firstName=Wednesday&lastName=Adams'
+      );
+
+      cy.get('.groupedTable')
+        .first()
+        .find('tr')
+        .then(result => {
+          result.each((_, otherThing) => {
+            otherThing.click();
+          });
+        });
+
+      cy.get('.selected').should(
+        'have.css',
+        'background-color',
+        'rgb(158, 219, 158)'
+      );
+
+      cy.get('body').should('contain', 'Create new connected record');
+      cy.contains('Create new connected record').click({ force: true });
+
+      cy.get('h1')
+        .should('contain', 'Miss')
+        .and('contain', 'Wednesday')
+        .and('contain', 'Adams');
+
+      cy.get('.details__left-column')
+        .should('contain', '07666666666')
+        .and('contain', '07999666999');
+
+      cy.get('.details__left-column__item')
+        .should('contain', '333333399')
+        .and('contain', '399999999');
+
+      cy.get('.details__left-column__item')
+        .should('contain', '60940760')
+        .and('contain', '60940888');
     });
   });
 

@@ -8,10 +8,7 @@ app.use(cors());
 const searchCustomerResponse = require('./fixtures/searchCustomer');
 
 const generateResponse = props => {
-  const q = Object.entries(props.query).map(([k, v]) => {
-    return `${v}`;
-  });
-
+  const q = Object.values(props.query);
   if (q[0].toLowerCase() === 'wednesday') return searchCustomerResponse;
   return {
     grouped: [],
@@ -30,6 +27,7 @@ app.post('/customers', (req, res) => {
 
 const customerRecord = require('./fixtures/customerRecord');
 app.get('/customers/:id/record', (req, res) => {
+  customerRecord.customer.systemIds.sv = `${req.params.id}`;
   res.send(customerRecord);
 });
 
@@ -55,7 +53,6 @@ app.get('/customers/:id/vulnerabilities', (req, res) => {
   if (req.params.id === '5') {
     return res.status(200).send(JSON.stringify({ snapshots: [] }));
   }
-
   res.status(200).send(require('./fixtures/snapshot.json'));
 });
 

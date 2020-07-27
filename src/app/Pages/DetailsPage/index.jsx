@@ -14,11 +14,13 @@ import {
   Team,
   AddressDetails,
   PrototypesLink,
-  ThingsToNote
+  ThingsToNote,
+  RequestDocuments
 } from '../../Components/Details';
 import moment from 'moment';
 import { goBack } from '../../lib/Utils';
 import { isMemberOfGroups } from '../../lib/Cookie';
+import { hasFeatureFlag } from '../../lib/FeatureFlag';
 
 export default class DetailsPage extends Component {
   constructor(props) {
@@ -118,6 +120,12 @@ export default class DetailsPage extends Component {
             <AddressDetails customer={this.state.customer} />
             <Team customer={this.state.customer} />
             <SystemIds customer={this.state.customer} />
+            {hasFeatureFlag('request-documents') && (
+              <RequestDocuments
+                customerId={customerId}
+                customer={this.state.customer}
+              />
+            )}
             <PrototypesLink />
           </div>
           <div className="details__right-column">
