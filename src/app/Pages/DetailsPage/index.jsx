@@ -121,10 +121,7 @@ export default class DetailsPage extends Component {
             <Team customer={this.state.customer} />
             <SystemIds customer={this.state.customer} />
             {hasFeatureFlag('request-documents') && (
-              <RequestDocuments
-                customerId={customerId}
-                customer={this.state.customer}
-              />
+              <RequestDocuments customer={this.state.customer} />
             )}
             <PrototypesLink />
           </div>

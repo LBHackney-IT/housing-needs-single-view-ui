@@ -1,19 +1,19 @@
 import React, { useState, useCallback } from 'react';
 import CreateDocumentRequest from '../../../Gateways/CreateDocumentRequest';
 
-const RequestDocuments = ({ customerId, customer }) => {
+const RequestDocuments = ({ customer }) => {
   const [state, setState] = useState({
-    dropboxUrl: '',
+    requestUrl: '',
     loading: false,
     error: null
   });
 
   const createDocumentRequest = useCallback(async () => {
-    const created = dropboxUrl => {
+    const created = requestUrl => {
       setState({
         ...state,
         loading: false,
-        dropboxUrl
+        requestUrl
       });
     };
 
@@ -21,23 +21,21 @@ const RequestDocuments = ({ customerId, customer }) => {
       setState({
         ...state,
         loading: false,
-        error: 'Error creating document upload url'
+        error: 'Error creating document request url'
       });
     };
 
-    setState({ ...state, loading: true, dropboxUrl: '', error: '' });
+    setState({ ...state, loading: true, requestUrl: '', error: '' });
+
     try {
-      const { dropboxUrl, success } = await CreateDocumentRequest({
-        customerId,
-        customer
-      });
+      const { requestUrl, success } = await CreateDocumentRequest(customer);
       if (!success) return failed();
-      created(dropboxUrl);
+      created(requestUrl);
     } catch (error) {
       console.log(error);
       failed();
     }
-  }, [state, customerId, customer]);
+  }, [state, customer]);
 
   return (
     <div className="details__left-column__item">
@@ -50,16 +48,16 @@ const RequestDocuments = ({ customerId, customer }) => {
       >
         Create Doc Upload Url
       </button>
-      {state.dropboxUrl && (
+      {state.requestUrl && (
         <>
           <br />
           <div data-testid="create-document-request-result">
             <strong>Upload url:</strong>{' '}
             <a
-              href={state.dropboxUrl}
+              href={state.requestUrl}
               data-testid="create-document-request-url"
             >
-              {state.dropboxUrl}
+              {state.requestUrl}
             </a>
           </div>
         </>
