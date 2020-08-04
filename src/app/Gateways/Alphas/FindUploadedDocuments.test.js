@@ -1,13 +1,13 @@
-import createDocumentRequest from './CreateDocumentRequest';
+import findUploadedDocuments from './FindUploadedDocuments';
 import { enableFetchMocks } from 'jest-fetch-mock';
 import { hackneyToken } from '../../lib/Cookie';
 jest.mock('../../lib/Cookie');
 
-describe('CreateDocumentRequest', () => {
+describe('FindUploadedDocuments', () => {
   beforeEach(() => {
     enableFetchMocks();
     hackneyToken.mockImplementation(() => 'token');
-    process.env.REACT_APP_DOC_UPLOAD_API_URL = 'http://doc-upload';
+    process.env.REACT_APP_EVIDENCE_STORE_API_URL = 'http://evidencestore';
   });
 
   const customer = {
@@ -25,7 +25,7 @@ describe('CreateDocumentRequest', () => {
     ]
   };
 
-  it('can create a document request', async () => {
+  it('can find uploaded documents', async () => {
     const expectedMetadata = {
       firstName: [customer.name[0].first, customer.name[1].first],
       lastName: [customer.name[0].last, customer.name[1].last],
@@ -36,38 +36,39 @@ describe('CreateDocumentRequest', () => {
       'systemId.uhtHousingRegister': customer.systemIds.uhtHousingRegister,
       'systemId.uhw': customer.systemIds.uhw
     };
-    const requestId = 'doc123';
-    const expectedUrl = `http://doc-upload/requests/${requestId}`;
-    fetch.mockResponse(JSON.stringify({ requestId }));
+    const expectedDocuments = [
+      { name: '123.jpeg', id: '123' },
+      { name: '456.pdf', id: '456' }
+    ];
 
-    const result = await createDocumentRequest(customer);
+    fetch.mockResponse(
+      JSON.stringify({
+        documents: expectedDocuments
+      })
+    );
 
-    expect(fetch).toHaveBeenCalledWith('http://doc-upload/requests', {
+    const result = await findUploadedDocuments(customer);
+
+    expect(fetch).toHaveBeenCalledWith('http://evidencestore/search', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer token',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ metadata: expectedMetadata })
+      body: JSON.stringify(expectedMetadata)
     });
-    expect(result.requestUrl).toEqual(expectedUrl);
+    expect(result.documents).toEqual(expectedDocuments);
     expect(result.success).toEqual(true);
   });
 
   it('fails if customer record is invalid', async () => {
-    const result = await createDocumentRequest();
+    const result = await findUploadedDocuments();
     expect(result.success).toEqual(false);
   });
 
-  it('fails if create fails', async () => {
+  it('fails if find fails', async () => {
     fetch.mockImplementationOnce(() => ({ ok: false, status: 500 }));
-    const result = await createDocumentRequest(customer);
-    expect(result.success).toEqual(false);
-  });
-
-  it('fails if create fails', async () => {
-    fetch.mockImplementationOnce(() => ({ ok: false, status: 500 }));
-    const result = await createDocumentRequest(customer);
+    const result = await findUploadedDocuments(customer);
     expect(result.success).toEqual(false);
   });
 
@@ -76,7 +77,7 @@ describe('CreateDocumentRequest', () => {
     fetch.mockImplementationOnce(() => {
       throw new Error();
     });
-    const result = await createDocumentRequest(customer);
+    const result = await findUploadedDocuments(customer);
     expect(result.success).toEqual(false);
   });
 });

@@ -1,7 +1,7 @@
 import { hackneyToken } from '../../lib/Cookie';
 
-const success = requestId => ({
-  requestUrl: `${process.env.REACT_APP_DOC_UPLOAD_API_URL}/requests/${requestId}`,
+const success = documents => ({
+  documents,
   success: true
 });
 const fail = () => ({ success: false });
@@ -21,14 +21,14 @@ export default async customer => {
     );
 
     const response = await fetch(
-      `${process.env.REACT_APP_DOC_UPLOAD_API_URL}/requests`,
+      `${process.env.REACT_APP_EVIDENCE_STORE_API_URL}/search`,
       {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${hackneyToken()}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ metadata })
+        body: JSON.stringify(metadata)
       }
     );
 
@@ -36,10 +36,10 @@ export default async customer => {
       return fail();
     }
 
-    const { requestId } = await response.json();
-    return success(requestId);
+    const { documents } = await response.json();
+    return success(documents);
   } catch (err) {
-    console.log('Error creating document request', err);
+    console.log('Error finding uploaded documents', err);
     return fail();
   }
 };
