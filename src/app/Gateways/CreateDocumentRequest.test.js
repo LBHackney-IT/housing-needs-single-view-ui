@@ -7,7 +7,7 @@ describe('CreateDocumentRequest', () => {
   beforeEach(() => {
     enableFetchMocks();
     hackneyToken.mockImplementation(() => 'token');
-    process.env.REACT_APP_EVIDENCE_STORE_API_URL = 'http://evidencestore';
+    process.env.REACT_APP_DOC_UPLOAD_API_URL = 'http://doc-upload';
   });
 
   const customer = {
@@ -36,31 +36,27 @@ describe('CreateDocumentRequest', () => {
       'systemId.uhtHousingRegister': customer.systemIds.uhtHousingRegister,
       'systemId.uhw': customer.systemIds.uhw
     };
-    const url = 'http://doc-upload/my-new-dropbox';
-    fetch.mockResponse(JSON.stringify({ url }));
+    const requestId = 'doc123';
+    const expectedUrl = `http://doc-upload/requests/${requestId}`;
+    fetch.mockResponse(JSON.stringify({ requestId }));
 
-    const result = await createDocumentRequest({ customerId: 1, customer });
+    const result = await createDocumentRequest(customer);
 
-    expect(fetch).toHaveBeenCalledWith('http://evidencestore/metadata', {
+    expect(fetch).toHaveBeenCalledWith('http://doc-upload/requests', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer token',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(expectedMetadata)
+      body: JSON.stringify({ metadata: expectedMetadata })
     });
-    expect(result).toEqual(expect.objectContaining({ dropboxUrl: url }));
-  });
-
-  it('fails if no customer id', async () => {
-    const result = await createDocumentRequest({ customer });
-    expect(result).toEqual({
-      success: false
-    });
+    expect(result).toEqual(
+      expect.objectContaining({ requestUrl: expectedUrl })
+    );
   });
 
   it('fails if customer record is invalid', async () => {
-    const result = await createDocumentRequest({ customerId: 1 });
+    const result = await createDocumentRequest();
     expect(result).toEqual({
       success: false
     });
@@ -68,7 +64,7 @@ describe('CreateDocumentRequest', () => {
 
   it('fails if create fails', async () => {
     fetch.mockImplementationOnce(() => ({ ok: false, status: 500 }));
-    const result = await createDocumentRequest({ customerId: 1, customer });
+    const result = await createDocumentRequest(customer);
     expect(result).toEqual({
       success: false
     });

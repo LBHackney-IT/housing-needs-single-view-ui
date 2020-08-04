@@ -1,10 +1,12 @@
 import { hackneyToken } from '../lib/Cookie';
 
-const success = dropboxUrl => ({ dropboxUrl, success: true });
+const success = requestId => ({
+  requestUrl: `${process.env.REACT_APP_DOC_UPLOAD_API_URL}/requests/${requestId}`,
+  success: true
+});
 const fail = () => ({ success: false });
 
-export default async ({ customerId, customer }) => {
-  if (!customerId) return fail();
+export default async customer => {
   if (!customer) return fail();
 
   const metadata = {
@@ -18,14 +20,14 @@ export default async ({ customerId, customer }) => {
   );
 
   const response = await fetch(
-    `${process.env.REACT_APP_EVIDENCE_STORE_API_URL}/metadata`,
+    `${process.env.REACT_APP_DOC_UPLOAD_API_URL}/requests`,
     {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${hackneyToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(metadata)
+      body: JSON.stringify({ metadata })
     }
   );
 
@@ -33,6 +35,6 @@ export default async ({ customerId, customer }) => {
     return fail();
   }
 
-  const { url } = await response.json();
-  return success(url);
+  const { requestId } = await response.json();
+  return success(requestId);
 };

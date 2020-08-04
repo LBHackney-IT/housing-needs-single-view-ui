@@ -16,10 +16,7 @@ describe('Request documents', () => {
   it('creates a document request', () => {
     cy.visit('http://localhost:3001/customers/10/view');
     cy.get(requestDocsBtn).click({ force: true });
-    cy.get(requestDocsResult).should(
-      'contain',
-      'http://doc-upload/my-new-dropbox'
-    );
+    cy.get(requestDocsResult).should('contain', '/requests/my-new-request');
   });
 
   it('shows an error when request fails', () => {
@@ -27,7 +24,7 @@ describe('Request documents', () => {
     cy.get(requestDocsBtn).click({ force: true });
     cy.get(requestDocsError).should(
       'contain',
-      'Error creating document upload url'
+      'Error creating document request url'
     );
   });
 });

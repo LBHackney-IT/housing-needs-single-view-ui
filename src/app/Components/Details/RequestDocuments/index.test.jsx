@@ -13,23 +13,19 @@ describe('RequestDocuments', () => {
   });
 
   it('can request documents', async () => {
-    const dropboxUrl = 'url';
+    const requestUrl = 'url';
     CreateDocumentRequest.mockResolvedValue({
-      dropboxUrl,
+      requestUrl,
       success: true
     });
 
     const { queryByTestId, findByTestId } = render(
-      <RequestDocuments
-        customerId="1"
-        customer={{ name: [{ first: 'Frank' }] }}
-      />
+      <RequestDocuments customer={{ name: [{ first: 'Frank' }] }} />
     );
     fireEvent.click(queryByTestId(docRequestButton));
 
     expect(CreateDocumentRequest).toHaveBeenCalledWith({
-      customerId: '1',
-      customer: { name: [{ first: 'Frank' }] }
+      name: [{ first: 'Frank' }]
     });
     expect(
       await findByTestId('create-document-request-url')
@@ -42,13 +38,13 @@ describe('RequestDocuments', () => {
     });
 
     const { queryByTestId, findByText } = render(
-      <RequestDocuments customerId="1" customer={{ firstName: 'Frank' }} />
+      <RequestDocuments customer={{ firstName: 'Frank' }} />
     );
 
     fireEvent.click(queryByTestId(docRequestButton));
 
     expect(
-      await findByText('Error creating document upload url')
+      await findByText('Error creating document request url')
     ).toBeInTheDocument();
   });
 });
