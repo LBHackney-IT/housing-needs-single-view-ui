@@ -5,6 +5,7 @@ import {
   FetchCustomerDocuments
 } from '../../Gateways';
 import FindSnapshots from '../../Gateways/Alphas/FindSnapshots';
+import FindUploadedDocuments from '../../Gateways/Alphas/FindUploadedDocuments';
 import {
   ContactDetails,
   Activity,
@@ -74,6 +75,14 @@ export default class DetailsPage extends Component {
           user: snapshot.createdBy
         }));
         notesAndDocs = notesAndDocs.concat(snapshotNotes);
+        this.setState({ notes: notesAndDocs });
+        return hasFeatureFlag('request-documents')
+          ? FindUploadedDocuments(this.state.customer)
+          : [];
+      })
+      .then(result => {
+        const uploadedDocs = [];
+        notesAndDocs = notesAndDocs.concat(uploadedDocs);
         this.setState({ notes: notesAndDocs });
       })
       .then(() => {
