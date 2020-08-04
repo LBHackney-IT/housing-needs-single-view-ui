@@ -1,4 +1,4 @@
-import { hackneyToken } from '../lib/Cookie';
+import { hackneyToken } from '../../lib/Cookie';
 
 const success = requestId => ({
   requestUrl: `${process.env.REACT_APP_DOC_UPLOAD_API_URL}/requests/${requestId}`,

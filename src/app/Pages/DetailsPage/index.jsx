@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {
   FetchCustomerNotes,
   FetchCustomerRecord,
-  FetchCustomerDocuments,
-  FindSnapshots
+  FetchCustomerDocuments
 } from '../../Gateways';
+import FindSnapshots from '../../Gateways/Alphas/FindSnapshots';
 import {
   ContactDetails,
   Activity,

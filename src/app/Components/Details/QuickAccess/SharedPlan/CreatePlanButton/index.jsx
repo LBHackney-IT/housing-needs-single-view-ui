@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import createSharedPlan from '../../../../../Gateways/CreateSharedPlan';
+import createSharedPlan from '../../../../../Gateways/Alphas/CreateSharedPlan';
 import styles from './index.module.css';
 
 const CreatePlanButton = ({ customerId }) => {

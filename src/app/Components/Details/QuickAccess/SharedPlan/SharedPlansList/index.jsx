@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import findSharedPlans from '../../../../../Gateways/FindSharedPlans';
+import findSharedPlans from '../../../../../Gateways/Alphas/FindSharedPlans';
 import styles from './SharedPlansList.module.scss';
 
 const SharedPlansList = ({ customerId }) => {
