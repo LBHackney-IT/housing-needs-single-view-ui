@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import CreateVulnerability from '../../../Gateways/CreateVulnerability';
-import FindLatestSnapshot from '../../../Gateways/FindLatestSnapshot';
+import CreateVulnerability from '../../../Gateways/Alphas/CreateVulnerability';
+import FindLatestSnapshot from '../../../Gateways/Alphas/FindLatestSnapshot';
 import SnapshotSummary from './SnapshotSummary';
 import styles from './index.module.scss';
 

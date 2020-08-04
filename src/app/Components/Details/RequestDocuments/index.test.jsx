@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import RequestDocuments from './index';
-import CreateDocumentRequest from '../../../Gateways/CreateDocumentRequest';
-jest.mock('../../../Gateways/CreateDocumentRequest');
+import CreateDocumentRequest from '../../../Gateways/Alphas/CreateDocumentRequest';
+jest.mock('../../../Gateways/Alphas/CreateDocumentRequest');
 
 describe('RequestDocuments', () => {
   const docRequestButton = 'create-document-request-button';

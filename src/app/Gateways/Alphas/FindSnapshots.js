@@ -1,4 +1,4 @@
-import { hackneyToken } from '../lib/Cookie';
+import { hackneyToken } from '../../lib/Cookie';
 
 export default async ({ customerId }) => {
   const response = await fetch(

@@ -1,7 +1,7 @@
 import findSnapshots from './FindSnapshots';
 import { enableFetchMocks } from 'jest-fetch-mock';
-import { hackneyToken } from '../lib/Cookie';
-jest.mock('../lib/Cookie');
+import { hackneyToken } from '../../lib/Cookie';
+jest.mock('../../lib/Cookie');
 
 describe('FindSnapshots', () => {
   beforeEach(() => {

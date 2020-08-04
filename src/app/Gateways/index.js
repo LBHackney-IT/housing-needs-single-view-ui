@@ -4,7 +4,6 @@ import FetchCustomerRecord from './FetchCustomerRecord';
 import FetchCustomerDocuments from './FetchCustomerDocuments';
 import SearchCustomers from './SearchCustomers';
 import DeleteCustomerRecord from './DeleteCustomerRecord';
-import FindSnapshots from './FindSnapshots';
 
 export {
   CreateCustomer,
@@ -12,6 +11,5 @@ export {
   FetchCustomerRecord,
   FetchCustomerDocuments,
   SearchCustomers,
-  DeleteCustomerRecord,
-  FindSnapshots
+  DeleteCustomerRecord
 };

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import CreateDocumentRequest from '../../../Gateways/CreateDocumentRequest';
+import CreateDocumentRequest from '../../../Gateways/Alphas/CreateDocumentRequest';
 
 const RequestDocuments = ({ customer }) => {
   const [state, setState] = useState({
