@@ -58,7 +58,7 @@ const ThingsToNote = ({ customerId }) => {
           disabled={state.loading}
           data-testid="add-vulnerability-snapshot-button"
         >
-          Add a vulnerability snapshot
+          Add a snapshot
         </button>
         {state.error && <div>{state.error}</div>}
       </div>

@@ -69,8 +69,8 @@ export default class DetailsPage extends Component {
           id: snapshot.id,
           text: snapshot.notes,
           type: 'snapshot',
-          title: 'Vulnerability snapshot',
-          system: 'Vulnerability snapshot',
+          title: 'Snapshot',
+          system: 'Snapshot',
           date: snapshot.created,
           user: snapshot.createdBy
         }));
