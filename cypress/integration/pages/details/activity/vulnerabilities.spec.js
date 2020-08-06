@@ -3,22 +3,19 @@ describe('Vulnerabilities', () => {
     cy.setHackneyCookie(true);
   });
 
-  it('Does not display vulnerability snapshot in the activity feed if not in valid group', () => {
+  it('Does not display snapshot in the activity feed if not in valid group', () => {
     cy.setHackneyCookie(false);
     cy.visit('http://localhost:3001/customers/1/view');
 
-    cy.get('.activity > table > tbody').should(
-      'not.contain',
-      'Vulnerability snapshot'
-    );
+    cy.get('.activity > table > tbody').should('not.contain', 'Snapshot');
   });
 
-  it('Displays vulnerability snapshot in the activity feed', () => {
+  it('Displays snapshot in the activity feed', () => {
     cy.visit('http://localhost:3001/customers/1/view');
 
     cy.get('.activity > table > tbody > tr:nth-child(2)').should(
       'contain',
-      'Vulnerability snapshot'
+      'Snapshot'
     );
 
     cy.get('[data-testid=full-vulnerabilities-snapshot-link]').should(
@@ -31,13 +28,10 @@ describe('Vulnerabilities', () => {
   it('Does not display snapshot in the activity feed if customer has no snapshots', () => {
     cy.visit('http://localhost:3001/customers/5/view');
 
-    cy.get('.activity > table > tbody').should(
-      'not.contain',
-      'Vulnerability snapshot'
-    );
+    cy.get('.activity > table > tbody').should('not.contain', 'Snapshot');
   });
 
-  it('Displays orange and blue dots next to the title if a vulnerability snapshot has an asset and vulnerability', () => {
+  it('Displays orange and blue dots next to the title if a snapshot has an asset and vulnerability', () => {
     cy.visit('http://localhost:3001/customers/1/view');
 
     cy.get('[data-testid=assets-dot]')
@@ -48,7 +42,7 @@ describe('Vulnerabilities', () => {
       .should('be.visible');
   });
 
-  it('Displays orange dot next to the title if a vulnerability snapshot has an asset', () => {
+  it('Displays orange dot next to the title if a snapshot has an asset', () => {
     cy.visit('http://localhost:3001/customers/1/view');
 
     cy.get('[data-testid=assets-dot]')
@@ -56,7 +50,7 @@ describe('Vulnerabilities', () => {
       .should('be.visible');
   });
 
-  it('Displays blue dot next to the title if a vulnerability snapshot has a vulnerability', () => {
+  it('Displays blue dot next to the title if a snapshot has a vulnerability', () => {
     cy.visit('http://localhost:3001/customers/1/view');
 
     cy.get('[data-testid=vulnerabilities-dot]')

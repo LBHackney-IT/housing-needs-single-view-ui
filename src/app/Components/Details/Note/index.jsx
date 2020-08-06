@@ -93,7 +93,7 @@ export default class Note extends Component {
               ) : (
                 <div>
                   {note.title}
-                  {note.system === 'Vulnerability snapshot' && (
+                  {note.system === 'Snapshot' && (
                     <span className="dots-group">
                       {note.vulnerabilities.length > 0 && (
                         <span

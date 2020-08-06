@@ -86,7 +86,7 @@ describe('Details Page', () => {
     });
   });
 
-  describe('Vulnerability snapshot', () => {
+  describe('Snapshot', () => {
     const vulnerabilities = '[data-testid="snapshot-vulnerabilities"]';
     const assets = '[data-testid="snapshot-assets"]';
 
@@ -101,7 +101,7 @@ describe('Details Page', () => {
       cy.get('[data-testid="things-to-note"]').should('not.exist');
     });
 
-    it('displays the latest vulnerability snapshot', () => {
+    it('displays the latest snapshot', () => {
       cy.visit('http://localhost:3001/customers/10/view');
       cy.get(vulnerabilities).should('exist');
       cy.get(assets).should('exist');
