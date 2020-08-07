@@ -66,22 +66,14 @@ describe('Details Page', () => {
   describe('Shared plans', () => {
     const selector = '[data-testid="shared-plan-quickview"]';
 
-    it('does not display the Shared Plans quick view box if the cookie is not set', () => {
+    it('does not display the Shared Plans quick view box if user is not in valid group', () => {
       cy.get(selector).should('not.exist');
     });
 
-    it('can set a shared plan cookie', () => {
-      cy.visit('http://localhost:3001/#shared_plan');
+    it('displays the Shared Plans quick view box if user is in valid group', () => {
+      cy.setSharedPlanCookie(true);
       cy.visit('http://localhost:3001/customers/5/view');
       cy.get(selector).should('exist');
-    });
-
-    it('displays the Shared Plans quick view box', () => {
-      cy.setSharedPlanCookie(true);
-      cy.get(selector).should('exist');
-    });
-
-    it('displays a list of existing plans', () => {
       cy.get(`${selector} ul`).should('not.be.empty');
     });
   });

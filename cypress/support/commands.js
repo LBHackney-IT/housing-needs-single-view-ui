@@ -38,8 +38,11 @@ const setHackneyCookie = isValidGroup => {
 };
 
 const setSharedPlanCookie = isValidGroup => {
-  const token = isValidGroup ? '[%22shared_plan%22]' : 'some-other-group';
-  cy.setCookie('singleViewFeatures', token, {
+  const groups = isValidGroup
+    ? ['shared-plan-sv', 'housingneeds-singleview-beta']
+    : ['housingneeds-singleview-beta'];
+  const token = jwt.sign({ groups }, 'a-secure-signature');
+  cy.setCookie('hackneyToken', token, {
     url: 'http://localhost:3001',
     domain: 'localhost'
   });

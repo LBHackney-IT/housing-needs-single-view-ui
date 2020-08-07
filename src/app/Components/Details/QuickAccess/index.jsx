@@ -5,7 +5,7 @@ import CouncilTax from './CouncilTax';
 import HousingRegister from './HousingRegister';
 import Tenancy from './Tenancy';
 import SharedPlanQuickBox from './SharedPlan';
-import { hasFeatureFlag } from '../../../lib/FeatureFlag';
+import { isMemberOfGroups } from '../../../lib/Cookie';
 
 export default class QuickAccess extends Component {
   render() {
@@ -20,7 +20,7 @@ export default class QuickAccess extends Component {
           <Tenancy customer={customer} />
           <Benefits customer={customer} />
           <CouncilTax customer={customer} />
-          {hasFeatureFlag('shared_plan') && (
+          {isMemberOfGroups(['SHARED_PLAN_SV']) && (
             <SharedPlanQuickBox customerId={customerId} />
           )}
         </div>
