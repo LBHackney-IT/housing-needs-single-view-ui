@@ -71,7 +71,7 @@ describe('Details Page', () => {
     });
 
     it('displays the Shared Plans quick view box if user is in valid group', () => {
-      cy.setSharedPlanCookie(true);
+      cy.logInWithSharedPlanGroup(true);
       cy.visit('http://localhost:3001/customers/5/view');
       cy.get(selector).should('exist');
       cy.get(`${selector} ul`).should('not.be.empty');

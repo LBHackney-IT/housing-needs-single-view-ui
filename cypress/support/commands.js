@@ -37,7 +37,7 @@ const setHackneyCookie = isValidGroup => {
   });
 };
 
-const setSharedPlanCookie = isValidGroup => {
+const logInWithSharedPlanGroup = isValidGroup => {
   const groups = isValidGroup
     ? ['shared-plan-sv', 'housingneeds-singleview-beta']
     : ['housingneeds-singleview-beta'];
@@ -48,5 +48,5 @@ const setSharedPlanCookie = isValidGroup => {
   });
 };
 
-Cypress.Commands.add('setSharedPlanCookie', setSharedPlanCookie);
+Cypress.Commands.add('logInWithSharedPlanGroup', logInWithSharedPlanGroup);
 Cypress.Commands.add('setHackneyCookie', setHackneyCookie);
