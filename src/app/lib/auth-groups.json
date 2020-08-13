@@ -7,7 +7,7 @@
     "AREA_HOUSING_MANAGER": "area-housing-manager-staging",
     "HOUSING_NEEDS": "housing-needs-staging",
     "HOUSING_NEEDS_SV": "housingneeds-singleview-beta",
-    "SHARED_PLAN_SV": "shared-plan-sv"
+    "SHARED_PLAN_SV": "shared-plan-singleview"
   },
   "production": {
     "CONTACT_CENTRE": "contact-centre-production",
@@ -17,7 +17,7 @@
     "AREA_HOUSING_MANAGER": "area-housing-manager-production",
     "HOUSING_NEEDS": "housing-needs-production",
     "HOUSING_NEEDS_SV": "housingneeds-singleview-beta",
-    "SHARED_PLAN_SV": "shared-plan-sv"
+    "SHARED_PLAN_SV": "shared-plan-singleview"
   },
   "dev": {
     "HOUSING_NEEDS": "housing-needs-staging",
