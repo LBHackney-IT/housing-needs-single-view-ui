@@ -2,11 +2,34 @@
 describe('Tenancy Details Page', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/tenancies/abc');
+    cy.visit('http://localdev.hackney.gov.uk:3001/tenancies/abc');
   });
 
   describe('Tenancy details', () => {
-    
+    it('Displays Tenancy Reference', () => {
+      cy.get('[data-test="tenancy-address]').should(
+        'contain',
+        '123 Kosher Avenue:'
+      );
+    });
+
+    it('Displays Tenancy Reference', () => {
+      cy.get('[data-test="tenancy-heading]').should('contain', 'Tenancy');
+    });
+
+    it('Displays Tenancy Reference', () => {
+      cy.get('[data-test="tenancy-type]')
+        .should('contain', 'Tenancy type:')
+        .and('contain', '123456/1');
+      'contain', 'Secure';
+    });
+
+    it('Displays Tenancy Reference', () => {
+      cy.get('[data-test="tenancy-start-date]')
+        .should('contain', 'Tenancy start date:')
+        .and('contain', '1992-06-13');
+    });
+
     it('Displays Tenancy Reference', () => {
       cy.get('[data-test="tenancy-reference]')
         .should('contain', 'Tenancy reference:')

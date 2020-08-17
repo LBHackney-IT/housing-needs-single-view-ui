@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
+import { FetchResidentRecord } from '../../Gateways';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -11,15 +12,19 @@ export default class TenancyDetailsPage extends Component {
 
   componentDidMount() {
     const tenancyId = this.props.match.params.id;
+    const residentId = this.props.match.params.residentId;
 
     FetchTenancyRecord(tenancyId).then(result => {
       this.setState({ tenancy: result.tenancy, fetching: false });
+    });
+
+    FetchResidentRecord(residentId).then(result => {
+      this.setState({ residents: result.resident, fetching: false });
     });
   }
 
   render() {
     document.title = 'Tenancy details - Single View';
-    const tenancyId = this.props.match.params.id;
 
     if (this.state.fetching) {
       return (
@@ -58,6 +63,20 @@ export default class TenancyDetailsPage extends Component {
           data-test="tenancy-reference"
         >
           <p>Tenancy reference: {this.state.tenancy.id}</p>
+        </div>
+
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <h2> Residents</h2>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-full-name"
+        >
+          {console.log('LOOK HERE!!!', this.state.residents)}
+          {/* {this.state.residents} */}
         </div>
       </div>
     );
