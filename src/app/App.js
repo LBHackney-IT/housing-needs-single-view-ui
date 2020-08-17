@@ -5,6 +5,8 @@ import PrivateRoute from './Components/PrivateRoute';
 import SearchPage from './Pages/SearchPage';
 import ResultsPage from './Pages/ResultsPage';
 import DetailsPage from './Pages/DetailsPage';
+import TenancyDetailsPage from './Pages/TenancyDetailsPage';
+
 import LoginPage from './Pages/LoginPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/styles.scss';
@@ -27,6 +29,7 @@ export default class App extends Component {
             <PrivateRoute path="/" exact component={SearchPage} />
             <PrivateRoute path="/search" component={ResultsPage} />
             <PrivateRoute path="/customers/:id/view" component={DetailsPage} />
+            <Route path="/tenancies/:id" component={TenancyDetailsPage} />
           </Router>
         </main>
       </>
