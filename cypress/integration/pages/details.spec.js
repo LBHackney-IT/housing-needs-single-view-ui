@@ -66,27 +66,19 @@ describe('Details Page', () => {
   describe('Shared plans', () => {
     const selector = '[data-testid="shared-plan-quickview"]';
 
-    it('does not display the Shared Plans quick view box if the cookie is not set', () => {
+    it('does not display the Shared Plans quick view box if user is not in valid group', () => {
       cy.get(selector).should('not.exist');
     });
 
-    it('can set a shared plan cookie', () => {
-      cy.visit('http://localhost:3001/#shared_plan');
+    it('displays the Shared Plans quick view box if user is in valid group', () => {
+      cy.logInWithSharedPlanGroup(true);
       cy.visit('http://localhost:3001/customers/5/view');
       cy.get(selector).should('exist');
-    });
-
-    it('displays the Shared Plans quick view box', () => {
-      cy.setSharedPlanCookie(true);
-      cy.get(selector).should('exist');
-    });
-
-    it('displays a list of existing plans', () => {
       cy.get(`${selector} ul`).should('not.be.empty');
     });
   });
 
-  describe('Vulnerability snapshot', () => {
+  describe('Snapshot', () => {
     const vulnerabilities = '[data-testid="snapshot-vulnerabilities"]';
     const assets = '[data-testid="snapshot-assets"]';
 
@@ -101,7 +93,7 @@ describe('Details Page', () => {
       cy.get('[data-testid="things-to-note"]').should('not.exist');
     });
 
-    it('displays the latest vulnerability snapshot', () => {
+    it('displays the latest snapshot', () => {
       cy.visit('http://localhost:3001/customers/10/view');
       cy.get(vulnerabilities).should('exist');
       cy.get(assets).should('exist');
