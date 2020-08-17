@@ -14,8 +14,8 @@ export default async customer => {
       firstName: customer.name.map(n => n.first),
       lastName: customer.name.map(n => n.last),
       dob: customer.dob,
-      requestedBy: [username()],
-      requestedByEmail: [email()]
+      requestedBy: username(),
+      requestedByEmail: email()
     };
 
     Object.entries(customer.systemIds).forEach(
