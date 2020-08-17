@@ -1,4 +1,4 @@
-import { hackneyToken } from '../../lib/Cookie';
+import { email, hackneyToken, username } from '../../lib/Cookie';
 
 const success = requestId => ({
   requestUrl: `${process.env.REACT_APP_DOC_UPLOAD_API_URL}/requests/${requestId}`,
@@ -13,7 +13,9 @@ export default async customer => {
     const metadata = {
       firstName: customer.name.map(n => n.first),
       lastName: customer.name.map(n => n.last),
-      dob: customer.dob
+      dob: customer.dob,
+      requestedBy: [username()],
+      requestedByEmail: [email()]
     };
 
     Object.entries(customer.systemIds).forEach(

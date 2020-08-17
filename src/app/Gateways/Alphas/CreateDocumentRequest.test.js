@@ -1,12 +1,14 @@
 import createDocumentRequest from './CreateDocumentRequest';
 import { enableFetchMocks } from 'jest-fetch-mock';
-import { hackneyToken } from '../../lib/Cookie';
+import { email, hackneyToken, username } from '../../lib/Cookie';
 jest.mock('../../lib/Cookie');
 
 describe('CreateDocumentRequest', () => {
   beforeEach(() => {
     enableFetchMocks();
+    email.mockImplementation(() => 'joe@email.com');
     hackneyToken.mockImplementation(() => 'token');
+    username.mockImplementation(() => 'Joe Bloggs');
     process.env.REACT_APP_DOC_UPLOAD_API_URL = 'http://doc-upload';
   });
 
@@ -30,6 +32,8 @@ describe('CreateDocumentRequest', () => {
       firstName: [customer.name[0].first, customer.name[1].first],
       lastName: [customer.name[0].last, customer.name[1].last],
       dob: customer.dob,
+      requestedBy: ['Joe Bloggs'],
+      requestedByEmail: ['joe@email.com'],
       'systemId.jigsaw': customer.systemIds.jigsaw,
       'systemId.academyBenefits': customer.systemIds.academyBenefits,
       'systemId.academyCouncilTax': customer.systemIds.academyCouncilTax,
@@ -53,6 +57,23 @@ describe('CreateDocumentRequest', () => {
     expect(result.requestUrl).toEqual(expectedUrl);
     expect(result.success).toEqual(true);
   });
+
+  // it('adds the requestors name to the request', async () => {
+  //   await createDocumentRequest(customer);
+  //   expect(fetch).toHaveBeenCalledWith('http://doc-upload/requests', {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: 'Bearer token',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       metadata: expect.objectContaining({
+  //         requestedBy: ['Joe Bloggs'],
+  //         requestedByEmail: ['joe@email.com']
+  //       })
+  //     })
+  //   });
+  // });
 
   it('fails if customer record is invalid', async () => {
     const result = await createDocumentRequest();

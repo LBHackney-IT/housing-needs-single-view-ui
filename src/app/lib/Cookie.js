@@ -22,6 +22,13 @@ export const username = function() {
   return decoded ? decoded.name : '';
 };
 
+export const email = function() {
+  const token = hackneyToken();
+  if (!token) return null;
+  const decoded = jwt.decode(token);
+  return decoded ? decoded.email : null;
+};
+
 export const hackneyToken = function() {
   return Cookies.get('hackneyToken');
 };
