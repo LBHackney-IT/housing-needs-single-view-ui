@@ -58,23 +58,6 @@ describe('CreateDocumentRequest', () => {
     expect(result.success).toEqual(true);
   });
 
-  // it('adds the requestors name to the request', async () => {
-  //   await createDocumentRequest(customer);
-  //   expect(fetch).toHaveBeenCalledWith('http://doc-upload/requests', {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: 'Bearer token',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       metadata: expect.objectContaining({
-  //         requestedBy: ['Joe Bloggs'],
-  //         requestedByEmail: ['joe@email.com']
-  //       })
-  //     })
-  //   });
-  // });
-
   it('fails if customer record is invalid', async () => {
     const result = await createDocumentRequest();
     expect(result.success).toEqual(false);
