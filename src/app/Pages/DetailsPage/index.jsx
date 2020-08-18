@@ -78,11 +78,22 @@ export default class DetailsPage extends Component {
         this.setState({ notes: notesAndDocs });
         return hasFeatureFlag('request-documents')
           ? FindUploadedDocuments(this.state.customer)
-          : [];
+          : {};
       })
       .then(result => {
-        const uploadedDocs = [];
-        notesAndDocs = notesAndDocs.concat(uploadedDocs);
+        if (result && result.success) {
+          const uploadedDocs = result.documents
+            .filter(d => d.metadata.filename)
+            .map(d => ({
+              type: 'document',
+              title: 'Uploaded Document',
+              text: d.metadata.description,
+              system: 'EVIDENCE STORE',
+              date: d.uploadedDate,
+              user: d.metadata.requestedBy
+            }));
+          notesAndDocs = notesAndDocs.concat(uploadedDocs);
+        }
         this.setState({ notes: notesAndDocs });
       })
       .then(() => {
