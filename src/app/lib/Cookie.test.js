@@ -2,15 +2,13 @@ jest.mock('js-cookie');
 jest.mock('jsonwebtoken');
 jest.mock('./AuthGroups');
 
-import { isLoggedIn, isMemberOfGroups } from './Cookie';
+import { email, isLoggedIn, isMemberOfGroups } from './Cookie';
 import Cookies from 'js-cookie';
 import jwt from 'jsonwebtoken';
 import { getAuthGroups, getGroupName } from './AuthGroups';
 
 describe('Cookie', () => {
   describe('isLoggedIn', () => {
-    beforeEach(() => {});
-
     it('returns true if users group is in the allowed groups', () => {
       Cookies.get.mockReturnValue(true);
       jwt.decode.mockReturnValue({ groups: ['a-valid-prod-group'] });
@@ -28,6 +26,31 @@ describe('Cookie', () => {
     it('returns false if no hackney token', () => {
       Cookies.get.mockReturnValue(undefined);
       expect(isLoggedIn()).toBe(false);
+    });
+  });
+
+  describe('email', () => {
+    it('returns null if no hackney token', () => {
+      Cookies.get.mockReturnValue(false);
+      expect(email()).toBe(null);
+    });
+
+    it('returns null if token cannot be decoded', () => {
+      Cookies.get.mockReturnValue(false);
+      jwt.decode.mockReturnValue(false);
+      expect(email()).toBe(null);
+    });
+
+    it('returns null if token does not contain email', () => {
+      Cookies.get.mockReturnValue(false);
+      jwt.decode.mockReturnValue({});
+      expect(email()).toBe(null);
+    });
+
+    it('returns the email', () => {
+      Cookies.get.mockReturnValue(true);
+      jwt.decode.mockReturnValue({ email: 'me@email.com' });
+      expect(email()).toEqual('me@email.com');
     });
   });
 

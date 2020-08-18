@@ -56,6 +56,8 @@ const RequestDocuments = ({ customer }) => {
             <a
               href={state.requestUrl}
               data-testid="create-document-request-url"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {state.requestUrl}
             </a>
