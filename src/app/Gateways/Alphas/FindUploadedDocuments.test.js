@@ -55,7 +55,7 @@ describe('FindUploadedDocuments', () => {
         Authorization: 'Bearer token',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(expectedMetadata)
+      body: JSON.stringify({ metadata: expectedMetadata, minimumMatchTerms: 3 })
     });
     expect(result.documents).toEqual(expectedDocuments);
     expect(result.success).toEqual(true);

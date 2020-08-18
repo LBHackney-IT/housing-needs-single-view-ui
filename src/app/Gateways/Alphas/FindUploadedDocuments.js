@@ -28,7 +28,8 @@ export default async customer => {
           Authorization: `Bearer ${hackneyToken()}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(metadata)
+        // minimumMatchTerms is currently set at 3 to match firstName, lastName, and 1 more
+        body: JSON.stringify({ metadata, minimumMatchTerms: 3 })
       }
     );
 
