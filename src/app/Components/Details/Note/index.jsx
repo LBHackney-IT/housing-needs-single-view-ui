@@ -26,6 +26,9 @@ export default class Note extends Component {
       if (this.props.note.system === 'JIGSAW') {
         this.docUrl = `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`;
       }
+      if (this.props.note.system === 'EVIDENCE STORE') {
+        this.docUrl = this.props.note.docUrl;
+      }
     }
   }
 

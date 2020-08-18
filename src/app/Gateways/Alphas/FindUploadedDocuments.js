@@ -1,9 +1,11 @@
 import { hackneyToken } from '../../lib/Cookie';
+import getUploadedDocumentUrl from './GetUploadedDocumentUrl';
 
 const success = documents => ({
   documents,
   success: true
 });
+
 const fail = () => ({ success: false });
 
 export default async customer => {
@@ -38,7 +40,17 @@ export default async customer => {
     }
 
     const { documents } = await response.json();
-    return success(documents);
+    const uploadedDocuments = documents.filter(d => d.metadata.filename);
+
+    // eslint-disable-next-line
+    for (const [i, d] of uploadedDocuments.entries()) {
+      const docUrlResult = await getUploadedDocumentUrl(d.documentId);
+      if (docUrlResult.success) {
+        uploadedDocuments[i].docUrl = docUrlResult.downloadUrl;
+      }
+    }
+
+    return success(uploadedDocuments);
   } catch (err) {
     console.log('Error finding uploaded documents', err);
     return fail();

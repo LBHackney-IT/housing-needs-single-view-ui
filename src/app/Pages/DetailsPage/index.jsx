@@ -82,16 +82,15 @@ export default class DetailsPage extends Component {
       })
       .then(result => {
         if (result && result.success) {
-          const uploadedDocs = result.documents
-            .filter(d => d.metadata.filename)
-            .map(d => ({
-              type: 'document',
-              title: 'Uploaded Document',
-              text: d.metadata.description,
-              system: 'EVIDENCE STORE',
-              date: d.uploadedDate,
-              user: d.metadata.requestedBy
-            }));
+          const uploadedDocs = result.documents.map(d => ({
+            type: 'document',
+            title: 'Uploaded Document',
+            text: d.metadata.description,
+            system: 'EVIDENCE STORE',
+            date: d.metadata.uploadedDate,
+            user: d.metadata.requestedBy,
+            docUrl: d.docUrl
+          }));
           notesAndDocs = notesAndDocs.concat(uploadedDocs);
         }
         this.setState({ notes: notesAndDocs });
