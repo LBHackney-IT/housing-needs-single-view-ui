@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
+import Resident from '../../Components/Resident';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -63,83 +64,10 @@ export default class TenancyDetailsPage extends Component {
           data-test="residents-heading"
         >
           <h2> Residents</h2>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-full-name"
-        >
-          <a href="www.hackney.gov.uk">
-            {this.state.tenancy.residents[0].fullName}
-          </a>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Date of birth: {this.state.tenancy.residents[0].dob}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Mobile: {this.state.tenancy.residents[0].mobileNum}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Home: {this.state.tenancy.residents[0].homeNum}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Work: {this.state.tenancy.residents[0].workNum}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Email: {this.state.tenancy.residents[0].email}</p>
-        </div>
 
-        <div
-          className="lbh-container row details"
-          data-test="residents-full-name"
-        >
-          <a href="www.hackney.gov.uk">
-            {this.state.tenancy.residents[1].fullName}
-          </a>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Date of birth: {this.state.tenancy.residents[1].dob}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Mobile: {this.state.tenancy.residents[1].mobileNum}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Home: {this.state.tenancy.residents[1].homeNum}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Work: {this.state.tenancy.residents[1].workNum}</p>
-        </div>
-        <div
-          className="lbh-container row details"
-          data-test="residents-heading"
-        >
-          <p>Email: {this.state.tenancy.residents[1].email}</p>
+          {this.state.tenancy.residents.map((resident, index) => {
+            return <Resident key={index} {...resident} />;
+          })}
         </div>
       </div>
     );
