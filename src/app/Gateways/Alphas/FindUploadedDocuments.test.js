@@ -1,12 +1,15 @@
 import findUploadedDocuments from './FindUploadedDocuments';
+import getUploadedDocumentUrl from './GetUploadedDocumentUrl';
 import { enableFetchMocks } from 'jest-fetch-mock';
 import { hackneyToken } from '../../lib/Cookie';
+jest.mock('./GetUploadedDocumentUrl');
 jest.mock('../../lib/Cookie');
 
 describe('FindUploadedDocuments', () => {
   beforeEach(() => {
     enableFetchMocks();
     hackneyToken.mockImplementation(() => 'token');
+    getUploadedDocumentUrl.mockImplementation(() => jest.fn());
     process.env.REACT_APP_EVIDENCE_STORE_API_URL = 'http://evidencestore';
   });
 
@@ -37,11 +40,11 @@ describe('FindUploadedDocuments', () => {
       'systemId.uhw': customer.systemIds.uhw
     };
     const expectedDocuments = [
-      { name: '123.jpeg', id: '123' },
-      { name: '456.pdf', id: '456' }
+      { documentId: '1', metadata: { filename: '123.jpeg' } },
+      { documentId: '2', metadata: { filename: '456.pdf' } }
     ];
 
-    fetch.mockResponse(
+    fetch.mockResponseOnce(
       JSON.stringify({
         documents: expectedDocuments
       })
@@ -59,6 +62,39 @@ describe('FindUploadedDocuments', () => {
     });
     expect(result.documents).toEqual(expectedDocuments);
     expect(result.success).toEqual(true);
+  });
+
+  it('filters out empty docs', async () => {
+    fetch.mockResponseOnce(
+      JSON.stringify({
+        documents: [
+          { documentId: '1', metadata: {} },
+          { documentId: '2', metadata: { filename: '456.pdf' } }
+        ]
+      })
+    );
+
+    const result = await findUploadedDocuments(customer);
+    expect(result.documents.length).toEqual(1);
+    expect(result.documents[0].documentId).toEqual('2');
+  });
+
+  it('gets the doc urls', async () => {
+    getUploadedDocumentUrl.mockImplementationOnce(async () =>
+      Promise.resolve({ success: true, downloadUrl: 'abc' })
+    );
+    fetch.mockResponseOnce(
+      JSON.stringify({
+        documents: [
+          { documentId: '1', metadata: { filename: '123.jpeg' } },
+          { documentId: '2', metadata: { filename: '456.pdf' } }
+        ]
+      })
+    );
+
+    const result = await findUploadedDocuments(customer);
+    expect(getUploadedDocumentUrl).toHaveBeenCalledTimes(2);
+    expect(result.documents[0].docUrl).toEqual('abc');
   });
 
   it('fails if customer record is invalid', async () => {
