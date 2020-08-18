@@ -63,7 +63,7 @@ export default class TenancyDetailsPage extends Component {
           className="lbh-container row details"
           data-test="residents-heading"
         >
-          <h2> Residents</h2>
+          <h2 data-test="residents-header"> Residents</h2>
 
           {this.state.tenancy.residents.map((resident, index) => {
             return <Resident key={index} {...resident} />;
