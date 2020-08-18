@@ -25,11 +25,11 @@ app.post('/customers', (req, res) => {
   res.send({ customer: { id: 946 } });
 });
 
-// const customerRecord = require('./fixtures/customerRecord');
-// app.get('/customers/:id/record', (req, res) => {
-// customerRecord.customer.systemIds.sv = `${req.params.id}`;
-//   res.send(customerRecord);
-// });
+const customerRecord = require('./fixtures/customerRecord');
+app.get('/customers/:id/record', (req, res) => {
+  customerRecord.customer.systemIds.sv = `${req.params.id}`;
+  res.send(customerRecord);
+});
 
 const customerNotes = require('./fixtures/customerNotes');
 app.get('/customers/:id/notes', (req, res) => {
@@ -70,11 +70,6 @@ app.get('/tenancies/:id', (req, res) => {
   const tenancyRecord = require('./fixtures/tenancyRecord');
 
   res.send(tenancyRecord);
-});
-
-app.get('/resident/:id', (req, res) => {
-  const residentRecord = require('./fixtures/residentRecord');
-  res.send(residentRecord);
 });
 
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
-import { FetchResidentRecord } from '../../Gateways';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -12,14 +11,9 @@ export default class TenancyDetailsPage extends Component {
 
   componentDidMount() {
     const tenancyId = this.props.match.params.id;
-    const residentId = this.props.match.params.residentId;
 
     FetchTenancyRecord(tenancyId).then(result => {
       this.setState({ tenancy: result.tenancy, fetching: false });
-    });
-
-    FetchResidentRecord(residentId).then(result => {
-      this.setState({ residents: result.resident, fetching: false });
     });
   }
 
@@ -64,7 +58,6 @@ export default class TenancyDetailsPage extends Component {
         >
           <p>Tenancy reference: {this.state.tenancy.id}</p>
         </div>
-
         <div
           className="lbh-container row details"
           data-test="residents-heading"
@@ -75,8 +68,78 @@ export default class TenancyDetailsPage extends Component {
           className="lbh-container row details"
           data-test="residents-full-name"
         >
-          {console.log('LOOK HERE!!!', this.state.residents)}
-          {/* {this.state.residents} */}
+          <a href="www.hackney.gov.uk">
+            {this.state.tenancy.residents[0].fullName}
+          </a>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Date of birth: {this.state.tenancy.residents[0].dob}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Mobile: {this.state.tenancy.residents[0].mobileNum}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Home: {this.state.tenancy.residents[0].homeNum}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Work: {this.state.tenancy.residents[0].workNum}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Email: {this.state.tenancy.residents[0].email}</p>
+        </div>
+
+        <div
+          className="lbh-container row details"
+          data-test="residents-full-name"
+        >
+          <a href="www.hackney.gov.uk">
+            {this.state.tenancy.residents[1].fullName}
+          </a>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Date of birth: {this.state.tenancy.residents[1].dob}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Mobile: {this.state.tenancy.residents[1].mobileNum}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Home: {this.state.tenancy.residents[1].homeNum}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Work: {this.state.tenancy.residents[1].workNum}</p>
+        </div>
+        <div
+          className="lbh-container row details"
+          data-test="residents-heading"
+        >
+          <p>Email: {this.state.tenancy.residents[1].email}</p>
         </div>
       </div>
     );
