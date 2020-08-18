@@ -83,9 +83,10 @@ export default class DetailsPage extends Component {
       .then(result => {
         if (result && result.success) {
           const uploadedDocs = result.documents.map(d => ({
-            type: 'document',
-            title: 'Uploaded Document',
+            type: 'upload',
+            title: 'Customer Uploaded Document',
             text: d.metadata.description,
+            filename: d.metadata.filename,
             system: 'EVIDENCE STORE',
             date: d.metadata.uploadedDate,
             user: d.metadata.requestedBy,

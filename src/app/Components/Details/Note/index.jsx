@@ -26,9 +26,6 @@ export default class Note extends Component {
       if (this.props.note.system === 'JIGSAW') {
         this.docUrl = `${process.env.REACT_APP_JIGSAW_DOCUMENT_API_URL}/customers/${this.props.note.userid}/documents/${this.props.note.id}`;
       }
-      if (this.props.note.system === 'EVIDENCE STORE') {
-        this.docUrl = this.props.note.docUrl;
-      }
     }
   }
 
@@ -58,71 +55,117 @@ export default class Note extends Component {
     }
   };
 
-  renderNoteContent = () => {
-    switch (this.props.note.type) {
-      case 'snapshot':
-        return (
-          <SnapshotNoteContent
-            snapshot={this.props.note}
-            trimmed={!this.state.expanded}
-            trimmedLength={this.maxNoteLength}
-            expandBtn={this.expandButton()}
-          />
-        );
-      default:
-        return (
-          <NoteContent
-            text={this.props.note.text}
-            trimmed={!this.state.expanded}
-            trimmedLength={this.maxNoteLength}
-            expandBtn={this.expandButton()}
-          />
-        );
-    }
+  renderNote = () => {
+    return (
+      <>
+        <div>
+          <strong>{this.props.note.title}</strong>
+        </div>
+        <NoteContent
+          text={this.props.note.text}
+          trimmed={!this.state.expanded}
+          trimmedLength={this.maxNoteLength}
+          expandBtn={this.expandButton()}
+        />
+      </>
+    );
+  };
+
+  renderSnapshot = () => {
+    return (
+      <>
+        <div>
+          <strong>{this.props.note.title}</strong>
+          <span className="dots-group">
+            {this.props.note.vulnerabilities.length > 0 && (
+              <span
+                className="vulnerabilities-dot"
+                data-testid="vulnerabilities-dot"
+              ></span>
+            )}
+            {this.props.note.assets.length > 0 && (
+              <span className="assets-dot" data-testid="assets-dot"></span>
+            )}
+          </span>
+        </div>
+        <SnapshotNoteContent
+          snapshot={this.props.note}
+          trimmed={!this.state.expanded}
+          trimmedLength={this.maxNoteLength}
+          expandBtn={this.expandButton()}
+        />
+      </>
+    );
+  };
+
+  renderDocument = () => {
+    const title = this.docUrl ? (
+      <button onClick={this.click} className="linkStyle govuk-link">
+        {this.props.note.title}
+      </button>
+    ) : (
+      this.props.note.title
+    );
+
+    return (
+      <>
+        <div>
+          <strong>{title}</strong>
+        </div>
+        <NoteContent
+          text={this.props.note.text}
+          trimmed={!this.state.expanded}
+          trimmedLength={this.maxNoteLength}
+          expandBtn={this.expandButton()}
+        />
+        <DocumentModal
+          open={this.state.showDoc}
+          onClose={this.closeDoc}
+          url={this.docUrl}
+        />
+      </>
+    );
+  };
+
+  renderUpload = () => {
+    return (
+      <>
+        <div>
+          <strong>{this.props.note.title}</strong>
+        </div>
+        <NoteContent
+          text={this.props.note.text}
+          trimmed={!this.state.expanded}
+          trimmedLength={this.maxNoteLength}
+          expandBtn={this.expandButton()}
+        />
+        <a href={this.props.note.docUrl}>{this.props.note.filename}</a>
+      </>
+    );
   };
 
   render() {
     const note = this.props.note;
+    let noteContent;
+
+    switch (this.props.note.type) {
+      case 'snapshot':
+        noteContent = this.renderSnapshot();
+        break;
+      case 'document':
+        noteContent = this.renderDocument();
+        break;
+      case 'upload':
+        noteContent = this.renderUpload();
+        break;
+      default:
+        noteContent = this.renderNote();
+        break;
+    }
     return (
       <tr>
         <td key="date">{moment(note.date).format('DD/MM/YYYY')}</td>
-        <td key="text">
-          <div>
-            <strong>
-              {this.docUrl ? (
-                <button onClick={this.click} className="linkStyle govuk-link">
-                  {note.title}
-                </button>
-              ) : (
-                <div>
-                  {note.title}
-                  {note.system === 'Snapshot' && (
-                    <span className="dots-group">
-                      {note.vulnerabilities.length > 0 && (
-                        <span
-                          className="vulnerabilities-dot"
-                          data-testid="vulnerabilities-dot"
-                        ></span>
-                      )}
-                      {note.assets.length > 0 && (
-                        <span
-                          className="assets-dot"
-                          data-testid="assets-dot"
-                        ></span>
-                      )}
-                    </span>
-                  )}
-                </div>
-              )}
-            </strong>
-          </div>
-          {this.renderNoteContent()}
-          <DocumentModal
-            open={this.state.showDoc}
-            onClose={this.closeDoc}
-            url={this.docUrl}
-          />
-        </td>
+        <td key="text">{noteContent}</td>
         <td key="sys">
           <p>
             <strong>{note.user}</strong>
