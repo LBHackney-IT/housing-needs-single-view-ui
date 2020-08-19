@@ -6,7 +6,6 @@ import QuickAccess from './QuickAccess';
 import SystemIds from './SystemIds';
 import Team from './Team';
 import AddressDetails from './AddressDetails';
-import PrototypesLink from './PrototypesLink';
 import ThingsToNote from './ThingsToNote';
 import RequestDocuments from './RequestDocuments';
 
@@ -19,7 +18,6 @@ export {
   SystemIds,
   Team,
   AddressDetails,
-  PrototypesLink,
   ThingsToNote,
   RequestDocuments
 };
