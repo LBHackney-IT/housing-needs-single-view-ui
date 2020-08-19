@@ -14,7 +14,6 @@ import {
   SystemIds,
   Team,
   AddressDetails,
-  PrototypesLink,
   ThingsToNote,
   RequestDocuments
 } from '../../Components/Details';
@@ -138,7 +137,6 @@ export default class DetailsPage extends Component {
             <Team customer={this.state.customer} />
             <SystemIds customer={this.state.customer} />
             <RequestDocuments customer={this.state.customer} />
-            <PrototypesLink />
           </div>
           <div className="details__right-column">
             <QuickAccess
