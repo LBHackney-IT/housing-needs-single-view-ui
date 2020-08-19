@@ -5,7 +5,7 @@ describe('Request documents', () => {
 
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/#request-documents');
+    cy.visit('http://localhost:3001');
   });
 
   it('displays the request documents button', () => {
