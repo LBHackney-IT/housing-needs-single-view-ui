@@ -9,7 +9,7 @@ describe('Tenancy Details Page', () => {
     it('Displays Tenancy Address', () => {
       cy.get('[data-test="tenancy-address"]').should(
         'contain',
-        '123 Kosher Avenue'
+        '1 Hill Street N16 5TT'
       );
     });
 
@@ -70,6 +70,17 @@ describe('Tenancy Details Page', () => {
       cy.get('[data-test="residents-email"]')
         .should('contain', 'Email:')
         .and('contain', 'sallyfisher90@email.com');
+    });
+
+    it('Displays Area and Patch Heading', () => {
+      cy.get('[data-test="area-patch-tenancy"]').should('contain', 'Tenancy:');
+    });
+
+    it('Displays Area Patch Tenancy', () => {
+      cy.get('[data-test="area-patch-list"]')
+        .should('contain', 'Homerton 1')
+        .and('contain', 'HN10')
+        .and('contain', 'Tony James');
     });
   });
 });

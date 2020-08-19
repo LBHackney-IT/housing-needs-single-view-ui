@@ -1,0 +1,62 @@
+.main lbh-container row details {
+  font-family: 'Open Sans' !important;
+}
+
+.lbh-container {
+  font-family: 'Open Sans';
+
+  p button {
+    text-decoration: underline;
+    color: #5094da;
+    font-size: 12px;
+    font-weight: 400;
+
+    &:visited {
+      color: #5094da;
+    }
+
+    &:hover {
+      color: blue;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    font-weight: 400;
+  }
+
+  h2 {
+    font-weight: 400;
+  }
+}
+
+#tenancy-area-patch-container {
+  display: flex;
+}
+
+#tenancy-full-address {
+  margin-bottom: 10px;
+}
+
+#tenancy-tile {
+  margin-bottom: 15px;
+}
+
+#area-patch-tile {
+  margin: 0 auto;
+}
+
+#area-patch-list {
+  list-style: none;
+  padding-left: 70px;
+}
+
+#residents-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#residents-tile {
+  display: flex;
+  margin-left: -60px;
+}
