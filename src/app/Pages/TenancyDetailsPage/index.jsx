@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
-import Resident from '../../Components/Resident';
+import Tenant from '../../Components/Tenant';
 import './index.scss';
 
 export default class TenancyDetailsPage extends Component {
@@ -83,27 +83,25 @@ export default class TenancyDetailsPage extends Component {
               className="lbh-container row details"
               data-test="area-patch-tenancy"
             >
-              <p>
+              <p id="area-patch-content" data-test="area-patch-content">
                 Tenancy:
-                <ul id="area-patch-list" data-test="area-patch-list">
-                  <li>Homerton 1</li>
-                  <li>HN10</li>
-                  <li>Tony James</li>
-                </ul>
+                <span id="area-patch-contents" data-test="area-patch-contents">
+                  HomertonFAKE <br /> HN10FAKE <br /> Tony JamesFAKE
+                </span>
               </p>
             </div>
           </div>
         </div>
 
         <div
-          id="residents-container"
+          id="tenant-container"
           className="lbh-container row details"
-          data-test="residents-heading"
+          data-test="tenant-heading"
         >
-          <h2 data-test="residents-header"> Residents</h2>
-          <div id="residents-tile">
-            {this.state.tenancy.residents.map((resident, index) => {
-              return <Resident key={index} {...resident} />;
+          <h2 data-test="tenant-header"> Residents</h2>
+          <div id="tenant-tile">
+            {this.state.tenancy.tenants.map((tenant, index) => {
+              return <Tenant key={index} {...tenant} />;
             })}
           </div>
         </div>

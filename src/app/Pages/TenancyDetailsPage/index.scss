@@ -1,7 +1,3 @@
-.main lbh-container row details {
-  font-family: 'Open Sans' !important;
-}
-
 .lbh-container {
   font-family: 'Open Sans';
 
@@ -22,11 +18,11 @@
   }
 
   h1 {
-    font-weight: 400;
+    font-weight: 500;
   }
 
   h2 {
-    font-weight: 400;
+    font-weight: 500;
   }
 }
 
@@ -46,17 +42,45 @@
   margin: 0 auto;
 }
 
-#area-patch-list {
-  list-style: none;
-  padding-left: 70px;
+#area-patch-content {
+  display: flex;
+  line-height: 25px;
 }
 
-#residents-container {
+#area-patch-contents {
+  margin-left: 5px;
+}
+
+#tenant-container {
   display: flex;
   flex-direction: column;
 }
 
-#residents-tile {
+#tenant-tile {
   display: flex;
   margin-left: -60px;
 }
+
+// .govuk-template__body {
+//   font-family: 'Open Sans' !important;
+// }
+
+// body #root {
+//   font-family: 'Open Sans' !important;
+// }
+
+// body main#main-content.lbh-main-wrap {
+//   font-family: 'Open Sans' !important;
+// }
+
+// .main lbh-container row details {
+//   font-family: 'Open Sans' !important;
+// }
+
+// * {
+//   font-family: 'Open Sans' !important;
+// }
+
+// .body.govuk-template__body.language-markup.js-enabled #root {
+//   font-family: 'Open Sans' !important;
+// }

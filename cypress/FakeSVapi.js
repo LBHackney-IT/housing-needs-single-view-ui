@@ -66,10 +66,4 @@ app.post('/customers/:id/vulnerabilities', (req, res) => {
   );
 });
 
-app.get('/tenancies/:id', (req, res) => {
-  const tenancyRecord = require('./fixtures/tenancyRecord');
-
-  res.send(tenancyRecord);
-});
-
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));

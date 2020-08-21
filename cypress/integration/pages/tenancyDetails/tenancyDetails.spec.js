@@ -1,5 +1,39 @@
 /// <reference types="cypress" />
 describe('Tenancy Details Page', () => {
+  
+  const tenancy = {
+  "tenancy": {
+    "id": "123456/1",
+    "address": "123 Kosher Avenue",
+    "type": "Secure",
+    "startDate": "1992-06-13",
+    "tenants": [
+      {
+        "title": "Mrs",
+        "forename": "Joan",
+        "surname": "Fisher",
+        "fullName": "Mrs Joan Fisher",
+        "dob": "1970-02-30",
+        "mobileNum": "07777123456",
+        "homeNum": "02088881234",
+        "workNum": "02012345678",
+        "email": "mjf@email.com"
+      },
+      {
+        "title": "Miss",
+        "forename": "Sally",
+        "surname": "Fisher",
+        "fullName": "Miss Sally Fisher",
+        "dob": "1990-03-21",
+        "mobileNum": "07777456789",
+        "homeNum": "02088881234",
+        "workNum": "02077775678",
+        "email": "sallyfisher90@email.com"
+      }
+    ]
+  }
+}
+  
   beforeEach(() => {
     cy.setHackneyCookie(true);
     cy.visit('http://localhost:3001/tenancies/abc');
@@ -36,38 +70,38 @@ describe('Tenancy Details Page', () => {
     });
 
     it('Displays Residents Header', () => {
-      cy.get('[data-test="residents-header"]').should('contain', 'Residents');
+      cy.get('[data-test="tenant-header"]').should('contain', 'Residents');
     });
 
     it('Displays Resident Full Name', () => {
-      cy.get('[data-test="residents-fullName"]').should(
+      cy.get('[data-test="tenant-fullName"]').should(
         'contain',
         'Mrs Joan Fisher'
       );
     });
 
     it('Displays Resident Date Of Birth', () => {
-      cy.get('[data-test="residents-dob"]').should('contain', 'Date of birth:');
+      cy.get('[data-test="tenant-dob"]').should('contain', 'Date of birth:');
     });
 
     it('Displays Resident Mobile Number', () => {
-      cy.get('[data-test="residents-mobileNum"]').should('contain', 'Mobile');
+      cy.get('[data-test="tenant-mobileNum"]').should('contain', 'Mobile');
     });
 
     it('Displays Resident Home Number', () => {
-      cy.get('[data-test="residents-homeNum"]')
+      cy.get('[data-test="tenant-homeNum"]')
         .should('contain', 'Home')
         .and('contain', '02088881234');
     });
 
     it('Displays Resident Work Number', () => {
-      cy.get('[data-test="residents-workNum"]')
+      cy.get('[data-test="tenant-workNum"]')
         .should('contain', 'Work:')
         .and('contain', '02077775678');
     });
 
     it('Displays Resident Email', () => {
-      cy.get('[data-test="residents-email"]')
+      cy.get('[data-test="tenant-email"]')
         .should('contain', 'Email:')
         .and('contain', 'sallyfisher90@email.com');
     });
@@ -77,7 +111,7 @@ describe('Tenancy Details Page', () => {
     });
 
     it('Displays Area Patch Tenancy', () => {
-      cy.get('[data-test="area-patch-list"]')
+      cy.get('[data-test="area-patch-content"]')
         .should('contain', 'Homerton 1')
         .and('contain', 'HN10')
         .and('contain', 'Tony James');
