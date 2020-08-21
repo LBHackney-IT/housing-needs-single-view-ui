@@ -1,39 +1,38 @@
 /// <reference types="cypress" />
 describe('Tenancy Details Page', () => {
-  
   const tenancy = {
-  "tenancy": {
-    "id": "123456/1",
-    "address": "123 Kosher Avenue",
-    "type": "Secure",
-    "startDate": "1992-06-13",
-    "tenants": [
-      {
-        "title": "Mrs",
-        "forename": "Joan",
-        "surname": "Fisher",
-        "fullName": "Mrs Joan Fisher",
-        "dob": "1970-02-30",
-        "mobileNum": "07777123456",
-        "homeNum": "02088881234",
-        "workNum": "02012345678",
-        "email": "mjf@email.com"
-      },
-      {
-        "title": "Miss",
-        "forename": "Sally",
-        "surname": "Fisher",
-        "fullName": "Miss Sally Fisher",
-        "dob": "1990-03-21",
-        "mobileNum": "07777456789",
-        "homeNum": "02088881234",
-        "workNum": "02077775678",
-        "email": "sallyfisher90@email.com"
-      }
-    ]
-  }
-}
-  
+    tenancy: {
+      id: '123456/1',
+      address: '1 Hill Street N16 5TT',
+      type: 'Secure',
+      startDate: '1992-06-13',
+      tenants: [
+        {
+          title: 'Mrs',
+          forename: 'Joan',
+          surname: 'Fisher',
+          fullName: 'Mrs Joan Fisher',
+          dob: '1970-02-30',
+          mobileNum: '07777123456',
+          homeNum: '02088881234',
+          workNum: '02012345678',
+          email: 'mjf@email.com'
+        },
+        {
+          title: 'Miss',
+          forename: 'Sally',
+          surname: 'Fisher',
+          fullName: 'Miss Sally Fisher',
+          dob: '1990-03-21',
+          mobileNum: '07777456789',
+          homeNum: '02088881234',
+          workNum: '02077775678',
+          email: 'sallyfisher90@email.com'
+        }
+      ]
+    }
+  };
+
   beforeEach(() => {
     cy.setHackneyCookie(true);
     cy.visit('http://localhost:3001/tenancies/abc');
@@ -107,12 +106,16 @@ describe('Tenancy Details Page', () => {
     });
 
     it('Displays Area and Patch Heading', () => {
-      cy.get('[data-test="area-patch-tenancy"]').should('contain', 'Tenancy:');
+      cy.get('[data-test="area-patch-heading"]').should(
+        'contain',
+        'Area and Patch'
+      );
     });
 
-    it('Displays Area Patch Tenancy', () => {
+    it('Displays Area and Patch Tenancy Content', () => {
       cy.get('[data-test="area-patch-content"]')
-        .should('contain', 'Homerton 1')
+        .should('contain', 'Tenancy:')
+        .and('contain', 'Homerton 1')
         .and('contain', 'HN10')
         .and('contain', 'Tony James');
     });

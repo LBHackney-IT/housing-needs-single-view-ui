@@ -81,7 +81,6 @@ export default class TenancyDetailsPage extends Component {
             <div
               id="area-patch-tenancy"
               className="lbh-container row details"
-              data-test="area-patch-tenancy"
             >
               <p id="area-patch-content" data-test="area-patch-content">
                 Tenancy:
