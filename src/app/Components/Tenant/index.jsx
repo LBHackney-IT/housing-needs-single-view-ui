@@ -10,7 +10,11 @@ const tenant = props => {
           className="lbh-container row details"
           data-test="tenants-fullName"
         >
-          <a id="tenant-fullname-link" href="www.hackney.gov.uk">
+          <a
+            id="tenant-fullname-link"
+            href="www.hackney.gov.uk"
+            data-test="tenant-fullname-link"
+          >
             {props.title} {props.forename} {props.surname}
           </a>
         </div>

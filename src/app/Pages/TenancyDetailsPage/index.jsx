@@ -78,10 +78,7 @@ export default class TenancyDetailsPage extends Component {
             >
               <h2>Area and Patch</h2>
             </div>
-            <div
-              id="area-patch-tenancy"
-              className="lbh-container row details"
-            >
+            <div id="area-patch-tenancy" className="lbh-container row details">
               <p id="area-patch-content" data-test="area-patch-content">
                 Tenancy:
                 <span id="area-patch-contents" data-test="area-patch-contents">
@@ -99,6 +96,7 @@ export default class TenancyDetailsPage extends Component {
         >
           <h2 data-test="tenant-header"> Residents</h2>
           <div id="tenant-tile">
+           
             {this.state.tenancy.tenants.map((tenant, index) => {
               return <Tenant key={index} {...tenant} />;
             })}
