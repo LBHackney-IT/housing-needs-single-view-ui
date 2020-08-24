@@ -35,14 +35,14 @@ describe('Tenancy Details Page', () => {
 
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/tenancies/abc');
+    cy.visit('http://localhost:3001/tenancies/123');
   });
 
   describe('Tenancy details', () => {
     it('Displays Tenancy Address', () => {
       cy.get('[data-test="tenancy-address"]').should(
         'contain',
-        '1 Hill Street N16 5TT'
+        '12 Hill Street N16 5TT'
       );
     });
 
