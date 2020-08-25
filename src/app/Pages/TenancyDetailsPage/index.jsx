@@ -31,7 +31,7 @@ export default class TenancyDetailsPage extends Component {
     }
 
     return (
-      <div>
+      <div id="component-wrapper">
         <div className="lbh-container row details">
           <p>
             <button onClick={goBack} className="govuk-back-link">
@@ -96,7 +96,6 @@ export default class TenancyDetailsPage extends Component {
         >
           <h2 data-test="tenant-header"> Residents</h2>
           <div id="tenant-tile">
-           
             {this.state.tenancy.tenants.map((tenant, index) => {
               return <Tenant key={index} {...tenant} />;
             })}
