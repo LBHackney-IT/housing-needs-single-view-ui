@@ -139,7 +139,14 @@ export default class Note extends Component {
           trimmedLength={this.maxNoteLength}
           expandBtn={this.expandButton()}
         />
-        <a href={this.props.note.docUrl}>{this.props.note.filename}</a>
+        <button onClick={this.click} className="linkStyle govuk-link">
+          {this.props.note.filename}
+        </button>
+        <DocumentModal
+          open={this.state.showDoc}
+          onClose={this.closeDoc}
+          url={this.props.note.docUrl}
+        />
       </>
     );
   };
