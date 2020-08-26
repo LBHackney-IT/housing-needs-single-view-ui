@@ -58,7 +58,7 @@
 
 #tenant-tile {
   display: flex;
-  margin-left: -60px;
+  margin-left: -230px;
 }
 
 @media (min-width: 250px) and (max-width: 374px) {
@@ -67,9 +67,15 @@
   }
 }
 
-@media (min-width: 375px) and (max-width: 767px) {
+@media (min-width: 375px) and (max-width: 640px) {
   #tenant-tile {
     margin-left: -30px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+  #tenant-tile {
+    margin-left: -60px;
   }
 }
 
@@ -77,14 +83,89 @@
   #tenant-tile {
     margin-left: -60px;
   }
+
+  #tenancy-area-patch-container {
+    margin-left: 0;
+  }
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 992px) and (max-width: 1020px) {
   #component-wrapper {
     margin-left: 100px;
   }
 
   #tenant-tile {
-    margin-left: -175px;
+    margin-left: -170px;
+  }
+
+  #tenancy-area-patch-container {
+    margin-left: 0px;
+  }
+}
+
+@media (min-width: 1021px) and (max-width: 1190px) {
+  #component-wrapper {
+    margin-left: 100px;
+  }
+
+  #tenant-tile {
+    margin-left: -170px;
+  }
+}
+
+@media (min-width: 1191px) and (max-width: 1300px) {
+  #component-wrapper {
+    margin-left: 100px;
+  }
+}
+
+@media (min-width: 1301px) and (max-width: 1440px) {
+  #tenancy-area-patch-container {
+    margin-left: 150px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 1460px) {
+  #tenancy-area-patch-container {
+    margin-left: 150px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+@media (min-width: 1461px) and (max-width: 1549px) {
+  #tenancy-area-patch-container {
+    margin-left: 160px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+@media (min-width: 1550px) and (max-width: 2559px) {
+  #tenancy-area-patch-container {
+    margin-left: 200px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+// macbook screen size
+@media (min-width: 2560px) {
+  #tenancy-area-patch-container {
+    margin-left: 910px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
   }
 }

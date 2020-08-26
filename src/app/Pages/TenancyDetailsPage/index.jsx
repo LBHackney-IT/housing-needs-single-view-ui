@@ -82,7 +82,7 @@ export default class TenancyDetailsPage extends Component {
               <p id="area-patch-content" data-test="area-patch-content">
                 Tenancy:
                 <span id="area-patch-contents" data-test="area-patch-contents">
-                  HomertonFAKE <br /> HN10FAKE <br /> Tony JamesFAKE
+                  Homerton-dummy <br /> HN10-dummy <br /> Tony James-dummy
                 </span>
               </p>
             </div>
