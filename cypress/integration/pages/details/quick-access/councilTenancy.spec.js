@@ -1,7 +1,7 @@
 describe('Council Tenancy', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/customers/5/view');
+    cy.visit('http://localhost:3001/customers/5');
   });
 
   const pathToMoreDetails =

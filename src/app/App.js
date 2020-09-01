@@ -28,7 +28,7 @@ export default class App extends Component {
             <Route path="/login" component={LoginPage} />
             <PrivateRoute path="/" exact component={SearchPage} />
             <PrivateRoute path="/search" component={ResultsPage} />
-            <PrivateRoute path="/customers/:id/view" component={DetailsPage} />
+            <PrivateRoute path="/customers/:id" component={DetailsPage} />
             <Route path="/tenancies/:id" component={TenancyDetailsPage} />
           </Router>
         </main>

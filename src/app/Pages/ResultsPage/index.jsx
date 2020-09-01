@@ -40,7 +40,7 @@ export default class ResultsPage extends Component {
       .then(result => {
         this.setState({
           connecting: false,
-          redirect: `/customers/${result.customer.id}/view`
+          redirect: `/customers/${result.customer.id}`
         });
       })
       .catch(err => console.log(err));
