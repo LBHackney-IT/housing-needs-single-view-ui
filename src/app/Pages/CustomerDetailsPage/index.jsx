@@ -21,7 +21,7 @@ import moment from 'moment';
 import { goBack } from '../../lib/Utils';
 import { isMemberOfGroups } from '../../lib/Cookie';
 
-export default class DetailsPage extends Component {
+export default class CustomerDetailsPage extends Component {
   constructor(props) {
     super(props);
 
