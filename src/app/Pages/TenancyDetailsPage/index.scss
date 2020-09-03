@@ -1,0 +1,171 @@
+.lbh-container {
+  font-family: 'Open Sans';
+
+  p button {
+    text-decoration: underline;
+    color: #5094da;
+    font-size: 12px;
+    font-weight: 400;
+
+    &:visited {
+      color: #5094da;
+    }
+
+    &:hover {
+      color: blue;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+}
+
+#tenancy-area-patch-container {
+  display: flex;
+}
+
+#tenancy-full-address {
+  margin-bottom: 10px;
+}
+
+#tenancy-tile {
+  margin-bottom: 15px;
+}
+
+#area-patch-tile {
+  margin: 0 auto;
+}
+
+#area-patch-content {
+  display: flex;
+  line-height: 25px;
+}
+
+#area-patch-contents {
+  margin-left: 5px;
+}
+
+#tenant-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#tenant-tile {
+  display: flex;
+  margin-left: -230px;
+}
+
+@media (min-width: 250px) and (max-width: 374px) {
+  #tenant-tile {
+    margin-left: -30px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 640px) {
+  #tenant-tile {
+    margin-left: -30px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+  #tenant-tile {
+    margin-left: -60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #tenant-tile {
+    margin-left: -60px;
+  }
+
+  #tenancy-area-patch-container {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1020px) {
+  #component-wrapper {
+    margin-left: 100px;
+  }
+
+  #tenant-tile {
+    margin-left: -170px;
+  }
+
+  #tenancy-area-patch-container {
+    margin-left: 0px;
+  }
+}
+
+@media (min-width: 1021px) and (max-width: 1190px) {
+  #component-wrapper {
+    margin-left: 100px;
+  }
+
+  #tenant-tile {
+    margin-left: -170px;
+  }
+}
+
+@media (min-width: 1191px) and (max-width: 1300px) {
+  #component-wrapper {
+    margin-left: 100px;
+  }
+}
+
+@media (min-width: 1301px) and (max-width: 1440px) {
+  #tenancy-area-patch-container {
+    margin-left: 150px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 1460px) {
+  #tenancy-area-patch-container {
+    margin-left: 150px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+@media (min-width: 1461px) and (max-width: 1549px) {
+  #tenancy-area-patch-container {
+    margin-left: 160px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+@media (min-width: 1550px) and (max-width: 2559px) {
+  #tenancy-area-patch-container {
+    margin-left: 200px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}
+
+// macbook screen size
+@media (min-width: 2560px) {
+  #tenancy-area-patch-container {
+    margin-left: 910px;
+  }
+
+  #tenant-tile {
+    margin-left: -250px;
+  }
+}

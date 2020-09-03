@@ -2,7 +2,7 @@
 describe('Details Page', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/customers/5/view');
+    cy.visit('http://localhost:3001/customers/5');
   });
 
   describe('System IDs', () => {
@@ -72,7 +72,7 @@ describe('Details Page', () => {
 
     it('displays the Shared Plans quick view box if user is in valid group', () => {
       cy.logInWithSharedPlanGroup(true);
-      cy.visit('http://localhost:3001/customers/5/view');
+      cy.visit('http://localhost:3001/customers/5');
       cy.get(selector).should('exist');
       cy.get(`${selector} ul`).should('not.be.empty');
     });
@@ -83,30 +83,30 @@ describe('Details Page', () => {
     const assets = '[data-testid="snapshot-assets"]';
 
     it('displays the things to note container', () => {
-      cy.visit('http://localhost:3001/customers/10/view');
+      cy.visit('http://localhost:3001/customers/10');
       cy.get('[data-testid="things-to-note"]').should('exist');
     });
 
     it('hides the things to note container if not in valid group', () => {
       cy.setHackneyCookie(false);
-      cy.visit('http://localhost:3001/customers/10/view');
+      cy.visit('http://localhost:3001/customers/10');
       cy.get('[data-testid="things-to-note"]').should('not.exist');
     });
 
     it('displays the latest snapshot', () => {
-      cy.visit('http://localhost:3001/customers/10/view');
+      cy.visit('http://localhost:3001/customers/10');
       cy.get(vulnerabilities).should('exist');
       cy.get(assets).should('exist');
     });
 
     it('does not display latest snapshot if there are no snapshots', () => {
-      cy.visit('http://localhost:3001/customers/1/view');
+      cy.visit('http://localhost:3001/customers/1');
       cy.get(vulnerabilities).should('not.exist');
       cy.get(assets).should('not.exist');
     });
 
     it('redirects to the correct url after creating a new snapshot', () => {
-      cy.visit('http://localhost:3001/customers/10/view');
+      cy.visit('http://localhost:3001/customers/10');
       cy.get(vulnerabilities).should('exist');
 
       cy.get('[data-testid=add-vulnerability-snapshot-button]').click({

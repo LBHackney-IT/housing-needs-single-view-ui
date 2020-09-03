@@ -1,7 +1,7 @@
 describe('Addresses', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/customers/10/view');
+    cy.visit('http://localhost:3001/customers/10');
   });
 
   describe('Where is this from?', () => {

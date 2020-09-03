@@ -1,7 +1,7 @@
 describe('Case Information', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/customers/5/view');
+    cy.visit('http://localhost:3001/customers/5');
   });
 
   const pathToUl = '#quickAccess > div > div:nth-child(1) > div > ul';

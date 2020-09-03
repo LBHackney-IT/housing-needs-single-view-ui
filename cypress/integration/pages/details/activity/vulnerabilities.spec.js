@@ -5,13 +5,13 @@ describe('Vulnerabilities', () => {
 
   it('Does not display snapshot in the activity feed if not in valid group', () => {
     cy.setHackneyCookie(false);
-    cy.visit('http://localhost:3001/customers/1/view');
+    cy.visit('http://localhost:3001/customers/1');
 
     cy.get('.activity > table > tbody').should('not.contain', 'Snapshot');
   });
 
   it('Displays snapshot in the activity feed', () => {
-    cy.visit('http://localhost:3001/customers/1/view');
+    cy.visit('http://localhost:3001/customers/1');
 
     cy.get('.activity > table > tbody > tr:nth-child(2)').should(
       'contain',
@@ -26,13 +26,13 @@ describe('Vulnerabilities', () => {
   });
 
   it('Does not display snapshot in the activity feed if customer has no snapshots', () => {
-    cy.visit('http://localhost:3001/customers/5/view');
+    cy.visit('http://localhost:3001/customers/5');
 
     cy.get('.activity > table > tbody').should('not.contain', 'Snapshot');
   });
 
   it('Displays orange and blue dots next to the title if a snapshot has an asset and vulnerability', () => {
-    cy.visit('http://localhost:3001/customers/1/view');
+    cy.visit('http://localhost:3001/customers/1');
 
     cy.get('[data-testid=assets-dot]')
       .eq(0)
@@ -43,7 +43,7 @@ describe('Vulnerabilities', () => {
   });
 
   it('Displays orange dot next to the title if a snapshot has an asset', () => {
-    cy.visit('http://localhost:3001/customers/1/view');
+    cy.visit('http://localhost:3001/customers/1');
 
     cy.get('[data-testid=assets-dot]')
       .eq(2)
@@ -51,7 +51,7 @@ describe('Vulnerabilities', () => {
   });
 
   it('Displays blue dot next to the title if a snapshot has a vulnerability', () => {
-    cy.visit('http://localhost:3001/customers/1/view');
+    cy.visit('http://localhost:3001/customers/1');
 
     cy.get('[data-testid=vulnerabilities-dot]')
       .eq(2)

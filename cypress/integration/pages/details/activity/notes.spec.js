@@ -1,7 +1,7 @@
 describe('Read more', () => {
   beforeEach(() => {
     cy.setHackneyCookie(true);
-    cy.visit('http://localhost:3001/customers/5/view');
+    cy.visit('http://localhost:3001/customers/5');
   });
 
   it('Displays read more button if note is longer than 128 characters', () => {
