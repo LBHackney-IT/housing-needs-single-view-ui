@@ -12,7 +12,7 @@ const tenant = props => {
         >
           <a
             id="tenant-fullname-link"
-            href="www.hackney.gov.uk"
+            href={`/search?firstName=${props.forename}&lastName=${props.surname}`}
             data-test="tenant-fullname-link"
           >
             {props.title} {props.forename} {props.surname}
