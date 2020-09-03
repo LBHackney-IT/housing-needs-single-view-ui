@@ -26,7 +26,7 @@ describe('Tenancy Details Page', () => {
     it('Displays Tenancy Start Date', () => {
       cy.get('[data-test="tenancy-start-date"]')
         .should('contain', 'Tenancy start date:')
-        .and('contain', '1992-06-13');
+        .and('contain', '13/06/1992');
     });
 
     it('Displays Tenancy Reference', () => {
@@ -79,12 +79,10 @@ describe('Tenancy Details Page', () => {
       );
     });
 
-    // it('Displays Area and Patch Tenancy Content', () => {
-    //   cy.get('[data-test="area-patch-content"]')
-    //     .should('contain', 'Tenancy:')
-    //     .and('contain', 'Homerton 1')
-    //     .and('contain', 'HN10')
-    //     .and('contain', 'Tony James');
-    // });
+    it('Displays Area and Patch Tenancy Content', () => {
+      cy.get('[data-test="area-patch-content"]')
+        .should('contain', 'Income Collection Patch:')
+        .and('contain', '105')
+    });
   });
 });
