@@ -85,20 +85,16 @@ describe('Tenancy Details Page', () => {
         .and('contain', '105');
     });
 
-    it('Displays the "Start New Housing Process" button'),
-      () => {
-        cy.get('button#newTenancy').should(
-          'contain',
-          'Start New Tenancy Process'
-        );
-      };
+    it('Displays the "Start New Housing Process" button', () => {
+      cy.get('button#newTenancy').should(
+        'contain',
+        'Start New Tenancy Process'
+      );
+    });
 
-    it(
-      'Does not display the "Start New Housing Process" button if not in the correct group'
-    ),
-      () => {
-        cy.logInAsHousingNeedsOfficer(true);
-        cy.get('button#newTenancy').should('not.exist');
-      };
+    it('Does not display the "Start New Housing Process" button if not in the correct group', () => {
+      cy.logInAsHousingNeedsOfficer(true);
+      cy.get('button#newTenancy').should('not.exist');
+    });
   });
 });
