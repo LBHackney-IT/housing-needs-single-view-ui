@@ -135,6 +135,7 @@ export default class TenancyDetailsPage extends Component {
           {isMemberOfGroups(['HOUSING_OFFICER', 'AREA_HOUSING_MANAGER']) && (
             <button
               onClick={this.startTenancyProcess}
+              id="newTenancy"
               className="govuk-button lbh-button"
               type="submit"
             >
