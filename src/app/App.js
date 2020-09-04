@@ -4,7 +4,7 @@ import Phase from './Components/Phase';
 import PrivateRoute from './Components/PrivateRoute';
 import SearchPage from './Pages/SearchPage';
 import ResultsPage from './Pages/ResultsPage';
-import DetailsPage from './Pages/DetailsPage';
+import CustomerDetailsPage from './Pages/CustomerDetailsPage';
 import TenancyDetailsPage from './Pages/TenancyDetailsPage';
 
 import LoginPage from './Pages/LoginPage';
@@ -28,7 +28,7 @@ export default class App extends Component {
             <Route path="/login" component={LoginPage} />
             <PrivateRoute path="/" exact component={SearchPage} />
             <PrivateRoute path="/search" component={ResultsPage} />
-            <PrivateRoute path="/customers/:id" component={DetailsPage} />
+            <PrivateRoute path="/customers/:id" component={CustomerDetailsPage} />
             <Route path="/tenancies/:id" component={TenancyDetailsPage} />
           </Router>
         </main>

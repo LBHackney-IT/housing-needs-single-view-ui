@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
 import Tenant from '../../Components/Tenant';
+import moment from 'moment';
 import './index.scss';
+
+function tenancyType(code){
+  return {
+    'SEC': 'Secure',
+    'INT': 'Introductory'
+  }[code] || code
+}
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -55,13 +63,13 @@ export default class TenancyDetailsPage extends Component {
               <h2>Tenancy</h2>
             </div>
             <div className="lbh-container row details" data-test="tenancy-type">
-              <p>Tenancy type: {this.state.tenancy.type}</p>
+              <p>Tenancy type: {tenancyType(this.state.tenancy.type)}</p>
             </div>
             <div
               className="lbh-container row details"
               data-test="tenancy-start-date"
             >
-              <p>Tenancy start date: {this.state.tenancy.startDate}</p>
+              <p>Tenancy start date: {moment(this.state.tenancy.startDate).format('DD/MM/YYYY')}</p>
             </div>
             <div
               className="lbh-container row details"
@@ -78,11 +86,16 @@ export default class TenancyDetailsPage extends Component {
             >
               <h2>Area and Patch</h2>
             </div>
-            <div id="area-patch-tenancy" className="lbh-container row details">
-              <p id="area-patch-content" data-test="area-patch-content">
-                Tenancy:
+            <div id="area-patch" className="lbh-container details" data-test="area-patch-content">
+              <p>
+                Tenancy Patch:
                 <span id="area-patch-contents" data-test="area-patch-contents">
-                  Homerton-dummy <br /> HN10-dummy <br /> Tony James-dummy
+                </span>
+              </p>
+              <p>
+                Income Collection Patch:
+                <span id="area-patch-contents" data-test="area-patch-contents">
+                  {this.state.tenancy.incomeCollectionPatch}
                 </span>
               </p>
             </div>
