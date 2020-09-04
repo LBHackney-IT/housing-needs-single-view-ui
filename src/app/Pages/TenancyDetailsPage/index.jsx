@@ -31,7 +31,7 @@ export default class TenancyDetailsPage extends Component {
   }
 
   startTenancyProcess = () => {
-    window.location.href = `${process.env.REACT_APP_MANAGE_A_TENANCY_APP_URL}/processes/new?tag_ref=${this.props.match.params.id}`;
+    window.location.href = `${process.env.REACT_APP_MANAGE_A_TENANCY_APP_URL}/tasks/new?tag_ref=${this.props.match.params.id}`;
   };
 
   render() {
