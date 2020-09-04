@@ -19,7 +19,7 @@ export default class TenancyDetailsPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { notes: [], fetching: true, redirect: false };
+    this.state = { notes: [], fetching: true };
   }
 
   componentDidMount() {
