@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 describe('Results Page', () => {
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingNeedsOfficer(true);
   });
 
   describe('Connect records', () => {

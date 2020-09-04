@@ -4,7 +4,7 @@ describe('Request documents', () => {
   const requestDocsError = '[data-testid="create-document-request-error"]';
 
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingNeedsOfficer(true);
     cy.visit('http://localhost:3001');
   });
 

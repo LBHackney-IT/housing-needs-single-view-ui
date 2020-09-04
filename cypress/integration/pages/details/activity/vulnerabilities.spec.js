@@ -1,10 +1,10 @@
 describe('Vulnerabilities', () => {
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingNeedsOfficer(true);
   });
 
   it('Does not display snapshot in the activity feed if not in valid group', () => {
-    cy.setHackneyCookie(false);
+    cy.logInAsHousingNeedsOfficer(false);
     cy.visit('http://localhost:3001/customers/1');
 
     cy.get('.activity > table > tbody').should('not.contain', 'Snapshot');

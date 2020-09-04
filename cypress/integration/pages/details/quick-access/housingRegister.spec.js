@@ -1,6 +1,6 @@
 describe('Housing Register', () => {
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingNeedsOfficer(true);
     cy.visit('http://localhost:3001/customers/5');
   });
 

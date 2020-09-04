@@ -2,7 +2,7 @@
 describe('Search', () => {
   describe('When not logged in', () => {
     it('Does not log into Single View with an invalid token', () => {
-      cy.setHackneyCookie(false);
+      cy.logInAsHousingNeedsOfficer(false);
       cy.visit('http://localhost:3001');
       cy.get('body').should('contain', 'Please log in');
     });
@@ -10,7 +10,7 @@ describe('Search', () => {
 
   describe('When logged in', () => {
     beforeEach(() => {
-      cy.setHackneyCookie(true);
+      cy.logInAsHousingNeedsOfficer(true);
     });
 
     it('Logs into Single View with a valid token', () => {

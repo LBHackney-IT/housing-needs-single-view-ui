@@ -35,7 +35,7 @@ const logInWithGroups = groups => {
   });
 };
 
-const setHackneyCookie = isValidGroup => {
+const logInAsHousingNeedsOfficer = isValidGroup => {
   const group = isValidGroup
     ? 'housingneeds-singleview-beta'
     : 'some-other-group';
@@ -56,6 +56,6 @@ const logInAsHousingOfficer = manager => {
 };
 
 Cypress.Commands.add('logInWithSharedPlanGroup', logInWithSharedPlanGroup);
-Cypress.Commands.add('setHackneyCookie', setHackneyCookie);
+Cypress.Commands.add('logInAsHousingNeedsOfficer', logInAsHousingNeedsOfficer);
 Cypress.Commands.add('logInAsHousingOfficer', logInAsHousingOfficer);
 Cypress.Commands.add('loginWithGroups', logInWithGroups);
