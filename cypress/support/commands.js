@@ -53,6 +53,7 @@ const logInAsHousingOfficer = manager => {
   const groups = manager
     ? ['area-housing-manager-dev']
     : ['housing-officer-dev'];
+  logInWithGroups(groups);
 };
 
 Cypress.Commands.add('logInWithSharedPlanGroup', logInWithSharedPlanGroup);

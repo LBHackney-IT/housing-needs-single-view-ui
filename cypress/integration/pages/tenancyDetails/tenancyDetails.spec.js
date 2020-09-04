@@ -94,6 +94,7 @@ describe('Tenancy Details Page', () => {
 
     it('Does not display the "Start New Housing Process" button if not in the correct group', () => {
       cy.logInAsHousingNeedsOfficer(true);
+      cy.visit('http://localhost:3001/tenancies/123');
       cy.get('button#newTenancy').should('not.exist');
     });
   });
