@@ -26,21 +26,8 @@
 
 import jwt from 'jsonwebtoken';
 
-const setHackneyCookie = isValidGroup => {
-  const group = isValidGroup
-    ? 'housingneeds-singleview-beta'
-    : 'some-other-group';
-  const token = jwt.sign({ groups: [group] }, 'a-secure-signature');
-  cy.setCookie('hackneyToken', token, {
-    url: 'http://localhost:3001',
-    domain: 'localhost'
-  });
-};
-
-const logInWithSharedPlanGroup = isValidGroup => {
-  const groups = isValidGroup
-    ? ['shared-plan-sv', 'housingneeds-singleview-beta']
-    : ['housingneeds-singleview-beta'];
+const logInWithGroups = groups => {
+  if (typeof groups.length === 'undefined') groups = [groups];
   const token = jwt.sign({ groups }, 'a-secure-signature');
   cy.setCookie('hackneyToken', token, {
     url: 'http://localhost:3001',
@@ -48,5 +35,27 @@ const logInWithSharedPlanGroup = isValidGroup => {
   });
 };
 
+const setHackneyCookie = isValidGroup => {
+  const group = isValidGroup
+    ? 'housingneeds-singleview-beta'
+    : 'some-other-group';
+  logInWithGroups([group]);
+};
+
+const logInWithSharedPlanGroup = isValidGroup => {
+  const groups = isValidGroup
+    ? ['shared-plan-singleview', 'housingneeds-singleview-beta']
+    : ['housingneeds-singleview-beta'];
+  logInWithGroups(groups);
+};
+
+const logInAsHousingOfficer = manager => {
+  const groups = manager
+    ? ['area-housing-manager-dev']
+    : ['housing-officer-dev'];
+};
+
 Cypress.Commands.add('logInWithSharedPlanGroup', logInWithSharedPlanGroup);
 Cypress.Commands.add('setHackneyCookie', setHackneyCookie);
+Cypress.Commands.add('logInAsHousingOfficer', logInAsHousingOfficer);
+Cypress.Commands.add('loginWithGroups', logInWithGroups);
