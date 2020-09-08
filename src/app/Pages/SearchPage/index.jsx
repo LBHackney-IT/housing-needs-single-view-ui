@@ -79,6 +79,99 @@ export default class SearchPage extends Component {
             </button>
           </div>
         </form>
+
+        <h2>
+          Search by address for Council tenancies, leaseholders or freeholders
+        </h2>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  id="current-tenants"
+                  name="search-by-address"
+                  type="radio"
+                  value="current-tenants"
+                />
+                <label
+                  class="govuk-label govuk-radios__label"
+                  for="current-tenants"
+                >
+                  Current tenants
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  id="Former tenants"
+                  name="search-by-address"
+                  type="radio"
+                  value="Former tenants"
+                />
+                <label
+                  class="govuk-label govuk-radios__label"
+                  for="former-tenants"
+                >
+                  Former tenants
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  id="where-do-you-live"
+                  name="search-by-address"
+                  type="radio"
+                  value="england"
+                />
+                <label
+                  class="govuk-label govuk-radios__label"
+                  for="leaseholders"
+                >
+                  Leaseholders
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input
+                  class="govuk-radios__input"
+                  id="where-do-you-live"
+                  name="search-by-address"
+                  type="radio"
+                  value="england"
+                />
+                <label
+                  class="govuk-label govuk-radios__label"
+                  for="freeholders"
+                >
+                  Freeholders
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <form action={this.searchLink()}>
+          <div className="govuk-form-group">
+            <label className="govuk-label" htmlFor="firstName">
+              Address
+            </label>
+            <input
+              className="govuk-input"
+              type="text"
+              name="address"
+              id="address"
+              onChange={this.handleChange}
+              value={this.state.address}
+            />
+          </div>
+
+          <div className="govuk-form-group">
+            <button className="govuk-button lbh-button" type="submit">
+              Search by address
+            </button>
+          </div>
+        </form>
       </div>
     );
   }
