@@ -83,7 +83,7 @@ describe('Results Page', () => {
   describe('Back to search', () => {
     it('Back to search takes you back to search page', () => {
       cy.visit('http://localhost:3001/');
-      cy.get('.govuk-input:last')
+      cy.get('#lastName')
         .type('Fake')
         .type('{enter}');
       cy.get('.govuk-back-link')
@@ -98,7 +98,7 @@ describe('Results Page', () => {
   describe('Search again button', () => {
     it('Back to search takes you back to search page', () => {
       cy.visit('http://localhost:3001/');
-      cy.get('.govuk-input:last')
+      cy.get('#lastName')
         .type('Fake')
         .type('{enter}');
       cy.get('.govuk-button:last')
