@@ -6,6 +6,7 @@ import SearchPage from './Pages/SearchPage';
 import ResultsPage from './Pages/ResultsPage';
 import CustomerDetailsPage from './Pages/CustomerDetailsPage';
 import TenancyDetailsPage from './Pages/TenancyDetailsPage';
+import AddressResultsPage from './Pages/AddressResultsPage';
 
 import LoginPage from './Pages/LoginPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -28,7 +29,11 @@ export default class App extends Component {
             <Route path="/login" component={LoginPage} />
             <PrivateRoute path="/" exact component={SearchPage} />
             <PrivateRoute path="/search" component={ResultsPage} />
-            <PrivateRoute path="/customers/:id" component={CustomerDetailsPage} />
+            <PrivateRoute path="/tenancies" component={AddressResultsPage} />
+            <PrivateRoute
+              path="/customers/:id"
+              component={CustomerDetailsPage}
+            />
             <Route path="/tenancies/:id" component={TenancyDetailsPage} />
           </Router>
         </main>
