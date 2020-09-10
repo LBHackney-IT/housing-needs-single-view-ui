@@ -3,6 +3,7 @@ import FetchCustomerNotes from './FetchCustomerNotes';
 import FetchCustomerRecord from './FetchCustomerRecord';
 import FetchCustomerDocuments from './FetchCustomerDocuments';
 import SearchCustomers from './SearchCustomers';
+import SearchTenancies from './SearchTenancies';
 import DeleteCustomerRecord from './DeleteCustomerRecord';
 import FetchTenancyRecord from './FetchTenancyRecord';
 
@@ -12,6 +13,7 @@ export {
   FetchCustomerRecord,
   FetchCustomerDocuments,
   SearchCustomers,
+  SearchTenancies,
   DeleteCustomerRecord,
   FetchTenancyRecord
 };
