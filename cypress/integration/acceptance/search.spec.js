@@ -20,7 +20,7 @@ describe('Search', () => {
 
     it('Verify that relevant results are returned', () => {
       cy.get('.govuk-input:first').type('Wednesday');
-      cy.get('.govuk-input:last')
+      cy.get('#lastName')
         .type('Adams')
         .type('{enter}');
       cy.get('body')
