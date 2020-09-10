@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 describe('Tenancy Details Page', () => {
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingOfficer(true);
     cy.visit('http://localhost:3001/tenancies/123');
   });
 
@@ -82,7 +82,20 @@ describe('Tenancy Details Page', () => {
     it('Displays Area and Patch Tenancy Content', () => {
       cy.get('[data-test="area-patch-content"]')
         .should('contain', 'Income Collection Patch:')
-        .and('contain', '105')
+        .and('contain', '105');
+    });
+
+    it('Displays the "Start New Housing Process" button', () => {
+      cy.get('button#newTenancy').should(
+        'contain',
+        'Start New Tenancy Process'
+      );
+    });
+
+    it('Does not display the "Start New Housing Process" button if not in the correct group', () => {
+      cy.logInAsHousingNeedsOfficer(true);
+      cy.visit('http://localhost:3001/tenancies/123');
+      cy.get('button#newTenancy').should('not.exist');
     });
   });
 });

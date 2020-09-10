@@ -3,13 +3,16 @@ import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
 import Tenant from '../../Components/Tenant';
 import moment from 'moment';
+import { isMemberOfGroups } from '../../lib/Cookie';
 import './index.scss';
 
-function tenancyType(code){
-  return {
-    'SEC': 'Secure',
-    'INT': 'Introductory'
-  }[code] || code
+function tenancyType(code) {
+  return (
+    {
+      SEC: 'Secure',
+      INT: 'Introductory'
+    }[code] || code
+  );
 }
 
 export default class TenancyDetailsPage extends Component {
@@ -26,6 +29,10 @@ export default class TenancyDetailsPage extends Component {
       this.setState({ tenancy: result.tenancy, fetching: false });
     });
   }
+
+  startTenancyProcess = () => {
+    window.location.href = `${process.env.REACT_APP_MANAGE_A_TENANCY_APP_URL}/tasks/new?tag_ref=${this.props.match.params.id}&uprn=${this.state.tenancy.uprn}`;
+  };
 
   render() {
     document.title = 'Tenancy details - Single View';
@@ -69,7 +76,10 @@ export default class TenancyDetailsPage extends Component {
               className="lbh-container row details"
               data-test="tenancy-start-date"
             >
-              <p>Tenancy start date: {moment(this.state.tenancy.startDate).format('DD/MM/YYYY')}</p>
+              <p>
+                Tenancy start date:{' '}
+                {moment(this.state.tenancy.startDate).format('DD/MM/YYYY')}
+              </p>
             </div>
             <div
               className="lbh-container row details"
@@ -86,11 +96,17 @@ export default class TenancyDetailsPage extends Component {
             >
               <h2>Area and Patch</h2>
             </div>
-            <div id="area-patch" className="lbh-container details" data-test="area-patch-content">
+            <div
+              id="area-patch"
+              className="lbh-container details"
+              data-test="area-patch-content"
+            >
               <p>
                 Tenancy Patch:
-                <span id="area-patch-contents" data-test="area-patch-contents">
-                </span>
+                <span
+                  id="area-patch-contents"
+                  data-test="area-patch-contents"
+                ></span>
               </p>
               <p>
                 Income Collection Patch:
@@ -113,6 +129,19 @@ export default class TenancyDetailsPage extends Component {
               return <Tenant key={index} {...tenant} />;
             })}
           </div>
+        </div>
+
+        <div className="lbh-container">
+          {isMemberOfGroups(['HOUSING_OFFICER', 'AREA_HOUSING_MANAGER']) && (
+            <button
+              onClick={this.startTenancyProcess}
+              id="newTenancy"
+              className="govuk-button lbh-button"
+              type="submit"
+            >
+              Start New Tenancy Process
+            </button>
+          )}
         </div>
       </div>
     );

@@ -20,8 +20,13 @@
     "SHARED_PLAN_SV": "shared-plan-singleview"
   },
   "dev": {
-    "HOUSING_NEEDS": "housing-needs-staging",
+    "CONTACT_CENTRE": "contact-centre-dev",
+    "BENEFIT_COUNTER": "benefit-counter-dev",
+    "HOUSING_COUNTER": "housing-counter-dev",
+    "HOUSING_OFFICER": "housing-officer-dev",
+    "AREA_HOUSING_MANAGER": "area-housing-manager-dev",
+    "HOUSING_NEEDS": "housing-needs-dev",
     "HOUSING_NEEDS_SV": "housingneeds-singleview-beta",
-    "SHARED_PLAN_SV": "shared-plan-sv"
+    "SHARED_PLAN_SV": "shared-plan-singleview"
   }
 }

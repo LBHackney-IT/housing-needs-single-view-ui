@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 describe('Details Page', () => {
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingNeedsOfficer(true);
     cy.visit('http://localhost:3001/customers/5');
   });
 
@@ -88,7 +88,7 @@ describe('Details Page', () => {
     });
 
     it('hides the things to note container if not in valid group', () => {
-      cy.setHackneyCookie(false);
+      cy.logInAsHousingNeedsOfficer(false);
       cy.visit('http://localhost:3001/customers/10');
       cy.get('[data-testid="things-to-note"]').should('not.exist');
     });

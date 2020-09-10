@@ -1,6 +1,6 @@
 describe('Addresses', () => {
   beforeEach(() => {
-    cy.setHackneyCookie(true);
+    cy.logInAsHousingNeedsOfficer(true);
     cy.visit('http://localhost:3001/customers/10');
   });
 
