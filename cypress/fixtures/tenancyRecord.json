@@ -17,6 +17,7 @@
         "telephone2": "02088881234",
         "telephone3": "02012341234",
         "emailAddress": "mjf@email.com",
+        "relationship": "Person 1",
         "responsible": true
       },
       {
@@ -28,6 +29,7 @@
         "telephone2": "02088885678",
         "telephone3": "02077775678",
         "emailAddress": "sallyfisher90@email.com",
+        "relationship": "Dependent child",
         "responsible": false
       }
     ]
