@@ -1,35 +1,6 @@
-.lbh-container {
-}
-
-.tenant-container {
-  display: flex;
-  flex-direction: column;
-}
-
-#tenant-fullname-container {
-  margin-bottom: 15px;
-}
-
-#tenant-fullname-link {
-  &:link {
-    color: #5094da;
-  }
-
-  &:visited {
-    color: #5094da;
-  }
-
-  &:hover {
-    color: blue;
-    cursor: pointer;
-  }
-}
-
-#tenant-email-link {
-  color: #95b3d9;
-  text-decoration: underline;
-  &:hover {
-    color: blue;
-    cursor: pointer;
+.tenant {
+  a.tenant-fullname {
+    display: block;
+    margin-bottom: 15px;
   }
 }

@@ -8,6 +8,8 @@ import Team from './Team';
 import AddressDetails from './AddressDetails';
 import ThingsToNote from './ThingsToNote';
 import RequestDocuments from './RequestDocuments';
+import TenancyDetails from './TenancyDetails';
+import TenancyPatchDetails from './TenancyPatchDetails';
 
 export {
   ContactDetails,
@@ -19,5 +21,7 @@ export {
   Team,
   AddressDetails,
   ThingsToNote,
-  RequestDocuments
+  RequestDocuments,
+  TenancyDetails,
+  TenancyPatchDetails
 };

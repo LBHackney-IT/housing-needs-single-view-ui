@@ -1,50 +1,30 @@
 import React from 'react';
+import moment from 'moment';
 import './index.scss';
 
-const tenant = props => {
+export default props => {
   return (
-    <div className="lbh-container">
-      <div className="tenant-container">
-        <div
-          id="tenant-fullname-container"
-          className="lbh-container row details"
-          data-test="tenants-fullName"
-        >
-          <a
-            id="tenant-fullname-link"
-            href={`/search?firstName=${props.forename}&lastName=${props.surname}`}
-            data-test="tenant-fullname-link"
-          >
-            {props.title} {props.forename} {props.surname}
-          </a>
-        </div>
-        <div className="lbh-container row details" data-test="tenant-dob">
-          <p>Date of birth: {props.dob}</p>
-        </div>
-        <div className="lbh-container row details" data-test="tenant-mobileNum">
-          <p>Mobile: {props.mobileNum}</p>
-        </div>
-        <div className="lbh-container row details" data-test="tenant-homeNum">
-          <p>Home: {props.homeNum}</p>
-        </div>
-        <div className="lbh-container row details" data-test="tenant-workNum">
-          <p>Work: {props.workNum}</p>
-        </div>
-        <div
-          id="tenant-email"
-          className="lbh-container row details"
-          data-test="tenant-email"
-        >
-          <p>
-            Email:
-            <a id="tenant-email-link" href={`mailto:${props.email}`}>
-              {props.email}
-            </a>
-          </p>
-        </div>
-      </div>
+    <div className="tenant">
+      <a
+        className="tenant-fullname"
+        href={`/search?firstName=${props.firstName}&lastName=${props.lastName}`}
+        data-test="tenant-fullname-link"
+      >
+        {props.title} {props.firstName} {props.lastName}
+      </a>
+      <p data-test="tenant-dob">
+        Date of birth: {moment(props.dateOfBirth).format('DD/MM/YYYY')}
+      </p>
+      <p data-test="tenant-mobileNum">Mobile: {props.telephone1}</p>
+      <p data-test="tenant-homeNum">Home: {props.telephone2}</p>
+      <p data-test="tenant-workNum">Work: {props.telephone3}</p>
+
+      <p data-test="tenant-email">
+        Email:{' '}
+        {props.emailAddress ? (
+          <a href={`mailto:${props.emailAddress}`}>{props.emailAddress}</a>
+        ) : null}
+      </p>
     </div>
   );
 };
-
-export default tenant;

@@ -29,7 +29,11 @@ export default class App extends Component {
             <Route path="/login" component={LoginPage} />
             <PrivateRoute path="/" exact component={SearchPage} />
             <PrivateRoute path="/search" component={ResultsPage} />
-            <PrivateRoute path="/tenancies" component={AddressResultsPage} />
+            <PrivateRoute
+              path="/tenancies"
+              exact
+              component={AddressResultsPage}
+            />
             <PrivateRoute
               path="/customers/:id"
               component={CustomerDetailsPage}

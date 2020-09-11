@@ -62,18 +62,20 @@ export default class CustomerDetailsPage extends Component {
           : [];
       })
       .then(({ data: snapshots }) => {
-        const snapshotNotes = snapshots.map(snapshot => ({
-          ...snapshot,
-          id: snapshot.id,
-          text: snapshot.notes,
-          type: 'snapshot',
-          title: 'Snapshot',
-          system: 'Snapshot',
-          date: snapshot.created,
-          user: snapshot.createdBy
-        }));
-        notesAndDocs = notesAndDocs.concat(snapshotNotes);
-        this.setState({ notes: notesAndDocs });
+        if (snapshots) {
+          const snapshotNotes = snapshots.map(snapshot => ({
+            ...snapshot,
+            id: snapshot.id,
+            text: snapshot.notes,
+            type: 'snapshot',
+            title: 'Snapshot',
+            system: 'Snapshot',
+            date: snapshot.created,
+            user: snapshot.createdBy
+          }));
+          notesAndDocs = notesAndDocs.concat(snapshotNotes);
+          this.setState({ notes: notesAndDocs });
+        }
         return FindUploadedDocuments(this.state.customer);
       })
       .then(result => {
