@@ -9,7 +9,7 @@ export default class AddressResultsPage extends Component {
     this.state = {
       firstName: '',
       lastName: '',
-      searching: false,
+      searching: true,
       results: {}
     };
   }
@@ -19,7 +19,7 @@ export default class AddressResultsPage extends Component {
     console.log('PARAMS', query);
     SearchTenancies(query)
       .then(result => {
-        this.setState({ results: result });
+        this.setState({ results: result, searching: false });
       })
       .catch(() => {
         this.setState({
@@ -37,6 +37,13 @@ export default class AddressResultsPage extends Component {
   }
 
   render() {
+    if (this.state.searching) {
+      return (
+        <div className="lbh-container">
+          <h1>Searching for address...</h1>
+        </div>
+      );
+    }
     document.title = 'Search - Single View';
     console.log('STATE', this.state.results);
     return (
@@ -47,7 +54,7 @@ export default class AddressResultsPage extends Component {
         <h1>Search by address</h1>
         <h2>Search results for: {this.getAddress()}</h2>
 
-        <AddressResults />
+        <AddressResults tenancies={this.state.results.tenancies} />
       </div>
     );
   }
