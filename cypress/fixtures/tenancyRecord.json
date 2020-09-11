@@ -4,29 +4,31 @@
     "address": "12 Hill Street N16 5TT",
     "type": "Secure",
     "startDate": "1992-06-13",
+    "uprn": "12345678901",
     "incomeCollectionPatch": "105",
-    "tenants": [
+    "tenancyPatch": "N1",
+    "contacts": [
       {
         "title": "Mrs",
-        "forename": "Joan",
-        "surname": "Fisher",
-        "fullName": "Mrs Joan Fisher",
-        "dob": "1970-02-30",
-        "mobileNum": "07777123456",
-        "homeNum": "02088881234",
-        "workNum": "02012345678",
-        "email": "mjf@email.com"
+        "firstName": "Joan",
+        "lastName": "Fisher",
+        "dateOfBirth": "1970-02-30",
+        "telephone1": "07777123456",
+        "telephone2": "02088881234",
+        "telephone3": "02012341234",
+        "emailAddress": "mjf@email.com",
+        "responsible": true
       },
       {
         "title": "Miss",
-        "forename": "Sally",
-        "surname": "Fisher",
-        "fullName": "Miss Sally Fisher",
-        "dob": "1990-03-21",
-        "mobileNum": "07777456789",
-        "homeNum": "02088881234",
-        "workNum": "02077775678",
-        "email": "sallyfisher90@email.com"
+        "firstName": "Sally",
+        "lastName": "Fisher",
+        "dateOfBirth": "1990-03-21",
+        "telephone1": "07777456789",
+        "telephone2": "02088885678",
+        "telephone3": "02077775678",
+        "emailAddress": "sallyfisher90@email.com",
+        "responsible": false
       }
     ]
   }

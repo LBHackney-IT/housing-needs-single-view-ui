@@ -7,14 +7,11 @@ describe('Tenancy Details Page', () => {
 
   describe('Tenancy details', () => {
     it('Displays Tenancy Address', () => {
-      cy.get('[data-test="tenancy-address"]').should(
-        'contain',
-        '12 Hill Street N16 5TT'
-      );
+      cy.get('h1').should('contain', '12 Hill Street N16 5TT');
     });
 
     it('Displays Tenancy Heading', () => {
-      cy.get('[data-test="tenancy-heading"]').should('contain', 'Tenancy');
+      cy.get('.tenancyDetails h2').should('contain', 'Tenancy');
     });
 
     it('Displays Tenancy Type', () => {
@@ -35,8 +32,14 @@ describe('Tenancy Details Page', () => {
         .and('contain', '123456/1');
     });
 
+    it('Displays UPRN', () => {
+      cy.get('[data-test="uprn"]')
+        .should('contain', 'UPRN:')
+        .and('contain', '12345678901');
+    });
+
     it('Displays Residents Header', () => {
-      cy.get('[data-test="tenant-header"]').should('contain', 'Residents');
+      cy.get('#tenant-container h2').should('contain', 'Residents');
     });
 
     it('Displays Resident Full Name', () => {
@@ -51,7 +54,9 @@ describe('Tenancy Details Page', () => {
     });
 
     it('Displays Resident Mobile Number', () => {
-      cy.get('[data-test="tenant-mobileNum"]').should('contain', 'Mobile');
+      cy.get('[data-test="tenant-mobileNum"]')
+        .should('contain', 'Mobile')
+        .and('contain', '07777123456');
     });
 
     it('Displays Resident Home Number', () => {
@@ -63,26 +68,29 @@ describe('Tenancy Details Page', () => {
     it('Displays Resident Work Number', () => {
       cy.get('[data-test="tenant-workNum"]')
         .should('contain', 'Work:')
-        .and('contain', '02077775678');
+        .and('contain', '02012341234');
     });
 
     it('Displays Resident Email', () => {
       cy.get('[data-test="tenant-email"]')
         .should('contain', 'Email:')
-        .and('contain', 'sallyfisher90@email.com');
+        .and('contain', 'mjf@email.com');
     });
 
     it('Displays Area and Patch Heading', () => {
-      cy.get('[data-test="area-patch-heading"]').should(
-        'contain',
-        'Area and Patch'
-      );
+      cy.get('.tenancyAreaPatch h2').should('contain', 'Area and Patch');
+    });
+
+    it('Displays Area and Patch Income Collection Content', () => {
+      cy.get('[data-test="area-patch-ic"]')
+        .should('contain', 'Income Collection Patch:')
+        .and('contain', '105');
     });
 
     it('Displays Area and Patch Tenancy Content', () => {
-      cy.get('[data-test="area-patch-content"]')
-        .should('contain', 'Income Collection Patch:')
-        .and('contain', '105');
+      cy.get('[data-test="area-patch-tenancy"]')
+        .should('contain', 'Tenancy Patch:')
+        .and('contain', 'N1');
     });
 
     it('Displays the "Start New Housing Process" button', () => {
