@@ -13,6 +13,7 @@ const tenant = props => {
           <a
             id="tenant-fullname-link"
             href={`/search?firstName=${props.forename}&lastName=${props.surname}`}
+            className="linkStyle"
             data-test="tenant-fullname-link"
           >
             {props.title} {props.forename} {props.surname}
@@ -37,7 +38,11 @@ const tenant = props => {
         >
           <p>
             Email:
-            <a id="tenant-email-link" href={`mailto:${props.email}`}>
+            <a
+              id="tenant-email-link"
+              href={`mailto:${props.email}`}
+              className="linkStyle"
+            >
               {props.email}
             </a>
           </p>

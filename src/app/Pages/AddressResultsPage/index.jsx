@@ -12,6 +12,10 @@ export default class AddressResultsPage extends Component {
 
   render() {
     document.title = 'Search - Single View';
-    return <h1>Address results page!</h1>;
+    return (
+      <div className="lbh-container">
+        <h1>Address results page!</h1>
+      </div>
+    );
   }
 }

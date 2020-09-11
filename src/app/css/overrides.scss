@@ -187,9 +187,11 @@ p {
 }
 
 .govuk-back-link {
-  border: none;
-  font-weight: bold;
-  background: transparent;
+  border: none !important;
+  color: #00664f !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  background: transparent !important;
 }
 
 .privacy-notice {
@@ -205,7 +207,7 @@ p {
   border: none;
   background: transparent;
   font-size: 100%;
-  color: #00664f;
+  color: #00664f !important;
   padding: 0 0 0 0;
   font-size: 16px;
 }
