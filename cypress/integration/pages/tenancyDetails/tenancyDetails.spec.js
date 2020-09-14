@@ -77,6 +77,13 @@ describe('Tenancy Details Page', () => {
         .and('contain', 'mjf@email.com');
     });
 
+    it('Displays household members', () => {
+      cy.get('#household-members')
+        .should('contain', 'Miss Sally Fisher')
+        .and('contain', 'Dependent child')
+        .and('contain', '21/03/1990');
+    });
+
     it('Displays Area and Patch Heading', () => {
       cy.get('.tenancyAreaPatch h2').should('contain', 'Area and Patch');
     });

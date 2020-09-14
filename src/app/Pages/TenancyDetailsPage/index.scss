@@ -7,3 +7,15 @@
     min-width: 33%;
   }
 }
+
+#household-members {
+  width: 100%;
+  border-collapse: collapse;
+  tr {
+    border-bottom: 1px solid #666;
+  }
+  td,
+  th {
+    padding: 10px 0;
+  }
+}

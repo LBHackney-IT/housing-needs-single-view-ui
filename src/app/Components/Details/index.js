@@ -10,6 +10,7 @@ import ThingsToNote from './ThingsToNote';
 import RequestDocuments from './RequestDocuments';
 import TenancyDetails from './TenancyDetails';
 import TenancyPatchDetails from './TenancyPatchDetails';
+import HouseholdMembers from './HouseholdMembers';
 
 export {
   ContactDetails,
@@ -23,5 +24,6 @@ export {
   ThingsToNote,
   RequestDocuments,
   TenancyDetails,
-  TenancyPatchDetails
+  TenancyPatchDetails,
+  HouseholdMembers
 };

@@ -3,7 +3,11 @@ import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
 import Tenant from '../../Components/Tenant';
 import { isMemberOfGroups } from '../../lib/Cookie';
-import { TenancyDetails, TenancyPatchDetails } from '../../Components/Details';
+import {
+  TenancyDetails,
+  TenancyPatchDetails,
+  HouseholdMembers
+} from '../../Components/Details';
 import './index.scss';
 
 export default class TenancyDetailsPage extends Component {
@@ -36,6 +40,10 @@ export default class TenancyDetailsPage extends Component {
       contact => contact.responsible
     );
 
+    const householdMembers = this.state.tenancy.contacts.filter(
+      contact => !contact.responsible
+    );
+
     return (
       <div>
         <div className="lbh-container row details">
@@ -57,7 +65,7 @@ export default class TenancyDetailsPage extends Component {
           </div>
 
           <div className="details__right-column">
-            <div id="tenant-container" data-test="tenant-heading">
+            <div id="tenant-container">
               <h2>Residents</h2>
               <div id="tenant-tiles">
                 {tenants.map((tenant, index) => {
@@ -65,6 +73,7 @@ export default class TenancyDetailsPage extends Component {
                 })}
               </div>
             </div>
+            <HouseholdMembers members={householdMembers} />
 
             <div>
               {isMemberOfGroups([
