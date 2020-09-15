@@ -17,8 +17,6 @@ export default class AddressResults extends Component {
   }
 
   render() {
-    console.log('PASSED PROP', this.props);
-    console.log('LENGTH', this.props.tenancies.length);
     let resultsRange = [];
 
     const totalTenancies = this.props.tenancies.length;

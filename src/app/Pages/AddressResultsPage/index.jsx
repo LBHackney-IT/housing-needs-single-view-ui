@@ -16,7 +16,6 @@ export default class AddressResultsPage extends Component {
 
   componentDidMount() {
     const query = this.props.location.search;
-    console.log('PARAMS', query);
     SearchTenancies(query)
       .then(result => {
         this.setState({ results: result, searching: false });
@@ -32,7 +31,6 @@ export default class AddressResultsPage extends Component {
     const pageLink = window.location.href;
     const url = new URL(pageLink);
     const address = url.searchParams.get('address');
-    console.log('THE ADDRESS IS: ', address);
     return address;
   }
 
@@ -45,7 +43,6 @@ export default class AddressResultsPage extends Component {
       );
     }
     document.title = 'Search - Single View';
-    console.log('STATE', this.state.results);
     return (
       <div className="lbh-container results">
         <button onClick={goBack} className="govuk-back-link">
