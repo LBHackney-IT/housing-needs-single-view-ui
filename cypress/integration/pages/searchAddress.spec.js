@@ -1,6 +1,6 @@
 describe('Results Page', () => {
   beforeEach(() => {
-    cy.logInAsHousingNeedsOfficer(true);
+    cy.logInAsHousingOfficer(true);
   });
 
   describe('Search', () => {
