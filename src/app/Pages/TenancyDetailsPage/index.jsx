@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
-import { FetchTenancyRecord } from '../../Gateways';
+import { FetchTenancyRecord, FetchTenancyAlerts } from '../../Gateways';
 import Tenant from '../../Components/Tenant';
 import { isMemberOfGroups } from '../../lib/Cookie';
 import {
@@ -9,6 +9,7 @@ import {
   HouseholdMembers
 } from '../../Components/Details';
 import './index.scss';
+import CautionaryAlerts from '../../Components/Details/CautionaryAlerts';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -23,6 +24,12 @@ export default class TenancyDetailsPage extends Component {
     FetchTenancyRecord(tenancyId).then(result => {
       this.setState({ tenancy: result.tenancy, fetching: false });
     });
+
+    FetchTenancyAlerts(tenancyId.split('-')[0], tenancyId.split('-')[1]).then(
+      result => {
+        this.setState({ alerts: result.contacts });
+      }
+    );
   }
 
   render() {
@@ -35,6 +42,7 @@ export default class TenancyDetailsPage extends Component {
         </div>
       );
     }
+    console.log(this.state.tenancy);
 
     const tenants = this.state.tenancy.contacts.filter(
       contact => contact.responsible
@@ -74,7 +82,17 @@ export default class TenancyDetailsPage extends Component {
               </div>
             </div>
             <HouseholdMembers members={householdMembers} />
-
+            {this.state.alerts.length < 0 ||
+              (this.state.alerts[0].alerts.length > 0 && (
+                <h2>Notifications</h2>
+              ))}
+            <div className="alert-tiles">
+              {this.state.alerts.map(contact => {
+                return contact.alerts.map(alert => {
+                  return <CautionaryAlerts label="Cautionary" alert={alert} />;
+                });
+              })}
+            </div>
             <div>
               {isMemberOfGroups([
                 'HOUSING_OFFICER',
