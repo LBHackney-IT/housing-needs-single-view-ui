@@ -15,8 +15,8 @@ export default class Dropdown extends Component {
   };
   render() {
     return (
-      <div className="govuk-form-group">
-        <label className="govuk-label" for="items-per-page" hidden>
+      <span className="govuk-form-group">
+        <label hidden for="items-per-page">
           Items per page
         </label>
         <select
@@ -31,7 +31,7 @@ export default class Dropdown extends Component {
             return <option value={key}>{value}</option>;
           })}
         </select>
-      </div>
+      </span>
     );
   }
 }

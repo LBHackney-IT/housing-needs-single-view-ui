@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropdown from '../Dropdown';
+import './index.scss';
 
 export default class AddressResults extends Component {
   recordIndex = 0;
@@ -21,12 +22,13 @@ export default class AddressResults extends Component {
     let resultsRange = [];
 
     const totalTenancies = this.props.tenancies.length;
-    const firstPageItem = this.state.pageNumber * this.state.recordsPerPage;
+    const firstPageItem =
+      this.state.pageNumber * parseInt(this.state.recordsPerPage);
     const remainingTenancies = totalTenancies - firstPageItem;
     const lastPageItem =
-      remainingTenancies < this.state.recordsPerPage
+      remainingTenancies < parseInt(this.state.recordsPerPage)
         ? remainingTenancies + firstPageItem
-        : firstPageItem + this.state.recordsPerPage;
+        : firstPageItem + parseInt(this.state.recordsPerPage);
 
     for (let i = firstPageItem; i < lastPageItem; i++) {
       resultsRange.push(i);
@@ -35,12 +37,21 @@ export default class AddressResults extends Component {
     if (this.props.tenancies.length > 0) {
       return (
         <>
-          <span>{firstPageItem + ' - ' + lastPageItem}</span>
-          <Dropdown
-            values={[{ 10: '10 items' }, { 25: '25 items' }]}
-            initialValue={this.state.recordsPerPage}
-            onChange={value => this.setRecordsPerPage(value)}
-          />
+          <div className="page-range">
+            <span className="records-range-label">
+              {firstPageItem + ' - ' + lastPageItem + ' items'}
+            </span>
+            <Dropdown
+              values={[
+                { 10: '10 items' },
+                { 25: '25 items' },
+                { 50: '50 items' },
+                { 100: '100 items' }
+              ]}
+              initialValue={this.state.recordsPerPage}
+              onChange={value => this.setRecordsPerPage(value)}
+            />
+          </div>
           <table className="govuk-table">
             <thead className="govuk-table__head">
               <tr className="govuk-table__row">
@@ -96,29 +107,31 @@ export default class AddressResults extends Component {
               ))}
             </tbody>
           </table>
-          {this.state.pageNumber > 0 && (
-            <button
-              onClick={() => {
-                this.setState({ pageNumber: this.state.pageNumber - 1 });
-              }}
-            >
-              Previous page
-            </button>
-          )}
-          <span>
-            current page: {this.state.pageNumber + 1}remainingT:{' '}
-            {remainingTenancies} firstPageItem : {firstPageItem} last:{' '}
-            {lastPageItem}
-          </span>
-          {remainingTenancies >= this.state.recordsPerPage && (
-            <button
-              onClick={() => {
-                this.setState({ pageNumber: this.state.pageNumber + 1 });
-              }}
-            >
-              Next page
-            </button>
-          )}
+          <div className="page-navigation">
+            {this.state.pageNumber > 0 && (
+              <button
+                className="govuk-button"
+                data-module="govuk-button"
+                onClick={() => {
+                  this.setState({ pageNumber: this.state.pageNumber - 1 });
+                }}
+              >
+                Previous page
+              </button>
+            )}
+            <span>Current page: {this.state.pageNumber + 1}</span>
+            {remainingTenancies >= this.state.recordsPerPage && (
+              <button
+                className="govuk-button"
+                data-module="govuk-button"
+                onClick={() => {
+                  this.setState({ pageNumber: this.state.pageNumber + 1 });
+                }}
+              >
+                Next page
+              </button>
+            )}
+          </div>
         </>
       );
     }
