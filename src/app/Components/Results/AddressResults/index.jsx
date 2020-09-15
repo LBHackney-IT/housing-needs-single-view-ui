@@ -39,7 +39,7 @@ export default class AddressResults extends Component {
         <>
           <div className="page-range">
             <span className="records-range-label">
-              {firstPageItem + ' - ' + lastPageItem + ' items'}
+              {firstPageItem + 1 + ' - ' + lastPageItem + ' items'}
             </span>
             <Dropdown
               values={[
@@ -79,7 +79,13 @@ export default class AddressResults extends Component {
               {resultsRange.map(i => (
                 <tr className="govuk-table__row">
                   <td className="govuk-table__cell">
-                    {this.props.tenancies[i].address}
+                    <a
+                      href={`/tenancies/${this.props.tenancies[
+                        i
+                      ].tenancyAgreementReference.replace('/', '-')}`}
+                    >
+                      {this.props.tenancies[i].address}{' '}
+                    </a>
                   </td>
                   <td className="govuk-table__cell">
                     {this.props.tenancies[i].postcode}
@@ -110,7 +116,7 @@ export default class AddressResults extends Component {
           <div className="page-navigation">
             {this.state.pageNumber > 0 && (
               <button
-                className="govuk-button"
+                className="govuk-button previous-page-button"
                 data-module="govuk-button"
                 onClick={() => {
                   this.setState({ pageNumber: this.state.pageNumber - 1 });
@@ -119,10 +125,12 @@ export default class AddressResults extends Component {
                 Previous page
               </button>
             )}
-            <span>Current page: {this.state.pageNumber + 1}</span>
+            <span className="current-page-number">
+              Current page: {this.state.pageNumber + 1}
+            </span>
             {remainingTenancies >= this.state.recordsPerPage && (
               <button
-                className="govuk-button"
+                className="govuk-button next-page-button"
                 data-module="govuk-button"
                 onClick={() => {
                   this.setState({ pageNumber: this.state.pageNumber + 1 });
