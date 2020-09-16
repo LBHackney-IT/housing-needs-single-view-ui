@@ -33,5 +33,32 @@
         "responsible": false
       }
     ]
+  },
+  "alerts": {
+    "contacts": [
+      {
+        "tenancyAgreementReference": "123456",
+        "personNumber": "1",
+        "contactNumber": "x",
+        "alerts": [
+          {
+            "dateModified": "2011-11-11",
+            "modifiedBy": "abc",
+            "startDate": "2011-11-11",
+            "endDate": null,
+            "alertCode": "PA",
+            "description": "Physical Abuse or Threat of"
+          },
+          {
+            "dateModified": "2021-12-21",
+            "modifiedBy": "abc",
+            "startDate": "2021-12-21",
+            "endDate": null,
+            "alertCode": "UE",
+            "description": "Unclean / Unsafe Environment"
+          }
+        ]
+      }
+    ]
   }
 }
