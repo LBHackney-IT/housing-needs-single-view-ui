@@ -6,7 +6,8 @@ import { isMemberOfGroups } from '../../lib/Cookie';
 import {
   TenancyDetails,
   TenancyPatchDetails,
-  HouseholdMembers
+  HouseholdMembers,
+  TenancyProcesses
 } from '../../Components/Details';
 import './index.scss';
 import CautionaryAlerts from '../../Components/Details/CautionaryAlerts';
@@ -65,6 +66,7 @@ export default class TenancyDetailsPage extends Component {
         <div className="lbh-container row details">
           <div className="details__left-column">
             <TenancyDetails tenancy={this.state.tenancy} />
+            <TenancyProcesses tasks={this.state.tenancy.tasks} />
             <TenancyPatchDetails tenancy={this.state.tenancy} />
           </div>
 
