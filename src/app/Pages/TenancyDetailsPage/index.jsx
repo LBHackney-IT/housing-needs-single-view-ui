@@ -9,6 +9,7 @@ import {
   HouseholdMembers
 } from '../../Components/Details';
 import './index.scss';
+import CautionaryAlerts from '../../Components/Details/CautionaryAlerts';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -21,7 +22,10 @@ export default class TenancyDetailsPage extends Component {
     const tenancyId = this.props.match.params.id;
 
     FetchTenancyRecord(tenancyId).then(result => {
-      this.setState({ tenancy: result.tenancy, fetching: false });
+      this.setState({
+        tenancy: result.tenancy,
+        fetching: false
+      });
     });
   }
 
@@ -74,7 +78,23 @@ export default class TenancyDetailsPage extends Component {
               </div>
             </div>
             <HouseholdMembers members={householdMembers} />
-
+            {this.state.tenancy.contacts.some(
+              tenancy => tenancy.alerts.length > 0
+            ) && <h2>Notifications</h2>}
+            <div className="alert-tiles">
+              {this.state.tenancy.contacts.map(contact => {
+                return contact.alerts.map((alert, index) => {
+                  return (
+                    <CautionaryAlerts
+                      key={`${index}-alert`}
+                      label="Cautionary"
+                      alert={alert}
+                      name={contact.firstName + ' ' + contact.lastName}
+                    />
+                  );
+                });
+              })}
+            </div>
             <div>
               {isMemberOfGroups([
                 'HOUSING_OFFICER',

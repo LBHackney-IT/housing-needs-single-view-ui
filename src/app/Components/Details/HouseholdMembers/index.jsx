@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment';
+import './index.scss';
 
 export default props => {
   return (
-    <div id="household-members-container">
+    <div id="household-members-container" className="household-members">
       <h2>Household members</h2>
       <table id="household-members">
         <tr>
