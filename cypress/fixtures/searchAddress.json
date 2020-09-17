@@ -1,0 +1,58 @@
+{
+  "tenancies": [
+    {
+      "tenancyAgreementReference": "000001/01",
+      "address": "2 top of the hill",
+      "postcode": "A1 23BW",
+      "commencementOfTenancyDate": "1995-07-07",
+      "endOfTenancyDate": null,
+      "currentBalance": "-00.11",
+      "present": true,
+      "terminated": false,
+      "paymentReference": "4927001000",
+      "householdReference": "000000",
+      "propertyReference": "00000000",
+      "tenureType": "SEC: Secure",
+      "agreementType": "M: Master Account",
+      "service": "19.58",
+      "otherCharge": "0.1",
+      "residents": [
+        {
+          "firstName": "Andrew",
+          "lastName": "King",
+          "dateOfBirth": "1928-10-12"
+        },
+        {
+          "firstName": "Mr",
+          "lastName": "Sandman",
+          "dateOfBirth": "1950-03-05"
+        }
+      ]
+    },
+    {
+      "tenancyAgreementReference": "000002/01",
+      "address": "23 acacia avenue",
+      "postcode": "A1 2BC",
+      "commencementOfTenancyDate": "1997-01-01",
+      "endOfTenancyDate": "2015-07-12",
+      "currentBalance": "-113.09",
+      "present": false,
+      "terminated": true,
+      "paymentReference": "4927011111",
+      "householdReference": "035111",
+      "propertyReference": "00004111",
+      "tenureType": "SEC: Secure",
+      "agreementType": "M: Master Account",
+      "service": "18.44",
+      "otherCharge": "0.1",
+      "residents": [
+        {
+          "firstName": "Jean",
+          "lastName": "Thomson",
+          "dateOfBirth": "1954-01-03"
+        }
+      ]
+    }
+  ],
+  "nextCursor": "123"
+}

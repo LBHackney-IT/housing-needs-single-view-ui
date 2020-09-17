@@ -72,4 +72,9 @@ app.get('/tenancies/:id', (req, res) => {
   res.send(tenancyRecord);
 });
 
+app.get('/tenancies', (req, res) => {
+  const searchAddress = require('./fixtures/searchAddress');
+  res.send(searchAddress);
+});
+
 app.listen(port, () => console.log(`Fake SV API listening on port ${port}!`));

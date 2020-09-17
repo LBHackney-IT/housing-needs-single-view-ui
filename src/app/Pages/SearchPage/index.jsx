@@ -131,7 +131,10 @@ export default class SearchPage extends Component {
               <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
                   <div class="govuk-radios">
-                    <div class="govuk-radios__item">
+                    <div
+                      class="govuk-radios__item"
+                      data-testid="current-tenants-test"
+                    >
                       <input
                         class="govuk-radios__input"
                         id="current_tenancies"
@@ -150,7 +153,10 @@ export default class SearchPage extends Component {
                         Current tenants
                       </label>
                     </div>
-                    <div class="govuk-radios__item">
+                    <div
+                      class="govuk-radios__item"
+                      data-testid="former-tenants-test"
+                    >
                       <input
                         class="govuk-radios__input"
                         id="former_tenancies"
@@ -169,7 +175,10 @@ export default class SearchPage extends Component {
                         Former tenants
                       </label>
                     </div>
-                    <div class="govuk-radios__item">
+                    <div
+                      class="govuk-radios__item"
+                      data-testid="leaseholders-test"
+                    >
                       <input
                         class="govuk-radios__input"
                         id="leasehold_only"
@@ -188,7 +197,10 @@ export default class SearchPage extends Component {
                         Leaseholders
                       </label>
                     </div>
-                    <div class="govuk-radios__item">
+                    <div
+                      class="govuk-radios__item"
+                      data-testid="freeholders-test"
+                    >
                       <input
                         class="govuk-radios__input"
                         id="freehold_only"
@@ -223,13 +235,20 @@ export default class SearchPage extends Component {
               </div>
 
               <div className="govuk-form-group">
-                <button className="govuk-button lbh-button" type="submit">
+                <button
+                  className="govuk-button lbh-button"
+                  type="submit"
+                  data-testid="search-by-address-button-test"
+                >
                   Search by address
                 </button>
               </div>
 
               {this.state.error ? (
-                <span className="govuk-error-message lbh-error-message">
+                <span
+                  className="govuk-error-message lbh-error-message"
+                  data-testid="error-test"
+                >
                   Please select at least one option and add an address
                 </span>
               ) : null}

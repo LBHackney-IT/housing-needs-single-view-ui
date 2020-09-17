@@ -1,0 +1,31 @@
+.page-navigation {
+  position: relative;
+  text-align: center;
+}
+
+.records-range-label {
+  display: inline !important;
+}
+
+.page-range {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+
+a:hover {
+  cursor: pointer;
+}
+.next-page-button {
+  float: right;
+}
+
+.previous-page-button {
+  float: left;
+}
+.current-page-number {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+}
