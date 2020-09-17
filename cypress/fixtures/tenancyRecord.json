@@ -18,28 +18,8 @@
         "telephone3": "02012341234",
         "emailAddress": "mjf@email.com",
         "relationship": "Person 1",
-        "responsible": true
-      },
-      {
-        "title": "Miss",
-        "firstName": "Sally",
-        "lastName": "Fisher",
-        "dateOfBirth": "1990-03-21",
-        "telephone1": "07777456789",
-        "telephone2": "02088885678",
-        "telephone3": "02077775678",
-        "emailAddress": "sallyfisher90@email.com",
-        "relationship": "Dependent child",
-        "responsible": false
-      }
-    ]
-  },
-  "alerts": {
-    "contacts": [
-      {
-        "tenancyAgreementReference": "123456",
-        "personNumber": "1",
-        "contactNumber": "x",
+        "responsible": true,
+        "personNo": 1,
         "alerts": [
           {
             "dateModified": "2011-11-11",
@@ -58,6 +38,18 @@
             "description": "Unclean / Unsafe Environment"
           }
         ]
+      },
+      {
+        "title": "Miss",
+        "firstName": "Sally",
+        "lastName": "Fisher",
+        "dateOfBirth": "1990-03-21",
+        "telephone1": "07777456789",
+        "telephone2": "02088885678",
+        "telephone3": "02077775678",
+        "emailAddress": "sallyfisher90@email.com",
+        "relationship": "Dependent child",
+        "responsible": false
       }
     ]
   }

@@ -24,7 +24,6 @@ export default class TenancyDetailsPage extends Component {
     FetchTenancyRecord(tenancyId).then(result => {
       this.setState({
         tenancy: result.tenancy,
-        cautionaryAlerts: result.alerts ? result.alerts.contacts : null,
         fetching: false
       });
     });
@@ -79,14 +78,20 @@ export default class TenancyDetailsPage extends Component {
               </div>
             </div>
             <HouseholdMembers members={householdMembers} />
-            {this.state.cautionaryAlerts &&
-              this.state.cautionaryAlerts[0].alerts.length > 0 && (
-                <h2>Notifications</h2>
-              )}
+            {this.state.tenancy.contacts.some(
+              tenancy => tenancy.alerts.length > 0
+            ) && <h2>Notifications</h2>}
             <div className="alert-tiles">
-              {this.state.cautionaryAlerts.map(contact => {
-                return contact.alerts.map(alert => {
-                  return <CautionaryAlerts label="Cautionary" alert={alert} />;
+              {this.state.tenancy.contacts.map(contact => {
+                return contact.alerts.map((alert, index) => {
+                  return (
+                    <CautionaryAlerts
+                      key={`${index}-alert`}
+                      label="Cautionary"
+                      alert={alert}
+                      name={contact.firstName + ' ' + contact.lastName}
+                    />
+                  );
                 });
               })}
             </div>
