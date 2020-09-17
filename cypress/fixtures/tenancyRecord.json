@@ -49,7 +49,8 @@
         "telephone3": "02077775678",
         "emailAddress": "sallyfisher90@email.com",
         "relationship": "Dependent child",
-        "responsible": false
+        "responsible": false,
+        "alerts": []
       }
     ]
   }

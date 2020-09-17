@@ -6,7 +6,7 @@ const CautionaryAlerts = ({ label, alert, name }) => {
     <div className={styles['alert-item']}>
       <h3>{label}</h3>
       <ul>
-        <li data-testid="alert-description">{name}</li>
+        <li data-testid="alert-name">{name}</li>
         <li data-testid="alert-description">{alert.description}</li>
         <li data-testid="alert-date">Added: {alert.startDate}</li>
       </ul>
