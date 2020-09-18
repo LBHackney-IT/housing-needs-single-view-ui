@@ -98,7 +98,8 @@ export default class TenancyDetailsPage extends Component {
             <div>
               {isMemberOfGroups([
                 'HOUSING_OFFICER',
-                'AREA_HOUSING_MANAGER'
+                'AREA_HOUSING_MANAGER',
+                'DEV_TEAM'
               ]) && (
                 <button
                   onClick={this.startTenancyProcess}
