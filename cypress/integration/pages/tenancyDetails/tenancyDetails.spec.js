@@ -122,5 +122,12 @@ describe('Tenancy Details Page', () => {
         .first()
         .should('contain', '2011-11-11');
     });
+
+    it('Displays actions and processes', () => {
+      cy.get('[data-testid=task-row]').should('have.length', 2);
+      cy.get('[data-testid=task-row]')
+        .first()
+        .should('contain', '04/02/2019: Home visit (In progress)');
+    });
   });
 });

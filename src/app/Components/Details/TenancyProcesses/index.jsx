@@ -12,7 +12,7 @@ export default props => {
         {tasks.map((task, index) => {
           return (
             task.type && (
-              <li key={`${index}-task`}>
+              <li data-testid="task-row" key={`${index}-task`}>
                 <strong>
                   {moment(task.createdTime).format('DD/MM/YYYY')}:{' '}
                 </strong>

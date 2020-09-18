@@ -79,7 +79,9 @@ export default class TenancyDetailsPage extends Component {
                 })}
               </div>
             </div>
-            <HouseholdMembers members={householdMembers} />
+            {householdMembers.length > 0 && (
+              <HouseholdMembers members={householdMembers} />
+            )}
             {this.state.tenancy.contacts.some(
               tenancy => tenancy.alerts.length > 0
             ) && <h2>Notifications</h2>}
