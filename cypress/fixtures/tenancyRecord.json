@@ -53,14 +53,15 @@
         "responsible": false,
         "alerts": []
       }
-    ]
-  },
-  "areaPatch": {
-    "patch": {
-      "areaName": "some area",
-      "officerFullName": "The name",
-      "patchCode": "AB1",
-      "ward": "some ward"
+    ],
+
+    "areaPatch": {
+      "patch": {
+        "areaName": "some area",
+        "officerFullName": "The name",
+        "patchCode": "AB1",
+        "ward": "some ward"
+      }
     }
   }
 }
