@@ -7,7 +7,8 @@
     "AREA_HOUSING_MANAGER": "area-housing-manager-staging",
     "HOUSING_NEEDS": "housing-needs-staging",
     "HOUSING_NEEDS_SV": "housingneeds-singleview-beta",
-    "SHARED_PLAN_SV": "shared-plan-singleview"
+    "SHARED_PLAN_SV": "shared-plan-singleview",
+    "DEV_TEAM": "development-team-staging"
   },
   "production": {
     "CONTACT_CENTRE": "contact-centre-production",
@@ -17,7 +18,8 @@
     "AREA_HOUSING_MANAGER": "area-housing-manager-production",
     "HOUSING_NEEDS": "housing-needs-production",
     "HOUSING_NEEDS_SV": "housingneeds-singleview-beta",
-    "SHARED_PLAN_SV": "shared-plan-singleview"
+    "SHARED_PLAN_SV": "shared-plan-singleview",
+    "DEV_TEAM": "development-team-production"
   },
   "dev": {
     "CONTACT_CENTRE": "contact-centre-dev",
@@ -27,6 +29,7 @@
     "AREA_HOUSING_MANAGER": "area-housing-manager-dev",
     "HOUSING_NEEDS": "housing-needs-dev",
     "HOUSING_NEEDS_SV": "housingneeds-singleview-beta",
-    "SHARED_PLAN_SV": "shared-plan-singleview"
+    "SHARED_PLAN_SV": "shared-plan-singleview",
+    "DEV_TEAM": "development-team-staging"
   }
 }

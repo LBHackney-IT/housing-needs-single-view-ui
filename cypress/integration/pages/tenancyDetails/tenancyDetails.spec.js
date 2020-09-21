@@ -88,16 +88,22 @@ describe('Tenancy Details Page', () => {
       cy.get('.tenancyAreaPatch h2').should('contain', 'Area and Patch');
     });
 
-    it('Displays Area and Patch Income Collection Content', () => {
-      cy.get('[data-test="area-patch-ic"]')
-        .should('contain', 'Income Collection Patch:')
-        .and('contain', '105');
+    it('Displays Area and Patch Tenancy Patch', () => {
+      cy.get('[data-test="area-patch-tenancy-patch"]')
+        .should('contain', 'Tenancy Patch:')
+        .and('contain', 'AB1');
     });
 
-    it('Displays Area and Patch Tenancy Content', () => {
-      cy.get('[data-test="area-patch-tenancy"]')
-        .should('contain', 'Tenancy Patch:')
-        .and('contain', 'N1');
+    it('Displays Area and Patch Tenancy Area', () => {
+      cy.get('[data-test="area-patch-tenancy-area"]')
+        .should('contain', 'Tenancy Area:')
+        .and('contain', 'some area');
+    });
+
+    it('Displays Area and Patch Officer name', () => {
+      cy.get('[data-test="area-patch-officer-name"]')
+        .should('contain', 'Officer name:')
+        .and('contain', 'The name');
     });
 
     it('Displays the "Start New Housing Process" button', () => {

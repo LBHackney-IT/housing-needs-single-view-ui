@@ -120,7 +120,11 @@ export default class SearchPage extends Component {
           </div>
         </form>
 
-        {isMemberOfGroups(['HOUSING_OFFICER', 'AREA_HOUSING_MANAGER']) && (
+        {isMemberOfGroups([
+          'HOUSING_OFFICER',
+          'AREA_HOUSING_MANAGER',
+          'DEV_TEAM'
+        ]) && (
           <div className="lbh-container">
             <h2>
               Search by address for Council tenancies, leaseholders or

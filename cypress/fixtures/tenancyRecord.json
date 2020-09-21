@@ -4,6 +4,7 @@
     "address": "12 Hill Street N16 5TT",
     "type": "Secure",
     "startDate": "1992-06-13",
+    "postcode": "A1QWE",
     "uprn": "12345678901",
     "incomeCollectionPatch": "105",
     "tenancyPatch": "N1",
@@ -53,6 +54,7 @@
         "alerts": []
       }
     ],
+
     "tasks": [
       {
         "type": "Home visit",
@@ -64,6 +66,15 @@
         "completedTime": "2020-02-02",
         "createdTime": "2019-02-04"
       }
-    ]
+    ],
+
+    "areaPatch": {
+      "patch": {
+        "areaName": "some area",
+        "officerFullName": "The name",
+        "patchCode": "AB1",
+        "ward": "some ward"
+      }
+    }
   }
 }
