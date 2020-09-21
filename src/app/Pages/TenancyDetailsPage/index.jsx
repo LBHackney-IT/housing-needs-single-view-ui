@@ -25,7 +25,7 @@ export default class TenancyDetailsPage extends Component {
       this.setState({
         tenancy: result.tenancy,
         fetching: false,
-        areaPatch: result.areaPatch.patch
+        areaPatch: result.tenancy.areaPatch.patch
       });
     });
   }
