@@ -24,7 +24,8 @@ export default class TenancyDetailsPage extends Component {
     FetchTenancyRecord(tenancyId).then(result => {
       this.setState({
         tenancy: result.tenancy,
-        fetching: false
+        fetching: false,
+        areaPatch: result.tenancy.areaPatch.patch
       });
     });
   }
@@ -65,7 +66,7 @@ export default class TenancyDetailsPage extends Component {
         <div className="lbh-container row details">
           <div className="details__left-column">
             <TenancyDetails tenancy={this.state.tenancy} />
-            <TenancyPatchDetails tenancy={this.state.tenancy} />
+            <TenancyPatchDetails areaPatch={this.state.areaPatch} />
           </div>
 
           <div className="details__right-column">
