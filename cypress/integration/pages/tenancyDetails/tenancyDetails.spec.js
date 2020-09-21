@@ -118,5 +118,15 @@ describe('Tenancy Details Page', () => {
       cy.visit('http://localhost:3001/tenancies/123');
       cy.get('button#newTenancy').should('not.exist');
     });
+
+    it('Displays cautionary alerts', () => {
+      cy.get('[data-testid=alert-description]').should('have.length', 2);
+      cy.get('[data-testid=alert-description]')
+        .first()
+        .should('contain', 'Physical Abuse or Threat of');
+      cy.get('[data-testid=alert-date]')
+        .first()
+        .should('contain', '2011-11-11');
+    });
   });
 });
