@@ -21,7 +21,11 @@ export default class TenancyDetailsPage extends Component {
     const tenancyId = this.props.match.params.id;
 
     FetchTenancyRecord(tenancyId).then(result => {
-      this.setState({ tenancy: result.tenancy, fetching: false });
+      this.setState({
+        tenancy: result.tenancy,
+        fetching: false,
+        areaPatch: result.areaPatch.patch
+      });
     });
   }
 
@@ -61,7 +65,7 @@ export default class TenancyDetailsPage extends Component {
         <div className="lbh-container row details">
           <div className="details__left-column">
             <TenancyDetails tenancy={this.state.tenancy} />
-            <TenancyPatchDetails tenancy={this.state.tenancy} />
+            <TenancyPatchDetails areaPatch={this.state.areaPatch} />
           </div>
 
           <div className="details__right-column">
