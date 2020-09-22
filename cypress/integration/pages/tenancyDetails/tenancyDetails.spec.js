@@ -106,14 +106,11 @@ describe('Tenancy Details Page', () => {
         .and('contain', 'The name');
     });
 
-    it('Displays the "Start New Housing Process" button', () => {
-      cy.get('button#newTenancy').should(
-        'contain',
-        'Start New Tenancy Process'
-      );
+    it('Displays the "Create process" button', () => {
+      cy.get('button#newTenancy').should('contain', 'Create process');
     });
 
-    it('Does not display the "Start New Housing Process" button if not in the correct group', () => {
+    it('Does not display the "Create process" button if not in the correct group', () => {
       cy.logInAsHousingNeedsOfficer(true);
       cy.visit('http://localhost:3001/tenancies/123');
       cy.get('button#newTenancy').should('not.exist');

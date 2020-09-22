@@ -71,7 +71,6 @@ export default class TenancyDetailsPage extends Component {
         <div className="lbh-container row details">
           <div className="details__left-column">
             <TenancyDetails tenancy={this.state.tenancy} />
-            <TenancyProcesses tasks={this.state.tenancy.tasks} />
             <TenancyPatchDetails areaPatch={this.state.areaPatch} />
           </div>
 
@@ -104,6 +103,7 @@ export default class TenancyDetailsPage extends Component {
                 });
               })}
             </div>
+            <TenancyProcesses tasks={this.state.tenancy.tasks} />
             <div>
               {isMemberOfGroups([
                 'HOUSING_OFFICER',
@@ -116,7 +116,7 @@ export default class TenancyDetailsPage extends Component {
                   className="govuk-button lbh-button"
                   type="submit"
                 >
-                  Start New Tenancy Process
+                  Create process
                 </button>
               )}
             </div>
