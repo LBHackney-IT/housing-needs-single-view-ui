@@ -6,7 +6,8 @@ import { isMemberOfGroups } from '../../lib/Cookie';
 import {
   TenancyDetails,
   TenancyPatchDetails,
-  HouseholdMembers
+  HouseholdMembers,
+  TenancyProcesses
 } from '../../Components/Details';
 import './index.scss';
 import CautionaryAlerts from '../../Components/Details/CautionaryAlerts';
@@ -82,7 +83,9 @@ export default class TenancyDetailsPage extends Component {
                 })}
               </div>
             </div>
-            <HouseholdMembers members={householdMembers} />
+            {householdMembers.length > 0 && (
+              <HouseholdMembers members={householdMembers} />
+            )}
             {this.state.tenancy.contacts.some(
               tenancy => tenancy.alerts.length > 0
             ) && <h2>Notifications</h2>}
@@ -100,6 +103,7 @@ export default class TenancyDetailsPage extends Component {
                 });
               })}
             </div>
+            <TenancyProcesses tasks={this.state.tenancy.tasks} />
             <div>
               {isMemberOfGroups([
                 'HOUSING_OFFICER',
@@ -112,7 +116,7 @@ export default class TenancyDetailsPage extends Component {
                   className="govuk-button lbh-button"
                   type="submit"
                 >
-                  Start New Tenancy Process
+                  Create process
                 </button>
               )}
             </div>

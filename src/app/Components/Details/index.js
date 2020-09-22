@@ -10,6 +10,7 @@ import ThingsToNote from './ThingsToNote';
 import RequestDocuments from './RequestDocuments';
 import TenancyDetails from './TenancyDetails';
 import TenancyPatchDetails from './TenancyPatchDetails';
+import TenancyProcesses from './TenancyProcesses';
 import HouseholdMembers from './HouseholdMembers';
 
 export {
@@ -25,5 +26,6 @@ export {
   RequestDocuments,
   TenancyDetails,
   TenancyPatchDetails,
+  TenancyProcesses,
   HouseholdMembers
 };

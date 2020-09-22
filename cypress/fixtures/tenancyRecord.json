@@ -55,6 +55,19 @@
       }
     ],
 
+    "tasks": [
+      {
+        "type": "Home visit",
+        "completedTime": null,
+        "createdTime": "2019-02-04"
+      },
+      {
+        "type": "Check",
+        "completedTime": "2020-02-02",
+        "createdTime": "2019-02-04"
+      }
+    ],
+
     "areaPatch": {
       "patch": {
         "areaName": "some area",
