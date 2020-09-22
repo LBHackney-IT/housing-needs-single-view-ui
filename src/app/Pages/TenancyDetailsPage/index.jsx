@@ -30,6 +30,10 @@ export default class TenancyDetailsPage extends Component {
     });
   }
 
+  startTenancyProcess = () => {
+    window.location.href = `${process.env.REACT_APP_MANAGE_A_TENANCY_APP_URL}/tasks/new?tag_ref=${this.props.match.params.id}&uprn=${this.state.tenancy.uprn}`;
+  };
+
   render() {
     document.title = 'Tenancy details - Single View';
 
