@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
+import { FetchTransactions } from '../../Gateways';
 import Tenant from '../../Components/Tenant';
 import { isMemberOfGroups } from '../../lib/Cookie';
 import {
@@ -11,6 +12,7 @@ import {
 } from '../../Components/Details';
 import './index.scss';
 import CautionaryAlerts from '../../Components/Details/CautionaryAlerts';
+import RentTransactions from '../../Components/Details/RentTransactions';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
@@ -27,6 +29,12 @@ export default class TenancyDetailsPage extends Component {
         tenancy: result.tenancy,
         fetching: false,
         areaPatch: result.tenancy.areaPatch.patch
+      });
+    });
+
+    FetchTransactions(tenancyId).then(result => {
+      this.setState({
+        transactions: result.transactions.transactions
       });
     });
   }
@@ -103,6 +111,8 @@ export default class TenancyDetailsPage extends Component {
                 });
               })}
             </div>
+            <br />
+            <RentTransactions transactions={this.state.transactions} />
             <TenancyProcesses tasks={this.state.tenancy.tasks} />
             <div>
               {isMemberOfGroups([
