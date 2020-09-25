@@ -6,6 +6,7 @@ import SearchCustomers from './SearchCustomers';
 import SearchTenancies from './SearchTenancies';
 import DeleteCustomerRecord from './DeleteCustomerRecord';
 import FetchTenancyRecord from './FetchTenancyRecord';
+import FetchTransactions from './FetchTransactions';
 
 export {
   CreateCustomer,
@@ -15,5 +16,6 @@ export {
   SearchCustomers,
   SearchTenancies,
   DeleteCustomerRecord,
-  FetchTenancyRecord
+  FetchTenancyRecord,
+  FetchTransactions
 };

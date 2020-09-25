@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { goBack } from '../../lib/Utils';
 import { FetchTenancyRecord } from '../../Gateways';
+import { FetchTransactions } from '../../Gateways';
 import Tenant from '../../Components/Tenant';
 import { isMemberOfGroups } from '../../lib/Cookie';
 import {
@@ -11,12 +12,13 @@ import {
 } from '../../Components/Details';
 import './index.scss';
 import CautionaryAlerts from '../../Components/Details/CautionaryAlerts';
+import RentTransactions from '../../Components/Details/RentTransactions';
 
 export default class TenancyDetailsPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { notes: [], fetching: true };
+    this.state = { notes: [], fetching: true, transactions: [] };
   }
 
   componentDidMount() {
@@ -29,6 +31,12 @@ export default class TenancyDetailsPage extends Component {
         areaPatch: result.tenancy.areaPatch.patch
       });
     });
+
+    FetchTransactions(tenancyId).then(result => {
+      this.setState({
+        transactions: result.transactions.transactions
+      });
+    });
   }
 
   startTenancyProcess = () => {
@@ -37,7 +45,6 @@ export default class TenancyDetailsPage extends Component {
 
   render() {
     document.title = 'Tenancy details - Single View';
-
     if (this.state.fetching) {
       return (
         <div className="lbh-container">
@@ -103,6 +110,8 @@ export default class TenancyDetailsPage extends Component {
                 });
               })}
             </div>
+            <br />
+            <RentTransactions transactions={this.state.transactions} />
             <TenancyProcesses tasks={this.state.tenancy.tasks} />
             <div>
               {isMemberOfGroups([

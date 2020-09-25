@@ -1,0 +1,46 @@
+{
+  "transactions": {
+    "generatedAt": "2002-11-30T13:52:45.000000+00:00",
+    "request": {
+      "paymentRef": "0000000001",
+      "postCode": "AB1 QWE"
+    },
+    "transactions": [
+      {
+        "date": "10/11/2014",
+        "description": "Total Charge",
+        "in": "",
+        "out": "-£107.20",
+        "balance": "-£63.78"
+      },
+      {
+        "date": "10/09/2013",
+        "description": "PayPoint",
+        "in": "£340.00",
+        "out": "",
+        "balance": "-£120.88"
+      },
+      {
+        "date": "23/02/2012",
+        "description": "Total Charge",
+        "in": "",
+        "out": "-£111.10",
+        "balance": "£569.12"
+      },
+      {
+        "date": "12/03/2019",
+        "description": "Total Charge",
+        "in": "",
+        "out": "-£107.10",
+        "balance": "£265.02"
+      },
+      {
+        "date": "01/02/2018",
+        "description": "Total Charge",
+        "in": "",
+        "out": "-£174.10",
+        "balance": "£23.92"
+      }
+    ]
+  }
+}
