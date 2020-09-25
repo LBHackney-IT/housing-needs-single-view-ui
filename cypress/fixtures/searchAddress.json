@@ -2,7 +2,7 @@
   "tenancies": [
     {
       "tenancyAgreementReference": "000001/01",
-      "address": "2 top of the hill",
+      "address": "10 top of the hill",
       "postcode": "A1 23BW",
       "commencementOfTenancyDate": "1995-07-07",
       "endOfTenancyDate": null,
@@ -31,10 +31,34 @@
     },
     {
       "tenancyAgreementReference": "000002/01",
-      "address": "23 acacia avenue",
+      "address": "2 acacia avenue",
       "postcode": "A1 2BC",
       "commencementOfTenancyDate": "1997-01-01",
       "endOfTenancyDate": "2015-07-12",
+      "currentBalance": "-113.09",
+      "present": false,
+      "terminated": true,
+      "paymentReference": "4927011111",
+      "householdReference": "035111",
+      "propertyReference": "00004111",
+      "tenureType": "SEC: Secure",
+      "agreementType": "M: Master Account",
+      "service": "18.44",
+      "otherCharge": "0.1",
+      "residents": [
+        {
+          "firstName": "Jean",
+          "lastName": "Thomson",
+          "dateOfBirth": "1954-01-03"
+        }
+      ]
+    },
+    {
+      "tenancyAgreementReference": "000003/01",
+      "address": "1 acacia avenue",
+      "postcode": "A1 2BC",
+      "commencementOfTenancyDate": "1996-01-01",
+      "endOfTenancyDate": "2013-07-27",
       "currentBalance": "-113.09",
       "present": false,
       "terminated": true,
