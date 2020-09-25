@@ -18,7 +18,7 @@ export default class TenancyDetailsPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { notes: [], fetching: true };
+    this.state = { notes: [], fetching: true, transactions: [] };
   }
 
   componentDidMount() {
@@ -45,7 +45,6 @@ export default class TenancyDetailsPage extends Component {
 
   render() {
     document.title = 'Tenancy details - Single View';
-
     if (this.state.fetching) {
       return (
         <div className="lbh-container">

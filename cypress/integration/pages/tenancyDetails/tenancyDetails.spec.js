@@ -127,10 +127,13 @@ describe('Tenancy Details Page', () => {
     });
 
     it('Displays actions and processes', () => {
-      cy.get('[data-testid=task-row]').should('have.length', 2);
-      cy.get('[data-testid=task-row]')
+      cy.get('[data-testid=task-row-0]')
         .first()
         .should('contain', '04/02/2019: Home visit (In progress)');
+    });
+
+    it('Displays rent transactions', () => {
+      cy.get('[data-testid=transaction-row-0]').should('contain', '10/11/2014');
     });
   });
 });

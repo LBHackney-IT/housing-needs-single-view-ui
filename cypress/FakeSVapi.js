@@ -68,8 +68,12 @@ app.post('/customers/:id/vulnerabilities', (req, res) => {
 
 app.get('/tenancies/:id', (req, res) => {
   const tenancyRecord = require('./fixtures/tenancyRecord');
-
   res.send(tenancyRecord);
+});
+
+app.get('/tenancies/:id/transactions', (req, res) => {
+  const transactions = require('./fixtures/rentTransactions');
+  res.send(transactions);
 });
 
 app.get('/tenancies', (req, res) => {

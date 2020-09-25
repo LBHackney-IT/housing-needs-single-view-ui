@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-//import './index.scss';
 
 export default class RentTransactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transactionsDisplayed: 5
+      transactionsDisplayed: 10
     };
   }
 
@@ -42,11 +40,13 @@ export default class RentTransactions extends Component {
               </tr>
             </thead>
             <tbody className="govuk-table__body">
-              {transactions.map(transaction => (
-                <tr className="govuk-table__row">
-                  <td className="govuk-table__cell">
-                    {moment(transaction.date).format('DD/MM/YYYY')}
-                  </td>
+              {transactions.map((transaction, index) => (
+                <tr
+                  className="govuk-table__row"
+                  key={`${index}-key`}
+                  data-testid={`transaction-row-${index}`}
+                >
+                  <td className="govuk-table__cell">{transaction.date}</td>
                   <td className="govuk-table__cell">
                     {transaction.description}
                   </td>
@@ -67,6 +67,6 @@ export default class RentTransactions extends Component {
         </>
       );
     }
-    return <h2>There are no results matching your search</h2>;
+    return <h2>There are no rent transactions</h2>;
   }
 }
