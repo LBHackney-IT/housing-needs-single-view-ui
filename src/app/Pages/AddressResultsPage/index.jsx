@@ -35,7 +35,14 @@ export default class AddressResultsPage extends Component {
   }
 
   sortTenanciesByAddress(tenancies) {
-    tenancies.sort((a, b) => (a.address > b.address ? 1 : -1));
+    tenancies.sort((a, b) =>
+      a.address.localeCompare(b.address, undefined, {
+        numeric: true,
+        sensitivity: 'base'
+      }) === 1
+        ? 1
+        : -1
+    );
     return tenancies;
   }
 
