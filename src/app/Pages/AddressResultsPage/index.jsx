@@ -34,6 +34,11 @@ export default class AddressResultsPage extends Component {
     return address;
   }
 
+  sortTenanciesByAddress(tenancies) {
+    tenancies.sort((a, b) => (a.address > b.address ? 1 : -1));
+    return tenancies;
+  }
+
   render() {
     if (this.state.searching) {
       return (
@@ -51,7 +56,9 @@ export default class AddressResultsPage extends Component {
         <h1>Search by address</h1>
         <h2>Search results for: {this.getAddress()}</h2>
 
-        <AddressResults tenancies={this.state.results.tenancies} />
+        <AddressResults
+          tenancies={this.sortTenanciesByAddress(this.state.results.tenancies)}
+        />
       </div>
     );
   }
