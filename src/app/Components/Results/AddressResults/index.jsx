@@ -75,7 +75,10 @@ export default class AddressResults extends Component {
             </thead>
             <tbody className="govuk-table__body">
               {resultsRange.map(i => (
-                <tr className="govuk-table__row">
+                <tr
+                  className="govuk-table__row"
+                  data-testid={`address-row-${i}`}
+                >
                   <td className="govuk-table__cell">
                     <a
                       href={`/tenancies/${this.props.tenancies[
