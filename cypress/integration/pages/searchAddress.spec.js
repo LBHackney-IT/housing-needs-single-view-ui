@@ -35,32 +35,18 @@ describe('Results Page', () => {
 
     it('Can search for an address with a filter selected', () => {
       cy.visit('http://localhost:3001');
-      cy.get('#current_tenancies').click();
+      cy.get('#former_tenancies').click({ force: true });
       cy.get('#address')
         .click({ force: true })
         .type('1 Hill');
       cy.get('[data-testid=search-by-address-button-test]').click({
         force: true
       });
-    });
-
-    it('Shows an error when a filter is not selected', () => {
-      cy.visit('http://localhost:3001');
-      cy.get('#address')
-        .click({ force: true })
-        .type('1 Hill');
-      cy.get('[data-testid=search-by-address-button-test]').click({
-        force: true
-      });
-      cy.get('[data-testid=error-test]').should(
-        'contain',
-        'Please select at least one option and add an address'
-      );
     });
 
     it('Shows an error when the address is not typed in', () => {
       cy.visit('http://localhost:3001');
-      cy.get('#current_tenancies').click();
+      cy.get('#former_tenancies').click({ force: true });
       cy.get('[data-testid=search-by-address-button-test]').click({
         force: true
       });

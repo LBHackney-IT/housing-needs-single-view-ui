@@ -91,7 +91,7 @@ describe('Results Page', () => {
         .should('contain', 'Back to search')
         .click();
 
-      cy.get('body').should('contain', 'Search for a customer');
+      cy.get('body').should('contain', 'Search by name');
     });
   });
 
@@ -106,7 +106,7 @@ describe('Results Page', () => {
         .should('contain', 'Search again')
         .click();
 
-      cy.get('body').should('contain', 'Search for a customer');
+      cy.get('body').should('contain', 'Search by name');
     });
   });
 });
