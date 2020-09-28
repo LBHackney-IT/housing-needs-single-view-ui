@@ -13,7 +13,10 @@ export default props => {
         {props.title} {props.firstName} {props.lastName}
       </a>
       <p data-test="tenant-dob">
-        Date of birth: {moment(props.dateOfBirth).format('DD/MM/YYYY')}
+        Date of birth:{' '}
+        {props.dateOfBirth
+          ? moment(props.dateOfBirth).format('DD/MM/YYYY')
+          : 'No date found'}
       </p>
       <p data-test="tenant-mobileNum">Mobile: {props.telephone1}</p>
       <p data-test="tenant-homeNum">Home: {props.telephone2}</p>

@@ -9,7 +9,7 @@ export default class SearchPage extends Component {
       firstName: '',
       lastName: '',
       address: '',
-      selected_option: '',
+      selected_option: 'current_tenancies',
       searching: false,
       error: false
     };
@@ -80,11 +80,16 @@ export default class SearchPage extends Component {
       <div className="lbh-container">
         <h1>Welcome to Single View</h1>
         <p>
-          View customer data from UHT, UHW, Jigsaw and Academy in one place
-          [read only]
+          In Single View you can search on a name and view customer data from
+          UHT, UHW, Jigsaw and Academy in one place.
         </p>
         <br />
-        <h2>Search for a customer</h2>
+        <p>
+          You can also search our UH housing data by address and view tenancy
+          information
+        </p>
+        <br />
+        <h2>Search by name</h2>
 
         <form action={this.searchLink()}>
           <div className="govuk-form-group">
@@ -115,7 +120,7 @@ export default class SearchPage extends Component {
           </div>
           <div className="govuk-form-group">
             <button className="govuk-button lbh-button" type="submit">
-              Search
+              Search by name
             </button>
           </div>
         </form>
