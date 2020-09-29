@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
 import './index.scss';
 
+const transactionsDisplayed = 10;
+
 export default class RentTransactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transactionsDisplayed: 20,
       pageNumber: 0
     };
   }
 
   render() {
-    let resultsRange = [];
-
     const totalTransactions = this.props.transactions.length;
-    const firstPageItem =
-      this.state.pageNumber * parseInt(this.state.transactionsDisplayed);
-    const remainingTransactions = totalTransactions - firstPageItem;
-    const lastPageItem =
-      remainingTransactions < parseInt(this.state.transactionsDisplayed)
-        ? remainingTransactions + firstPageItem
-        : firstPageItem + parseInt(this.state.transactionsDisplayed);
-
-    for (let i = firstPageItem; i < lastPageItem; i++) {
-      resultsRange.push(i);
-    }
+    const startIndex = this.state.pageNumber * transactionsDisplayed;
+    const totalPages = parseInt(totalTransactions / transactionsDisplayed);
+    const resultsRange = this.props.transactions.slice(
+      startIndex,
+      startIndex + transactionsDisplayed
+    );
 
     if (totalTransactions > 0) {
       return (
@@ -51,28 +45,25 @@ export default class RentTransactions extends Component {
               </tr>
             </thead>
             <tbody className="govuk-table__body">
-              {resultsRange.map(index => (
+              {resultsRange.map((transaction, index) => (
                 <tr
                   className="govuk-table__row"
                   key={`${index}-key`}
                   data-testid={`transaction-row-${index}`}
                 >
+                  <td className="govuk-table__cell">{transaction.date}</td>
                   <td className="govuk-table__cell">
-                    {this.props.transactions[index].date}
-                  </td>
-                  <td className="govuk-table__cell">
-                    {this.props.transactions[index].description}
+                    {transaction.description}
                   </td>
 
                   <td className="govuk-table__cell">
-                    {this.props.transactions[index].out.replace('¤', '£') || ''}
+                    {transaction.out.replace('¤', '£') || ''}
                   </td>
                   <td className="govuk-table__cell">
-                    {this.props.transactions[index].in.replace('¤', '£') || ''}
+                    {transaction.in.replace('¤', '£') || ''}
                   </td>
                   <td className="govuk-table__cell">
-                    {this.props.transactions[index].balance.replace('¤', '£') ||
-                      ''}
+                    {transaction.balance.replace('¤', '£') || ''}
                   </td>
                 </tr>
               ))}
@@ -91,9 +82,9 @@ export default class RentTransactions extends Component {
               </button>
             )}
             <span className="current-page-number">
-              Current page: {this.state.pageNumber + 1}
+              Page {this.state.pageNumber + 1} of {totalPages + 1}
             </span>
-            {remainingTransactions >= this.state.transactionsDisplayed && (
+            {this.state.pageNumber < totalPages && (
               <button
                 className="govuk-button next-page-button"
                 data-module="govuk-button"
