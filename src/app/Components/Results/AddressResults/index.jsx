@@ -103,7 +103,7 @@ export default class AddressResults extends Component {
                     {this.props.tenancies[i].residents.map(resident => (
                       <p>
                         {resident.dateOfBirth
-                          ? moment(resident.dateOfBirth).format('DD-MM-YYYY')
+                          ? moment(resident.dateOfBirth).format('DD/MM/YYYY')
                           : 'No date found'}
                       </p>
                     ))}
