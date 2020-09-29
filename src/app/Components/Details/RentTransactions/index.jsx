@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
+import './index.scss';
+
+const transactionsDisplayed = 10;
 
 export default class RentTransactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      transactionsDisplayed: 10
+      pageNumber: 0
     };
   }
 
   render() {
-    const transactions = this.props.transactions
-      .slice(0, this.state.transactionsDisplayed)
-      .map(transaction => {
-        return transaction;
-      });
+    const totalTransactions = this.props.transactions.length;
+    const startIndex = this.state.pageNumber * transactionsDisplayed;
+    const totalPages = parseInt(totalTransactions / transactionsDisplayed);
+    const resultsRange = this.props.transactions.slice(
+      startIndex,
+      startIndex + transactionsDisplayed
+    );
 
-    if (transactions.length > 0) {
+    if (totalTransactions > 0) {
       return (
         <>
           <h2>Rent</h2>
@@ -40,7 +45,7 @@ export default class RentTransactions extends Component {
               </tr>
             </thead>
             <tbody className="govuk-table__body">
-              {transactions.map((transaction, index) => (
+              {resultsRange.map((transaction, index) => (
                 <tr
                   className="govuk-table__row"
                   key={`${index}-key`}
@@ -64,6 +69,33 @@ export default class RentTransactions extends Component {
               ))}
             </tbody>
           </table>
+          <div className="page-navigation">
+            {this.state.pageNumber > 0 && (
+              <button
+                className="govuk-button previous-page-button"
+                data-module="govuk-button"
+                onClick={() => {
+                  this.setState({ pageNumber: this.state.pageNumber - 1 });
+                }}
+              >
+                Previous page
+              </button>
+            )}
+            <span className="current-page-number">
+              Page {this.state.pageNumber + 1} of {totalPages + 1}
+            </span>
+            {this.state.pageNumber < totalPages && (
+              <button
+                className="govuk-button next-page-button"
+                data-module="govuk-button"
+                onClick={() => {
+                  this.setState({ pageNumber: this.state.pageNumber + 1 });
+                }}
+              >
+                Next page
+              </button>
+            )}
+          </div>
         </>
       );
     }
