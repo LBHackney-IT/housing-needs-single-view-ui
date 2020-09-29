@@ -54,7 +54,7 @@ describe('Results Page', () => {
       );
       cy.get(
         '[data-testid=address-row-0] > td:nth-child(4) > p:nth-child(1)'
-      ).should('contain', '1954-01-03');
+      ).should('contain', '03-01-1954');
     });
 
     it('Shows the tenancy type', () => {
@@ -63,7 +63,7 @@ describe('Results Page', () => {
       );
       cy.get('[data-testid=address-row-0] > td:nth-child(5)').should(
         'contain',
-        'SEC: Secure'
+        'Secure'
       );
     });
 
