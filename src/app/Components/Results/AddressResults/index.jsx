@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Dropdown from '../Dropdown';
+import moment from 'moment';
+import { cleanTenureType } from '../../../lib/Utils';
 import './index.scss';
 
 export default class AddressResults extends Component {
@@ -99,11 +101,15 @@ export default class AddressResults extends Component {
                   </td>
                   <td className="govuk-table__cell">
                     {this.props.tenancies[i].residents.map(resident => (
-                      <p>{resident.dateOfBirth}</p>
+                      <p>
+                        {resident.dateOfBirth
+                          ? moment(resident.dateOfBirth).format('DD/MM/YYYY')
+                          : 'No date found'}
+                      </p>
                     ))}
                   </td>
                   <td className="govuk-table__cell">
-                    {this.props.tenancies[i].tenureType}
+                    {cleanTenureType(this.props.tenancies[i].tenureType)}
                   </td>
                   <td className="govuk-table__cell">
                     {this.props.tenancies[i].terminated
