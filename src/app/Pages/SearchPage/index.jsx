@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { isMemberOfGroups } from '../../lib/Cookie';
 
 export default class SearchPage extends Component {
   constructor(props) {
@@ -152,133 +151,125 @@ export default class SearchPage extends Component {
           ) : null}
         </form>
 
-        {isMemberOfGroups([
-          'HOUSING_OFFICER',
-          'AREA_HOUSING_MANAGER',
-          'DEV_TEAM'
-        ]) && (
-          <div className="lbh-container">
-            <h2>
-              Search by address for Council tenancies, leaseholders or
-              freeholders
-            </h2>
+        <div className="lbh-container">
+          <h2>
+            Search by address for Council tenancies, leaseholders or freeholders
+          </h2>
 
-            <form onSubmit={this.searchByAddress}>
-              <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                  <div class="govuk-radios">
-                    <div
-                      class="govuk-radios__item"
-                      data-testid="current-tenants-test"
+          <form onSubmit={this.searchByAddress}>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div
+                    class="govuk-radios__item"
+                    data-testid="current-tenants-test"
+                  >
+                    <input
+                      class="govuk-radios__input"
+                      id="current_tenancies"
+                      onChange={this.handleOption}
+                      name="current_tenancies"
+                      type="radio"
+                      checked={
+                        this.state.selected_option === 'current_tenancies'
+                      }
+                      value="true"
+                    />
+                    <label
+                      class="govuk-label govuk-radios__label"
+                      for="current_tenancies"
                     >
-                      <input
-                        class="govuk-radios__input"
-                        id="current_tenancies"
-                        onChange={this.handleOption}
-                        name="current_tenancies"
-                        type="radio"
-                        checked={
-                          this.state.selected_option === 'current_tenancies'
-                        }
-                        value="true"
-                      />
-                      <label
-                        class="govuk-label govuk-radios__label"
-                        for="current_tenancies"
-                      >
-                        Current tenants
-                      </label>
-                    </div>
-                    <div
-                      class="govuk-radios__item"
-                      data-testid="former-tenants-test"
-                    >
-                      <input
-                        class="govuk-radios__input"
-                        id="former_tenancies"
-                        onChange={this.handleOption}
-                        name="former_tenancies"
-                        type="radio"
-                        checked={
-                          this.state.selected_option === 'former_tenancies'
-                        }
-                        value="true"
-                      />
-                      <label
-                        class="govuk-label govuk-radios__label"
-                        for="former_tenancies"
-                      >
-                        Former tenants
-                      </label>
-                    </div>
-                    <div
-                      class="govuk-radios__item"
-                      data-testid="leaseholders-test"
-                    >
-                      <input
-                        class="govuk-radios__input"
-                        id="leasehold_only"
-                        onChange={this.handleOption}
-                        name="leasehold_only"
-                        type="radio"
-                        checked={
-                          this.state.selected_option === 'leasehold_only'
-                        }
-                        value="true"
-                      />
-                      <label
-                        class="govuk-label govuk-radios__label"
-                        for="leasehold_only"
-                      >
-                        Leaseholders
-                      </label>
-                    </div>
-                    <div
-                      class="govuk-radios__item"
-                      data-testid="freeholders-test"
-                    >
-                      <input
-                        class="govuk-radios__input"
-                        id="freehold_only"
-                        onChange={this.handleOption}
-                        name="freehold_only"
-                        type="radio"
-                        checked={this.state.selected_option === 'freehold_only'}
-                        value="true"
-                      />
-                      <label
-                        class="govuk-label govuk-radios__label"
-                        for="freehold_only"
-                      >
-                        Freeholders
-                      </label>
-                    </div>
+                      Current tenants
+                    </label>
                   </div>
-                </fieldset>
-              </div>
-              <div className="govuk-form-group">
-                <label className="govuk-label" htmlFor="firstName">
-                  Address
-                </label>
-                <input
-                  className="govuk-input"
-                  type="text"
-                  name="address"
-                  id="address"
-                  onChange={this.handleChange}
-                  value={this.state.address}
-                />
-              </div>
+                  <div
+                    class="govuk-radios__item"
+                    data-testid="former-tenants-test"
+                  >
+                    <input
+                      class="govuk-radios__input"
+                      id="former_tenancies"
+                      onChange={this.handleOption}
+                      name="former_tenancies"
+                      type="radio"
+                      checked={
+                        this.state.selected_option === 'former_tenancies'
+                      }
+                      value="true"
+                    />
+                    <label
+                      class="govuk-label govuk-radios__label"
+                      for="former_tenancies"
+                    >
+                      Former tenants
+                    </label>
+                  </div>
+                  <div
+                    class="govuk-radios__item"
+                    data-testid="leaseholders-test"
+                  >
+                    <input
+                      class="govuk-radios__input"
+                      id="leasehold_only"
+                      onChange={this.handleOption}
+                      name="leasehold_only"
+                      type="radio"
+                      checked={this.state.selected_option === 'leasehold_only'}
+                      value="true"
+                    />
+                    <label
+                      class="govuk-label govuk-radios__label"
+                      for="leasehold_only"
+                    >
+                      Leaseholders
+                    </label>
+                  </div>
+                  <div
+                    class="govuk-radios__item"
+                    data-testid="freeholders-test"
+                  >
+                    <input
+                      class="govuk-radios__input"
+                      id="freehold_only"
+                      onChange={this.handleOption}
+                      name="freehold_only"
+                      type="radio"
+                      checked={this.state.selected_option === 'freehold_only'}
+                      value="true"
+                    />
+                    <label
+                      class="govuk-label govuk-radios__label"
+                      for="freehold_only"
+                    >
+                      Freeholders
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div className="govuk-form-group">
+              <label className="govuk-label" htmlFor="firstName">
+                Address
+              </label>
+              <input
+                className="govuk-input"
+                type="text"
+                name="address"
+                id="address"
+                onChange={this.handleChange}
+                value={this.state.address}
+              />
+            </div>
 
-              <div className="govuk-form-group">
-                <button
-                  className="govuk-button lbh-button"
-                  type="submit"
-                  data-testid="search-by-address-button-test"
-                >
-                  Search by address
-                </button>
-              </div>
+            <div className="govuk-form-group">
+              <button
+                className="govuk-button lbh-button"
+                type="submit"
+                data-testid="search-by-address-button-test"
+              >
+                Search by address
+              </button>
+            </div>
 
               {this.state.searchByAddressError ? (
                 <span
