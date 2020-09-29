@@ -271,17 +271,16 @@ export default class SearchPage extends Component {
               </button>
             </div>
 
-              {this.state.searchByAddressError ? (
-                <span
-                  className="govuk-error-message lbh-error-message"
-                  data-testid="error-test"
-                >
-                  Please select at least one option and add an address
-                </span>
-              ) : null}
-            </form>
-          </div>
-        )}
+            {this.state.searchByAddressError ? (
+              <span
+                className="govuk-error-message lbh-error-message"
+                data-testid="error-test"
+              >
+                Please select at least one option and add an address
+              </span>
+            ) : null}
+          </form>
+        </div>
       </div>
     );
   }
