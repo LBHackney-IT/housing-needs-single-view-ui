@@ -30,9 +30,23 @@ $ npm run start
 
 ## Run the integration tests
 
+A fake api server is used to simulate the api responses back to the UI. To enable Cypress tests, this fake server must be running and a port change is required.
+
+1. In your .env file, change the port value on the REACT_APP_HN_API_URL variable to 8080.
+2. Start the fake server
+
+```
+$ npm run cy:start
+```
+
+3. In another terminal, start the Cypress tests
+
 ```
 npm run cypress
 ```
+
+4. When finished with testing, don't forget to change the
+   REACT_APP_HN_API_URL variable port value back to 3000 or else your dev server won't work.
 
 ## Config for debugging the API (VS Code)
 
