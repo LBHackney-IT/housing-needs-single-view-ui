@@ -27,5 +27,14 @@ describe('Search', () => {
         .should('contain', 'Customers with matching details')
         .and('contain', 'Wednesday Adams');
     });
+
+    it('Shows an error if no name in entered', () => {
+      cy.visit('http://localhost:3001');
+      cy.get('[data-testid=search-by-name-button-test]').click();
+      cy.get('[data-testid=search-by-name-error-test]').should(
+        'contain',
+        'Please enter a name'
+      );
+    });
   });
 });

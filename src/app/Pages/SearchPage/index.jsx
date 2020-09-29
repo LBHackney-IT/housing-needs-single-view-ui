@@ -10,7 +10,8 @@ export default class SearchPage extends Component {
       address: '',
       selected_option: 'current_tenancies',
       searching: false,
-      error: false
+      searchByAddressError: false,
+      searchByNameError: false
     };
   }
 
@@ -27,7 +28,15 @@ export default class SearchPage extends Component {
     this.setState({ searching: true });
   };
 
-  searchLink() {
+  searchLink = e => {
+    if (this.state.firstName === '' && this.state.lastName === '') {
+      this.setState({
+        searchByNameError: true
+      });
+      e.preventDefault();
+      return false;
+    }
+
     let attrs = ['firstName', 'lastName'];
     let params = attrs
       .map(attr => {
@@ -39,13 +48,15 @@ export default class SearchPage extends Component {
       })
       .join('&');
 
-    return `/search?${params}`;
-  }
+    this.setState({
+      redirect: `/search?${params}`
+    });
+  };
 
   searchByAddress = e => {
     if (this.state.selected_option === '' || this.state.address === '') {
       this.setState({
-        error: true
+        searchByAddressError: true
       });
       e.preventDefault();
       return false;
@@ -90,7 +101,7 @@ export default class SearchPage extends Component {
         <br />
         <h2>Search by name</h2>
 
-        <form action={this.searchLink()}>
+        <form onSubmit={this.searchLink}>
           <div className="govuk-form-group">
             <label className="govuk-label" htmlFor="firstName">
               First Name
@@ -118,10 +129,26 @@ export default class SearchPage extends Component {
             />
           </div>
           <div className="govuk-form-group">
-            <button className="govuk-button lbh-button" type="submit">
+            <button
+              className="govuk-button lbh-button"
+              type="submit"
+              data-testid="search-by-name-button-test"
+            >
               Search by name
             </button>
           </div>
+
+          {this.state.searchByNameError ? (
+            <>
+              <span
+                className="govuk-error-message lbh-error-message"
+                data-testid="search-by-name-error-test"
+              >
+                Please enter a name
+              </span>
+              <br />
+            </>
+          ) : null}
         </form>
 
         <div className="lbh-container">
@@ -244,7 +271,7 @@ export default class SearchPage extends Component {
               </button>
             </div>
 
-            {this.state.error ? (
+            {this.state.searchByAddressError ? (
               <span
                 className="govuk-error-message lbh-error-message"
                 data-testid="error-test"
