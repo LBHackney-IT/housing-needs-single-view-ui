@@ -95,18 +95,32 @@ export default class AddressResults extends Component {
                   </td>
 
                   <td className="govuk-table__cell">
-                    {this.props.tenancies[i].residents.map(resident => (
-                      <p>{resident.firstName + ' ' + resident.lastName}</p>
-                    ))}
+                    {this.props.tenancies[i].residents.map(
+                      resident =>
+                        resident.responsible && (
+                          <p>
+                            {resident.title +
+                              ' ' +
+                              resident.firstName +
+                              ' ' +
+                              resident.lastName}
+                          </p>
+                        )
+                    )}
                   </td>
                   <td className="govuk-table__cell">
-                    {this.props.tenancies[i].residents.map(resident => (
-                      <p>
-                        {resident.dateOfBirth
-                          ? moment(resident.dateOfBirth).format('DD/MM/YYYY')
-                          : 'No date found'}
-                      </p>
-                    ))}
+                    {this.props.tenancies[i].residents.map(
+                      resident =>
+                        resident.responsible && (
+                          <p>
+                            {resident.dateOfBirth
+                              ? moment(resident.dateOfBirth).format(
+                                  'DD/MM/YYYY'
+                                )
+                              : 'No date found'}
+                          </p>
+                        )
+                    )}
                   </td>
                   <td className="govuk-table__cell">
                     {cleanTenureType(this.props.tenancies[i].tenureType)}

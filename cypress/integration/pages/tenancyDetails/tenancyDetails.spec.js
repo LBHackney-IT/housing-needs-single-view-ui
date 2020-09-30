@@ -106,8 +106,8 @@ describe('Tenancy Details Page', () => {
         .and('contain', 'The name');
     });
 
-    it('Displays the "Create process" button', () => {
-      cy.get('button#newTenancy').should('contain', 'Create process');
+    it('Displays the "Create new process" button', () => {
+      cy.get('button#newTenancy').should('contain', 'Create new process');
     });
 
     it('Does not display the "Create process" button if not in the correct group', () => {
