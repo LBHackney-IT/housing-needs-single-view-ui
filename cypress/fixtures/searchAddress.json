@@ -20,12 +20,16 @@
         {
           "firstName": "Andrew",
           "lastName": "King",
-          "dateOfBirth": "1928-10-12"
+          "dateOfBirth": "1928-10-12",
+          "responsible": true,
+          "title": "Mr"
         },
         {
-          "firstName": "Mr",
+          "firstName": "Tom",
           "lastName": "Sandman",
-          "dateOfBirth": "1950-03-05"
+          "dateOfBirth": "1950-03-05",
+          "responsible": true,
+          "title": "Mr"
         }
       ]
     },
@@ -49,7 +53,9 @@
         {
           "firstName": "Jean",
           "lastName": "Thomson",
-          "dateOfBirth": "1954-01-03"
+          "dateOfBirth": "1954-01-03",
+          "responsible": true,
+          "title": "Mrs"
         }
       ]
     },
@@ -71,9 +77,11 @@
       "otherCharge": "0.1",
       "residents": [
         {
-          "firstName": "Jean",
+          "firstName": "Elena",
           "lastName": "Thomson",
-          "dateOfBirth": "1954-01-03"
+          "dateOfBirth": "1954-01-03",
+          "responsible": true,
+          "title": "Ms"
         }
       ]
     }

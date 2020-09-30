@@ -125,7 +125,7 @@ export default class TenancyDetailsPage extends Component {
                   className="govuk-button lbh-button"
                   type="submit"
                 >
-                  Create process
+                  Create new process
                 </button>
               )}
             </div>

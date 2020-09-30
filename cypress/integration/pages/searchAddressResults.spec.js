@@ -45,7 +45,7 @@ describe('Results Page', () => {
       );
       cy.get(
         '[data-testid=address-row-0] > td:nth-child(3) > p:nth-child(1)'
-      ).should('contain', 'Jean Thomson');
+      ).should('contain', 'Ms Elena Thomson');
     });
 
     it('Shows the date of birth', () => {

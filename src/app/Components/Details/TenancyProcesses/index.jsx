@@ -66,5 +66,5 @@ export default props => {
       </>
     );
   }
-  return <h2>There are no tasks</h2>;
+  return <h2>There are no processes and actions</h2>;
 };
