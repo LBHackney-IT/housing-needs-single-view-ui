@@ -99,11 +99,8 @@ export default class AddressResults extends Component {
                       resident =>
                         resident.responsible && (
                           <p>
-                            {resident.title +
-                              ' ' +
-                              resident.firstName +
-                              ' ' +
-                              resident.lastName}
+                            {resident.title} {resident.firstName}{' '}
+                            {resident.lastName}
                           </p>
                         )
                     )}
