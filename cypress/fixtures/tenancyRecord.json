@@ -56,12 +56,10 @@
     ],
 
     "areaPatch": {
-      "patch": {
-        "areaName": "some area",
-        "officerFullName": "The name",
-        "patchCode": "AB1",
-        "ward": "some ward"
-      }
+      "areaName": "some area",
+      "officerFullName": "The name",
+      "patchCode": "AB1",
+      "ward": "some ward"
     }
   }
 }
