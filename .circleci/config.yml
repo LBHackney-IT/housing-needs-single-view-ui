@@ -52,7 +52,7 @@ jobs:
           name: build
           command: |
             export REACT_APP_ENV=staging
-            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING111}
+            export REACT_APP_HN_API_URL=${REACT_APP_HN_API_URL_STAGING}
             export REACT_APP_EVIDENCE_STORE_API_URL=${REACT_APP_EVIDENCE_STORE_API_URL_STAGING}
             export REACT_APP_DOC_UPLOAD_API_URL=${REACT_APP_DOC_UPLOAD_API_URL_STAGING}
             export REACT_APP_UHW_DOCUMENT_API_URL=${REACT_APP_UHW_DOCUMENT_API_URL_STAGING}
